@@ -32,7 +32,7 @@ if (!isset($_SESSION['idioma'])) {
         <link rel="stylesheet" type="text/css" href="../Views/css/tcal.css" media="screen" />
         <link rel="stylesheet" type="text/css" href="../Views/css/modal.css" />
     </head>
-    <body>
+    <body style="background-color: gray">
         <div id="modal" style="display:none">
             <div id="contenido-interno">
                 <div id="aviso"><img src="../Views/Icons/sign-error.png" name="aviso"/></div>
@@ -52,7 +52,7 @@ if (!isset($_SESSION['idioma'])) {
         </p>
 
         <div width: 50%; align="left">
-             <form name='idiomaform' action="../Functions/CambioIdioma.php" method="post">
+             <form  name='idiomaform' action="../Functions/CambioIdioma.php" method="post">
                      <?php echo $strings['idioma']; ?>
                 <select name="idioma" onChange='this.form.submit()'>
                     <option value="SPANISH"> </option>
@@ -95,7 +95,7 @@ if (!isset($_SESSION['idioma'])) {
         if (IsAuthenticated()) {
             include '../Views/users_menuLateral.php';
             include '../Models/Contratos_Model.php';
-            include '../Views/Contrato_SHOWALL.php';
+            include '../Views/Contrato_SHOWALL_View.php';
             
             $datos = new Contratos_Model();
             $resultado = $datos->showAll();

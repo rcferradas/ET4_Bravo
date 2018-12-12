@@ -10,36 +10,18 @@ class Contratos_Model {
         $this->mysqli = ConnectDB();
     }
 
-//    var $cod;
-//    var $centro;
-//    var $tipo;
-//    var $empresa;
-//    var $documento;
-//    var $periodoInicio;
-//    var $periodoFin;
-//    var $importe;
-//    var $estado;
-//
-////Constructor de la clase
-//    function __construct($cod, $centro, $tipo, $empresa, $documento, $periodoInicio, $periodoFin, $importe, $estado) {
-//        $this->cod = $cod;
-//        $this->centro = $centro;
-//        $this->tipo = $tipo;
-//        $this->empresa = $empresa;
-//        $this->documento = $documento;
-//        $this->periodoInicio = $periodoInicio;
-//        $this->periodoFin = $periodoFin;
-//        $this->importe = $importe;
-//        $this->estado = $estado;
-//
-//        include_once '../Models/Access_DB.php';
-//        $this->mysqli = ConnectDB();
-//    }
-
+//Funcion encargada de extraer los datos del SHOWALL
     function showAll() {
         $showAll = "SELECT * from contratos";
         $resultado = $this->mysqli->query($showAll);
         return $resultado;
+    }
+
+//Funcion encargada de extraer los datos del SHOWCURRENT
+    function showCurrent($email) {
+        $showCurrent = "SELECT * from contratos WHERE `cod`='$cod'";
+        $resultadoCurrent = $this->mysqli->query($showCurrent);
+        return $resultadoCurrent;
     }
 
 //Metodo ADD

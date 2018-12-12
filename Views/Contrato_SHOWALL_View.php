@@ -9,12 +9,13 @@ class SHOWALL {
         $this->showAllContratos();
     }
 
-    //Mostrar tabla SHOWALL
+    //Mostrar tabla SHOWALL de Contratos
     function showAllContratos() {
         include_once '../Views/Header.php';
         include '../Locales/Strings_' . $_SESSION['idioma'] . '.php';
         ?>
         <table class="table table-dark">
+            <!--Comienzo encabezado tabla SHOWALL-->
             <thead>
                 <tr>
                     <th scope="col"><?php echo $strings['Código']; ?></th>
@@ -28,9 +29,11 @@ class SHOWALL {
                     <th scope="col"><?php echo $strings['Estado']; ?></th>
                 </tr>
             </thead>
+            <!--Fin encabezado tabla SHOWALL-->
 
             <tbody>
                 <?php
+                //Bucle que recorre todas las tuplas y va mostrando sus atributos
                 while ($tupla = $this->datos->fetch_assoc()) {
                     ?>
                     <tr>
@@ -44,6 +47,7 @@ class SHOWALL {
                         <td><?php echo $tupla['importe']; ?></td>
                         <td><?php echo $tupla['estado']; ?></td>
                         <td>
+                            <!--Botones para realizar acciones en cada tupla-->
                             <form class="form-inline my-2 my-lg-0" name='formulario' action="../Controllers/Mantenimiento_Controller.php?email=<?php echo $tupla['cod']; ?>" method="post">
                                 <button class="btn btn-outline-primary" name="ver" onclick="this.form.submit()">
                                     <i class="far fa-eye"></i></button>&nbsp
