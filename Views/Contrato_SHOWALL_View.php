@@ -1,6 +1,6 @@
 <?php
 
-class SHOWALL {
+class Contrato_SHOWALL {
 
     private $datos;
 

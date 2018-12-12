@@ -1,20 +1,30 @@
 <?php
 
-class Contrato_SHOWCURRENT {
+//CLASE SIN HACER
+//CLASE SIN HACER
+//CLASE SIN HACER
+//CLASE SIN HACER
+//CLASE SIN HACER
+//CLASE SIN HACER
+//CLASE SIN HACER
+//CLASE SIN HACER
+//CLASE SIN HACER
+class Visita_SHOWALL {
 
     private $datos;
 
     function __construct($datos) {
         $this->datos = $datos;
-        $this->showCurrentContratos();
+        $this->showAllVisitas();
     }
 
-    //Mostrar tabla SHOWCURRENT de contratos
-    function showCurrentContratos() {
+//Mostrar tabla SHOWALL de Contratos
+    function showAllVisitas() {
         include_once '../Views/Header.php';
         include '../Locales/Strings_' . $_SESSION['idioma'] . '.php';
         ?>
         <table class="table table-dark">
+            <!--Comienzo encabezado tabla SHOWALL-->
             <thead>
                 <tr>
                     <th scope="col"><?php echo $strings['Código']; ?></th>
@@ -28,11 +38,12 @@ class Contrato_SHOWCURRENT {
                     <th scope="col"><?php echo $strings['Estado']; ?></th>
                 </tr>
             </thead>
+            <!--Fin encabezado tabla SHOWALL-->
 
             <tbody>
                 <?php
+                //Bucle que recorre todas las tuplas y va mostrando sus atributos
                 while ($tupla = $this->datos->fetch_assoc()) {
-                    //Bucle que muestra los atributos de la tupla solicitada
                     ?>
                     <tr>
                         <td><?php echo $tupla['cod']; ?></td>
@@ -45,8 +56,10 @@ class Contrato_SHOWCURRENT {
                         <td><?php echo $tupla['importe']; ?></td>
                         <td><?php echo $tupla['estado']; ?></td>
                         <td>
-                            <!--Botones para realizar acciones con la tupla seleccionada-->
+                            <!--Botones para realizar acciones en cada tupla-->
                             <form class="form-inline my-2 my-lg-0" name='formulario' action="../Controllers/Mantenimiento_Controller.php?email=<?php echo $tupla['cod']; ?>" method="post">
+                                <button class="btn btn-outline-primary" name="ver" onclick="this.form.submit()">
+                                    <i class="far fa-eye"></i></button>&nbsp
                                 <button class="btn btn-outline-primary" name="edit" onclick="this.form.submit()">
                                     <i class="fas fa-edit"></i></button>&nbsp
                                 <button class="btn btn-outline-primary" name="delete" onclick="this.form.submit()">

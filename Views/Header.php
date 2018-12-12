@@ -100,7 +100,7 @@ if (!isset($_SESSION['idioma'])) {
             $datos = new Contratos_Model();
             $resultado = $datos->showAll();
             if ($resultado->num_rows > 0) {
-                new SHOWALL($resultado);
+                new Contrato_SHOWALL($resultado);
             } else {
                 echo 'No hay contratos';
 //        new MESSAGE("No hay tuplas", './Login_Controller.php');
