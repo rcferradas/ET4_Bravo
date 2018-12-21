@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 12-12-2018 a las 21:13:34
+-- Tiempo de generación: 21-12-2018 a las 15:38:02
 -- Versión del servidor: 10.1.37-MariaDB
 -- Versión de PHP: 7.2.12
 
@@ -19,43 +19,42 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: 'iu2018'
+-- Base de datos: `iu2018`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla 'contratos'
+-- Estructura de tabla para la tabla `contratos`
 --
 
-CREATE TABLE 'contratos' (
-  'cod' varchar(10) NOT NULL,
-  'centro' varchar(30) NOT NULL,
-  'tipo' enum('certificador','mantenimiento','reparacion','') NOT NULL DEFAULT '',
-  'empresa' varchar(30) NOT NULL,
-  'documento' varchar(50) NOT NULL,
-  'periodoinicio' datetime NOT NULL,
-  'periodofin' datetime NOT NULL,
-  'importe' decimal(10,3) NOT NULL,
-  'estado' enum('completo','incompleto','incidencia','') NOT NULL
+CREATE TABLE `contratos` (
+  `cod` varchar(10) NOT NULL,
+  `centro` varchar(30) NOT NULL,
+  `tipo` enum('certificador','mantenimiento','reparacion','') NOT NULL DEFAULT '',
+  `cifEmpresa` varchar(30) NOT NULL,
+  `documento` varchar(50) NOT NULL,
+  `periodoinicio` datetime NOT NULL,
+  `periodofin` datetime NOT NULL,
+  `importe` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Volcado de datos para la tabla 'contratos'
+-- Volcado de datos para la tabla `contratos`
 --
 
-INSERT INTO 'contratos' ('cod', 'centro', 'tipo', 'empresa', 'documento', 'periodoinicio', 'periodofin', 'importe', 'estado') VALUES
-('a', 'a', '', 'a', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0.000', '');
+INSERT INTO `contratos` (`cod`, `centro`, `tipo`, `cifEmpresa`, `documento`, `periodoinicio`, `periodofin`, `importe`) VALUES
+('a', 'a', '', 'a', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0.00');
 
 --
 -- Índices para tablas volcadas
 --
 
 --
--- Indices de la tabla 'contratos'
+-- Indices de la tabla `contratos`
 --
-ALTER TABLE 'contratos'
-  ADD PRIMARY KEY ('cod');
+ALTER TABLE `contratos`
+  ADD PRIMARY KEY (`cod`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
