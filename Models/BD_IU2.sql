@@ -27,36 +27,75 @@ GRANT ALL PRIVILEGES ON `IU2018`.* TO `iu2018`@`localhost` WITH GRANT OPTION;
 CREATE TABLE IF NOT EXISTS `USUARIOS` (
 
 `login` varchar(15) NOT NULL,
-
 `password` varchar(128) NOT NULL,
-
 `DNI` varchar(9) NOT NULL,
-
 `nombre` varchar(30) NOT NULL,
-
 `apellidos` varchar(50) NOT NULL,
-
 `telefono` varchar(11) NOT NULL,
-
 `email` varchar(60) NOT NULL,
-
 `FechaNacimiento` date NOT NULL,
-
 `fotopersonal` varchar(50) NOT NULL,
-
 `sexo` enum('hombre','mujer') NOT NULL,
 
 PRIMARY KEY (`login`),
-
 UNIQUE KEY `DNI` (`DNI`),
-
 UNIQUE KEY `email` (`email`)
 
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
 --
--- Índices para tablas volcadas
---
---
--- Indices de la tabla `datos`
+-- Base de datos: `iu2018`
 --
 
+-- Estructura de tabla para la tabla `contratos`
+
+CREATE TABLE IF NOT EXISTS `contratos` (
+  `cod` varchar(10) NOT NULL,
+  `centro` varchar(30) NOT NULL,
+  `tipo` enum('certificador','mantenimiento','reparacion','') NOT NULL DEFAULT '',
+  `cifEmpresa` varchar(30) NOT NULL,
+  `documento` varchar(50) NOT NULL,
+  `periodoinicio` datetime NOT NULL,
+  `periodofin` datetime NOT NULL,
+  `importe` decimal(10,2) NOT NULL,
+
+PRIMARY KEY (`cod`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- ---------------------------------------------------------------
+-- Estructura de tabla para la tabla `empresas`
+
+CREATE TABLE IF NOT EXISTS `empresas` (
+  `cif` varchar(10) NOT NULL,
+  `nombre` varchar(30) NOT NULL,
+  `tipo` enum('certificador','mantenimiento','reparacion','') NOT NULL DEFAULT '',
+  `telefono` varchar(30) NOT NULL,
+  `localizacion` varchar(50) NOT NULL,
+PRIMARY KEY (`cif`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+
+-- -------------------------------------------------------------
+-- Estructura de tabla para la tabla `centro`
+
+CREATE TABLE IF NOT EXISTS `centros` (
+  `nombre` varchar(10) NOT NULL,
+  `lugar` varchar(30) NOT NULL,
+  `UsuarioAsignado` varchar(9) NOT NULL,
+PRIMARY KEY (`nombre`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- -----------------------------------------------------------------------------------------------------
+-- Tabla visitas
+
+CREATE TABLE IF NOT EXISTS `visitas` (
+  `codVisita` varchar(10) NOT NULL,
+  `estado` enum('realizada','pendiente','incidencia', '') NOT NULL DEFAULT '',
+  `tipo` enum('certificador','mantenimiento','reparacion','') NOT NULL DEFAULT '',
+  `codContrato` varchar(30) NOT NULL,
+  `informe` varchar(50) NOT NULL,
+  `periodoinicio` datetime NOT NULL,
+  `periodofin` datetime NOT NULL,
+  `frutoVisitaProg` varchar(10) NOT NULL,
+PRIMARY KEY (`codVisita`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
