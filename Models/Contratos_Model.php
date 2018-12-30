@@ -2,10 +2,26 @@
 
 class Contratos_Model {
 
+    var $cod;
+    var $centro;
+    var $tipo;
+    var $cifEmpresa;
+    var $documento;
+    var $periodoInicio;
+    var $periodoFin;
+    var $importe;
     var $mysqli;
 
 //Constructor de la clase
-    function __construct() {
+    function __construct($cod, $centro, $tipo, $cifEmpresa, $documento, $periodoInicio, $periodoFin, $importe) {
+        $this->cod = $cod;
+        $this->centro = $centro;
+        $this->tipo = $tipo;
+        $this->cifEmpresa = $cifEmpresa;
+        $this->documento = $documento;
+        $this->periodoInicio = $periodoInicio;
+        $this->periodoFin = $periodoFin;
+        $this->importe = $importe;
 
         include_once '../Models/Access_DB.php';
         $this->mysqli = ConnectDB();
@@ -24,7 +40,8 @@ class Contratos_Model {
 
 //Funcion encargada de extraer los datos del SHOWCURRENT
     function showCurrent() {
-        $showCurrent = "SELECT * from contratos WHERE `cod`='cod'";
+        echo $this->cod;
+        $showCurrent = "SELECT * from contratos WHERE `cod`='$this->cod'";
         if (!($resultado = $this->mysqli->query($showCurrent))) {
             return true;
         } else {
@@ -38,12 +55,12 @@ class Contratos_Model {
 // de los atributos del objeto. Comprueba si la clave/s esta vacia y si 
 //existe ya en la tabla
     function ADD() {
-        $add = "INSERT INTO `contratos` (`cod`, `centro`, `tipo`, `cifEmpresa`, `documento`, `periodoinicio`, `periodofin`, `importe`) 
-        VALUES ('cod', 'centro', 'tipo', 'cifEmpresa', 'documento', 'periodoInicio', 'periodoFin', 'importe')";
+        $add = "INSERT INTO contratos (`cod`, `centro`, `tipo`, `cifEmpresa`, `documento`, `periodoinicio`, `periodofin`, `importe`) 
+        VALUES ('$this->cod', '$this->centro', '$this->tipo', '$this->cifEmpresa', '$this->documento', '$this->periodoInicio', '$this->periodoFin', '$this->importe')";
         if (!$this->mysqli->query($add)) {
             return 'Error en la inserción';
         }
-        return 'Participación añadida con éxito'; //operacion de insertado correcta
+        return 'Contrato añadido con éxito'; //operacion de insertado correcta
     }
 
 //funcion SEARCH: hace una búsqueda en la tabla con

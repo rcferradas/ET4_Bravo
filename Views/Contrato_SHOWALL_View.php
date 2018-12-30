@@ -2,31 +2,24 @@
 
 class Contrato_SHOWALL {
 
-    private $datos;
-
-    function __construct($datos) {
-        $this->datos = $datos;
-        $this->showAllContratos();
+    function __construct($recordSet, $arrayAtribs) {    //Constructor de la clase, pasamos un objeto tipo loteriaiu como parametro
+        $this->render($recordSet, $arrayAtribs);                  //------------------------REVISAR $recordSet----------------------------------------------------------
     }
 
-    //Mostrar tabla SHOWALL de Contratos
-    function showAllContratos() {
-        include_once '../Views/Header.php';
-        include '../Locales/Strings_' . $_SESSION['idioma'] . '.php';
+    function render($recordSet, $arrayAtribs) {
+        if (!isset($_SESSION['idioma'])) {   //Si no hay idioma seleccionado
+            $_SESSION['idioma'] = 'ESPAÑOL'; //por defecto ponemos español
+        }
+        include '../Views/Header.php';
+        //Mostrar tabla SHOWALL de Contratos
         ?>
         <table class="table table-dark">
             <!--Comienzo encabezado tabla SHOWALL-->
             <thead>
                 <tr>
                     <th scope="col"><?php echo $strings['Código']; ?></th>
-                    <th scope="col"><?php echo $strings['Centro']; ?></th>
                     <th scope="col"><?php echo $strings['Tipo']; ?></th>
                     <th scope="col"><?php echo $strings['Empresa encargada']; ?></th>
-                    <th scope="col"><?php echo $strings['Documento']; ?></th>
-                    <th scope="col"><?php echo $strings['Periodo inicio']; ?></th>
-                    <th scope="col"><?php echo $strings['Periodo fin']; ?></th>
-                    <th scope="col"><?php echo $strings['Importe']; ?></th>
-                    <th scope="col"><?php echo $strings['Estado']; ?></th>
                 </tr>
             </thead>
             <!--Fin encabezado tabla SHOWALL-->
@@ -34,26 +27,21 @@ class Contrato_SHOWALL {
             <tbody>
                 <?php
                 //Bucle que recorre todas las tuplas y va mostrando sus atributos
-                while ($tupla = $this->datos->fetch_assoc()) {
+                while ($tupla = $recordSet->fetch_assoc()) {
                     ?>
                     <tr>
                         <td><?php echo $tupla['cod']; ?></td>
-                        <td><?php echo $tupla['centro']; ?></td>
                         <td><?php echo $tupla['tipo']; ?></td>
-                        <td><?php echo $tupla['empresa']; ?></td>
-                        <td><?php echo $tupla['documento']; ?></td>
-                        <td><?php echo $tupla['periodoinicio']; ?></td>
-                        <td><?php echo $tupla['periodofin']; ?></td>
-                        <td><?php echo $tupla['importe']; ?></td>
-                        <td><?php echo $tupla['estado']; ?></td>
+                        <td><?php echo $tupla['cifEmpresa']; ?></td>
                         <td>
                             <!--Botones para realizar acciones en cada tupla-->
-                            <form class="form-inline my-2 my-lg-0" name='formulario' action="../Controllers/Mantenimiento_Controller.php?email=<?php echo $tupla['cod']; ?>" method="post">
-                                <button class="btn btn-outline-primary" name="ver" onclick="this.form.submit()">
+                            <form class="form-inline my-2 my-lg-0" name='formulario' action="../Controllers/Mantenimiento_Controller.php" method="post">
+                                <input type="hidden" name=cod value=<?php echo $tupla['cod']?>>
+                                <button name="action" value="SHOWCURRENT" type="submit" class="btn btn-outline-primary">
                                     <i class="far fa-eye"></i></button>&nbsp
-                                <button class="btn btn-outline-primary" name="edit" onclick="this.form.submit()">
+                                <button name="action" value="EDIT" type="submit" class="btn btn-outline-primary">
                                     <i class="fas fa-edit"></i></button>&nbsp
-                                <button class="btn btn-outline-primary" name="delete" onclick="this.form.submit()">
+                                <button name="action" value="DELETE" type="submit" class="btn btn-outline-primary">
                                     <i class="fas fa-trash-alt"></i></button>
                             </form>
                         </td>

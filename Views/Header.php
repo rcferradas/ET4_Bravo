@@ -94,17 +94,6 @@ if (!isset($_SESSION['idioma'])) {
 //session_start();
         if (IsAuthenticated()) {
             include '../Views/users_menuLateral.php';
-            include '../Models/Contratos_Model.php';
-            include '../Views/Contrato_SHOWALL_View.php';
-            
-            $datos = new Contratos_Model();
-            $resultado = $datos->showAll();
-            if ($resultado->num_rows > 0) {
-                new Contrato_SHOWALL($resultado);
-            } else {
-                echo 'No hay contratos';
-//        new MESSAGE("No hay tuplas", './Login_Controller.php');
-            }
         }
         ?>
         <article>

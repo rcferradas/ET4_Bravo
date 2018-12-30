@@ -1,0 +1,149 @@
+<?php
+
+session_start();
+//incluir funcion autenticacion
+include '../Functions/Authentication.php';
+include '../Views/MESSAGE_View.php';
+//si no esta autenticado
+if (!IsAuthenticated()) {
+    new MESSAGE('Debes autentificarte', '../index.php');
+    //header('Location: ../index.php');
+}
+//esta autenticado
+else {
+
+    require_once '../Models/Contratos_Model.php';
+    include '../Views/Contrato_SHOWALL_View.php';
+    include '../Views/Contrato_SHOWCURRENT_View.php';
+
+    function recuperarDataForm() {
+        $email = $_REQUEST['email'];
+        $nombre = $_REQUEST['nombre'];
+        $apellidos = $_REQUEST['apellidos'];
+        $participacion = $_REQUEST['participacion'];
+        $resguardo = $_FILES['resguardo'];
+        $ingresado = $_REQUEST['ingresado'];
+        $premiopersonal = $_REQUEST['premiopersonal'];
+        $pagado = $_REQUEST['pagado'];
+        $action = $_REQUEST['action'];    //variable para almacenar la accion a ejecutar
+
+        $contratos = new Contratos_Model(
+                $email, $nombre, $apellidos, $participacion, $resguardo, $ingresado, $premiopersonal, $pagado
+        );
+        return $contratos;
+    }
+
+    if (!isset($_REQUEST['action'])) { //Si la accion no está definida
+        $_REQUEST['action'] = '';     //asignamos la accion vacía
+    }
+
+    switch ($_REQUEST['action']) {
+        case 'ADD':
+            $datos; //Almacena los datos del formulario
+            $respuesta; //Almacena la respuesta que se mostrará via MESSAGE
+            if (!$_POST) {    //Si se envia por GET se llama a la vista ADD para que se envie por POST, cuestiones de privacidad
+                new Contratos_ADD();
+            } else {
+                $datos = recuperarDataForm();
+                $respuesta = $datos->ADD();
+                new MESSAGE($respuesta, '../Controllers/Contratos_Controller.php');
+            }
+            break;
+
+        case 'SEARCH':
+            $loteriaiu; //Objeto del modelo
+            $datos; //datos a mostrar extraidos del modelo
+
+
+            if (!$_POST) {    //Si se envia por GET se llama a la vista EDIT para que se envie por POST
+                new Contratos_SEARCH();
+            } else {
+                $loteriaiu = new Contratos_Model($_REQUEST['email'], $_REQUEST['nombre'], $_REQUEST['apellidos'], '', $_REQUEST['participacion'], $_REQUEST['ingresado'], $_REQUEST['premiopersonal'], $_REQUEST['pagado']);
+                $datos = $loteriaiu->SEARCH();
+                $lista = array('nombre', 'apellidos', 'participacion');
+                new Contratos_SHOWALL($datos, $lista);
+            }
+            break;
+
+        case 'EDIT':
+            $contratos; //Objeto del modelo
+            $respuesta; //Almacena la respuesta que se mostrará via MESSAGE
+            $valores; //Almacena los valores tras almacenarlos
+            if (!isset($_REQUEST['email'])) { //Si no esta definido el email (o alguien modifica el enlace) vuelve al index.php
+                new MESSAGE('No existe el email', '../index.php');
+            } else {
+
+                $contratos = new Contratos_Model($_REQUEST['email'], '', '', '', '', '', '', '');    //creamos un objeto del modelo con el email
+                $contratos = $contratos->RellenaDatos();                                        //y se trae de la BD (a traves del modelo) la tupla asociada a ese email
+                if ($contratos == 'No existe dicha tupla') {  //Si no se encuentra la tupla
+                    new Message($contratos, '../index.php');    //vuelve al al index.php
+                } else {
+
+                    $resguardo = $contratos['lot.resguardo'];
+
+                    if (!$_POST) { //Si se envia por GET se llama a la vista ADD para que se envie por POST
+                        $contratos = new Contratos_Model($_REQUEST['email'], '', '', '', '', '', '', ''); //creamos un objeto del modelo con el email
+                        $valores = $contratos->RellenaDatos();                                       //y se trae de la BD (a traves del modelo) la tupla asociada a ese email
+                        new Contratos_EDIT($valores);
+                    } else {
+                        if (!isset($_FILES['resguardo']['name']) || $_FILES['resguardo']['name'] == '') { //Si el resguardo que viene del formulario EDIT viene sin definir o vacío, nso quedamos con el resguardo que ya teniamos
+                            $contratos = new Contratos_Model($_REQUEST['email'], $_REQUEST['nombre'], $_REQUEST['apellidos'], $_REQUEST['participacion'], $resguardo, $_REQUEST['ingresado'], $_REQUEST['premiopersonal'], $_REQUEST['pagado']);
+                        } else {
+                            $contratos = recuperarDataForm();  //que utilizara el resguardo que introduzcamos en el formulario edit
+                        }
+                        $respuesta = $contratos->EDIT();
+                        new MESSAGE($respuesta, '../Controllers/Contratos_Controller.php');
+                    }
+                }
+            }
+            break;
+
+        case 'DELETE':
+            $contratos; //Objeto del modelo
+            $respuesta; //Almacena la respuesta que se mostrará via MESSAGE
+            $valores; //Almacena los valores tras almacenarlos
+
+            if (!$_POST) {
+                $contratos = new Contratos_Model($_REQUEST['email'], '', '', '', '', '', '', '');     //creamos un objeto del modelo con el email
+                $valores = $contratos->RellenaDatos();                                          //y se trae de la BD (a traves del modelo) la tupla asociada a ese email
+                new Contratos_DELETE($valores); //se invoca la vista DELETE con los datos a borrar
+            } else {
+                $contratos = new Contratos_Model($_REQUEST['email'], '', '', '', '', '', '', '');    //creamos un objeto del modelo con el email
+                $respuesta = $contratos->DELETE();                                              //y se borra la tupla asociada a ese email invocando el metodo DELETE() del modelo
+                new MESSAGE($respuesta, '../Controllers/Contratos_Controller.php');
+            }
+            break;
+
+        case 'SHOWCURRENT':
+            $contratos; //Objeto del modelo
+            $valores; //Almacena los valores tras almacenarlos
+
+            $contratos = new Contratos_Model($_REQUEST['cod'], '', '', '', '', '', '', ''); //creamos un objeto del modelo con el email
+            $valores = $contratos->showCurrent();                                      //y se trae de la BD (a traves del modelo) la tupla asociada a ese email
+            new Contrato_SHOWCURRENT($valores);     //se invoca la vista SHOWCURRENT con los datos a mostrar
+            break;
+
+        default:
+            $contratos = new Contratos_Model('', '', '', '', '', '', '', '');  //Objeto del modelo
+            $datosAMostrar = array('cod', 'tipo', 'cifEmpresa');    //array de atributos a mostrar
+            $recordSet = $contratos->showAll();   //es un array asociativo con los datos, se obtienen los datos de la tabla a traves del modelo (metodo SHOWALL() )
+            new Contrato_SHOWALL($recordSet, $datosAMostrar);  //se invoca la vista SHOWALL con los datos a mostrar
+            break;
+    }
+}
+//
+//$datos = new Contratos_Model();
+//$resultado = $datos->showAll();
+//if ($resultado->num_rows > 0) {
+//    new Contrato_SHOWALL($resultado);
+//} else {
+//    echo 'No hay contratos';
+//}
+//
+////Llamada a funcion SHOWCURRENT
+//if (isset($_POST['ver'])) {
+//    include '../Views/Contrato_SHOWCURRENT_View.php';
+//    $resultadoCurrent = $datos->showCurrent($_REQUEST["cod"]);
+//    new SHOWCURRENT($resultadoCurrent);
+//}
+?>
