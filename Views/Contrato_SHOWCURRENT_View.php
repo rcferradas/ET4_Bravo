@@ -40,7 +40,7 @@ class Contrato_SHOWCURRENT {
                     <td><?php echo $tupla['importe']; ?></td>
                     <td>
                         <!--Botones para realizar acciones con la tupla seleccionada-->
-                        <form class="form-inline my-2 my-lg-0" name='formulario' action="../Controllers/Mantenimiento_Controller.php?email=<?php echo $tupla['cod']; ?>" method="post">
+                        <form class="form-inline my-2 my-lg-0" name='formulario' action="../Controllers/Contratos_Controller.php?email=<?php echo $tupla['cod']; ?>" method="post">
                             <button class="btn btn-outline-primary" name="edit" onclick="this.form.submit()">
                                 <i class="fas fa-edit"></i></button>&nbsp
                             <button class="btn btn-outline-primary" name="delete" onclick="this.form.submit()">

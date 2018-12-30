@@ -131,19 +131,5 @@ else {
             break;
     }
 }
-//
-//$datos = new Contratos_Model();
-//$resultado = $datos->showAll();
-//if ($resultado->num_rows > 0) {
-//    new Contrato_SHOWALL($resultado);
-//} else {
-//    echo 'No hay contratos';
-//}
-//
-////Llamada a funcion SHOWCURRENT
-//if (isset($_POST['ver'])) {
-//    include '../Views/Contrato_SHOWCURRENT_View.php';
-//    $resultadoCurrent = $datos->showCurrent($_REQUEST["cod"]);
-//    new SHOWCURRENT($resultadoCurrent);
-//}
+
 ?>
