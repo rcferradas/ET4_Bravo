@@ -66,9 +66,9 @@ class Contratos_Model {
 //funcion SEARCH: hace una búsqueda en la tabla con
 //los datos proporcionados. Si van vacios devuelve todos
     function SEARCH() {
-        $search = "SELECT * FROM contratos WHERE `cod` LIKE '%" . cod . "%' AND `centro` LIKE '%" . centro . "%' AND `tipo` LIKE '%" . tipo . "%' AND
-             `cifEmpresa` LIKE '%" . cifEmpresa . "%' AND `documento` LIKE '%" . documento . "%' AND `periodoInicio` LIKE '%" . periodoInicio . "%' AND
-                  `periodoFin` LIKE '%" . periodoFin . "%' AND `importe` LIKE '%" . importe . "%'";
+        $search = "SELECT * FROM contratos WHERE `cod` LIKE '%" . $this->cod . "%' AND `centro` LIKE '%" . $this->centro . "%' AND `tipo` LIKE '%" . $this->tipo . "%' AND
+             `cifEmpresa` LIKE '%" . $this->cifEmpresa . "%' AND `documento` LIKE '%" . $this->documento . "%' AND `periodoInicio` LIKE '%" . $this->periodoInicio . "%' AND
+                  `periodoFin` LIKE '%" . $this->periodoFin . "%' AND `importe` LIKE '%" . $this->importe . "%'";
         if (!($resultado = $this->mysqli->query($search))) {
             return true;
         } else {
@@ -80,7 +80,7 @@ class Contratos_Model {
 //funcion DELETE : comprueba que la tupla a borrar existe y una vez
 // verificado la borra
     function DELETE() {
-        $delete = "DELETE FROM `contratos` WHERE `cod`='cod'";
+        $delete = "DELETE FROM `contratos` WHERE `cod`='$this->cod'";
         if (!$this->mysqli->query($delete)) {
             return 'Error en la inserción';
         } else {
@@ -90,8 +90,8 @@ class Contratos_Model {
 
 // funcion Edit: realizar el update de una tupla despues de comprobar que existe
     function EDIT() {
-        $edit = "UPDATE `contratos` SET `centro`='centro',`tipo`='tipo',`cifEmpresa`='cifEmpresa',`documento`='documento',"
-                . "`periodoinicio`='periodoInicio',`periodofin`='periodoFin',`importe`='importe' WHERE `cod`='cod'";
+        $edit = "UPDATE `contratos` SET `centro`='$this->centro',`tipo`='$this->tipo',`cifEmpresa`='$this->cifEmpresa',`documento`='$this->documento',"
+                . "`periodoinicio`='$this->periodoInicio',`periodofin`='$this->periodoFin',`importe`='$this->importe' WHERE `cod`='$this->cod'";
     }
 
 }
