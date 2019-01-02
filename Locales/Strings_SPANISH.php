@@ -28,5 +28,11 @@ $strings = array(
     'Importe' => 'Importe',
     'Estado' => 'Estado',
     'Código' => 'Código',
-    'Empresa encargada' => 'Empresa encargada');
+    'Empresa encargada' => 'Empresa encargada',
+    'EDITAR CONTRATO' => 'EDITAR CONTRATO',
+    'Certificador' => 'Certificador',
+    'Mantenimiento' => 'Mantenimiento',
+    'Reparacion' => 'Reparacion',
+    'cifEmpresa' => 'CIF Empresa',
+    'Campos obligatorios' => 'Campos obligatorios');
 ?>

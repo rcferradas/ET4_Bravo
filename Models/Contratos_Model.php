@@ -41,11 +41,18 @@ class Contratos_Model {
 //Funcion encargada de extraer los datos del SHOWCURRENT
     function showCurrent() {
         $showCurrent = "SELECT * from contratos WHERE `cod`='$this->cod'";
-        if (!($resultado = $this->mysqli->query($showCurrent))) {
-            return true;
+        $resultado = $this->mysqli->query($showCurrent);
+        if ($resultado->num_rows == 1) { //Si existe dicha tupla
+            $tupla = $resultado->fetch_assoc(); //Creamos un array asociativo que almacena los valores de la tupla
+            $this->centro = $tupla['centro'];
+            $this->tipo = $tupla['tipo'];
+            $this->cifEmpresa = $tupla['cifEmpresa'];
+            $this->periodoInicio = $tupla['periodoInicio'];
+            $this->periodoFin = $tupla['periodoFin'];
+            $this->importe = $tupla['importe'];
+            return $tupla; //devolvemos el array asociativo
         } else {
-            $result = $resultado->fetch_array();
-            return $result;
+            return 'No existe dicha tupla';
         }
     }
 
@@ -91,6 +98,11 @@ class Contratos_Model {
     function EDIT() {
         $edit = "UPDATE `contratos` SET `centro`='$this->centro',`tipo`='$this->tipo',`cifEmpresa`='$this->cifEmpresa',`documento`='$this->documento',"
                 . "`periodoinicio`='$this->periodoInicio',`periodofin`='$this->periodoFin',`importe`='$this->importe' WHERE `cod`='$this->cod'";
+        if (!$this->mysqli->query($sql)) { //si se da un problema en la consulta de actualización se notifica el error
+            return 'Error en la actualización';
+        } else {
+            return 'Actualización realizada con éxito';
+        }
     }
 
 }

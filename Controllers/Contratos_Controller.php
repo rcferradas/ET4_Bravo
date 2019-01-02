@@ -78,16 +78,14 @@ else {
                 if ($contratos == 'No existe el contrato') {  //Si no se encuentra la tupla
                     new Message($contratos, '../index.php');    //vuelve al al index.php
                 } else {
-
-                    $resguardo = $contratos['lot.resguardo'];
-
+                    $documento = $contratos['documento'];
                     if (!$_POST) { //Si se envia por GET se llama a la vista ADD para que se envie por POST
-                        $contratos = new Contratos_Model($_REQUEST['email'], '', '', '', '', '', '', ''); //creamos un objeto del modelo con el email
-                        $valores = $contratos->RellenaDatos();                                       //y se trae de la BD (a traves del modelo) la tupla asociada a ese email
+                        $contratos = new Contratos_Model($_REQUEST['cod'], '', '', '', '', '', '', ''); //creamos un objeto del modelo con el codigo de contrato
+                        $valores = $contratos->showCurrent();                                       //y se trae de la BD (a traves del modelo) la tupla asociada a ese email
                         new Contratos_EDIT($valores);
                     } else {
-                        if (!isset($_FILES['resguardo']['name']) || $_FILES['resguardo']['name'] == '') { //Si el resguardo que viene del formulario EDIT viene sin definir o vacío, nso quedamos con el resguardo que ya teniamos
-                            $contratos = new Contratos_Model($_REQUEST['email'], $_REQUEST['nombre'], $_REQUEST['apellidos'], $_REQUEST['participacion'], $resguardo, $_REQUEST['ingresado'], $_REQUEST['premiopersonal'], $_REQUEST['pagado']);
+                        if (!isset($_FILES['documento']['name']) || $_FILES['documento']['name'] == '') { //Si el resguardo que viene del formulario EDIT viene sin definir o vacío, nso quedamos con el resguardo que ya teniamos
+                            $contratos = new Contratos_Model($_REQUEST['cod'], $_REQUEST['centro'], $_REQUEST['tipo'], $_REQUEST['cifEmpresa'], $documento, $_REQUEST['periodoInicio'], $_REQUEST['periodoFin'], $_REQUEST['importe']);
                         } else {
                             $contratos = recuperarDataForm();  //que utilizara el resguardo que introduzcamos en el formulario edit
                         }
@@ -131,5 +129,4 @@ else {
             break;
     }
 }
-
 ?>
