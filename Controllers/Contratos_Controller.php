@@ -69,25 +69,23 @@ else {
             $contratos; //Objeto del modelo
             $respuesta; //Almacena la respuesta que se mostrará via MESSAGE
             $valores; //Almacena los valores tras almacenarlos
-            if (!isset($_REQUEST['email'])) { //Si no esta definido el email (o alguien modifica el enlace) vuelve al index.php
-                new MESSAGE('No existe el email', '../index.php');
+            if (!isset($_REQUEST['cod'])) { //Si no esta definido el email (o alguien modifica el enlace) vuelve al index.php
+                new MESSAGE('No existe el contrato', '../index.php');
             } else {
 
-                $contratos = new Contratos_Model($_REQUEST['email'], '', '', '', '', '', '', '');    //creamos un objeto del modelo con el email
-                $contratos = $contratos->RellenaDatos();                                        //y se trae de la BD (a traves del modelo) la tupla asociada a ese email
-                if ($contratos == 'No existe dicha tupla') {  //Si no se encuentra la tupla
+                $contratos = new Contratos_Model($_REQUEST['cod'], '', '', '', '', '', '', '');    //creamos un objeto del modelo con el email
+                $contratos = $contratos->showCurrent();                                        //y se trae de la BD (a traves del modelo) la tupla asociada a ese email
+                if ($contratos == 'No existe el contrato') {  //Si no se encuentra la tupla
                     new Message($contratos, '../index.php');    //vuelve al al index.php
                 } else {
-
-                    $resguardo = $contratos['lot.resguardo'];
-
+                    $documento = $contratos['documento'];
                     if (!$_POST) { //Si se envia por GET se llama a la vista ADD para que se envie por POST
-                        $contratos = new Contratos_Model($_REQUEST['email'], '', '', '', '', '', '', ''); //creamos un objeto del modelo con el email
-                        $valores = $contratos->RellenaDatos();                                       //y se trae de la BD (a traves del modelo) la tupla asociada a ese email
+                        $contratos = new Contratos_Model($_REQUEST['cod'], '', '', '', '', '', '', ''); //creamos un objeto del modelo con el codigo de contrato
+                        $valores = $contratos->showCurrent();                                       //y se trae de la BD (a traves del modelo) la tupla asociada a ese email
                         new Contratos_EDIT($valores);
                     } else {
-                        if (!isset($_FILES['resguardo']['name']) || $_FILES['resguardo']['name'] == '') { //Si el resguardo que viene del formulario EDIT viene sin definir o vacío, nso quedamos con el resguardo que ya teniamos
-                            $contratos = new Contratos_Model($_REQUEST['email'], $_REQUEST['nombre'], $_REQUEST['apellidos'], $_REQUEST['participacion'], $resguardo, $_REQUEST['ingresado'], $_REQUEST['premiopersonal'], $_REQUEST['pagado']);
+                        if (!isset($_FILES['documento']['name']) || $_FILES['documento']['name'] == '') { //Si el resguardo que viene del formulario EDIT viene sin definir o vacío, nso quedamos con el resguardo que ya teniamos
+                            $contratos = new Contratos_Model($_REQUEST['cod'], $_REQUEST['centro'], $_REQUEST['tipo'], $_REQUEST['cifEmpresa'], $documento, $_REQUEST['periodoInicio'], $_REQUEST['periodoFin'], $_REQUEST['importe']);
                         } else {
                             $contratos = recuperarDataForm();  //que utilizara el resguardo que introduzcamos en el formulario edit
                         }
@@ -131,5 +129,4 @@ else {
             break;
     }
 }
-
 ?>
