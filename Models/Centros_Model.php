@@ -28,7 +28,7 @@ class Centros_Model {
     function showCurrent() {
         $sql;
         $resultado;
-        $sql="SELECT * FROM centros WHERE 'nombre' = '".$this->$nombre."'";
+        $sql="SELECT * FROM centros WHERE 'nombre' = '".$this->nombre."'";
         $resultado = $this->mysqli->query($sql);
         return resultado;
     }
@@ -86,7 +86,8 @@ class Centros_Model {
     $resultado = $this->mysqli->query($sql);
     if($resultado->num_rows == 1){
         $sql="UPDATE centros
-                     SET 'lugar' = '$this->lugar', 'nombre' = '$this->nombre', 'userasignado' = '$this->userasignado'";
+                     SET 'lugar' = '$this->lugar', 'userasignado' = '$this->userasignado'
+                WHERE `nombre` = '$this->nombre'";
         if(!$this->mysqli->query($sql)){
             return 'Error al editar';
         }else{

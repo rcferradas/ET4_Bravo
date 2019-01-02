@@ -33,9 +33,7 @@ CREATE TABLE IF NOT EXISTS `USUARIOS` (
 `apellidos` varchar(50) NOT NULL,
 `telefono` varchar(11) NOT NULL,
 `email` varchar(60) NOT NULL,
-`FechaNacimiento` date NOT NULL,
-`fotopersonal` varchar(50) NOT NULL,
-`sexo` enum('hombre','mujer') NOT NULL,
+`rol` enum('admin', 'centro') NOT NULL,
 
 PRIMARY KEY (`login`),
 UNIQUE KEY `DNI` (`DNI`),

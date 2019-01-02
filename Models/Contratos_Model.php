@@ -40,7 +40,6 @@ class Contratos_Model {
 
 //Funcion encargada de extraer los datos del SHOWCURRENT
     function showCurrent() {
-        echo $this->cod;
         $showCurrent = "SELECT * from contratos WHERE `cod`='$this->cod'";
         if (!($resultado = $this->mysqli->query($showCurrent))) {
             return true;
