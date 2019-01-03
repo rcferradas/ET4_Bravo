@@ -10,7 +10,7 @@ if (!isset($_REQUEST['login']) && !(isset($_REQUEST['password']))) {
     include '../Models/Access_DB.php';
 
     include '../Models/USUARIOS_Model.php';
-    $usuario = new USUARIOS_Model($_REQUEST['login'], $_REQUEST['password'], '', '', '');
+    $usuario = new USUARIOS_Model($_REQUEST['login'], $_REQUEST['password'], '', '', '','','','');
     $respuesta = $usuario->login();
 
     if ($respuesta == 'true') {
