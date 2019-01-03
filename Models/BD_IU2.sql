@@ -45,10 +45,8 @@ UNIQUE KEY `email` (`email`)
 -- Base de datos: `iu2018`
 --
 
--- Estructura de tabla para la tabla `contratos`
 
 -- Estructura de tabla para la tabla `empresas`
-
 CREATE TABLE IF NOT EXISTS `empresas` (
   `cif` varchar(10) NOT NULL,
   `nombre` varchar(30) NOT NULL,
@@ -59,7 +57,6 @@ PRIMARY KEY (`cif`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- Estructura de tabla para la tabla `centro`
-
 CREATE TABLE IF NOT EXISTS `centros` (
   `nombre` varchar(10) NOT NULL,
   `lugar` varchar(30) NOT NULL,
@@ -68,6 +65,7 @@ PRIMARY KEY (`nombre`),
 FOREIGN KEY (`usuarioAsignado`) REFERENCES USUARIOS(`login`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
+-- Estructura de tabla para la tabla `contratos`
 CREATE TABLE IF NOT EXISTS `contratos` (
   `cod` varchar(10) NOT NULL,
   `centro` varchar(30) NOT NULL,
@@ -84,7 +82,6 @@ FOREIGN KEY fk_empresa(`centro`) REFERENCES centros(`nombre`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- Tabla visitas
-
 CREATE TABLE IF NOT EXISTS `visitas` (
   `codVisita` varchar(10) NOT NULL,
   `estado` enum('realizada','pendiente','incidencia', '') NOT NULL DEFAULT '',
