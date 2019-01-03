@@ -58,6 +58,16 @@ CREATE TABLE IF NOT EXISTS `empresas` (
 PRIMARY KEY (`cif`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
+-- Estructura de tabla para la tabla `centro`
+
+CREATE TABLE IF NOT EXISTS `centros` (
+  `nombre` varchar(10) NOT NULL,
+  `lugar` varchar(30) NOT NULL,
+  `usuarioAsignado` varchar(9) NOT NULL,
+PRIMARY KEY (`nombre`),
+FOREIGN KEY (`usuarioAsignado`) REFERENCES USUARIOS(`login`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
 CREATE TABLE IF NOT EXISTS `contratos` (
   `cod` varchar(10) NOT NULL,
   `centro` varchar(30) NOT NULL,
@@ -68,23 +78,11 @@ CREATE TABLE IF NOT EXISTS `contratos` (
   `periodoinicio` date NOT NULL,
   `periodofin` date NOT NULL,
   `importe` decimal(10,2) NOT NULL,
-PRIMARY KEY (`cod`)
+PRIMARY KEY (`cod`),
+FOREIGN KEY fk_empresa(`cifEmpresa`) REFERENCES empresas(`cif`)
+FOREIGN KEY fk_empresa(`centro`) REFERENCES centros(`nombre`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
--- ---------------------------------------------------------------
-
-
--- -------------------------------------------------------------
--- Estructura de tabla para la tabla `centro`
-
-CREATE TABLE IF NOT EXISTS `centros` (
-  `nombre` varchar(10) NOT NULL,
-  `lugar` varchar(30) NOT NULL,
-  `UsuarioAsignado` varchar(9) NOT NULL,
-PRIMARY KEY (`nombre`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
--- -----------------------------------------------------------------------------------------------------
 -- Tabla visitas
 
 CREATE TABLE IF NOT EXISTS `visitas` (
@@ -95,5 +93,7 @@ CREATE TABLE IF NOT EXISTS `visitas` (
   `informe` varchar(50) NOT NULL,
   `fecha` date NOT NULL,
   `frutoVisitaProg` varchar(10) NOT NULL,
-PRIMARY KEY (`codVisita`)
+PRIMARY KEY (`codVisita`),
+FOREIGN KEY (`frutoVisitaProg`) REFERENCES visitas(codVisita),
+FOREIGN KEY (`codContrato`) REFERENCES contratos(cod)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
