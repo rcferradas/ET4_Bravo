@@ -47,20 +47,6 @@ UNIQUE KEY `email` (`email`)
 
 -- Estructura de tabla para la tabla `contratos`
 
-CREATE TABLE IF NOT EXISTS `contratos` (
-  `cod` varchar(10) NOT NULL,
-  `centro` varchar(30) NOT NULL,
-  `tipo` enum('certificador','mantenimiento','reparacion','') NOT NULL DEFAULT '',
-  `cifEmpresa` varchar(30) NOT NULL,
-  `documento` varchar(50) NOT NULL,
-  `periodoinicio` datetime NOT NULL,
-  `periodofin` datetime NOT NULL,
-  `importe` decimal(10,2) NOT NULL,
-
-PRIMARY KEY (`cod`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
--- ---------------------------------------------------------------
 -- Estructura de tabla para la tabla `empresas`
 
 CREATE TABLE IF NOT EXISTS `empresas` (
@@ -71,6 +57,21 @@ CREATE TABLE IF NOT EXISTS `empresas` (
   `localizacion` varchar(50) NOT NULL,
 PRIMARY KEY (`cif`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+CREATE TABLE IF NOT EXISTS `contratos` (
+  `cod` varchar(10) NOT NULL,
+  `centro` varchar(30) NOT NULL,
+  `tipo` enum('certificador','mantenimiento','reparacion','') NOT NULL DEFAULT '',
+  `estado` enum('realizado','norealizado','pagado','') NOT NULL DEFAULT '',
+  `cifEmpresa` varchar(30) NOT NULL,
+  `documento` varchar(50) NOT NULL,
+  `periodoinicio` date NOT NULL,
+  `periodofin` date NOT NULL,
+  `importe` decimal(10,2) NOT NULL,
+PRIMARY KEY (`cod`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- ---------------------------------------------------------------
 
 
 -- -------------------------------------------------------------
@@ -92,8 +93,7 @@ CREATE TABLE IF NOT EXISTS `visitas` (
   `tipo` enum('certificador','mantenimiento','reparacion','') NOT NULL DEFAULT '',
   `codContrato` varchar(30) NOT NULL,
   `informe` varchar(50) NOT NULL,
-  `periodoinicio` datetime NOT NULL,
-  `periodofin` datetime NOT NULL,
+  `fecha` date NOT NULL,
   `frutoVisitaProg` varchar(10) NOT NULL,
 PRIMARY KEY (`codVisita`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
