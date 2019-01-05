@@ -48,12 +48,12 @@ UNIQUE KEY `email` (`email`)
 
 -- Estructura de tabla para la tabla `empresas`
 CREATE TABLE IF NOT EXISTS `empresas` (
-  `cif` varchar(10) NOT NULL,
+  `CIF` varchar(10) NOT NULL,
   `nombre` varchar(30) NOT NULL,
   `tipo` enum('certificador','mantenimiento','reparacion','') NOT NULL DEFAULT '',
   `telefono` varchar(30) NOT NULL,
   `localizacion` varchar(50) NOT NULL,
-PRIMARY KEY (`cif`)
+PRIMARY KEY (`CIF`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- Estructura de tabla para la tabla `centro`

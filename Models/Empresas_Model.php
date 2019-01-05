@@ -2,19 +2,20 @@
 
 class Empresas_Model {
     
-    var $tipo;
+    var $CIF;
     var $nombre;
+    var $tipo;
     var $telefono;
     var $localizacion;
-    var $CIF;
     var $mysqli;
     
-    function __construct($tipo,$nombre,$telefono,$localizacion,$CIF){
-	$this->tipo = $tipo;
-	$this->nombre = $nombre;
+    function __construct($CIF, $nombre, $tipo, $telefono, $localizacion){
+	$this->CIF = $CIF;
+        $this->nombre = $nombre;
+        $this->tipo = $tipo;
 	$this->telefono = $telefono;
 	$this->localizacion = $localizacion;
-	$this->CIF = $CIF;
+	
 
 	include_once '../Models/Access_DB.php';
 	$this->mysqli = ConnectDB();
@@ -23,7 +24,7 @@ class Empresas_Model {
     function showAll() {
         $sql;
         $resultado;
-        $sql= "SELECT 'tipo','CIF','telefono' FROM empresas";
+        $sql= "SELECT 'CIF','tipo','telefono' FROM empresas";
         $resultado = $this->mysqli->query($sql);
         return $resultado;
     }
@@ -42,7 +43,7 @@ class Empresas_Model {
 // de los atributos del objeto. Comprueba si la clave/s esta vacia y si 
 //existe ya en la tabla
     function ADD() {
-        $sql = "INSERT INTO empresas VALUES('$this->tipo','$this->nombre',$this->telefono,'$this->localizacion',$this->CIF)";
+        $sql = "INSERT INTO empresas VALUES($this->CIF,'$this->nombre','$this->tipo',$this->telefono,'$this->localizacion')";
         if(!$this->mysqli->query($sql)){
             return "Error en la inserción";
         }else{
@@ -62,8 +63,8 @@ class Empresas_Model {
         $sql;
         $resultado;
         $sql = "SELECT * FROM empresas
-                    WHERE 'tipo' LIKE '%$this->tipo%' AND 'nombre' LIKE '%$this->nombre%' AND 'telefono' LIKE '%$this->telefono%'
-                    AND 'localizacion' LIKE '%$this->localizacion%' AND 'CIF' LIKE '%$this->CIF%'";
+                    WHERE 'CIF' LIKE '%$this->CIF%' AND 'nombre' LIKE '%$this->nombre%' AND 'tipo' LIKE '%$this->tipo%'
+                    AND 'telefono' LIKE '%$this->telefono%' AND 'localizacion' LIKE '%$this->localizacion%'";
         $resultado = $this->mysqli->query($sql);
         return $resultado;
     }
@@ -91,7 +92,7 @@ class Empresas_Model {
     $resultado = $this->mysqli->query($sql);
     if($resultado->num_rows == 1){
         $sql="UPDATE empresas
-                     SET 'tipo' = '$this->tipo', 'nombre' = '$this->nombre', 'telefono' = $this->telefono ,
+                     SET 'nombre' = '$this->nombre', 'tipo' = '$this->tipo', 'telefono' = $this->telefono ,
                      'localizacion' = '$this->localizacion' WHERE 'CIF' = '$this->CIF'";
         if(!$this->mysqli->query($sql)){
             return 'Error al editar';
@@ -101,6 +102,26 @@ class Empresas_Model {
     }else 
         return 'No existe la tupla';        
     }
+// funcion RellenaDatos: recupera todos los atributos de una tupla a partir de su clave
+    function RellenaDatos(){
+    $sql; 
+    $resultado; 
+    $result; 
+    $sql="SELECT * FROM empresas WHERE ('CIF' = '".$this->CIF."')"; 
+    if (!($resultado = $this->mysqli->query($sql))){
+        return 'No existe en la base de datos'; 
+    }
+    else{
+        $result = $resultado->fetch_array();
+        $this->CIF=$result[0];
+        $this->nombre=$result[1];
+        $this->tipo=$result[2];
+        $this->telefono=$result[3];
+        $this->localizacion=$result[4];
+        
+        return $result;
+        }
+    } // fin metodo RellenaDatos
 
 }
 
