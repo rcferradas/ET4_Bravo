@@ -19,7 +19,6 @@ class USUARIOS_Model {
     var $mysqli;
 
 //Constructor de la clase
-//
 
     function __construct($login, $password, $dni, $nombre, $apellidos, $telefono, $email, $rol) {
         $this->login = $login;
@@ -57,7 +56,6 @@ class USUARIOS_Model {
         $sql = "SELECT * FROM USUARIOS";
         $resultado;
         
-
         if (!($resultado = $this->mysqli->query($sql))) {
             return 'Tabla vacia';
         } else {

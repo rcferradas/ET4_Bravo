@@ -39,5 +39,6 @@ $strings = array(
     'Eliminación realizada con éxito' => 'Eliminación realizada con éxito',
     'Añadir contrato' => 'Añadir contrato',
     'Contrato añadido con éxito' => 'Contrato añadido con éxito',
+    'Buscar contratos' => 'Buscar contratos',
     'Campos obligatorios' => 'Campos obligatorios');
 ?>

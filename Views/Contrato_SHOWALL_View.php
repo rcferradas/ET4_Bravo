@@ -2,11 +2,11 @@
 
 class Contrato_SHOWALL {
 
-    function __construct($recordSet, $arrayAtribs) {    //Constructor de la clase, pasamos un objeto tipo loteriaiu como parametro
-        $this->render($recordSet, $arrayAtribs);                  //------------------------REVISAR $recordSet----------------------------------------------------------
+    function __construct($recordSet) {    //Constructor de la clase, pasamos un objeto tipo loteriaiu como parametro
+        $this->render($recordSet);                  //------------------------REVISAR $recordSet----------------------------------------------------------
     }
 
-    function render($recordSet, $arrayAtribs) {
+    function render($recordSet) {
         if (!isset($_SESSION['idioma'])) {   //Si no hay idioma seleccionado
             $_SESSION['idioma'] = 'ESPAÑOL'; //por defecto ponemos español
         }
