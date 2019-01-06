@@ -34,5 +34,8 @@ $strings = array(
     'Mantenimiento' => 'Mantenimiento',
     'Reparacion' => 'Reparacion',
     'cifEmpresa' => 'CIF Empresa',
+    'Actualización realizada con éxito' => 'Actualización realizada con éxito',
+    'Confirmar borrado' => 'Confirmar borrado',
+    'Eliminación realizada con éxito' => 'Eliminación realizada con éxito',
     'Campos obligatorios' => 'Campos obligatorios');
 ?>

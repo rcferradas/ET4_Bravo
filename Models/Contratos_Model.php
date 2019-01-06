@@ -47,8 +47,8 @@ class Contratos_Model {
             $this->centro = $tupla['centro'];
             $this->tipo = $tupla['tipo'];
             $this->cifEmpresa = $tupla['cifEmpresa'];
-            $this->periodoInicio = $tupla['periodoInicio'];
-            $this->periodoFin = $tupla['periodoFin'];
+            $this->periodoInicio = $tupla['periodoinicio'];
+            $this->periodoFin = $tupla['periodofin'];
             $this->importe = $tupla['importe'];
             return $tupla; //devolvemos el array asociativo
         } else {
@@ -98,7 +98,7 @@ class Contratos_Model {
     function EDIT() {
         $edit = "UPDATE `contratos` SET `centro`='$this->centro',`tipo`='$this->tipo',`cifEmpresa`='$this->cifEmpresa',`documento`='$this->documento',"
                 . "`periodoinicio`='$this->periodoInicio',`periodofin`='$this->periodoFin',`importe`='$this->importe' WHERE `cod`='$this->cod'";
-        if (!$this->mysqli->query($sql)) { //si se da un problema en la consulta de actualización se notifica el error
+        if (!$this->mysqli->query($edit)) { //si se da un problema en la consulta de actualización se notifica el error
             return 'Error en la actualización';
         } else {
             return 'Actualización realizada con éxito';

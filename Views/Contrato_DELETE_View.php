@@ -1,7 +1,7 @@
 <?php
 include_once '../Functions/Authentication.php';
 
-class Contrato_SHOWCURRENT {
+class Contrato_DELETE {
 
     function __construct($tupla) {    //Constructor de la clase
         $this->render($tupla);
@@ -25,6 +25,7 @@ class Contrato_SHOWCURRENT {
                     <th scope="col"><?php echo $strings['Periodo inicio']; ?></th>
                     <th scope="col"><?php echo $strings['Periodo fin']; ?></th>
                     <th scope="col"><?php echo $strings['Importe']; ?></th>
+                    <th scope="col"><?php echo $strings['Confirmar borrado']; ?></th>
                 </tr>
             </thead>
 
@@ -40,10 +41,8 @@ class Contrato_SHOWCURRENT {
                     <td><?php echo $tupla['importe']; ?></td>
                     <td>
                         <!--Botones para realizar acciones en cada tupla-->
-                        <form class="form-inline my-2 my-lg-0" name='formulario' action="../Controllers/Contratos_Controller.php" method="">
+                        <form class="form-inline my-2 my-lg-0" name='formulario' action="../Controllers/Contratos_Controller.php" method="post">
                             <input type="hidden" name=cod value=<?php echo $tupla['cod'] ?>>
-                            <button name="action" value="EDIT" type="submit" class="btn btn-outline-primary">
-                                <i class="fas fa-edit"></i></button>&nbsp
                             <button name="action" value="DELETE" type="submit" class="btn btn-outline-primary">
                                 <i class="fas fa-trash-alt"></i></button>
                         </form>
@@ -56,3 +55,5 @@ class Contrato_SHOWCURRENT {
 
 }
 ?>
+
+
