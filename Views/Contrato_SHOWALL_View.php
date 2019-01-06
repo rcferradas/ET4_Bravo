@@ -20,6 +20,13 @@ class Contrato_SHOWALL {
                     <th scope="col"><?php echo $strings['Código']; ?></th>
                     <th scope="col"><?php echo $strings['Tipo']; ?></th>
                     <th scope="col"><?php echo $strings['Empresa encargada']; ?></th>
+                    <th scope="col"><form class="form-inline my-2 my-lg-0" name='formulario' action="../Controllers/Contratos_Controller.php" method="">
+                            <button name="action" value="ADD" type="submit" class="btn btn-outline-primary">
+                                <i class="fas fa-plus"></i></button>&nbsp
+                            <button name="action" value="SEARCH" type="submit" class="btn btn-outline-primary">
+                                <i class="fas fa-search"></i></button>&nbsp
+                        </form>
+                    </th>
                 </tr>
             </thead>
             <!--Fin encabezado tabla SHOWALL-->
@@ -36,7 +43,7 @@ class Contrato_SHOWALL {
                         <td>
                             <!--Botones para realizar acciones en cada tupla-->
                             <form class="form-inline my-2 my-lg-0" name='formulario' action="../Controllers/Contratos_Controller.php" method="">
-                                <input type="hidden" name=cod value=<?php echo $tupla['cod']?>>
+                                <input type="hidden" name=cod value=<?php echo $tupla['cod'] ?>>
                                 <button name="action" value="SHOWCURRENT" type="submit" class="btn btn-outline-primary">
                                     <i class="far fa-eye"></i></button>&nbsp
                                 <button name="action" value="EDIT" type="submit" class="btn btn-outline-primary">

@@ -37,5 +37,7 @@ $strings = array(
     'Actualización realizada con éxito' => 'Actualización realizada con éxito',
     'Confirmar borrado' => 'Confirmar borrado',
     'Eliminación realizada con éxito' => 'Eliminación realizada con éxito',
+    'Añadir contrato' => 'Añadir contrato',
+    'Contrato añadido con éxito' => 'Contrato añadido con éxito',
     'Campos obligatorios' => 'Campos obligatorios');
 ?>

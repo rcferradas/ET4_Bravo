@@ -17,6 +17,8 @@ else {
     include '../Views/Contrato_SHOWCURRENT_View.php';
     include '../Views/Contrato_EDIT_View.php';
     include '../Views/Contrato_DELETE_View.php';
+    include '../Views/Contrato_ADD_View.php';
+    include '../Views/Contrato_SEARCH_View.php';
 
     function recuperarDataForm() {
         $cod = $_REQUEST['cod'];
@@ -42,32 +44,32 @@ else {
     }
 
     switch ($_REQUEST['action']) {
-//        case 'ADD':
-//            $datos; //Almacena los datos del formulario
-//            $respuesta; //Almacena la respuesta que se mostrará via MESSAGE
-//            if (!$_POST) {    //Si se envia por GET se llama a la vista ADD para que se envie por POST, cuestiones de privacidad
-//                new Contratos_ADD();
-//            } else {
-//                $datos = recuperarDataForm();
-//                $respuesta = $datos->ADD();
-//                new MESSAGE($respuesta, '../Controllers/Contratos_Controller.php');
-//            }
-//            break;
-//
-//        case 'SEARCH':
-//            $loteriaiu; //Objeto del modelo
-//            $datos; //datos a mostrar extraidos del modelo
-//
-//
-//            if (!$_POST) {    //Si se envia por GET se llama a la vista EDIT para que se envie por POST
-//                new Contratos_SEARCH();
-//            } else {
-//                $loteriaiu = new Contratos_Model($_REQUEST['email'], $_REQUEST['nombre'], $_REQUEST['apellidos'], '', $_REQUEST['participacion'], $_REQUEST['ingresado'], $_REQUEST['premiopersonal'], $_REQUEST['pagado']);
-//                $datos = $loteriaiu->SEARCH();
-//                $lista = array('nombre', 'apellidos', 'participacion');
-//                new Contratos_SHOWALL($datos, $lista);
-//            }
-//            break;
+        case 'ADD':
+            $datos; //Almacena los datos del formulario
+            $respuesta; //Almacena la respuesta que se mostrará via MESSAGE
+            if (!$_POST) {    //Si se envia por GET se llama a la vista ADD para que se envie por POST, cuestiones de privacidad
+                new Contratos_ADD();
+            } else {
+                $datos = recuperarDataForm();
+                $respuesta = $datos->ADD();
+                new MESSAGE($respuesta, '../Controllers/Contratos_Controller.php');
+            }
+            break;
+
+        case 'SEARCH':
+            $loteriaiu; //Objeto del modelo
+            $datos; //datos a mostrar extraidos del modelo
+
+
+            if (!$_POST) {    //Si se envia por GET se llama a la vista EDIT para que se envie por POST
+                new Contratos_SEARCH();
+            } else {
+                $loteriaiu = new Contratos_Model($_REQUEST['email'], $_REQUEST['nombre'], $_REQUEST['apellidos'], '', $_REQUEST['participacion'], $_REQUEST['ingresado'], $_REQUEST['premiopersonal'], $_REQUEST['pagado']);
+                $datos = $loteriaiu->SEARCH();
+                $lista = array('nombre', 'apellidos', 'participacion');
+                new Contratos_SHOWALL($datos, $lista);
+            }
+            break;
 
         case 'EDIT':
             $contratos; //Objeto del modelo

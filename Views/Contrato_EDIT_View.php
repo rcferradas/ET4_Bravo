@@ -17,7 +17,7 @@ class Contratos_EDIT {
             <section>
                 <form class="form_edit" method="post" action="../Controllers/Contratos_Controller.php" enctype="multipart/form-data" onsubmit="return validacionSubmitEdit();">
                     <h2>EDITAR CONTRATO</h2>
-                    
+
                     <fieldset id="fieldset_edit">
                         <input name="cod" type ="hidden" value=<?php echo $datos['cod']; ?> />
 
@@ -68,6 +68,30 @@ class Contratos_EDIT {
                         <label for="importe"><?php echo $strings['Importe']; ?>  *</label> 
                         <input type="number" name="importe" id="editcontratos" value="<?php echo $datos['importe']; ?>"  onblur="comprobarEntero(this, 1, 999);"> 
 
+                        <label for="estado"><?php echo $strings['Estado'] ?>  *</label>  
+                        <input name="estado" type="text" size="30" id="editapell" value="<?php echo $datos['estado'] ?>"  onblur="comprobarTexto(this, 40);"/> 
+                        <select>
+                            <?php if ($datos['estado'] == 'realizado') {
+                                ?>
+                                <option value="realizado" selected><?php echo $strings['Realizado'] ?></option>
+                                <option value="norealizado" ><?php echo $strings['norealizado'] ?></option>
+                                <option value="pagado" ><?php echo $strings['Pagado'] ?></option>
+                                <?php
+                            }
+                            if ($datos['estado'] == 'norealizado') {
+                                ?>
+                                <option value="realizado"><?php echo $strings['Realizado'] ?></option>
+                                <option value="norealizado" selected><?php echo $strings['No realizado'] ?></option>
+                                <option value="pagado"><?php echo $strings['Pagado'] ?></option>
+                                <?php
+                            }
+                            if ($datos['estado'] == 'pagado') {
+                                ?>
+                                <option value="realizado"><?php echo $strings['Realizado'] ?></option>
+                                <option value="norealizado"><?php echo $strings['No realizado'] ?></option>
+                                <option value="pagado" selected><?php echo $strings['Pagado'] ?></option>
+                            <?php } ?>
+                        </select>
                     </fieldset>
                     <span>* <?php echo $strings['Campos obligatorios']; ?> </span>
                     <!-- Boton submit -->

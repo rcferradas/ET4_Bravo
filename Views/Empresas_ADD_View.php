@@ -16,7 +16,6 @@ class Empresas_ADD_View {
         ?>
         <section>
             <h2><?php echo $strings['Añadir empresa']; ?></h2>        
-        <?php ?>
 
             <form id="add" enctype="multipart/form-data" method="post" action="../Controllers/Empresas_Controller.php" onsubmit="return validarEmpresa(this);">
                 <div class="form-empresas">
