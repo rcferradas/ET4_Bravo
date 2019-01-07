@@ -43,5 +43,6 @@ $strings = array(
     'No realizado' => 'No realizado',
     'Realizado' => 'Realizado',
     'Pagado' => 'Pagado',
+    'Error en la actualización' => 'Error en la actualización',
     'Campos obligatorios' => 'Campos obligatorios');
 ?>

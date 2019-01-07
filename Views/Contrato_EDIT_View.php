@@ -51,10 +51,10 @@ class Contratos_EDIT {
                         </select>
 
                         <label for="cifEmpresa"><?php echo $strings['cifEmpresa']; ?>  *</label> 
-                        <input name="cifEmpresa" type="text" id="cifEmpresa" /> <!--No se valida el resguardo en edit porque si no se introduce un fichero nuevo nos quedamos con el que ya esta almacenado-->
+                        <input name="cifEmpresa" type="text" id="cifEmpresa" value="<?php echo $datos['cifEmpresa']; ?>"/> <!--No se valida el resguardo en edit porque si no se introduce un fichero nuevo nos quedamos con el que ya esta almacenado-->
 
                         <label for="documento"><?php echo $strings['Documento']; ?>  *</label> 
-                        <input type="file" name="documento" id="documento" value="<?php echo $datos['documento']; ?>"  onblur="comprobarEntero(this, 1, 999);"> 
+                        <input type="file" name="documento" id="documento"> 
 
                         <label for="periodoinicio"><?php echo $strings['Periodo inicio']; ?>  *</label> 
                         <input type="date" name="periodoinicio" id="periodoinicio" value="<?php echo $datos['periodoinicio']; ?>"  onblur="comprobarEntero(this, 1, 999);"> 
@@ -73,15 +73,13 @@ class Contratos_EDIT {
                                 <option value="norealizado" ><?php echo $strings['No realizado'] ?></option>
                                 <option value="pagado" ><?php echo $strings['Pagado'] ?></option>
                                 <?php
-                            }
-                            if ($datos['estado'] == 'norealizado') {
+                            } elseif ($datos['estado'] == 'norealizado') {
                                 ?>
                                 <option value="realizado"><?php echo $strings['Realizado'] ?></option>
                                 <option value="norealizado" selected><?php echo $strings['No realizado'] ?></option>
                                 <option value="pagado"><?php echo $strings['Pagado'] ?></option>
                                 <?php
-                            }
-                            if ($datos['estado'] == 'pagado') {
+                            } elseif ($datos['estado'] == 'pagado') {
                                 ?>
                                 <option value="realizado"><?php echo $strings['Realizado'] ?></option>
                                 <option value="norealizado"><?php echo $strings['No realizado'] ?></option>

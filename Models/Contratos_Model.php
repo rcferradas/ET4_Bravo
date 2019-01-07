@@ -68,8 +68,7 @@ class Contratos_Model {
         $modeloCodigo = $this->mysqli->query($codigo);
         $tupla = $modeloCodigo->fetch_assoc();
         $numero = $tupla['codigo'];
-        $numero = intval($numero) + 1;
-        $this->cod = $numero;
+        $this->cod = intval($numero) + 1;
         $rutaDocumento = $this->funcionRutaDocumento();
         $add = "INSERT INTO contratos (`cod`, `centro`, `tipo`, `estado`, `cifEmpresa`, `documento`, `periodoinicio`, `periodofin`, `importe`) 
         VALUES ($this->cod, '$this->centro', '$this->tipo', '$this->estado', '$this->cifEmpresa', '$rutaDocumento', '$this->periodoInicio', '$this->periodoFin', '$this->importe')";
@@ -109,7 +108,15 @@ class Contratos_Model {
 
 // funcion Edit: realizar el update de una tupla despues de comprobar que existe
     function EDIT() {
-        $edit = "UPDATE `contratos` SET `centro`='$this->centro',`tipo`='$this->tipo',`estado`='$this->estado',`cifEmpresa`='$this->cifEmpresa',`documento`='$this->documento',"
+        $documento = "SELECT `documento` FROM contratos WHERE `cod`=$this->cod";
+        $modeloDocumento = $this->mysqli->query($documento);
+        $tupla = $modeloDocumento->fetch_assoc();
+        $rutaDocumento = $tupla['documento'];
+        if ($tupla['documento'] != $this->documento) {
+            $this->borrarDirectorio('../Files/' . $this->cod);
+            $rutaDocumento = $this->funcionRutaDocumento();
+        }
+        $edit = "UPDATE `contratos` SET `centro`='$this->centro',`tipo`='$this->tipo',`estado`='$this->estado',`cifEmpresa`='$this->cifEmpresa',`documento`='$rutaDocumento',"
                 . "`periodoinicio`='$this->periodoInicio',`periodofin`='$this->periodoFin',`importe`='$this->importe' WHERE `cod`='$this->cod'";
         if (!$this->mysqli->query($edit)) { //si se da un problema en la consulta de actualización se notifica el error
             return 'Error en la actualización';
