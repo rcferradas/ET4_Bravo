@@ -19,7 +19,6 @@ $strings = array(
     'Gestión Asignatura IU' => 'Gestión Asignatura IU',
     'Hola' => 'Hola',
     'El usuario ya existe' => 'El usuario ya existe',
-    //-------------------------------  
     'Centro' => 'Centro',
     'Tipo' => 'Tipo',
     'Documento' => 'Documento',
@@ -44,5 +43,6 @@ $strings = array(
     'Realizado' => 'Realizado',
     'Pagado' => 'Pagado',
     'Error en la actualización' => 'Error en la actualización',
+    'Idioma' => 'Idioma',
     'Campos obligatorios' => 'Campos obligatorios');
 ?>
