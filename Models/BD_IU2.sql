@@ -45,7 +45,6 @@ UNIQUE KEY `email` (`email`)
 -- Base de datos: `iu2018`
 --
 
-
 -- Estructura de tabla para la tabla `empresas`
 CREATE TABLE IF NOT EXISTS `empresas` (
   `CIF` varchar(10) NOT NULL,
@@ -67,7 +66,7 @@ FOREIGN KEY (`usuarioAsignado`) REFERENCES USUARIOS(`login`)
 
 -- Estructura de tabla para la tabla `contratos`
 CREATE TABLE IF NOT EXISTS `contratos` (
-  `cod` varchar(10) NOT NULL,
+  `cod` INT(10) NOT NULL AUTO_INCREMENT,
   `centro` varchar(30) NOT NULL,
   `tipo` enum('certificador','mantenimiento','reparacion','') NOT NULL DEFAULT '',
   `estado` enum('realizado','norealizado','pagado','') NOT NULL DEFAULT '',

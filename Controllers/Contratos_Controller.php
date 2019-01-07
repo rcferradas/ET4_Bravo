@@ -76,14 +76,14 @@ else {
             if (!isset($_REQUEST['cod'])) { //Si no esta definido el email (o alguien modifica el enlace) vuelve al index.php
                 new MESSAGE('No existe el contrato', '../index.php');
             } else {
-                $contratos = new Contratos_Model($_REQUEST['cod'], '','', '', '', '', '', '', '');    //creamos un objeto del modelo con el email
+                $contratos = new Contratos_Model($_REQUEST['cod'], '', '', '', '', '', '', '', '');    //creamos un objeto del modelo con el email
                 $contratos = $contratos->showCurrent();                                        //y se trae de la BD (a traves del modelo) la tupla asociada a ese email
                 if ($contratos == 'No existe el contrato') {  //Si no se encuentra la tupla
                     new Message($contratos, '../index.php');    //vuelve al al index.php
                 } else {
                     $documento = $contratos['documento'];
                     if (!$_POST) { //Si se envia por GET se llama a la vista ADD para que se envie por POST
-                        $contratos = new Contratos_Model($_REQUEST['cod'], '','', '', '', '', '', '', ''); //creamos un objeto del modelo con el codigo de contrato
+                        $contratos = new Contratos_Model($_REQUEST['cod'], '', '', '', '', '', '', '', ''); //creamos un objeto del modelo con el codigo de contrato
                         $valores = $contratos->showCurrent();                                       //y se trae de la BD (a traves del modelo) la tupla asociada a ese email
                         new Contratos_EDIT($valores);
                     } else {
@@ -105,11 +105,11 @@ else {
             $valores; //Almacena los valores tras almacenarlos
 
             if (!$_POST) {
-                $contratos = new Contratos_Model($_REQUEST['cod'], '', '','', '', '', '', '', '');     //creamos un objeto del modelo con el email
+                $contratos = new Contratos_Model($_REQUEST['cod'], '', '', '', '', '', '', '', '');     //creamos un objeto del modelo con el email
                 $valores = $contratos->showCurrent();                                          //y se trae de la BD (a traves del modelo) la tupla asociada a ese email
                 new Contrato_DELETE($valores); //se invoca la vista DELETE con los datos a borrar
             } else {
-                $contratos = new Contratos_Model($_REQUEST['cod'], '', '', '', '', '', '', '');    //creamos un objeto del modelo con el email
+                $contratos = new Contratos_Model($_REQUEST['cod'], '', '', '', '', '', '', '', '');    //creamos un objeto del modelo con el email
                 $respuesta = $contratos->DELETE();                                              //y se borra la tupla asociada a ese email invocando el metodo DELETE() del modelo
                 new MESSAGE($respuesta, '../Controllers/Contratos_Controller.php');
             }
@@ -118,7 +118,7 @@ else {
         case 'SHOWCURRENT':
             $contratos; //Objeto del modelo
             $valores; //Almacena los valores tras almacenarlos
-            $contratos = new Contratos_Model($_REQUEST['cod'], '', '','', '', '', '', '', ''); //creamos un objeto del modelo con el email
+            $contratos = new Contratos_Model($_REQUEST['cod'], '', '', '', '', '', '', '', ''); //creamos un objeto del modelo con el email
             $valores = $contratos->showCurrent();                                      //y se trae de la BD (a traves del modelo) la tupla asociada a ese email
             new Contrato_SHOWCURRENT($valores);     //se invoca la vista SHOWCURRENT con los datos a mostrar
             break;

@@ -40,5 +40,8 @@ $strings = array(
     'Añadir contrato' => 'Añadir contrato',
     'Contrato añadido con éxito' => 'Contrato añadido con éxito',
     'Buscar contratos' => 'Buscar contratos',
+    'No realizado' => 'No realizado',
+    'Realizado' => 'Realizado',
+    'Pagado' => 'Pagado',
     'Campos obligatorios' => 'Campos obligatorios');
 ?>

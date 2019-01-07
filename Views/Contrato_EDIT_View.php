@@ -22,11 +22,10 @@ class Contratos_EDIT {
                         <input name="cod" type ="hidden" value=<?php echo $datos['cod']; ?> />
 
                         <label for="centro"><?php echo $strings['Centro'] ?>  *</label> 
-                        <input name="nombre" type="text" size="25" id="editnom" value="<?php echo $datos['centro'] ?>"  onblur="comprobarTexto(this, 30);"/> 
+                        <input name="centro" type="text" size="25" id="centro" value="<?php echo $datos['centro'] ?>"  onblur="comprobarTexto(this, 30);"/> 
 
                         <label for="tipo"><?php echo $strings['Tipo'] ?>  *</label>  
-                        <input name="tipo" type="text" size="30" id="editapell" value="<?php echo $datos['tipo'] ?>"  onblur="comprobarTexto(this, 40);"/> 
-                        <select>
+                        <select id="tipo" name="tipo">
                             <?php if ($datos['tipo'] == 'certificador') {
                                 ?>
                                 <option value="certificador" selected><?php echo $strings['Certificador'] ?></option>
@@ -54,23 +53,22 @@ class Contratos_EDIT {
                         </select>
 
                         <label for="cifEmpresa"><?php echo $strings['cifEmpresa']; ?>  *</label> 
-                        <input name="cifEmpresa" type="file" id="editresguardo" /> <!--No se valida el resguardo en edit porque si no se introduce un fichero nuevo nos quedamos con el que ya esta almacenado-->
+                        <input name="cifEmpresa" type="text" id="cifEmpresa" /> <!--No se valida el resguardo en edit porque si no se introduce un fichero nuevo nos quedamos con el que ya esta almacenado-->
 
                         <label for="documento"><?php echo $strings['Documento']; ?>  *</label> 
-                        <input type="number" name="documento" id="editcontratos" value="<?php echo $datos['documento']; ?>"  onblur="comprobarEntero(this, 1, 999);"> 
+                        <input type="number" name="documento" id="documento" value="<?php echo $datos['documento']; ?>"  onblur="comprobarEntero(this, 1, 999);"> 
 
-                        <label for="periodoInicio"><?php echo $strings['Periodo inicio']; ?>  *</label> 
-                        <input type="number" name="periodoInicio" id="editcontratos" value="<?php echo $datos['periodoInicio']; ?>"  onblur="comprobarEntero(this, 1, 999);"> 
+                        <label for="periodoinicio"><?php echo $strings['Periodo inicio']; ?>  *</label> 
+                        <input type="number" name="periodoinicio" id="periodoinicio" value="<?php echo $datos['periodoInicio']; ?>"  onblur="comprobarEntero(this, 1, 999);"> 
 
-                        <label for="periodoFin"><?php echo $strings['Periodo fin']; ?>  *</label> 
-                        <input type="number" name="periodoFin" id="editcontratos" value="<?php echo $datos['periodoFin']; ?>"  onblur="comprobarEntero(this, 1, 999);"> 
+                        <label for="periodofin"><?php echo $strings['Periodo fin']; ?>  *</label> 
+                        <input type="number" name="periodofin" id="periodofin" value="<?php echo $datos['periodoFin']; ?>"  onblur="comprobarEntero(this, 1, 999);"> 
 
                         <label for="importe"><?php echo $strings['Importe']; ?>  *</label> 
-                        <input type="number" name="importe" id="editcontratos" value="<?php echo $datos['importe']; ?>"  onblur="comprobarEntero(this, 1, 999);"> 
+                        <input type="number" name="importe" id="importe" value="<?php echo $datos['importe']; ?>"  onblur="comprobarEntero(this, 1, 999);"> 
 
                         <label for="estado"><?php echo $strings['Estado'] ?>  *</label>  
-                        <input name="estado" type="text" size="30" id="editapell" value="<?php echo $datos['estado'] ?>"  onblur="comprobarTexto(this, 40);"/> 
-                        <select>
+                        <select id="estado" name="estado">
                             <?php if ($datos['estado'] == 'realizado') {
                                 ?>
                                 <option value="realizado" selected><?php echo $strings['Realizado'] ?></option>

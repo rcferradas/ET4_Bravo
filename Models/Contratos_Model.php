@@ -65,7 +65,7 @@ class Contratos_Model {
 //existe ya en la tabla
     function ADD() {
         $add = "INSERT INTO contratos (`cod`, `centro`, `tipo`, `estado`, `cifEmpresa`, `documento`, `periodoinicio`, `periodofin`, `importe`) 
-        VALUES ('$this->cod', '$this->centro', '$this->tipo', '$this->estado', '$this->cifEmpresa', '$this->documento', '$this->periodoInicio', '$this->periodoFin', '$this->importe')";
+        VALUES ($this->cod, '$this->centro', '$this->tipo', '$this->estado', '$this->cifEmpresa', '$this->documento', '$this->periodoInicio', '$this->periodoFin', '$this->importe')";
         if (!$this->mysqli->query($add)) {
             return 'Error en la inserción';
         }

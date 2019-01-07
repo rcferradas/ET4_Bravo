@@ -25,6 +25,7 @@ class Contrato_DELETE {
                     <th scope="col"><?php echo $strings['Periodo inicio']; ?></th>
                     <th scope="col"><?php echo $strings['Periodo fin']; ?></th>
                     <th scope="col"><?php echo $strings['Importe']; ?></th>
+                    <th scope="col"><?php echo $strings['Estado']; ?></th>
                     <th scope="col"><?php echo $strings['Confirmar borrado']; ?></th>
                 </tr>
             </thead>
@@ -39,6 +40,7 @@ class Contrato_DELETE {
                     <td><?php echo $tupla['periodoinicio']; ?></td>
                     <td><?php echo $tupla['periodofin']; ?></td>
                     <td><?php echo $tupla['importe']; ?></td>
+                    <td><?php echo $tupla['estado']; ?></td>
                     <td>
                         <!--Botones para realizar acciones en cada tupla-->
                         <form class="form-inline my-2 my-lg-0" name='formulario' action="../Controllers/Contratos_Controller.php" method="post">
