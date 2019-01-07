@@ -64,9 +64,16 @@ class Contratos_Model {
 // de los atributos del objeto. Comprueba si la clave/s esta vacia y si 
 //existe ya en la tabla
     function ADD() {
+        $codigo = "SELECT MAX(`cod`) as codigo FROM contratos";
+        $modeloCodigo = $this->mysqli->query($codigo);
+        $tupla = $modeloCodigo->fetch_assoc();
+        $numero = $tupla['codigo'];
+        $numero = intval($numero) + 1;
+        $this->cod = $numero;
+        $rutaDocumento = $this->funcionRutaDocumento();
         $add = "INSERT INTO contratos (`cod`, `centro`, `tipo`, `estado`, `cifEmpresa`, `documento`, `periodoinicio`, `periodofin`, `importe`) 
-        VALUES ($this->cod, '$this->centro', '$this->tipo', '$this->estado', '$this->cifEmpresa', '$this->documento', '$this->periodoInicio', '$this->periodoFin', '$this->importe')";
-        if (!$this->mysqli->query($add)) {
+        VALUES ($this->cod, '$this->centro', '$this->tipo', '$this->estado', '$this->cifEmpresa', '$rutaDocumento', '$this->periodoInicio', '$this->periodoFin', '$this->importe')";
+        if (!($resultado = $this->mysqli->query($add))) {
             return 'Error en la inserción';
         }
         return 'Contrato añadido con éxito'; //operacion de insertado correcta
@@ -79,7 +86,9 @@ class Contratos_Model {
             AND `cifEmpresa` LIKE '%" . $this->cifEmpresa . "%' AND `documento` LIKE '%" . $this->documento . "%' AND `periodoInicio` LIKE '%" . $this->periodoInicio . "%' AND
                   `periodoFin` LIKE '%" . $this->periodoFin . "%' AND `importe` LIKE '%" . $this->importe . "%'";
         if (!($resultado = $this->mysqli->query($search))) {
-            return true;
+            return 'Error en la consulta';
+        } else if ($resultado->numrows = 0) {
+            return 'Sin resultados';
         } else {
             return $resultado;
         }
@@ -89,9 +98,11 @@ class Contratos_Model {
 // verificado la borra
     function DELETE() {
         $delete = "DELETE FROM `contratos` WHERE `cod`='$this->cod'";
+        $dirDocumento = '../Files/' . $this->cod;
         if (!$this->mysqli->query($delete)) {
-            return 'Error en la inserción';
+            return 'Error en la eliminación';
         } else {
+            $this->borrarDirectorio($dirDocumento);
             return 'Eliminación realizada con éxito';
         }
     }
@@ -105,6 +116,26 @@ class Contratos_Model {
         } else {
             return 'Actualización realizada con éxito';
         }
+    }
+
+    function funcionRutaDocumento() {
+        $rutaFichero = '../Files/' . $this->cod . '/' . $this->documento['name'];   //RUTA FICHERO 
+        $rutaDirectorio = '../Files/' . $this->cod; //RUTA DIRECTORIO
+
+        if (!file_exists($rutaDirectorio)) {  //Si no existe el directorio
+            mkdir($rutaDirectorio, 0777, true);   //Creamos directorio con permisos de escritura, lectura y ejecucion
+        }
+        move_uploaded_file($this->documento['tmp_name'], $rutaFichero);     //tmp_name = RUTA ABSOLUTA DE DONDE SE SUBIO EL FICHERO
+        return $rutaFichero;
+    }
+
+    function borrarDirectorio($path) {
+        $files = glob($path . '/*');
+        foreach ($files as $archivo) {
+            is_dir($archivo) ? borrarDirectorio($archivo) : unlink($archivo);
+        }
+        rmdir($path);
+        return;
     }
 
 }

@@ -27,6 +27,7 @@ class Contrato_SEARCH {
 
                     <label for="tipo"><?php echo $strings['Tipo'] ?>  *</label>  
                     <select name="tipo" id="tipo">
+                        <option value=""></option>
                         <option value="certificador"><?php echo $strings['Certificador'] ?></option>
                         <option value="mantenimiento"><?php echo $strings['Mantenimiento'] ?></option>
                         <option value="reparacion"><?php echo $strings['Reparacion'] ?></option>

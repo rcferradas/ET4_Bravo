@@ -32,15 +32,13 @@ class Contratos_EDIT {
                                 <option value="mantenimiento" ><?php echo $strings['Mantenimiento'] ?></option>
                                 <option value="reparacion" ><?php echo $strings['Reparacion'] ?></option>
                                 <?php
-                            }
-                            if ($datos['tipo'] == 'mantenimiento') {
+                            } elseif ($datos['tipo'] == 'mantenimiento') {
                                 ?>
                                 <option value="certificador"><?php echo $strings['Certificador'] ?></option>
                                 <option value="mantenimiento" selected><?php echo $strings['Mantenimiento'] ?></option>
                                 <option value="reparacion"><?php echo $strings['Reparacion'] ?></option>
                                 <?php
-                            }
-                            if ($datos['tipo'] == 'reparacion') {
+                            } elseif ($datos['tipo'] == 'reparacion') {
                                 ?>
                                 <option value="certificador"><?php echo $strings['Certificador'] ?></option>
                                 <option value="mantenimiento"><?php echo $strings['Mantenimiento'] ?></option>
@@ -56,13 +54,13 @@ class Contratos_EDIT {
                         <input name="cifEmpresa" type="text" id="cifEmpresa" /> <!--No se valida el resguardo en edit porque si no se introduce un fichero nuevo nos quedamos con el que ya esta almacenado-->
 
                         <label for="documento"><?php echo $strings['Documento']; ?>  *</label> 
-                        <input type="number" name="documento" id="documento" value="<?php echo $datos['documento']; ?>"  onblur="comprobarEntero(this, 1, 999);"> 
+                        <input type="file" name="documento" id="documento" value="<?php echo $datos['documento']; ?>"  onblur="comprobarEntero(this, 1, 999);"> 
 
                         <label for="periodoinicio"><?php echo $strings['Periodo inicio']; ?>  *</label> 
-                        <input type="number" name="periodoinicio" id="periodoinicio" value="<?php echo $datos['periodoInicio']; ?>"  onblur="comprobarEntero(this, 1, 999);"> 
+                        <input type="date" name="periodoinicio" id="periodoinicio" value="<?php echo $datos['periodoinicio']; ?>"  onblur="comprobarEntero(this, 1, 999);"> 
 
                         <label for="periodofin"><?php echo $strings['Periodo fin']; ?>  *</label> 
-                        <input type="number" name="periodofin" id="periodofin" value="<?php echo $datos['periodoFin']; ?>"  onblur="comprobarEntero(this, 1, 999);"> 
+                        <input type="date" name="periodofin" id="periodofin" value="<?php echo $datos['periodofin']; ?>"  onblur="comprobarEntero(this, 1, 999);"> 
 
                         <label for="importe"><?php echo $strings['Importe']; ?>  *</label> 
                         <input type="number" name="importe" id="importe" value="<?php echo $datos['importe']; ?>"  onblur="comprobarEntero(this, 1, 999);"> 
@@ -72,7 +70,7 @@ class Contratos_EDIT {
                             <?php if ($datos['estado'] == 'realizado') {
                                 ?>
                                 <option value="realizado" selected><?php echo $strings['Realizado'] ?></option>
-                                <option value="norealizado" ><?php echo $strings['norealizado'] ?></option>
+                                <option value="norealizado" ><?php echo $strings['No realizado'] ?></option>
                                 <option value="pagado" ><?php echo $strings['Pagado'] ?></option>
                                 <?php
                             }
