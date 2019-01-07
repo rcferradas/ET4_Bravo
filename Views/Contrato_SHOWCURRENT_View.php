@@ -35,7 +35,7 @@ class Contrato_SHOWCURRENT {
                     <td><?php echo $tupla['centro']; ?></td>
                     <td><?php echo $tupla['tipo']; ?></td>
                     <td><?php echo $tupla['cifEmpresa']; ?></td>
-                    <td><?php echo $tupla['documento']; ?></td>
+                    <td width="25%"><IMG src="<?php echo $tupla['documento']; ?>" height="10%" width="70%" alt="No se ha encontrado el resguardo"/></td>
                     <td><?php echo $tupla['periodoinicio']; ?></td>
                     <td><?php echo $tupla['periodofin']; ?></td>
                     <td><?php echo $tupla['importe']; ?></td>
