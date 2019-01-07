@@ -44,5 +44,10 @@ $strings = array(
     'Pagado' => 'Pagado',
     'Error en la actualización' => 'Error en la actualización',
     'Idioma' => 'Idioma',
+    'Contratos' => 'Contratos',
+    'Empresas' => 'Empresas',
+    'Visitas' => 'Visitas',
+    'Usuarios' => 'Usuarios',
+    'Menu' => 'Menú',
     'Campos obligatorios' => 'Campos obligatorios');
 ?>

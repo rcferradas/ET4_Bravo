@@ -43,5 +43,10 @@ $strings = array(
     'Pagado' => 'Paid out',
     'Error en la actualización' => 'Update failed',
     'Idioma' => 'Languaje',
+    'Contratos' => 'Contracts',
+    'Empresas' => 'Companies',
+    'Visitas' => 'Visits',
+    'Usuarios' => 'Users',
+    'Menu' => 'Menu',
     'Campos obligatorios' => 'Required fields');
 ?>
