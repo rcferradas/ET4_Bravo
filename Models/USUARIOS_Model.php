@@ -70,9 +70,9 @@ class USUARIOS_Model {
 
     function SEARCH() {
         $sql = "SELECT * FROM USUARIOS
-                    WHERE `login` LIKE '%$this->login%' AND `password` LIKE '%$this->password%' AND `DNI` LIKE '%$this->DNI%'
-                    AND `nombre` LIKE '%$this->nombre%' AND `apellidos` LIKE '%$this->apellidos%' AND `telefono` LIKE $this->telefono AND
-                    `email` LIKE $this->email AND `rol` LIKE $this->rol
+                    WHERE `login` LIKE '%" . $this->login . "%' AND `password` LIKE '%" . $this->password . "%' AND `DNI` LIKE '%" . $this->DNI . "%'
+                    AND `nombre` LIKE '%" . $this->nombre . "%' AND `apellidos` LIKE '%" . $this->apellidos . "%' AND `telefono` LIKE '%" . $this->telefono . "%' AND
+                    `email` LIKE '%" . $this->email . "%' AND `rol` LIKE '%" . $this->rol . "%'
                 ";
 
         $resultado;
