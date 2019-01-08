@@ -19,7 +19,6 @@ class Contratos_EDIT {
                     <h2>EDITAR CONTRATO</h2>
 
                     <fieldset id="fieldset_edit">
-                        <input name="cod" type ="hidden" value=<?php echo $datos['cod']; ?> />
 
                         <label for="centro"><?php echo $strings['Centro'] ?>  *</label> 
                         <input name="centro" type="text" size="25" id="centro" value="<?php echo $datos['centro'] ?>"  onblur="comprobarTexto(this, 30);"/> 

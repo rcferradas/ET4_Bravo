@@ -17,7 +17,6 @@ class Contrato_SHOWCURRENT {
         <table class="table table-dark">
             <thead>
                 <tr>
-                    <th scope="col"><?php echo $strings['Código']; ?></th>
                     <th scope="col"><?php echo $strings['Centro']; ?></th>
                     <th scope="col"><?php echo $strings['Tipo']; ?></th>
                     <th scope="col"><?php echo $strings['Empresa encargada']; ?></th>
@@ -31,7 +30,6 @@ class Contrato_SHOWCURRENT {
 
             <tbody>
                 <tr>
-                    <td><?php echo $tupla['cod']; ?></td>
                     <td><?php echo $tupla['centro']; ?></td>
                     <td><?php echo $tupla['tipo']; ?></td>
                     <td><?php echo $tupla['cifEmpresa']; ?></td>

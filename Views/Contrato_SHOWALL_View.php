@@ -17,7 +17,7 @@ class Contrato_SHOWALL {
             <!--Comienzo encabezado tabla SHOWALL-->
             <thead>
                 <tr>
-                    <th scope="col"><?php echo $strings['Código']; ?></th>
+                    <th scope="col"><?php echo $strings['Centro']; ?></th>
                     <th scope="col"><?php echo $strings['Tipo']; ?></th>
                     <th scope="col"><?php echo $strings['Empresa encargada']; ?></th>
                     <th scope="col"><form class="form-inline my-2 my-lg-0" name='formulario' action="../Controllers/Contratos_Controller.php" method="">
@@ -37,7 +37,7 @@ class Contrato_SHOWALL {
                 while ($tupla = $recordSet->fetch_assoc()) {
                     ?>
                     <tr>
-                        <td><?php echo $tupla['cod']; ?></td>
+                        <td><?php echo $tupla['centro']; ?></td>
                         <td><?php echo $tupla['tipo']; ?></td>
                         <td><?php echo $tupla['cifEmpresa']; ?></td>
                         <td>

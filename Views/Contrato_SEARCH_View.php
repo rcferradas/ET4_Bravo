@@ -19,9 +19,6 @@ class Contrato_SEARCH {
             <form class="form_edit" method="post" action="../Controllers/Contratos_Controller.php" enctype="multipart/form-data">
                 <fieldset id="fieldset_edit">
 
-                    <label for="cod"><?php echo $strings['Código'] ?>  *</label> 
-                    <input name="cod" type="text" size="25" id="cod" onblur="comprobarTexto(this, 30);"/> 
-
                     <label for="centro"><?php echo $strings['Centro'] ?>  *</label> 
                     <input name="centro" type="text" size="25" id="centro" onblur="comprobarTexto(this, 30);"/> 
 
