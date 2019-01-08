@@ -8,6 +8,7 @@ class Index {
 
     function render() {
 
+        include '../Locales/Strings_ENGLISH.php';
         include '../Locales/Strings_SPANISH.php';
         include '../Views/Header.php';
         include '../Views/Footer.php';
