@@ -9,6 +9,7 @@
             <a class="nav-item nav-link active" href="../Controllers/Contratos_Controller.php"><?php echo $strings['Contratos'] ?><span class="sr-only">(current)</span></a>
             <a class="nav-item nav-link" href="../Controllers/Empresas_Controller.php"><?php echo $strings['Empresas'] ?></a>
             <a class="nav-item nav-link" href=""><?php echo $strings['Visitas'] ?></a>
+            <a class="nav-item nav-link" href="../Controllers/Centros_Controller.php"><?php echo $strings['Centros'] ?></a>
             <a class="nav-item nav-link disabled" href="../Controllers/Usuarios_Controller.php"><?php echo $strings['Usuarios'] ?></a>
         </div>
     </div>

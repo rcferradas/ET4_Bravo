@@ -59,5 +59,8 @@ $strings = array(
     'Password' => 'Password',
     'Admin' => 'Admin',
     'Añadir usuario' => 'Añadir usuario',
+    'Centros' => 'Centros',
+    'Lugar' => 'Lugar',
+    'Usuario asignado' => 'Usuario asignado',
     'Campos obligatorios' => 'Campos obligatorios');
 ?>

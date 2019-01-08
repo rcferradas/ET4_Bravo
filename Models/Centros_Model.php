@@ -4,13 +4,13 @@ class Centros_Model {
     
     var $lugar;
     var $nombre;
-    var $userasignado;
+    var $usuarioAsignado;
     var $mysqli;
     
-    function __construct($lugar,$nombre,$userasignado){
+    function __construct($lugar,$nombre,$usuarioAsignado){
 	$this->lugar = $lugar;
 	$this->nombre = $nombre;
-	$this->useraginado = $userasignado;
+	$this->useraginado = $usuarioAsignado;
 
 	include_once '../Models/Access_DB.php';
 	$this->mysqli = ConnectDB();
@@ -19,7 +19,7 @@ class Centros_Model {
     function showAll() {
         $sql;
         $resultado;
-        $sql= "SELECT 'lugar','nombre','userasignado' FROM centros";
+        $sql= "SELECT * FROM centros";
         $resultado = $this->mysqli->query($sql);
         return $resultado;
     }
@@ -38,7 +38,7 @@ class Centros_Model {
 // de los atributos del objeto. Comprueba si la clave/s esta vacia y si 
 //existe ya en la tabla
     function ADD() {
-        $sql = "INSERT INTO centros VALUES('$this->lugar','$this->nombre','$this->userasignado')";
+        $sql = "INSERT INTO centros VALUES('$this->lugar','$this->nombre','$this->usuarioAsignado')";
         if(!$this->mysqli->query($sql)){
             return "Error en la inserción";
         }else{
@@ -58,7 +58,7 @@ class Centros_Model {
         $sql;
         $resultado;
         $sql = "SELECT * FROM centros
-                    WHERE 'lugar' LIKE '%$this->lugar%' AND 'nombre' LIKE '%$this->nombre%' AND 'userasignado' LIKE '%$this->userasignado%'";
+                    WHERE 'lugar' LIKE '%$this->lugar%' AND 'nombre' LIKE '%$this->nombre%' AND 'usuarioAsignado' LIKE '%$this->usuarioAsignado%'";
         $resultado = $this->mysqli->query($sql);
         return $resultado;
     }
@@ -86,7 +86,7 @@ class Centros_Model {
     $resultado = $this->mysqli->query($sql);
     if($resultado->num_rows == 1){
         $sql="UPDATE centros
-                     SET 'lugar' = '$this->lugar', 'userasignado' = '$this->userasignado'
+                     SET 'lugar' = '$this->lugar', 'usuarioAsignado' = '$this->usuarioAsignado'
                 WHERE `nombre` = '$this->nombre'";
         if(!$this->mysqli->query($sql)){
             return 'Error al editar';
