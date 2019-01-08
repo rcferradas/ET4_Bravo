@@ -100,6 +100,7 @@ class USUARIOS_Model {
         } else {
             return 'No existe dicha tupla';
         }
+        return 'Eliminación realizada con éxito';
     }
 
 // funcion SHOWCURRENT: recupera todos los atributos de una tupla a partir de su clave
