@@ -38,15 +38,15 @@ class USUARIOS_Model {
 //Inserta en la tabla  de la bd  los valores
 // de los atributos del objeto. Comprueba si la clave/s esta vacia y si 
 //existe ya en la tabla
-    function ADD() {     
-         $sql = "INSERT INTO USUARIOS VALUES('$this->login',"
-                                            . "'$this->password',"
-                                            . "'$this->DNI',"
-                                            . "'$this->nombre',"
-                                            . "'$this->apellidos',"
-                                            . "'$this->telefono',"
-                                            . "'$this->email',"
-                                            . "'$this->rol')
+    function ADD() {
+        $sql = "INSERT INTO USUARIOS VALUES('$this->login',"
+                . "'$this->password',"
+                . "'$this->DNI',"
+                . "'$this->nombre',"
+                . "'$this->apellidos',"
+                . "'$this->telefono',"
+                . "'$this->email',"
+                . "'$this->rol')
                  ";
     }
 
@@ -55,16 +55,19 @@ class USUARIOS_Model {
     function SHOWALL() {
         $sql = "SELECT * FROM USUARIOS";
         $resultado;
-        
+
         if (!($resultado = $this->mysqli->query($sql))) {
             return 'Tabla vacia';
         } else {
-            
+
             return $resultado; //devolvemos el array asociativo
         }
-    }//cierre funcion
+    }
+
+//cierre funcion
 //funcion SEARCH: hace una búsqueda en la tabla con
 //los datos proporcionados. Si van vacios devuelve todos
+
     function SEARCH() {
         $sql = "SELECT * FROM USUARIOS
                     WHERE `login` LIKE '%$this->login%' AND `password` LIKE '%$this->password%' AND `DNI` LIKE '%$this->DNI%'
@@ -88,48 +91,48 @@ class USUARIOS_Model {
     function DELETE() {
         $sql = "SELECT * FROM USUARIOS WHERE (`login` = '" . $this->login . "')";
         $resultado = $this->mysqli->query($sql);
-        
-        if($resultado->num_rows == 1){
-            $sql="DELETE FROM USUARIOS WHERE ( `login` = '".$this->login."')";
+
+        if ($resultado->num_rows == 1) {
+            $sql = "DELETE FROM USUARIOS WHERE ( `login` = '" . $this->login . "')";
             if (!($this->mysqli->query($sql))) {
                 return 'Error, no se ha podido borrar la tupla';
             }
-        }else{
+        } else {
             return 'No existe dicha tupla';
         }
     }
 
 // funcion SHOWCURRENT: recupera todos los atributos de una tupla a partir de su clave
     function SHOWCURRENT() {
-        $sql="SELECT * FROM USUARIOS WHERE(`login` = '".$this->login."')";
+        $sql = "SELECT * FROM USUARIOS WHERE(`login` = '" . $this->login . "')";
         $resultado = $this->mysqli->query($sql);
-        
-        if($resultado->num_rows == 1){
+
+        if ($resultado->num_rows == 1) {
             $tupla = $resultado->fetch_array();
             return $tupla;
-        }else{
+        } else {
             return 'No existe dicha tupla';
         }
     }
 
 // funcion Edit: realizar el update de una tupla despues de comprobar que existe
     function EDIT() {
-        $sql = "SELECT * FROM USUARIOS WHERE (`login`= '".$this->login."')";
+        $sql = "SELECT * FROM USUARIOS WHERE (`login`= '" . $this->login . "')";
         $resultado = $this->mysqli->query($sql);
-        
-        if($resultado->num_rows == 1){
+
+        if ($resultado->num_rows == 1) {
             $sql = "UPDATE USUARIOS
                     SET `password` = '$this->password', `DNI`= '$this->DNI', `nombre`= '$this->nombre', `apellidos` = '$this->apellidos',
                      `telefono` = '$this->telefono',`email` = '$this->email', `rol`= '$this->rol'
                     WHERE ( `login` = '$this->login' )
                  ";
-            
+
             if (!$this->mysqli->query($sql)) { //si se da un problema en la consulta de actualización se notifica el error
                 return 'Error en la actualización';
             } else {
                 return 'Actualización realizada con éxito';
             }
-        }else{
+        } else {
             return 'No existe dicha tupla';
         }
     }
@@ -157,10 +160,10 @@ class USUARIOS_Model {
             }
         }
     }
-//fin metodo login
 
+//fin metodo login
     //funcion Resgister(), comprueba si el usuario existe ya en la base de datos o no
-function Register() {
+    function Register() {
 
         $sql = "select * from USUARIOS where login = '" . $this->login . "'";
 
@@ -173,18 +176,18 @@ function Register() {
     }
 
     function registrar() {
-        
+
         $sql = "INSERT INTO USUARIOS VALUES (
-					'".$this->login."',
-					'".$this->password."',
-					'".$this->dni."',
-					'".$this->nombre."',
-					'".$this->apellidos."',
-                                        '".$this->telefono."',
-                                        '".$this->email."',
-                                        '".$this->rol."'
+					'" . $this->login . "',
+					'" . $this->password . "',
+					'" . $this->DNI . "',
+					'" . $this->nombre . "',
+					'" . $this->apellidos . "',
+                                        '" . $this->telefono . "',
+                                        '" . $this->email . "',
+                                        '" . $this->rol . "'
 					)";
-        
+
         if (!$this->mysqli->query($sql)) {
             return 'Error en la inserción';
         } else {

@@ -49,5 +49,15 @@ $strings = array(
     'Visitas' => 'Visitas',
     'Usuarios' => 'Usuarios',
     'Menu' => 'Menú',
+//    -------------
+    'Nombre' => 'Nombre',
+    'Telefono' => 'Teléfono',
+    'DNI' => 'DNI',
+    'Apellidos' => 'Apellidos',
+    'Email' => 'Email',
+    'Rol' => 'Rol',
+    'Password' => 'Password',
+    'Admin' => 'Admin',
+    'Añadir usuario' => 'Añadir usuario',
     'Campos obligatorios' => 'Campos obligatorios');
 ?>
