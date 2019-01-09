@@ -8,7 +8,7 @@ if (!IsAuthenticated()) {
 } else {//una vez sabemos que está identificado
     require_once '../Models/Empresas_Model.php';
     include '../Views/Empresas_ADD_View.php';
-//    include '../Views/Empresas_SHOWCURRENT_View.php';
+    include '../Views/Empresas_SHOWCURRENT_View.php';
     include '../Views/Empresas_EDIT_View.php';
     include '../Views/Empresas_DELETE_View.php';
     include '../Views/Empresas_SHOWALL_View.php';
@@ -84,6 +84,16 @@ if (!IsAuthenticated()) {
                 new MESSAGE($respuesta, '../Controllers/Empresas_Controller.php');
             }
             break;
+
+        case 'SHOWCURRENT':
+            $empresas; //Objeto del modelo
+            $valores; //Almacena los valores tras almacenarlos
+            $empresas = new Empresas_Model($_REQUEST['cif'], '', '', '', ''); //creamos un objeto del modelo con el email
+            $valores = $empresas->showCurrent();                                      //y se trae de la BD (a traves del modelo) la tupla asociada a ese email
+            new Empresas_SHOWCURRENT_View($valores);     //se invoca la vista SHOWCURRENT con los datos a mostrar
+            break;
+
+
 
         default:
             $empresas = new Empresas_Model('', '', '', '', '');  //Objeto del modelo
