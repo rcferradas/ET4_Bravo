@@ -1,6 +1,6 @@
 <?php
 
-class Centros_EDIT {
+class Centros_EDIT_View {
 
     function __construct($datos) {    //Constructor de la clase, pasamos un objeto tipo loteriaiu como parametro
         $this->render($datos);
@@ -15,7 +15,7 @@ class Centros_EDIT {
         <html>
 
             <section>
-                <form class="form_edit" method="post" action="../Controllers/Centros_Controller.php" enctype="multipart/form-data" onsubmit="return validacionSubmitEdit();">
+                <form class="form_edit" method="post" action="../Controllers/Centros_Controller.php" onsubmit="return validacionSubmitEdit();">
                     <h2><?php echo $strings['Editar centro']; ?></h2>
 
                     <fieldset id="fieldset_edit">

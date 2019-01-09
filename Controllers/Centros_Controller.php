@@ -13,12 +13,12 @@ if (!IsAuthenticated()) {
 else {
 
     require_once '../Models/Centros_Model.php';
-    include '../Views/Centro_SHOWALL_View.php';
-    include '../Views/Centro_ADD_View.php';
+    include '../Views/Centros_SHOWALL_View.php';
+    include '../Views/Centros_ADD_View.php';
 //    include '../Views/Centro_SHOWCURRENT_View.php';
-    include '../Views/Centro_EDIT_View.php';
-    include '../Views/Centro_DELETE_View.php';
-    include '../Views/Centro_SEARCH_View.php';
+    include '../Views/Centros_EDIT_View.php';
+    include '../Views/Centros_DELETE_View.php';
+    include '../Views/Centros_SEARCH_View.php';
 
     function recuperarDataForm() {
         $nombre = $_REQUEST['nombre'];
@@ -41,7 +41,7 @@ else {
             $datos; //Almacena los datos del formulario
             $respuesta; //Almacena la respuesta que se mostrará via MESSAGE
             if (!$_POST) {    //Si se envia por GET se llama a la vista ADD para que se envie por POST, cuestiones de privacidad
-                new Centros_ADD();
+                new Centros_ADD_View();
             } else {
                 $datos = recuperarDataForm();
                 $respuesta = $datos->ADD();
@@ -54,11 +54,11 @@ else {
             $datos; //datos a mostrar extraidos del modelo
 
             if (!$_POST) {    //Si se envia por GET se llama a la vista EDIT para que se envie por POST
-                new Centro_SEARCH();
+                new Centros_SEARCH_View();
             } else {
                 $centros = recuperarDataForm();
                 $datos = $centros->SEARCH();
-                new Centro_SHOWALL($datos);
+                new Centros_SHOWALL_View($datos);
             }
             break;
 
@@ -77,7 +77,7 @@ else {
                     if (!$_POST) { //Si se envia por GET se llama a la vista ADD para que se envie por POST
                         $centros = new Centros_Model($_REQUEST['nombre'], '', ''); //creamos un objeto del modelo con el nombreigo de contrato
                         $valores = $centros->showCurrent();                                       //y se trae de la BD (a traves del modelo) la tupla asociada a ese email
-                        new Centros_EDIT($valores);
+                        new Centros_EDIT_View($valores);
                     } else {
                         $centros = recuperarDataForm();  //que utilizara el resguardo que introduzcamos en el formulario edit
                         $respuesta = $centros->EDIT();
@@ -95,7 +95,7 @@ else {
             if (!$_POST) {
                 $centros = new Centros_Model($_REQUEST['nombre'], '', '');     //creamos un objeto del modelo con el email
                 $valores = $centros->showCurrent();                                          //y se trae de la BD (a traves del modelo) la tupla asociada a ese email
-                new Centro_DELETE($valores); //se invoca la vista DELETE con los datos a borrar
+                new Centros_DELETE_View($valores); //se invoca la vista DELETE con los datos a borrar
             } else {
                 $centros = new Centros_Model($_REQUEST['nombre'], '', '');    //creamos un objeto del modelo con el email
                 $respuesta = $centros->DELETE();                                              //y se borra la tupla asociada a ese email invocando el metodo DELETE() del modelo
@@ -114,7 +114,7 @@ else {
         default:
             $centros = new Centros_Model('', '', '');  //Objeto del modelo
             $recordSet = $centros->showAll();   //es un array asociativo con los datos, se obtienen los datos de la tabla a traves del modelo (metodo SHOWALL() )
-            new Centro_SHOWALL($recordSet);  //se invoca la vista SHOWALL con los datos a mostrar
+            new Centros_SHOWALL_View($recordSet);  //se invoca la vista SHOWALL con los datos a mostrar
             break;
     }
 }

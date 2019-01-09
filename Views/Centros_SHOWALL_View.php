@@ -1,6 +1,6 @@
 <?php
 
-class Centro_SHOWALL {
+class Centros_SHOWALL_View {
 
     function __construct($recordSet) {    //Constructor de la clase, pasamos un objeto tipo loteriaiu como parametro
         $this->render($recordSet);                  //------------------------REVISAR $recordSet----------------------------------------------------------
@@ -20,7 +20,7 @@ class Centro_SHOWALL {
                     <th scope="col"><?php echo $strings['Nombre']; ?></th>
                     <th scope="col"><?php echo $strings['Lugar']; ?></th>
                     <th scope="col"><?php echo $strings['Usuario asignado']; ?></th>
-                    <th scope="col"><form class="form-inline my-2 my-lg-0" name='formulario' action="../Controllers/Centros_Controller.php" method="">
+                    <th scope="col"><form class="form-inline my-2 my-lg-0" name='form_showall' action="../Controllers/Centros_Controller.php" method="">
                             <button name="action" value="ADD" type="submit" class="btn btn-outline-primary">
                                 <i class="fas fa-plus"></i></button>&nbsp
                             <button name="action" value="SEARCH" type="submit" class="btn btn-outline-primary">
@@ -44,8 +44,6 @@ class Centro_SHOWALL {
                             <!--Botones para realizar acciones en cada tupla-->
                             <form class="form-inline my-2 my-lg-0" name='formulario' action="../Controllers/Centros_Controller.php" method="">
                                 <input type="hidden" name=nombre value=<?php echo $tupla['nombre'] ?>>
-                                <button name="action" value="SHOWCURRENT" type="submit" class="btn btn-outline-primary">
-                                    <i class="far fa-eye"></i></button>&nbsp
                                 <button name="action" value="EDIT" type="submit" class="btn btn-outline-primary">
                                     <i class="fas fa-edit"></i></button>&nbsp
                                 <button name="action" value="DELETE" type="submit" class="btn btn-outline-primary">

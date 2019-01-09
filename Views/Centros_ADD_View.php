@@ -1,6 +1,6 @@
 <?php
 
-class Centros_ADD {
+class Centros_ADD_View {
 
     function __construct() {
 
@@ -17,9 +17,8 @@ class Centros_ADD {
         <h2><?php echo $strings['Añadir centro']; ?></h2>        
 
         <section>
-            <form class="form_edit" method="post" action="../Controllers/Centros_Controller.php" enctype="multipart/form-data" onsubmit="return validacionSubmitEdit();">
-                <fieldset id="fieldset_edit">
-                    <input hidden name="cod" type="text" size="25" id="cod" value="NULL"> 
+            <form class="form_add" method="post" action="../Controllers/Centros_Controller.php" onsubmit="return validacionSubmitEdit();">
+                <fieldset id="fieldset_add">
 
                     <label for="nombre"><?php echo $strings['Nombre'] ?>  *</label> 
                     <input name="nombre" type="text" size="25" id="nombre" onblur="comprobarTexto(this, 30);"/> 
@@ -29,12 +28,6 @@ class Centros_ADD {
 
                     <label for="usuarioAsignado"><?php echo $strings['Usuario asignado'] ?>  *</label> 
                     <input name="usuarioAsignado" type="text" size="25" id="usuarioAsignado" onblur="comprobarTexto(this, 30);"/> 
-
-                <!--                    <select id="tipo" name="tipo">
-                                        <option value="certificador"><?php echo $strings['Certificador'] ?></option>
-                                        <option value="mantenimiento"><?php echo $strings['Mantenimiento'] ?></option>
-                                        <option value="reparacion"><?php echo $strings['Reparacion'] ?></option>
-                                    </select>-->
 
                 </fieldset>
                 <span>* <?php echo $strings['Campos obligatorios']; ?> </span>
