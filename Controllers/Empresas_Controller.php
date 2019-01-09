@@ -12,6 +12,7 @@ if (!IsAuthenticated()) {
     include '../Views/Empresas_EDIT_View.php';
     include '../Views/Empresas_DELETE_View.php';
     include '../Views/Empresas_SHOWALL_View.php';
+    include '../Views/Empresas_SEARCH_View.php';
 
     function recuperarDataForm() {
         $cif = $_REQUEST['cif'];
@@ -93,7 +94,18 @@ if (!IsAuthenticated()) {
             new Empresas_SHOWCURRENT_View($valores);     //se invoca la vista SHOWCURRENT con los datos a mostrar
             break;
 
+        case 'SEARCH':
+            $empresas; //Objeto del modelo
+            $datos; //datos a mostrar extraidos del modelo
 
+            if (!$_POST) {    //Si se envia por GET se llama a la vista EDIT para que se envie por POST
+                new Empresas_SEARCH_View();
+            } else {
+                $empresas = recuperarDataForm();
+                $datos = $empresas->SEARCH();
+                new Empresas_SHOWALL_View($datos);
+            }
+            break;
 
         default:
             $empresas = new Empresas_Model('', '', '', '', '');  //Objeto del modelo

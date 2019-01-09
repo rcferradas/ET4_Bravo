@@ -67,13 +67,16 @@ class Empresas_Model {
 //funcion SEARCH: hace una búsqueda en la tabla con
 //los datos proporcionados. Si van vacios devuelve todos
     function SEARCH() {
-        $sql;
-        $resultado;
         $sql = "SELECT * FROM empresas
-                    WHERE 'cif' LIKE '%$this->cif%' AND 'nombre' LIKE '%$this->nombre%' AND 'tipo' LIKE '%$this->tipo%'
-                    AND 'telefono' LIKE '%$this->telefono%' AND 'localizacion' LIKE '%$this->localizacion%'";
-        $resultado = $this->mysqli->query($sql);
-        return $resultado;
+                    WHERE `cif` LIKE '%$this->cif%' AND `nombre` LIKE '%$this->nombre%' AND `tipo` LIKE '%$this->tipo%'
+                    AND `telefono` LIKE '%$this->telefono%' AND `localizacion` LIKE '%$this->localizacion%'";
+        if (!($resultado = $this->mysqli->query($sql))) {
+            return 'Error en la consulta';
+        } else if ($resultado->numrows = 0) {
+            return 'Sin resultados';
+        } else {
+            return $resultado;
+        }
     }
 
 //funcion DELETE : comprueba que la tupla a borrar existe y una vez
