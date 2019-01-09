@@ -10,7 +10,7 @@ class Centros_Model {
     function __construct($nombre, $lugar, $usuarioAsignado) {
         $this->nombre = $nombre;
         $this->lugar = $lugar;
-        $this->useraginado = $usuarioAsignado;
+        $this->usuarioAsignado = $usuarioAsignado;
 
         include_once '../Models/Access_DB.php';
         $this->mysqli = ConnectDB();
@@ -60,8 +60,7 @@ class Centros_Model {
 //funcion SEARCH: hace una búsqueda en la tabla con
 //los datos proporcionados. Si van vacios devuelve todos
     function SEARCH() {
-        $sql = "SELECT * FROM centros
-                    WHERE 'lugar' LIKE '%$this->lugar%' AND 'nombre' LIKE '%$this->nombre%' AND 'usuarioAsignado' LIKE '%$this->usuarioAsignado%'";
+        $sql = "SELECT * FROM centros WHERE `lugar` LIKE '%$this->lugar%' AND `nombre` LIKE '%$this->nombre%' AND `usuarioAsignado` LIKE '%$this->usuarioAsignado%'";
         $resultado = $this->mysqli->query($sql);
         return $resultado;
     }
@@ -81,14 +80,10 @@ class Centros_Model {
 
 // funcion Edit: realizar el update de una tupla despues de comprobar que existe
     function EDIT() {
-        $sql;
-        $resultado;
-        $sql = "SELECT * FROM centros WHERE ('nombre' = '" . $this->nombre . "')";
+        $sql = "SELECT * FROM centros WHERE (`nombre` = '$this->nombre')";
         $resultado = $this->mysqli->query($sql);
         if ($resultado->num_rows == 1) {
-            $sql = "UPDATE centros
-                     SET 'lugar' = '$this->lugar', 'usuarioAsignado' = '$this->usuarioAsignado'
-                WHERE `nombre` = '$this->nombre'";
+            $sql = "UPDATE centros SET `lugar` = '$this->lugar', `usuarioAsignado` = '$this->usuarioAsignado' WHERE `nombre` = '$this->nombre'";
             if (!$this->mysqli->query($sql)) {
                 return 'Error al editar';
             } else {

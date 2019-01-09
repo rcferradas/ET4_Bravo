@@ -16,9 +16,9 @@ else {
     include '../Views/Centro_SHOWALL_View.php';
     include '../Views/Centro_ADD_View.php';
 //    include '../Views/Centro_SHOWCURRENT_View.php';
-//    include '../Views/Centro_EDIT_View.php';
+    include '../Views/Centro_EDIT_View.php';
     include '../Views/Centro_DELETE_View.php';
-//    include '../Views/Centro_SEARCH_View.php';
+    include '../Views/Centro_SEARCH_View.php';
 
     function recuperarDataForm() {
         $nombre = $_REQUEST['nombre'];
@@ -49,43 +49,43 @@ else {
             }
             break;
 
-//        case 'SEARCH':
-//            $centros; //Objeto del modelo
-//            $datos; //datos a mostrar extraidos del modelo
-//
-//            if (!$_POST) {    //Si se envia por GET se llama a la vista EDIT para que se envie por POST
-//                new Centro_SEARCH();
-//            } else {
-//                $centros = recuperarDataForm();
-//                $datos = $centros->SEARCH();
-//                new Centro_SHOWALL($datos);
-//            }
-//            break;
-//
-//        case 'EDIT':
-//            $centros; //Objeto del modelo
-//            $respuesta; //Almacena la respuesta que se mostrará via MESSAGE
-//            $valores; //Almacena los valores tras almacenarlos
-//            if (!isset($_REQUEST['nombre'])) { //Si no esta definido el email (o alguien modifica el enlace) vuelve al index.php
-//                new MESSAGE('No existe el contrato', '../index.php');
-//            } else {
-//                $centros = new Centros_Model($_REQUEST['nombre'], '', '');    //creamos un objeto del modelo con el email
-//                $centros = $centros->showCurrent();                                        //y se trae de la BD (a traves del modelo) la tupla asociada a ese email
-//                if ($centros == 'No existe el usuario') {  //Si no se encuentra la tupla
-//                    new Message($centros, '../index.php');    //vuelve al al index.php
-//                } else {
-//                    if (!$_POST) { //Si se envia por GET se llama a la vista ADD para que se envie por POST
-//                        $centros = new Centros_Model($_REQUEST['nombre'], '', ''); //creamos un objeto del modelo con el nombreigo de contrato
-//                        $valores = $centros->showCurrent();                                       //y se trae de la BD (a traves del modelo) la tupla asociada a ese email
-//                        new Centros_EDIT($valores);
-//                    } else {
-//                        $centros = recuperarDataForm();  //que utilizara el resguardo que introduzcamos en el formulario edit
-//                        $respuesta = $centros->EDIT();
-//                        new MESSAGE($respuesta, '../Controllers/Centros_Controller.php');
-//                    }
-//                }
-//            }
-//            break;
+        case 'SEARCH':
+            $centros; //Objeto del modelo
+            $datos; //datos a mostrar extraidos del modelo
+
+            if (!$_POST) {    //Si se envia por GET se llama a la vista EDIT para que se envie por POST
+                new Centro_SEARCH();
+            } else {
+                $centros = recuperarDataForm();
+                $datos = $centros->SEARCH();
+                new Centro_SHOWALL($datos);
+            }
+            break;
+
+        case 'EDIT':
+            $centros; //Objeto del modelo
+            $respuesta; //Almacena la respuesta que se mostrará via MESSAGE
+            $valores; //Almacena los valores tras almacenarlos
+            if (!isset($_REQUEST['nombre'])) { //Si no esta definido el email (o alguien modifica el enlace) vuelve al index.php
+                new MESSAGE('No existe el centro', '../index.php');
+            } else {
+                $centros = new Centros_Model($_REQUEST['nombre'], '', '');    //creamos un objeto del modelo con el email
+                $centros = $centros->showCurrent();                                        //y se trae de la BD (a traves del modelo) la tupla asociada a ese email
+                if ($centros == 'No existe el usuario') {  //Si no se encuentra la tupla
+                    new Message($centros, '../index.php');    //vuelve al al index.php
+                } else {
+                    if (!$_POST) { //Si se envia por GET se llama a la vista ADD para que se envie por POST
+                        $centros = new Centros_Model($_REQUEST['nombre'], '', ''); //creamos un objeto del modelo con el nombreigo de contrato
+                        $valores = $centros->showCurrent();                                       //y se trae de la BD (a traves del modelo) la tupla asociada a ese email
+                        new Centros_EDIT($valores);
+                    } else {
+                        $centros = recuperarDataForm();  //que utilizara el resguardo que introduzcamos en el formulario edit
+                        $respuesta = $centros->EDIT();
+                        new MESSAGE($respuesta, '../Controllers/Centros_Controller.php');
+                    }
+                }
+            }
+            break;
 
         case 'DELETE':
             $centros; //Objeto del modelo
