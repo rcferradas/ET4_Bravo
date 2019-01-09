@@ -67,5 +67,11 @@ $strings = array(
     'Eliminado correctamente' => 'Eliminado correctamente',
     'No existe en la base de datos' => 'No existe en la base de datos',
     'No existe la tupla' => 'No existe la tupla',
+//    ----------
+    'CIF' => 'CIF',
+    'Localizacion' => 'Localización',
+    'Certificadora' => 'Certificadora',
+    'Reparadora' => 'Reparadora',
+    'Añadir empresa' => 'Añadir empresa',
     'Campos obligatorios' => 'Campos obligatorios');
 ?>
