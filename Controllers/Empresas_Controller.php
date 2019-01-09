@@ -5,23 +5,21 @@ include '../Functions/Authentication.php';
 include '../Views/MESSAGE_View.php';
 if (!IsAuthenticated()) {
     new MESSAGE('Debes autentificarte', '../index.php');
-}
-else {//una vez sabemos que está identificado
-
+} else {//una vez sabemos que está identificado
     require_once '../Models/Empresas_Model.php';
     include '../Views/Empresas_ADD_View.php';
 //    include '../Views/Empresas_SHOWCURRENT_View.php';
     include '../Views/Empresas_EDIT_View.php';
-//    include '../Views/Empresas_DELETE_View.php';
+    include '../Views/Empresas_DELETE_View.php';
     include '../Views/Empresas_SHOWALL_View.php';
-    
+
     function recuperarDataForm() {
         $cif = $_REQUEST['cif'];
         $nombre = $_REQUEST['nombre'];
         $tipo = $_REQUEST['tipo'];
         $telefono = $_REQUEST['telefono'];
         $localizacion = $_REQUEST['localizacion'];
-        
+
         $action = $_REQUEST['action'];
 
         $empresas = new Empresas_Model($cif, $nombre, $tipo, $telefono, $localizacion);
@@ -44,7 +42,7 @@ else {//una vez sabemos que está identificado
                 new MESSAGE($respuesta, '../Controllers/Empresas_Controller.php');
             }
             break;
-            
+
         case 'EDIT'://caso para editar empresa
             $empresas; //Objeto del modelo
             $respuesta; //Almacena la respuesta que se mostrará via MESSAGE
@@ -60,7 +58,7 @@ else {//una vez sabemos que está identificado
                 } else {
                     if (!$_POST) { //Si se envia por GET se llama a la vista ADD para que se envie por POST
                         $empresas = new Empresas_Model($_REQUEST['cif'], '', '', '', ''); //creamos un objeto del modelo con el cif
-                        $valores = $empresas->showCurrent();//y se trae de la BD (a traves del modelo) la tupla asociada a ese cif
+                        $valores = $empresas->showCurrent(); //y se trae de la BD (a traves del modelo) la tupla asociada a ese cif
                         new Empresas_EDIT_View($valores);
                     } else {
                         $empresas = recuperarDataForm();  //coge los datos introducidos en el formulario
@@ -78,7 +76,7 @@ else {//una vez sabemos que está identificado
 
             if (!$_POST) {
                 $empresas = new Empresas_Model($_REQUEST['cif'], '', '', '', ''); //creamos un objeto del modelo
-                $valores = $empresas->RellenaDatos(); //se coge de la BD la tupla con dicho cif
+                $valores = $empresas->showCurrent(); //se coge de la BD la tupla con dicho cif
                 new Empresas_DELETE_View($valores); //se invoca la vista DELETE con los datos a borrar
             } else {
                 $empresas = new Empresas_Model($_REQUEST['cif'], '', '', '', '');    //creamos un objeto del modelo con el cif
@@ -86,7 +84,7 @@ else {//una vez sabemos que está identificado
                 new MESSAGE($respuesta, '../Controllers/Empresas_Controller.php');
             }
             break;
-            
+
         default:
             $empresas = new Empresas_Model('', '', '', '', '');  //Objeto del modelo
             $recordSet = $empresas->showAll();   //es un array asociativo con los datos, se obtienen los datos de la tabla a traves del modelo (metodo SHOWALL() )

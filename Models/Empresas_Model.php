@@ -79,12 +79,10 @@ class Empresas_Model {
 //funcion DELETE : comprueba que la tupla a borrar existe y una vez
 // verificado la borra
     function DELETE() {
-        $sql;
-        $resultado;
-        $sql = "SELECT * FROM empresas WHERE ('cif' = '" . $this->cif . "')";
+        $sql = "SELECT * FROM empresas WHERE (`cif` = '$this->cif')";
         $resultado = $this->mysqli->query($sql);
         if ($resultado->num_rows == 1) {
-            $sql = "DELETE FROM empresas WHERE ('cif' = '" . $this->cif . "')";
+            $sql = "DELETE FROM empresas WHERE (`cif` = '$this->cif')";
             $this->mysqli->query($sql);
             return 'Eliminado correctamente';
         } else
