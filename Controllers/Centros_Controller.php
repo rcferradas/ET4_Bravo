@@ -14,10 +14,10 @@ else {
 
     require_once '../Models/Centros_Model.php';
     include '../Views/Centro_SHOWALL_View.php';
-//    include '../Views/Centro_ADD_View.php';
+    include '../Views/Centro_ADD_View.php';
 //    include '../Views/Centro_SHOWCURRENT_View.php';
 //    include '../Views/Centro_EDIT_View.php';
-//    include '../Views/Centro_DELETE_View.php';
+    include '../Views/Centro_DELETE_View.php';
 //    include '../Views/Centro_SEARCH_View.php';
 
     function recuperarDataForm() {
@@ -37,18 +37,18 @@ else {
     }
 
     switch ($_REQUEST['action']) {
-//        case 'ADD':
-//            $datos; //Almacena los datos del formulario
-//            $respuesta; //Almacena la respuesta que se mostrará via MESSAGE
-//            if (!$_POST) {    //Si se envia por GET se llama a la vista ADD para que se envie por POST, cuestiones de privacidad
-//                new Centros_ADD();
-//            } else {
-//                $datos = recuperarDataForm();
-//                $respuesta = $datos->registrar();
-//                new MESSAGE($respuesta, '../Controllers/Centros_Controller.php');
-//            }
-//            break;
-//
+        case 'ADD':
+            $datos; //Almacena los datos del formulario
+            $respuesta; //Almacena la respuesta que se mostrará via MESSAGE
+            if (!$_POST) {    //Si se envia por GET se llama a la vista ADD para que se envie por POST, cuestiones de privacidad
+                new Centros_ADD();
+            } else {
+                $datos = recuperarDataForm();
+                $respuesta = $datos->ADD();
+                new MESSAGE($respuesta, '../Controllers/Centros_Controller.php');
+            }
+            break;
+
 //        case 'SEARCH':
 //            $centros; //Objeto del modelo
 //            $datos; //datos a mostrar extraidos del modelo
@@ -86,23 +86,23 @@ else {
 //                }
 //            }
 //            break;
-//
-//        case 'DELETE':
-//            $centros; //Objeto del modelo
-//            $respuesta; //Almacena la respuesta que se mostrará via MESSAGE
-//            $valores; //Almacena los valores tras almacenarlos
-//
-//            if (!$_POST) {
-//                $centros = new Centros_Model($_REQUEST['nombre'], '', '');     //creamos un objeto del modelo con el email
-//                $valores = $centros->showCurrent();                                          //y se trae de la BD (a traves del modelo) la tupla asociada a ese email
-//                new Centro_DELETE($valores); //se invoca la vista DELETE con los datos a borrar
-//            } else {
-//                $centros = new Centros_Model($_REQUEST['nombre'], '', '');    //creamos un objeto del modelo con el email
-//                $respuesta = $centros->DELETE();                                              //y se borra la tupla asociada a ese email invocando el metodo DELETE() del modelo
-//                new MESSAGE($respuesta, '../Controllers/Centros_Controller.php');
-//            }
-//            break;
-//
+
+        case 'DELETE':
+            $centros; //Objeto del modelo
+            $respuesta; //Almacena la respuesta que se mostrará via MESSAGE
+            $valores; //Almacena los valores tras almacenarlos
+
+            if (!$_POST) {
+                $centros = new Centros_Model($_REQUEST['nombre'], '', '');     //creamos un objeto del modelo con el email
+                $valores = $centros->showCurrent();                                          //y se trae de la BD (a traves del modelo) la tupla asociada a ese email
+                new Centro_DELETE($valores); //se invoca la vista DELETE con los datos a borrar
+            } else {
+                $centros = new Centros_Model($_REQUEST['nombre'], '', '');    //creamos un objeto del modelo con el email
+                $respuesta = $centros->DELETE();                                              //y se borra la tupla asociada a ese email invocando el metodo DELETE() del modelo
+                new MESSAGE($respuesta, '../Controllers/Centros_Controller.php');
+            }
+            break;
+
 //        case 'SHOWCURRENT':
 //            $centros; //Objeto del modelo
 //            $valores; //Almacena los valores tras almacenarlos

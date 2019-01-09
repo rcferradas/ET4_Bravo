@@ -61,6 +61,10 @@ $strings = array(
     'Añadir usuario' => 'Añadir usuario',
     'Centros' => 'Centros',
     'Lugar' => 'Lugar',
+    'Insertado con éxito' => 'Insertado con éxito',
+    'Añadir centro' => 'Añadir centro',
     'Usuario asignado' => 'Usuario asignado',
+    'Eliminado correctamente' => 'Eliminado correctamente',
+    'No existe en la base de datos' => 'No existe en la base de datos',
     'Campos obligatorios' => 'Campos obligatorios');
 ?>
