@@ -49,7 +49,6 @@ $strings = array(
     'Visitas' => 'Visitas',
     'Usuarios' => 'Usuarios',
     'Menu' => 'Menú',
-//    -------------
     'Nombre' => 'Nombre',
     'Telefono' => 'Teléfono',
     'DNI' => 'DNI',
