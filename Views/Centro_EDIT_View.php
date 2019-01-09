@@ -16,7 +16,7 @@ class Centros_EDIT {
 
             <section>
                 <form class="form_edit" method="post" action="../Controllers/Centros_Controller.php" enctype="multipart/form-data" onsubmit="return validacionSubmitEdit();">
-                    <h2>EDITAR CENTRO</h2>
+                    <h2><?php echo $strings['Editar centro']; ?></h2>
 
                     <fieldset id="fieldset_edit">
 

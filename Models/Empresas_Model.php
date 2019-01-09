@@ -30,11 +30,19 @@ class Empresas_Model {
 
 //Funcion encargada de extraer los datos del SHOWCURRENT
     function showCurrent() {
-        $sql;
-        $resultado;
-        $sql = "SELECT * FROM empresas WHERE 'cif' = '" . $this->$cif . "'";
+        $sql = "SELECT * FROM empresas WHERE `cif` = '$this->cif'";
         $resultado = $this->mysqli->query($sql);
-        return resultado;
+        if ($resultado->num_rows == 1) { //Si existe dicha tupla
+            $tupla = $resultado->fetch_assoc(); //Creamos un array asociativo que almacena los valores de la tupla
+            $this->cif = $tupla['cif'];
+            $this->nombre = $tupla['nombre'];
+            $this->tipo = $tupla['tipo'];
+            $this->telefono = $tupla['telefono'];
+            $this->localizacion = $tupla['localizacion'];
+            return $tupla; //devolvemos el array asociativo
+        } else {
+            return 'No existe dicha tupla';
+        }
     }
 
 //Metodo ADD
@@ -85,14 +93,11 @@ class Empresas_Model {
 
 // funcion Edit: realizar el update de una tupla despues de comprobar que existe
     function EDIT() {
-        $sql;
-        $resultado;
-        $sql = "SELECT * FROM empresas WHERE ('cif' = '" . $this->cif . "')";
+        $sql = "SELECT * FROM empresas WHERE (`cif` = '" . $this->cif . "')";
         $resultado = $this->mysqli->query($sql);
         if ($resultado->num_rows == 1) {
-            $sql = "UPDATE empresas
-                     SET 'nombre' = '$this->nombre', 'tipo' = '$this->tipo', 'telefono' = $this->telefono ,
-                     'localizacion' = '$this->localizacion' WHERE 'cif' = '$this->cif'";
+            $sql = "UPDATE empresas SET `nombre` = '$this->nombre', `tipo` = '$this->tipo', `telefono` = $this->telefono ,
+                     `localizacion` = '$this->localizacion' WHERE `cif` = '$this->cif'";
             if (!$this->mysqli->query($sql)) {
                 return 'Error al editar';
             } else {
