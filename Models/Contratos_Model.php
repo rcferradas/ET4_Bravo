@@ -55,7 +55,7 @@ class Contratos_Model {
             $this->importe = $tupla['importe'];
             return $tupla; //devolvemos el array asociativo
         } else {
-            return 'No existe dicha tupla';
+            return 'No existe el contrato';
         }
     }
 
@@ -108,7 +108,7 @@ class Contratos_Model {
 
 // funcion Edit: realizar el update de una tupla despues de comprobar que existe
     function EDIT() {
-        $documento = "SELECT `documento` FROM contratos WHERE `cod`=$this->cod";
+        $documento = "SELECT `documento` FROM contratos WHERE `cod`='$this->cod'";
         $modeloDocumento = $this->mysqli->query($documento);
         $tupla = $modeloDocumento->fetch_assoc();
         $rutaDocumento = $tupla['documento'];

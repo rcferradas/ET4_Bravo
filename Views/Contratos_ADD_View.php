@@ -1,6 +1,6 @@
 <?php
 
-class Contratos_ADD {
+class Contratos_ADD_View {
 
     function __construct() {
 
@@ -17,8 +17,8 @@ class Contratos_ADD {
         <h2><?php echo $strings['Añadir contrato']; ?></h2>        
 
         <section>
-            <form class="form_edit" method="post" action="../Controllers/Contratos_Controller.php" enctype="multipart/form-data" onsubmit="return validacionSubmitEdit();">
-                <fieldset id="fieldset_edit">
+            <form class="form_add" method="post" action="../Controllers/Contratos_Controller.php" enctype="multipart/form-data" onsubmit="return validacionSubmitEdit();">
+                <fieldset id="fieldset_add">
                     <input hidden name="cod" type="text" size="25" id="cod" value="NULL"> 
 
                     <label for="centro"><?php echo $strings['Centro'] ?>  *</label> 
@@ -35,7 +35,7 @@ class Contratos_ADD {
                     <input type="text" name="cifEmpresa" id="cifEmpresa"> 
 
                     <label for="documento"><?php echo $strings['Documento']; ?>  *</label> 
-                    <input name="documento" type="file" id="documento" /> <!--No se valida el resguardo en edit porque si no se introduce un fichero nuevo nos quedamos con el que ya esta almacenado-->
+                    <input name="documento" type="file" id="documento" />
 
                     <label for="periodoinicio"><?php echo $strings['Periodo inicio']; ?>  *</label> 
                     <input type="date" name="periodoinicio" id="periodoinicio"> 

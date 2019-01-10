@@ -72,10 +72,12 @@ $strings = array(
     'Localizacion' => 'Localización',
     'Certificadora' => 'Certificadora',
     'Reparadora' => 'Reparadora',
+    'No existe el contrato' => 'No existe el contrato',
     'Editar centro' => 'Editar centro',
     'Buscar centros' => 'Buscar centros',
     'Buscar empresas' => 'Buscar empresas',
     'Editar empresa' => 'Editar empresa',
+    'Editar contrato' => 'Editar contrato',
     'Añadir empresa' => 'Añadir empresa',
     'Campos obligatorios' => 'Campos obligatorios');
 ?>

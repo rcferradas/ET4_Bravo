@@ -1,7 +1,7 @@
 <?php
 include_once '../Functions/Authentication.php';
 
-class Contrato_SHOWCURRENT {
+class Contratos_SHOWCURRENT_View {
 
     function __construct($tupla) {    //Constructor de la clase
         $this->render($tupla);
@@ -39,7 +39,7 @@ class Contrato_SHOWCURRENT {
                     <td><?php echo $tupla['importe']; ?></td>
                     <td><?php echo $tupla['estado']; ?></td>
                     <td>
-                        <!--Botones para realizar acciones en cada tupla-->
+                        <!--Botones para realizar acciones en la tupla-->
                         <form class="form-inline my-2 my-lg-0" name='formulario' action="../Controllers/Contratos_Controller.php" method="">
                             <input type="hidden" name=cod value=<?php echo $tupla['cod'] ?>>
                             <button name="action" value="EDIT" type="submit" class="btn btn-outline-primary">

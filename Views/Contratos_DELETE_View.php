@@ -1,7 +1,7 @@
 <?php
 include_once '../Functions/Authentication.php';
 
-class Contrato_DELETE {
+class Contratos_DELETE_View {
 
     function __construct($tupla) {    //Constructor de la clase
         $this->render($tupla);

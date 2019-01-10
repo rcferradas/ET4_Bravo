@@ -1,6 +1,6 @@
 <?php
 
-class Contratos_EDIT {
+class Contratos_EDIT_View {
 
     function __construct($datos) {    //Constructor de la clase, pasamos un objeto tipo loteriaiu como parametro
         $this->render($datos);
@@ -19,6 +19,7 @@ class Contratos_EDIT {
                     <h2><?php echo $strings['Editar contrato']; ?></h2>
 
                     <fieldset id="fieldset_edit">
+                    <input hidden name="cod" type="text" size="25" id="cod" value="<?php echo $datos['cod'] ?>"> 
 
                         <label for="centro"><?php echo $strings['Centro'] ?>  *</label> 
                         <input name="centro" type="text" size="25" id="centro" value="<?php echo $datos['centro'] ?>"  onblur="comprobarTexto(this, 30);"/> 
@@ -50,7 +51,7 @@ class Contratos_EDIT {
                         </select>
 
                         <label for="cifEmpresa"><?php echo $strings['cifEmpresa']; ?>  *</label> 
-                        <input name="cifEmpresa" type="text" id="cifEmpresa" value="<?php echo $datos['cifEmpresa']; ?>"/> <!--No se valida el resguardo en edit porque si no se introduce un fichero nuevo nos quedamos con el que ya esta almacenado-->
+                        <input name="cifEmpresa" type="text" id="cifEmpresa" value="<?php echo $datos['cifEmpresa']; ?>"/>
 
                         <label for="documento"><?php echo $strings['Documento']; ?>  *</label> 
                         <input type="file" name="documento" id="documento"> 
@@ -89,7 +90,6 @@ class Contratos_EDIT {
                     <span>* <?php echo $strings['Campos obligatorios']; ?> </span>
                     <!-- Boton submit -->
                     <button name="action" type="submit" value="EDIT"><i class="fas fa-check"></i></button>
-
                 </form>
             </section>
 

@@ -1,6 +1,6 @@
 <?php
 
-class Contrato_SEARCH {
+class Contratos_SEARCH_View {
 
     function __construct() {
         $this->render();
@@ -16,8 +16,9 @@ class Contrato_SEARCH {
         <h2><?php echo $strings['Buscar contratos']; ?></h2>        
 
         <section>
-            <form class="form_edit" method="post" action="../Controllers/Contratos_Controller.php" enctype="multipart/form-data">
-                <fieldset id="fieldset_edit">
+            <form class="form_search" method="post" action="../Controllers/Contratos_Controller.php">
+                <fieldset id="fieldset_search">
+                    <input hidden name="cod" type="text" size="25" id="cod" value=""> 
 
                     <label for="centro"><?php echo $strings['Centro'] ?>  *</label> 
                     <input name="centro" type="text" size="25" id="centro" onblur="comprobarTexto(this, 30);"/> 
@@ -30,11 +31,8 @@ class Contrato_SEARCH {
                         <option value="reparacion"><?php echo $strings['Reparacion'] ?></option>
                     </select>
 
-                    <label for="cifEmpresa"><?php echo $strings['cifEmpresa'] ?>  *</label> 
+                    <label for="cifEmpresa"><?php echo $strings['Empresa encargada'] ?>  *</label> 
                     <input name="cifEmpresa" type="text" id="cifEmpresa" /> <!--No se valida el resguardo en edit porque si no se introduce un fichero nuevo nos quedamos con el que ya esta almacenado-->
-
-                    <label for="documento"><?php echo $strings['Documento']; ?>  *</label> 
-                    <input name="documento" type="file" id="documento" /> <!--No se valida el resguardo en edit porque si no se introduce un fichero nuevo nos quedamos con el que ya esta almacenado-->
 
                     <label for="periodoinicio"><?php echo $strings['Periodo inicio']; ?>  *</label> 
                     <input type="date" name="periodoinicio" id="periodoinicio"> 
@@ -47,7 +45,10 @@ class Contrato_SEARCH {
 
                     <label for="estado"><?php echo $strings['Estado']; ?>  *</label> 
                     <select id="estado" name="estado">
-                        <option selected value="norealizado"><?php echo $strings['No realizado'] ?></option>
+                        <option selected value=""></option>
+                        <option value="norealizado"><?php echo $strings['No realizado'] ?></option>
+                        <option value="realizado"><?php echo $strings['Realizado'] ?></option>
+                        <option value="pagado"><?php echo $strings['Pagado'] ?></option>
                     </select>
 
                 </fieldset>

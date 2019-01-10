@@ -13,12 +13,12 @@ if (!IsAuthenticated()) {
 else {
 
     require_once '../Models/Contratos_Model.php';
-    include '../Views/Contrato_SHOWALL_View.php';
-    include '../Views/Contrato_SHOWCURRENT_View.php';
-    include '../Views/Contrato_EDIT_View.php';
-    include '../Views/Contrato_DELETE_View.php';
-    include '../Views/Contrato_ADD_View.php';
-    include '../Views/Contrato_SEARCH_View.php';
+    include '../Views/Contratos_SHOWALL_View.php';
+    include '../Views/Contratos_SHOWCURRENT_View.php';
+    include '../Views/Contratos_EDIT_View.php';
+    include '../Views/Contratos_DELETE_View.php';
+    include '../Views/Contratos_ADD_View.php';
+    include '../Views/Contratos_SEARCH_View.php';
 
     function recuperarDataForm() {
         $cod = $_REQUEST['cod'];
@@ -48,7 +48,7 @@ else {
             $datos; //Almacena los datos del formulario
             $respuesta; //Almacena la respuesta que se mostrará via MESSAGE
             if (!$_POST) {    //Si se envia por GET se llama a la vista ADD para que se envie por POST, cuestiones de privacidad
-                new Contratos_ADD();
+                new Contratos_ADD_View();
             } else {
                 $datos = recuperarDataForm();
                 $respuesta = $datos->ADD();
@@ -61,11 +61,11 @@ else {
             $datos; //datos a mostrar extraidos del modelo
 
             if (!$_POST) {    //Si se envia por GET se llama a la vista EDIT para que se envie por POST
-                new Contrato_SEARCH();
+                new Contratos_SEARCH_View();
             } else {
-                $contratos = new Contratos_Model($_REQUEST['cod'], $_REQUEST['centro'], $_REQUEST['tipo'], $_REQUEST['estado'], '', $_REQUEST['cifEmpresa'], $_REQUEST['periodoinicio'], $_REQUEST['periodofin'], $_REQUEST['importe']);
+                $contratos = new Contratos_Model($_REQUEST['cod'], $_REQUEST['centro'], $_REQUEST['tipo'], $_REQUEST['estado'], $_REQUEST['cifEmpresa'],'', $_REQUEST['periodoinicio'], $_REQUEST['periodofin'], $_REQUEST['importe']);
                 $datos = $contratos->SEARCH();
-                new Contrato_SHOWALL($datos);
+                new Contratos_SHOWALL_View($datos);
             }
             break;
 
@@ -77,7 +77,7 @@ else {
                 new MESSAGE('No existe el contrato', '../index.php');
             } else {
                 $contratos = new Contratos_Model($_REQUEST['cod'], '', '', '', '', '', '', '', '');    //creamos un objeto del modelo con el email
-                $contratos = $contratos->showCurrent();                                        //y se trae de la BD (a traves del modelo) la tupla asociada a ese email
+                $contratos = $contratos->showCurrent();                                       //y se trae de la BD (a traves del modelo) la tupla asociada a ese email
                 if ($contratos == 'No existe el contrato') {  //Si no se encuentra la tupla
                     new Message($contratos, '../index.php');    //vuelve al al index.php
                 } else {
@@ -85,7 +85,7 @@ else {
                     if (!$_POST) { //Si se envia por GET se llama a la vista ADD para que se envie por POST
                         $contratos = new Contratos_Model($_REQUEST['cod'], '', '', '', '', '', '', '', ''); //creamos un objeto del modelo con el codigo de contrato
                         $valores = $contratos->showCurrent();                                       //y se trae de la BD (a traves del modelo) la tupla asociada a ese email
-                        new Contratos_EDIT($valores);
+                        new Contratos_EDIT_View($valores);
                     } else {
                         if (!isset($_FILES['documento']['name']) || $_FILES['documento']['name'] == '') { //Si el resguardo que viene del formulario EDIT viene sin definir o vacío, nso quedamos con el resguardo que ya teniamos
                             $contratos = new Contratos_Model($_REQUEST['cod'], $_REQUEST['centro'], $_REQUEST['tipo'], $_REQUEST['estado'], $_REQUEST['cifEmpresa'], $documento, $_REQUEST['periodoinicio'], $_REQUEST['periodofin'], $_REQUEST['importe']);
@@ -107,7 +107,7 @@ else {
             if (!$_POST) {
                 $contratos = new Contratos_Model($_REQUEST['cod'], '', '', '', '', '', '', '', '');     //creamos un objeto del modelo con el email
                 $valores = $contratos->showCurrent();                                          //y se trae de la BD (a traves del modelo) la tupla asociada a ese email
-                new Contrato_DELETE($valores); //se invoca la vista DELETE con los datos a borrar
+                new Contratos_DELETE_View($valores); //se invoca la vista DELETE con los datos a borrar
             } else {
                 $contratos = new Contratos_Model($_REQUEST['cod'], '', '', '', '', '', '', '', '');    //creamos un objeto del modelo con el email
                 $respuesta = $contratos->DELETE();                                              //y se borra la tupla asociada a ese email invocando el metodo DELETE() del modelo
@@ -120,13 +120,13 @@ else {
             $valores; //Almacena los valores tras almacenarlos
             $contratos = new Contratos_Model($_REQUEST['cod'], '', '', '', '', '', '', '', ''); //creamos un objeto del modelo con el email
             $valores = $contratos->showCurrent();                                      //y se trae de la BD (a traves del modelo) la tupla asociada a ese email
-            new Contrato_SHOWCURRENT($valores);     //se invoca la vista SHOWCURRENT con los datos a mostrar
+            new Contratos_SHOWCURRENT_View($valores);     //se invoca la vista SHOWCURRENT con los datos a mostrar
             break;
 
         default:
             $contratos = new Contratos_Model('', '', '', '', '', '', '', '', '');  //Objeto del modelo
             $recordSet = $contratos->showAll();   //es un array asociativo con los datos, se obtienen los datos de la tabla a traves del modelo (metodo SHOWALL() )
-            new Contrato_SHOWALL($recordSet);  //se invoca la vista SHOWALL con los datos a mostrar
+            new Contratos_SHOWALL_View($recordSet);  //se invoca la vista SHOWALL con los datos a mostrar
             break;
     }
 }
