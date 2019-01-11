@@ -107,20 +107,34 @@ function comprobarDni(campo) {
 		return false;
 	}
 	else if( !(/^\d{8}[A-Z]$/.test(campo.value)) ) {//comrueba que el DNI esté formado por 8 digitos y una letra
-		if( !(/^\d{8}$/.test(campo.value)) ){//en el caso de que no tenga los 8 digitos muestra que es incorrecto
                     campo.style.border = "2px solid red";		
                     return false;
-		}
-		else{//si posee los 8 digitos
-                    campo.style.border = "2px solid red";		
-                    return false;
-		}
 		
 	}
-	else if(campo.value.charAt(8) != letras[(campo.value.substring(0, 8))%23]) {//en el caso de que tenga los 8 digitos y la ltera comprueba que la letra sea correcta
+	else if(campo.value.charAt(8) != letras[(campo.value.substring(0, 8))%23]) {//en el caso de que tenga los 8 digitos y la letra comprueba que la letra sea correcta
                     campo.style.border = "2px solid red";		
                     return false;
 	}
         campo.style.border = "2px solid green";
 	return true;
+}
+/*Comprueba si el CIF enviado está bien escrito*/
+/*CIF-Comprueba que la expresión regular del CIF esté bien hecha*/
+    function comprobarCIF( campo ) {
+	var CIF = /^([ABCDEFGHJKLMNPQRSUVW])(\d{7})([0-9A-J])$/;
+	if(!comprobarExpresionRegular(campo,CIF,9)){//comprueba que la expresión enviada en CIF sea cumplida por el campo enviado si no lo hace devuelve false
+	return false;
+	}
+        else if ( (/[PQRSW]/.test(campo.value.charAt(0))) || ((/0/.test(campo.value.charAt(1))) && (/0/.test(campo.value.charAt(2))) ) ) {//en el caso de que empiece por PQRSW o sus dos primeros valores sean 00 comprobará si el codigo de control es una letra en caso erroneo devuelve false
+        campo.style.border = "2px solid purple";
+        return false;
+        }
+        else if ( (/[ABEH]/.test(campo.value.charAt(0))) ) {//en el caso de que empiece por ABEH comprobará si el codigo de control es una digito en caso erroneo devuelve false
+        campo.style.border = "2px solid yellow";
+        return false;
+        }
+        else {// en el caso de que todo esté correctamente comprobará si el codigo de control es el correcto
+            campo.style.border = "2px solid green";
+            return true;
+	}
 }

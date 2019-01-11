@@ -32,7 +32,7 @@ class Contratos_ADD_View {
                     </select>
 
                     <label for="cifEmpresa"><?php echo $strings['cifEmpresa']; ?>  *</label> 
-                    <input type="text" name="cifEmpresa" id="cifEmpresa"> 
+                    <input type="text" name="cifEmpresa" id="cifEmpresa" onblur= "comprobarCIF( this );" > 
 
                     <label for="documento"><?php echo $strings['Documento']; ?>  *</label> 
                     <input name="documento" type="file" id="documento" onblur="comprobarVacio(this);"/>
