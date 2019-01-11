@@ -20,25 +20,25 @@ class Usuarios_EDIT_View {
                     <fieldset id="fieldset_edit">
 
                         <label for="login"><?php echo $strings['Login'] ?>  *</label> 
-                        <input name="login" type="text" size="25" readonly id="login" value="<?php echo $datos['login'] ?>"  onblur="comprobarTexto(this, 30);"/> 
+                        <input name="login" type="text" size="25" readonly id="login" value="<?php echo $datos['login'] ?>"  /> 
 
                         <label for="password"><?php echo $strings['Password'] ?>  *</label> 
-                        <input name="password" type="text" size="25" id="password" value="<?php echo $datos['password'] ?>"  onblur="comprobarTexto(this, 30);"/> 
+                        <input name="password" type="text" size="25" id="password" value="<?php echo $datos['password'] ?>"  onblur="comprobarAlfabetico(this, 25);"/> 
 
                         <label for="DNI"><?php echo $strings['DNI'] ?>  *</label> 
-                        <input name="DNI" type="text" size="25" id="DNI" value="<?php echo $datos['DNI'] ?>"  onblur="comprobarTexto(this, 30);"/> 
+                        <input name="DNI" type="text" size="25" id="DNI" value="<?php echo $datos['DNI'] ?>"  onblur="comprobarDni(this)"/> 
 
                         <label for="nombre"><?php echo $strings['Nombre'] ?>  *</label> 
                         <input name="nombre" type="text" size="25" id="nombre" value="<?php echo $datos['nombre'] ?>"  onblur="comprobarTexto(this, 30);"/> 
 
                         <label for="apellidos"><?php echo $strings['Apellidos'] ?>  *</label> 
-                        <input name="apellidos" type="text" size="25" id="apellidos" value="<?php echo $datos['apellidos'] ?>"  onblur="comprobarTexto(this, 30);"/> 
+                        <input name="apellidos" type="text" size="25" id="apellidos" value="<?php echo $datos['apellidos'] ?>"  onblur="comprobarTexto(this, 50);"/> 
 
                         <label for="telefono"><?php echo $strings['Telefono'] ?>  *</label> 
-                        <input name="telefono" type="text" size="25" id="telefono" value="<?php echo $datos['telefono'] ?>"  onblur="comprobarTexto(this, 30);"/> 
+                        <input name="telefono" type="text" size="25" id="telefono" value="<?php echo $datos['telefono'] ?>"  onblur="comprobarTelf(this);"/> 
 
                         <label for="email"><?php echo $strings['Email'] ?>  *</label> 
-                        <input name="email" type="text" size="25" id="email" value="<?php echo $datos['email'] ?>"  onblur="comprobarTexto(this, 30);"/> 
+                        <input name="email" type="text" size="25" id="email" value="<?php echo $datos['email'] ?>"  onblur="comprobarExpresionRegular(this,/^\w+([\.-]?\w+)@\w+([\.-]?\w+)(\.\w{2,4})+$/,60);"/> 
 
                         <label for="rol"><?php echo $strings['Rol'] ?>  *</label>  
                         <select id="rol" name="rol">

@@ -48,7 +48,7 @@ class Empresas_ADD_View {
                 </button>
             </form>
         </section>
-                <!--<script src='../Views/js/LOTERIAIU_validaciones.js'></script>-->
+        <script src='../Views/js/validaciones.js'></script>
         <?php
         include '../Views/Footer.php';
     }

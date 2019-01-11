@@ -21,12 +21,12 @@ class Centros_EDIT_View {
                     <fieldset id="fieldset_edit">
 
                         <label for="nombre"><?php echo $strings['Nombre'] ?>  *</label> 
-                        <input name="nombre" type="text" size="25" readonly id="nombre" value="<?php echo $datos['nombre'] ?>"  onblur="comprobarTexto(this, 30);"/> 
+                        <input name="nombre" type="text" size="25" readonly id="nombre" value="<?php echo $datos['nombre'] ?>"  onblur="comprobarTexto(this, 10);"/> 
 
                         <label for="lugar"><?php echo $strings['Lugar'] ?>  *</label> 
                         <input name="lugar" type="text" size="25" id="lugar" value="<?php echo $datos['lugar'] ?>"  onblur="comprobarTexto(this, 30);"/> 
                         <label for="usuarioAsignado"><?php echo $strings['Usuario asignado'] ?>  *</label> 
-                        <input name="usuarioAsignado" type="text" size="25" id="usuarioAsignado" value="<?php echo $datos['usuarioAsignado'] ?>"  onblur="comprobarTexto(this, 30);"/> 
+                        <input name="usuarioAsignado" type="text" size="25" id="usuarioAsignado" value="<?php echo $datos['usuarioAsignado'] ?>"  onblur="comprobarTexto(this, 9);"/> 
 
                         <select id="tipo" name="tipo">
                             <?php if ($datos['tipo'] == 'certificador') {

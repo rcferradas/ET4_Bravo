@@ -22,7 +22,7 @@ class Contratos_ADD_View {
                     <input hidden name="cod" type="text" size="25" id="cod" value="NULL"> 
 
                     <label for="centro"><?php echo $strings['Centro'] ?>  *</label> 
-                    <input name="centro" type="text" size="25" id="centro" onblur="comprobarTexto(this, 30);"/> 
+                    <input name="centro" type="text" size="25" id="centro" onblur="comprobarTexto(this,30);"/> 
 
                     <label for="tipo"><?php echo $strings['Tipo'] ?>  *</label>  
                     <select id="tipo" name="tipo">
@@ -35,16 +35,16 @@ class Contratos_ADD_View {
                     <input type="text" name="cifEmpresa" id="cifEmpresa"> 
 
                     <label for="documento"><?php echo $strings['Documento']; ?>  *</label> 
-                    <input name="documento" type="file" id="documento" />
+                    <input name="documento" type="file" id="documento" onblur="comprobarVacio(this);"/>
 
                     <label for="periodoinicio"><?php echo $strings['Periodo inicio']; ?>  *</label> 
-                    <input type="date" name="periodoinicio" id="periodoinicio"> 
+                    <input type="date" name="periodoinicio" id="periodoinicio" onblur="comprobarVacio(this);"> 
 
                     <label for="periodofin"><?php echo $strings['Periodo fin']; ?>  *</label> 
-                    <input type="date" name="periodofin" id="periodofin"> 
+                    <input type="date" name="periodofin" id="periodofin" onblur="comprobarVacio(this);"> 
 
                     <label for="importe"><?php echo $strings['Importe']; ?>  *</label> 
-                    <input type="number" name="importe" id="importe" onblur="comprobarEntero(this, 1, 999);"> 
+                    <input type="number" name="importe" id="importe" onblur="comprobarReal(this, 2, 0, 999999999)"> 
 
                     <label for="estado"><?php echo $strings['Estado']; ?>  *</label> 
                     <select id="estado" name="estado">
@@ -58,6 +58,7 @@ class Contratos_ADD_View {
 
             </form>
         </section>
+        <script src='../Views/js/validaciones.js'></script>
         <?php
         include '../Views/Footer.php';
     }

@@ -54,16 +54,16 @@ class Contratos_EDIT_View {
                         <input name="cifEmpresa" type="text" id="cifEmpresa" value="<?php echo $datos['cifEmpresa']; ?>"/>
 
                         <label for="documento"><?php echo $strings['Documento']; ?>  *</label> 
-                        <input type="file" name="documento" id="documento"> 
+                        <input type="file" name="documento" id="documento" onblur="comprobarVacio(this);"> 
 
                         <label for="periodoinicio"><?php echo $strings['Periodo inicio']; ?>  *</label> 
-                        <input type="date" name="periodoinicio" id="periodoinicio" value="<?php echo $datos['periodoinicio']; ?>"  onblur="comprobarEntero(this, 1, 999);"> 
+                        <input type="date" name="periodoinicio" id="periodoinicio" value="<?php echo $datos['periodoinicio']; ?>"  onblur="comprobarVacio(this);"> 
 
                         <label for="periodofin"><?php echo $strings['Periodo fin']; ?>  *</label> 
-                        <input type="date" name="periodofin" id="periodofin" value="<?php echo $datos['periodofin']; ?>"  onblur="comprobarEntero(this, 1, 999);"> 
+                        <input type="date" name="periodofin" id="periodofin" value="<?php echo $datos['periodofin']; ?>"  onblur="comprobarVacio(this);"> 
 
                         <label for="importe"><?php echo $strings['Importe']; ?>  *</label> 
-                        <input type="number" name="importe" id="importe" value="<?php echo $datos['importe']; ?>"  onblur="comprobarEntero(this, 1, 999);"> 
+                        <input type="number" name="importe" id="importe" value="<?php echo $datos['importe']; ?>"  onblur="comprobarReal(this, 2, 0, 999999999)"> 
 
                         <label for="estado"><?php echo $strings['Estado'] ?>  *</label>  
                         <select id="estado" name="estado">
