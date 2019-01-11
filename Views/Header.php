@@ -55,9 +55,10 @@ if (!isset($_SESSION['idioma'])) {
              <form  name='idiomaform' action="../Functions/CambioIdioma.php" method="post">
                      <?php echo $strings['idioma']; ?>
                 <select name="idioma" onChange='this.form.submit()'>
-                    <option value="SPANISH"> </option>
-                    <option value="ENGLISH"><?php echo $strings['INGLES']; ?></option>
+                    <option></option>
                     <option value="SPANISH"><?php echo $strings['ESPAÑOL']; ?></option>
+                    <option value="GALLAECIAN"><?php echo $strings['GALLEGO']; ?></option>
+                    <option value="ENGLISH"><?php echo $strings['INGLES']; ?></option>
                 </select>
             </form>
         </div>

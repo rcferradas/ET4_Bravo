@@ -1,7 +1,6 @@
 <?php
 
 session_start();
-include_once '../Locales/Strings_' . $_SESSION['idioma'] . '.php';
 
 //session_start();
 if (!isset($_POST['login'])) {
