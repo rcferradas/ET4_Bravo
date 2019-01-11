@@ -60,6 +60,7 @@ $strings = array(
     'Password' => 'Password',
     'Admin' => 'Admin',
     'Añadir usuario' => 'Añadir usuario',
+    'Centro' => 'Centro',
     'Centros' => 'Centros',
     'Lugar' => 'Lugar',
     'Modificación completada' => 'Modificación completada',

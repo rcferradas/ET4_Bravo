@@ -13,12 +13,15 @@ class Register {
         <h1><?php echo $strings['Registro']; ?></h1>	
         <form name = 'Form' action='../Controllers/Register_Controller.php' method='post' onsubmit="return comprobar_registro();"">
 
-            <?php echo $strings['Login']?> : <input type = 'text' name = 'login' id = 'login' placeholder = 'Utiliza tu dni' size = '9' value = '' onblur="esNoVacio('login') && comprobarDni('login')" ><br>
-            <?php echo $strings['Contraseña']?> : <input type = 'text' name = 'password' id = 'password' placeholder = 'letras y numeros' size = '15' value = '' onblur="esNoVacio('password') && comprobarLetrasNumeros('password', 15)" ><br>
-            <?php echo $strings['Nombre']?> : <input type = 'text' name = 'nombre' id = 'nombre' placeholder = 'Solo letras' size = '30' value = '' onblur="esNoVacio('nombre') && comprobarSoloLetras('nombre', 30)" ><br>
-            <?php echo $strings['Apellidos']?> : <input type = 'text' name = 'apellidos' id = 'apellidos' placeholder = 'Solo letras' size = '50' value = '' onblur="esNoVacio('apellidos') && comprobarSoloLetras('apellidos', 50)" ><br>
-            <?php echo $strings['Email']?> : <input type = 'text' name = 'email' id = 'email' size = '40' value = '' onblur="esNoVacio('email') && comprobarEmail('email')" ><br>
-
+            <?php echo $strings['Login']?> : <input type = 'text' name = 'login' id = 'login' size = '9' value = '' onblur="esNoVacio('login') && comprobarDni('login')" >
+            <?php echo $strings['Contraseña']?> : <input type = 'text' name = 'password' id = 'password' size = '15' value = '' onblur="esNoVacio('password') && comprobarLetrasNumeros('password', 15)" >
+            <?php echo $strings['DNI'] ?> : <input type='text' name='DNI' id='DNI' size='9' value='' onblur=''> <!--FALTA VALIDACION JS -->
+            <?php echo $strings['Nombre']?> : <input type = 'text' name = 'nombre' id = 'nombre' size = '30' value = '' onblur="esNoVacio('nombre') && comprobarSoloLetras('nombre', 30)" >
+            <?php echo $strings['Apellidos']?> : <input type = 'text' name = 'apellidos' id = 'apellidos' size = '50' value = '' onblur="esNoVacio('apellidos') && comprobarSoloLetras('apellidos', 50)" >
+            <?php echo $strings['Telefono'] ?> : <input type='text' name='telefono' id='telefono' size='11' value='' onblur=''> <!--FALTA VALIDACION JS -->
+            <?php echo $strings['Email']?> : <input type = 'text' name = 'email' id = 'email' size = '50' value = '' onblur="esNoVacio('email') && comprobarEmail('email')" >
+            <?php echo $strings['Rol']?> : <select> <option value='centro'><?php echo $strings['Centro']?></option></select>
+            
             <input type='submit' name='action' value='REGISTER'>
 
         </form>

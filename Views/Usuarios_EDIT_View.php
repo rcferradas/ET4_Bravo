@@ -20,7 +20,7 @@ class Usuarios_EDIT_View {
                     <fieldset id="fieldset_edit">
 
                         <label for="login"><?php echo $strings['Login'] ?>  *</label> 
-                        <input name="login" type="text" size="25" readonly id="login" value="<?php echo $datos['login'] ?>"  /> 
+                        <input name="login" type="text" size="25" disabled id="login" value="<?php echo $datos['login'] ?>"  /> 
 
                         <label for="password"><?php echo $strings['Password'] ?>  *</label> 
                         <input name="password" type="text" size="25" id="password" value="<?php echo $datos['password'] ?>"  onblur="comprobarAlfabetico(this, 25);"/> 

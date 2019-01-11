@@ -13,9 +13,9 @@ class Login {
         <h1><?php echo $strings['Login']; ?></h1>	 
         <form name = 'Form' action='../Controllers/Login_Controller.php' method='post' onsubmit="return comprobar_login();">
 
-            login : <input type = 'text' name = 'login' placeholder = 'Utiliza tu Dni' size = '9' value = '' onblur="comprobarAlfabetico(this, 15)"  ><br>
+            <?php echo $strings['Login']?> : <input type = 'text' name = 'login' placeholder = 'Utiliza tu Dni' size = '9' value = '' onblur="comprobarAlfabetico(this, 15)"  ><br>
 
-            password : <input type = 'password' name = 'password' placeholder = 'Letras y numeros' size = '15' value = '' onblur="comprobarAlfabetico(this, 25)"  ><br>
+            <?php echo $strings['Contraseña']?> : <input type = 'password' name = 'password' placeholder = 'Letras y numeros' size = '15' value = '' onblur="comprobarAlfabetico(this, 25)"  ><br>
 
             <input type='submit' name='action' value='Login'>
 
