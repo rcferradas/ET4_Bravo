@@ -20,7 +20,7 @@ class Register {
             <?php echo $strings['Apellidos']?> : <input type = 'text' name = 'apellidos' id = 'apellidos' size = '50' value = '' onblur="esNoVacio('apellidos') && comprobarSoloLetras('apellidos', 50)" >
             <?php echo $strings['Telefono'] ?> : <input type='text' name='telefono' id='telefono' size='11' value='' onblur=''> <!--FALTA VALIDACION JS -->
             <?php echo $strings['Email']?> : <input type = 'text' name = 'email' id = 'email' size = '50' value = '' onblur="esNoVacio('email') && comprobarEmail('email')" >
-            <?php echo $strings['Rol']?> : <select> <option value='centro'><?php echo $strings['Centro']?></option></select>
+            <?php echo $strings['Rol']?> : <select name="rol"> <option value='centro'><?php echo $strings['Centro']?></option></select>
             
             <input type='submit' name='action' value='REGISTER'>
 

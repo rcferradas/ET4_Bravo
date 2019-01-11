@@ -9,7 +9,7 @@ if (!isset($_POST['login'])) {
 } else {
 
     include '../Models/USUARIOS_Model.php';
-    $usuario = new USUARIOS_Model($_REQUEST['login'], $_REQUEST['password'], $_REQUEST['nombre'], $_REQUEST['apellidos'], $_REQUEST['email']);
+    $usuario = new USUARIOS_Model($_REQUEST['login'], $_REQUEST['password'],$_REQUEST['DNI'], $_REQUEST['nombre'], $_REQUEST['apellidos'],$_REQUEST['telefono'], $_REQUEST['email'],$_REQUEST['rol']);
     $respuesta = $usuario->Register();
 
     if ($respuesta == 'true') {

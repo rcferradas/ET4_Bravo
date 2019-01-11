@@ -1,11 +1,11 @@
 <?php
 include_once '../Functions/Authentication.php';
-include_once '../Locales/Strings_' . $_SESSION['idioma'] . '.php';
 if (!isset($_SESSION['idioma'])) {
     $_SESSION['idioma'] = 'SPANISH';
 } else {
     
 }
+include_once '../Locales/Strings_' . $_SESSION['idioma'] . '.php';
 ?>
 <html>
     <head>
