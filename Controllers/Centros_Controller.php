@@ -10,8 +10,7 @@ if (!IsAuthenticated()) {
     //header('Location: ../index.php');
 }
 //esta autenticado
-else {
-
+elseif ($_SESSION['rol'] == 'admin') {
     require_once '../Models/Centros_Model.php';
     include '../Views/Centros_SHOWALL_View.php';
     include '../Views/Centros_ADD_View.php';
@@ -117,5 +116,8 @@ else {
             new Centros_SHOWALL_View($recordSet);  //se invoca la vista SHOWALL con los datos a mostrar
             break;
     }
+}else{
+    include_once '../Locales/Strings_' . $_SESSION['idioma'] . '.php';
+    echo $strings['No tienes permisos para acceder'];
 }
 ?>

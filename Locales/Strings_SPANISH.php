@@ -81,5 +81,6 @@ $strings = array(
     'Editar empresa' => 'Editar empresa',
     'Editar contrato' => 'Editar contrato',
     'Añadir empresa' => 'Añadir empresa',
+    'No tienes permisos para acceder' => 'No tienes permisos para acceder',
     'Campos obligatorios' => 'Campos obligatorios');
 ?>

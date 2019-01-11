@@ -115,6 +115,18 @@ class USUARIOS_Model {
             return 'No existe dicha tupla';
         }
     }
+    // funcion SHOWCURRENT: recupera todos los atributos de una tupla a partir de su clave
+    function getRol() {
+        $sql = "SELECT * FROM USUARIOS WHERE(`login` = '" . $this->login . "')";
+        $resultado = $this->mysqli->query($sql);
+
+        if ($resultado->num_rows == 1) {
+            $tupla = $resultado->fetch_array();
+            return $tupla['rol'];
+        } else {
+            return 'No existe dicha tupla';
+        }
+    }
 
 // funcion Edit: realizar el update de una tupla despues de comprobar que existe
     function EDIT() {

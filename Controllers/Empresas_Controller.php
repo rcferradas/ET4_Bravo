@@ -5,7 +5,7 @@ include '../Functions/Authentication.php';
 include '../Views/MESSAGE_View.php';
 if (!IsAuthenticated()) {
     new MESSAGE('Debes autentificarte', '../index.php');
-} else {//una vez sabemos que está identificado
+} elseif ($_SESSION['rol'] == 'admin')  {//una vez sabemos que está identificado
     require_once '../Models/Empresas_Model.php';
     include '../Views/Empresas_ADD_View.php';
     include '../Views/Empresas_SHOWCURRENT_View.php';
@@ -113,5 +113,8 @@ if (!IsAuthenticated()) {
             new Empresas_SHOWALL_View($recordSet);  //se invoca la vista SHOWALL con los datos a mostrar
             break;
     }
+}else{
+    include_once '../Locales/Strings_' . $_SESSION['idioma'] . '.php';
+    echo $strings['No tienes permisos para acceder'];
 }
 ?>
