@@ -1,6 +1,6 @@
 <?php
 
-class Usuario_SEARCH {
+class Usuarios_SEARCH_View {
 
     function __construct() {
         $this->render();
@@ -13,11 +13,11 @@ class Usuario_SEARCH {
 
         include '../Views/Header.php';
         ?>
-        <h2><?php echo $strings['Buscar contratos']; ?></h2>        
+        <h2><?php echo $strings['Buscar usuarios']; ?></h2>        
 
         <section>
-            <form class="form_edit" method="post" action="../Controllers/Usuarios_Controller.php" enctype="multipart/form-data">
-                <fieldset id="fieldset_edit">
+            <form class="form_search" method="post" action="../Controllers/Usuarios_Controller.php">
+                <fieldset id="fieldset_search">
 
                     <label for="login"><?php echo $strings['Login'] ?>  *</label> 
                     <input name="login" type="text" size="25" id="login" onblur="comprobarTexto(this, 30);"/> 

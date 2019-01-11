@@ -13,12 +13,12 @@ if (!IsAuthenticated()) {
 else {
 
     require_once '../Models/Usuarios_Model.php';
-    include '../Views/Usuario_SHOWALL_View.php';
-    include '../Views/Usuario_ADD_View.php';
-    include '../Views/Usuario_SHOWCURRENT_View.php';
-    include '../Views/Usuario_EDIT_View.php';
-    include '../Views/Usuario_DELETE_View.php';
-    include '../Views/Usuario_SEARCH_View.php';
+    include '../Views/Usuarios_SHOWALL_View.php';
+    include '../Views/Usuarios_ADD_View.php';
+    include '../Views/Usuarios_SHOWCURRENT_View.php';
+    include '../Views/Usuarios_EDIT_View.php';
+    include '../Views/Usuarios_DELETE_View.php';
+    include '../Views/Usuarios_SEARCH_View.php';
 
     function recuperarDataForm() {
         $login = $_REQUEST['login'];
@@ -51,7 +51,7 @@ else {
             $datos; //Almacena los datos del formulario
             $respuesta; //Almacena la respuesta que se mostrará via MESSAGE
             if (!$_POST) {    //Si se envia por GET se llama a la vista ADD para que se envie por POST, cuestiones de privacidad
-                new Usuarios_ADD();
+                new Usuarios_ADD_View();
             } else {
                 $datos = recuperarDataForm();
                 $respuesta = $datos->registrar();
@@ -64,11 +64,11 @@ else {
             $datos; //datos a mostrar extraidos del modelo
 
             if (!$_POST) {    //Si se envia por GET se llama a la vista EDIT para que se envie por POST
-                new Usuario_SEARCH();
+                new Usuarios_SEARCH_View();
             } else {
                 $usuarios = recuperarDataForm();
                 $datos = $usuarios->SEARCH();
-                new Usuario_SHOWALL($datos);
+                new Usuarios_SHOWALL_View($datos);
             }
             break;
 
@@ -87,7 +87,7 @@ else {
                     if (!$_POST) { //Si se envia por GET se llama a la vista ADD para que se envie por POST
                         $usuarios = new Usuarios_Model($_REQUEST['login'], '', '', '', '', '', '', ''); //creamos un objeto del modelo con el loginigo de contrato
                         $valores = $usuarios->showCurrent();                                       //y se trae de la BD (a traves del modelo) la tupla asociada a ese email
-                        new Usuarios_EDIT($valores);
+                        new Usuarios_EDIT_View($valores);
                     } else {
                         $usuarios = recuperarDataForm();  //que utilizara el resguardo que introduzcamos en el formulario edit
                         $respuesta = $usuarios->EDIT();
@@ -105,7 +105,7 @@ else {
             if (!$_POST) {
                 $usuarios = new Usuarios_Model($_REQUEST['login'], '', '', '', '', '', '', '');     //creamos un objeto del modelo con el email
                 $valores = $usuarios->showCurrent();                                          //y se trae de la BD (a traves del modelo) la tupla asociada a ese email
-                new Usuario_DELETE($valores); //se invoca la vista DELETE con los datos a borrar
+                new Usuarios_DELETE_View($valores); //se invoca la vista DELETE con los datos a borrar
             } else {
                 $usuarios = new Usuarios_Model($_REQUEST['login'], '', '', '', '', '', '', '');    //creamos un objeto del modelo con el email
                 $respuesta = $usuarios->DELETE();                                              //y se borra la tupla asociada a ese email invocando el metodo DELETE() del modelo
@@ -118,13 +118,13 @@ else {
             $valores; //Almacena los valores tras almacenarlos
             $usuarios = new Usuarios_Model($_REQUEST['login'], '', '', '', '', '', '', ''); //creamos un objeto del modelo con el email
             $valores = $usuarios->showCurrent();                                      //y se trae de la BD (a traves del modelo) la tupla asociada a ese email
-            new Usuario_SHOWCURRENT($valores);     //se invoca la vista SHOWCURRENT con los datos a mostrar
+            new Usuarios_SHOWCURRENT_View($valores);     //se invoca la vista SHOWCURRENT con los datos a mostrar
             break;
 
         default:
             $usuarios = new Usuarios_Model('', '', '', '', '', '', '', '');  //Objeto del modelo
             $recordSet = $usuarios->showAll();   //es un array asociativo con los datos, se obtienen los datos de la tabla a traves del modelo (metodo SHOWALL() )
-            new Usuario_SHOWALL($recordSet);  //se invoca la vista SHOWALL con los datos a mostrar
+            new Usuarios_SHOWALL_View($recordSet);  //se invoca la vista SHOWALL con los datos a mostrar
             break;
     }
 }

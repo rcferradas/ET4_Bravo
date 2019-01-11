@@ -72,6 +72,9 @@ $strings = array(
     'Localizacion' => 'Localización',
     'Certificadora' => 'Certificadora',
     'Reparadora' => 'Reparadora',
+    'No existe dicha tupla' => 'No existe dicha tupla',
+    'Buscar usuarios' => 'Buscar usuarios',
+    'Editar usuario' => 'Editar usuario',
     'No existe el contrato' => 'No existe el contrato',
     'Editar centro' => 'Editar centro',
     'Buscar centros' => 'Buscar centros',
@@ -79,5 +82,6 @@ $strings = array(
     'Editar empresa' => 'Editar empresa',
     'Editar contrato' => 'Editar contrato',
     'Añadir empresa' => 'Añadir empresa',
+    
     'Campos obligatorios' => 'Campos obligatorios');
 ?>

@@ -1,6 +1,6 @@
 <?php
 
-class Usuarios_EDIT {
+class Usuarios_EDIT_View {
 
     function __construct($datos) {    //Constructor de la clase, pasamos un objeto tipo loteriaiu como parametro
         $this->render($datos);
@@ -13,7 +13,6 @@ class Usuarios_EDIT {
         include '../Views/Header.php';
         ?>
         <html>
-
             <section>
                 <form class="form_edit" method="post" action="../Controllers/Usuarios_Controller.php" onsubmit="return validacionSubmitEdit();">
                     <h2><?php echo $strings['Editar usuario']; ?></h2>
@@ -21,7 +20,7 @@ class Usuarios_EDIT {
                     <fieldset id="fieldset_edit">
 
                         <label for="login"><?php echo $strings['Login'] ?>  *</label> 
-                        <input name="login" type="text" size="25" onlyread id="login" value="<?php echo $datos['login'] ?>"  onblur="comprobarTexto(this, 30);"/> 
+                        <input name="login" type="text" size="25" readonly id="login" value="<?php echo $datos['login'] ?>"  onblur="comprobarTexto(this, 30);"/> 
 
                         <label for="password"><?php echo $strings['Password'] ?>  *</label> 
                         <input name="password" type="text" size="25" id="password" value="<?php echo $datos['password'] ?>"  onblur="comprobarTexto(this, 30);"/> 
@@ -56,7 +55,6 @@ class Usuarios_EDIT {
                             }
                             ?>
                         </select>
-
                     </fieldset>
                     <span>* <?php echo $strings['Campos obligatorios']; ?> </span>
                     <!-- Boton submit -->

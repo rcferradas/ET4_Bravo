@@ -1,6 +1,6 @@
 <?php
 
-class Usuarios_ADD {
+class Usuarios_ADD_View {
 
     function __construct() {
 
@@ -17,7 +17,7 @@ class Usuarios_ADD {
         <h2><?php echo $strings['Añadir usuario']; ?></h2>        
 
         <section>
-            <form class="form_add" method="post" action="../Controllers/Usuarios_Controller.php" enctype="multipart/form-data" onsubmit="return validacionSubmitEdit();">
+            <form class="form_add" method="post" action="../Controllers/Usuarios_Controller.php" onsubmit="return validacionSubmitEdit();">
                 <fieldset id="fieldset_add">
 
                     <label for="login"><?php echo $strings['Login'] ?>  *</label> 

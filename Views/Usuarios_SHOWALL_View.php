@@ -1,6 +1,6 @@
 <?php
 
-class Usuario_SHOWALL {
+class Usuarios_SHOWALL_View {
 
     function __construct($recordSet) {    //Constructor de la clase, pasamos un objeto tipo loteriaiu como parametro
         $this->render($recordSet);                  //------------------------REVISAR $recordSet----------------------------------------------------------

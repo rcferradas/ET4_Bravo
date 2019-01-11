@@ -1,7 +1,7 @@
 <?php
 include_once '../Functions/Authentication.php';
 
-class Usuario_DELETE {
+class Usuarios_SHOWCURRENT_View {
 
     function __construct($tupla) {    //Constructor de la clase
         $this->render($tupla);
@@ -24,7 +24,6 @@ class Usuario_DELETE {
                     <th scope="col"><?php echo $strings['Telefono']; ?></th>
                     <th scope="col"><?php echo $strings['Email']; ?></th>
                     <th scope="col"><?php echo $strings['Rol']; ?></th>
-                    <th scope="col"><?php echo $strings['Confirmar borrado']; ?></th>
                 </tr>
             </thead>
 
@@ -39,8 +38,10 @@ class Usuario_DELETE {
                     <td><?php echo $tupla['rol']; ?></td>
                     <td>
                         <!--Botones para realizar acciones en cada tupla-->
-                        <form class="form-inline my-2 my-lg-0" name='formulario' action="../Controllers/Usuarios_Controller.php" method="post">
+                        <form class="form-inline my-2 my-lg-0" name='formulario' action="../Controllers/Usuarios_Controller.php" method="">
                             <input type="hidden" name=login value=<?php echo $tupla['login'] ?>>
+                            <button name="action" value="EDIT" type="submit" class="btn btn-outline-primary">
+                                <i class="fas fa-edit"></i></button>&nbsp
                             <button name="action" value="DELETE" type="submit" class="btn btn-outline-primary">
                                 <i class="fas fa-trash-alt"></i></button>
                         </form>
@@ -53,5 +54,3 @@ class Usuario_DELETE {
 
 }
 ?>
-
-
