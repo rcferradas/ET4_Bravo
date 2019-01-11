@@ -76,8 +76,8 @@ CREATE TABLE IF NOT EXISTS `contratos` (
   `periodofin` date NOT NULL,
   `importe` decimal(10,2) NOT NULL,
 PRIMARY KEY (`cod`),
-FOREIGN KEY fk_empresa(`cifEmpresa`) REFERENCES empresas(`cif`)
-FOREIGN KEY fk_empresa(`centro`) REFERENCES centros(`nombre`)
+FOREIGN KEY fk_empresa(`cifEmpresa`) REFERENCES empresas(`cif`),
+FOREIGN KEY fk_centro(`centro`) REFERENCES centros(`nombre`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- Tabla visitas
