@@ -14,7 +14,7 @@ class Usuarios_EDIT_View {
         ?>
         <html>
             <section>
-                <form class="form_edit" method="post" action="../Controllers/Usuarios_Controller.php" onsubmit="return validacionSubmitEdit();">
+                <form class="form_edit" method="post" action="../Controllers/Usuarios_Controller.php" onsubmit="return validarUsuariosEDIT(this);">
                     <h2><?php echo $strings['Editar usuario']; ?></h2>
 
                     <fieldset id="fieldset_edit">

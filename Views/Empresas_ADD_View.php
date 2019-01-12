@@ -17,10 +17,10 @@ class Empresas_ADD_View {
         <section>
             <h2><?php echo $strings['Añadir empresa']; ?></h2>        
 
-            <form id="add" enctype="multipart/form-data" method="post" action="../Controllers/Empresas_Controller.php" onsubmit="return validarEmpresa(this);">
+            <form id="add" enctype="multipart/form-data" method="post" action="../Controllers/Empresas_Controller.php" onsubmit="return validarEmpresasADD(this);">
                 <div class="form-empresas">
                     <label><span>*</span><?php echo $strings['CIF']; ?>:</label>
-                    <input type="text" size="40" onblur="comprobarExpresionRegular(this, /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/, 10);" id="CIFempresa" name="cif" >
+                    <input type="text" size="40" onblur="comprobarCIF(this);" id="CIFempresa" name="cif" >
                 </div>
                 <div class="form-empresas">
                     <label><span>*</span><?php echo $strings['Nombre']; ?>:</label>

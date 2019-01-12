@@ -19,10 +19,10 @@ class Empresas_EDIT_View {
             <h2><?php echo $strings['Editar empresa']; ?></h2>
             <?php ?>
 
-            <form id="edit" enctype="multipart/form-data" method="post" action="../Controllers/Empresas_Controller.php" onsubmit="return validarEmpresa(this);">
+            <form id="edit" enctype="multipart/form-data" method="post" action="../Controllers/Empresas_Controller.php" onsubmit="return validarEmpresasEDIT(this);">
                 <div class="form-empresas">
                     <label><span>*</span><?php echo $strings['CIF']; ?>:</label>
-                    <input readonly type="text" value="<?php echo $empresas['CIF']; ?>" class="pk" size="40" onblur="comprobarExpresionRegular(this, /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{'tipo',4})+$/, 10);" id="CIFempresa" name="cif" >                 
+                    <input readonly type="text" value="<?php echo $empresas['CIF']; ?>" class="pk" size="40" id="CIFempresa" name="cif" >                 
                 </div>
                 <div class="form-empresas">
                     <label><span>*</span><?php echo $strings['Nombre']; ?>:</label>
