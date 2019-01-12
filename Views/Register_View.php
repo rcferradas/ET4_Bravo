@@ -27,7 +27,7 @@ class Register {
         </form>
 
 
-        <a href='../Controllers/Index_Controller.php'>Volver </a>
+        <a href='../Controllers/Login_Controller.php'>Volver </a>
 
         <?php
         include '../Views/Footer.php';

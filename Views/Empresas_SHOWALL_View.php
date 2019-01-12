@@ -43,7 +43,7 @@ class Empresas_SHOWALL_View {
                         <td>
                             <!--Botones para realizar acciones en cada tupla-->
                             <form class="form-inline my-2 my-lg-0" name='formulario' action="../Controllers/Empresas_Controller.php" method="">
-                                <input type="hidden" name=cif value=<?php echo $tupla['cif'] ?>>
+                                <input type="hidden" name=cif value=<?php echo $tupla['CIF'] ?>>
                                 <button name="action" value="SHOWCURRENT" type="submit" class="btn btn-outline-primary">
                                     <i class="far fa-eye"></i></button>&nbsp
                                 <button name="action" value="EDIT" type="submit" class="btn btn-outline-primary">

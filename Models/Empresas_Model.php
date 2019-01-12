@@ -34,7 +34,7 @@ class Empresas_Model {
         $resultado = $this->mysqli->query($sql);
         if ($resultado->num_rows == 1) { //Si existe dicha tupla
             $tupla = $resultado->fetch_assoc(); //Creamos un array asociativo que almacena los valores de la tupla
-            $this->cif = $tupla['cif'];
+            $this->cif = $tupla['CIF'];
             $this->nombre = $tupla['nombre'];
             $this->tipo = $tupla['tipo'];
             $this->telefono = $tupla['telefono'];
