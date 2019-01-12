@@ -47,6 +47,7 @@ $strings = array(
     'Contratos' => 'Contratos',
     'Empresas' => 'Empresas',
     'Visitas' => 'Visitas',
+    'Frecuencia' => 'Frecuencia',
     'Usuarios' => 'Usuarios',
     'Menu' => 'Menú',
     'Nombre' => 'Nombre',

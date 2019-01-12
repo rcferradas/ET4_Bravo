@@ -1,4 +1,5 @@
 <?php
+$codigoDelContrato;
 
 class Contratos_Model {
 
@@ -10,11 +11,12 @@ class Contratos_Model {
     var $documento;
     var $periodoInicio;
     var $periodoFin;
+    var $frecuencia;
     var $importe;
     var $mysqli;
 
 //Constructor de la clase
-    function __construct($cod, $centro, $tipo, $estado, $cifEmpresa, $documento, $periodoInicio, $periodoFin, $importe) {
+    function __construct($cod, $centro, $tipo, $estado, $cifEmpresa, $documento, $periodoInicio, $periodoFin,$frecuencia, $importe) {
         $this->cod = $cod;
         $this->centro = $centro;
         $this->tipo = $tipo;
@@ -23,6 +25,7 @@ class Contratos_Model {
         $this->documento = $documento;
         $this->periodoInicio = $periodoInicio;
         $this->periodoFin = $periodoFin;
+        $this->frecuencia = $frecuencia;
         $this->importe = $importe;
 
         include_once '../Models/Access_DB.php';
@@ -64,14 +67,16 @@ class Contratos_Model {
 // de los atributos del objeto. Comprueba si la clave/s esta vacia y si 
 //existe ya en la tabla
     function ADD() {
+        global $codigoDelContrato;
         $codigo = "SELECT MAX(`cod`) as codigo FROM contratos";
         $modeloCodigo = $this->mysqli->query($codigo);
         $tupla = $modeloCodigo->fetch_assoc();
         $numero = $tupla['codigo'];
-        $this->cod = intval($numero) + 1;
+        $codigoDelContrato = intval($numero) + 1;
+        $this->cod = $codigoDelContrato;
         $rutaDocumento = $this->funcionRutaDocumento();
-        $add = "INSERT INTO contratos (`cod`, `centro`, `tipo`, `estado`, `cifEmpresa`, `documento`, `periodoinicio`, `periodofin`, `importe`) 
-        VALUES ($this->cod, '$this->centro', '$this->tipo', '$this->estado', '$this->cifEmpresa', '$rutaDocumento', '$this->periodoInicio', '$this->periodoFin', '$this->importe')";
+        $add = "INSERT INTO contratos (`cod`, `centro`, `tipo`, `estado`, `cifEmpresa`, `documento`, `periodoinicio`, `periodofin`,`frecuenciaVisitas`, `importe`) 
+        VALUES ($this->cod, '$this->centro', '$this->tipo', '$this->estado', '$this->cifEmpresa', '$rutaDocumento', '$this->periodoInicio', '$this->periodoFin','$this->frecuencia', '$this->importe')";
         if (!($resultado = $this->mysqli->query($add))) {
             return 'Error en la inserción';
         }
@@ -144,7 +149,11 @@ class Contratos_Model {
         rmdir($path);
         return;
     }
-
+  function getCodigo(){
+      global $codigoDelContrato;
+      return $codigoDelContrato;
+      
+  }
 }
 
 //fin de clase

@@ -38,7 +38,6 @@ CREATE TABLE IF NOT EXISTS `USUARIOS` (
 PRIMARY KEY (`login`),
 UNIQUE KEY `DNI` (`DNI`),
 UNIQUE KEY `email` (`email`)
-
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
@@ -74,10 +73,11 @@ CREATE TABLE IF NOT EXISTS `contratos` (
   `documento` varchar(50) NOT NULL,
   `periodoinicio` date NOT NULL,
   `periodofin` date NOT NULL,
+  `frecuenciaVisitas` enum('diaria','semanal','mensual','trimestral','anual','quinquenal') NOT NULL DEFAULT 'anual',
   `importe` decimal(10,2) NOT NULL,
 PRIMARY KEY (`cod`),
-FOREIGN KEY fk_empresa(`cifEmpresa`) REFERENCES empresas(`cif`)
-FOREIGN KEY fk_empresa(`centro`) REFERENCES centros(`nombre`)
+FOREIGN KEY fk_empresa(`cifEmpresa`) REFERENCES empresas(`cif`),
+FOREIGN KEY fk_centro(`centro`) REFERENCES centros(`nombre`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- Tabla visitas
@@ -86,9 +86,9 @@ CREATE TABLE IF NOT EXISTS `visitas` (
   `estado` enum('realizada','pendiente','incidencia', '') NOT NULL DEFAULT '',
   `tipo` enum('certificador','mantenimiento','reparacion','') NOT NULL DEFAULT '',
   `codContrato` varchar(30) NOT NULL,
-  `informe` varchar(50) NOT NULL,
+  `informe` varchar(50),
   `fecha` date NOT NULL,
-  `frutoVisitaProg` varchar(10) NOT NULL,
+  `frutoVisitaProg` varchar(10),
 PRIMARY KEY (`codVisita`),
 FOREIGN KEY (`frutoVisitaProg`) REFERENCES visitas(codVisita),
 FOREIGN KEY (`codContrato`) REFERENCES contratos(cod)

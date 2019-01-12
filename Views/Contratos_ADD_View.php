@@ -42,6 +42,9 @@ class Contratos_ADD_View {
 
                     <label for="periodofin"><?php echo $strings['Periodo fin']; ?>  *</label> 
                     <input type="date" name="periodofin" id="periodofin"> 
+                    
+                     <label for="frecuencia"><?php echo $strings['Frecuencia']; ?>  *</label> 
+                    <input type="string" name="frecuencia" id="frecuencia"> 
 
                     <label for="importe"><?php echo $strings['Importe']; ?>  *</label> 
                     <input type="number" name="importe" id="importe" onblur="comprobarEntero(this, 1, 999);"> 

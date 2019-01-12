@@ -12,32 +12,30 @@ if (!IsAuthenticated()) {
 //esta autenticado
 else {
 
-    require_once '../Models/Contratos_Model.php';
     require_once '../Models/VISITAS_Model.php';
-    include '../Views/Contratos_SHOWALL_View.php';
-    include '../Views/Contratos_SHOWCURRENT_View.php';
-    include '../Views/Contratos_EDIT_View.php';
-    include '../Views/Contratos_DELETE_View.php';
-    include '../Views/Contratos_ADD_View.php';
-    include '../Views/Contratos_SEARCH_View.php';
+    //include '../Views/Visitas_SHOWALL_View.php';
+    //include '../Views/Visitas_SHOWCURRENT_View.php';
+   // include '../Views/Visitas_EDIT_View.php';
+    //include '../Views/Visitas_DELETE_View.php';
+    include '../Views/Visitas_ADD_View.php';
+    //include '../Views/Visitas_SEARCH_View.php';
 
     function recuperarDataForm() {
-        $centro = $_REQUEST['centro'];
+        $codVisita = $_REQUEST['codvisita'];
+        $estado = $_REQUEST['estado'];
         $tipo = $_REQUEST['tipo'];
         $estado = $_REQUEST['estado'];
-        $cifEmpresa = $_REQUEST['cifEmpresa'];
-        $documento = $_FILES['documento'];
-        $periodoinicio = $_REQUEST['periodoinicio'];
-        $periodofin = $_REQUEST['periodofin'];
-        $frecuencia = $_REQUEST['frecuencia'];
-        $importe = $_REQUEST['importe'];
+        $codContrato = $_REQUEST['codcontrato'];
+        $informe= $_FILES['informe'];
+        $fecha = $_REQUEST['fecha'];
+        $visitaPadre = $_REQUEST['visitapadre'];
 
         $action = $_REQUEST['action'];    //variable para almacenar la accion a ejecutar
 
-        $contratos = new Contratos_Model(
-                '', $centro, $tipo, $estado, $cifEmpresa, $documento, $periodoinicio, $periodofin,$frecuencia, $importe
+        $visitas = new VISITAS_Model(
+                $codVisita, $estado, $tipo, $codContrato, $informe, $fecha, $visitaPadre
         );
-        return $contratos;
+        return $visitas;
     }
 
     if (!isset($_REQUEST['action'])) { //Si la accion no está definida
@@ -53,7 +51,7 @@ else {
             } else {
                 $datos = recuperarDataForm();
                 $respuesta = $datos->ADD();
-                $visitas = new VISITAS_Model($_REQUEST['tipo'],$datos->getCodigo());
+                $visitas = new VISITAS_Model($_REQUEST['tipo'],$_REQUEST['cod']);
                 $datosContrato=$visitas->datosContrato();
                 $visitas->crearVisitasPeriodicas($datosContrato);
                 new MESSAGE($respuesta, '../Controllers/Contratos_Controller.php');
