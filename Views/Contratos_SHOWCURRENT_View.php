@@ -23,6 +23,7 @@ class Contratos_SHOWCURRENT_View {
                     <th scope="col"><?php echo $strings['Documento']; ?></th>
                     <th scope="col"><?php echo $strings['Periodo inicio']; ?></th>
                     <th scope="col"><?php echo $strings['Periodo fin']; ?></th>
+                    <th scope="col"><?php echo $strings['Frecuencia']; ?></th>
                     <th scope="col"><?php echo $strings['Importe']; ?></th>
                     <th scope="col"><?php echo $strings['Estado']; ?></th>
                 </tr>
@@ -36,6 +37,7 @@ class Contratos_SHOWCURRENT_View {
                     <td width="25%"><IMG src="<?php echo $tupla['documento']; ?>" height="10%" width="70%" alt="No se ha encontrado el resguardo"/></td>
                     <td><?php echo $tupla['periodoinicio']; ?></td>
                     <td><?php echo $tupla['periodofin']; ?></td>
+                    <td><?php echo $tupla['frecuenciaVisitas']; ?></td>
                     <td><?php echo $tupla['importe']; ?></td>
                     <td><?php echo $tupla['estado']; ?></td>
                     <td>

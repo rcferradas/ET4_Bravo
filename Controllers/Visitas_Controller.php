@@ -13,11 +13,11 @@ if (!IsAuthenticated()) {
 else {
 
     require_once '../Models/VISITAS_Model.php';
-    //include '../Views/Visitas_SHOWALL_View.php';
-    //include '../Views/Visitas_SHOWCURRENT_View.php';
+    include '../Views/Visitas_SHOWALL_View.php';
+    include '../Views/Visitas_SHOWCURRENT_View.php';
    // include '../Views/Visitas_EDIT_View.php';
     //include '../Views/Visitas_DELETE_View.php';
-    include '../Views/Visitas_ADD_View.php';
+    //include '../Views/Visitas_ADD_View.php';
     //include '../Views/Visitas_SEARCH_View.php';
 
     function recuperarDataForm() {
@@ -118,17 +118,17 @@ else {
             break;
 
         case 'SHOWCURRENT':
-            $contratos; //Objeto del modelo
+            $visitas; //Objeto del modelo
             $valores; //Almacena los valores tras almacenarlos
-            $contratos = new Contratos_Model($_REQUEST['cod'], '', '', '', '', '', '', '', ''); //creamos un objeto del modelo con el email
-            $valores = $contratos->showCurrent();                                      //y se trae de la BD (a traves del modelo) la tupla asociada a ese email
-            new Contratos_SHOWCURRENT_View($valores);     //se invoca la vista SHOWCURRENT con los datos a mostrar
+            $visitas = new VISITAS_Model($_REQUEST['codvisita'],$_REQUEST['codcontrato'],''); //creamos un objeto del modelo con el email
+            $valores = $visitas->showCurrent();                                      //y se trae de la BD (a traves del modelo) la tupla asociada a ese email
+            new Visitas_SHOWCURRENT_View($valores);     //se invoca la vista SHOWCURRENT con los datos a mostrar
             break;
 
         default:
-            $contratos = new Contratos_Model('', '', '', '', '', '', '', '', '','');  //Objeto del modelo
-            $recordSet = $contratos->showAll();   //es un array asociativo con los datos, se obtienen los datos de la tabla a traves del modelo (metodo SHOWALL() )
-            new Contratos_SHOWALL_View($recordSet);  //se invoca la vista SHOWALL con los datos a mostrar
+            $visitas = new Visitas_Model();  //Objeto del modelo
+            $recordSet = $visitas->showAll();   //es un array asociativo con los datos, se obtienen los datos de la tabla a traves del modelo (metodo SHOWALL() )
+            new Visitas_SHOWALL_View($recordSet);  //se invoca la vista SHOWALL con los datos a mostrar
             break;
     }
 }

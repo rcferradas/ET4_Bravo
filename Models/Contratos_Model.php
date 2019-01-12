@@ -55,6 +55,7 @@ class Contratos_Model {
             $this->cifEmpresa = $tupla['cifEmpresa'];
             $this->periodoInicio = $tupla['periodoinicio'];
             $this->periodoFin = $tupla['periodofin'];
+            $this->frecuencia= $tupla['frecuenciaVisitas'];
             $this->importe = $tupla['importe'];
             return $tupla; //devolvemos el array asociativo
         } else {
@@ -149,6 +150,10 @@ class Contratos_Model {
         rmdir($path);
         return;
     }
+    
+
+        
+    
   function getCodigo(){
       global $codigoDelContrato;
       return $codigoDelContrato;

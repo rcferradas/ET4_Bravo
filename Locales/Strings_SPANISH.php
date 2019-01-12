@@ -48,6 +48,7 @@ $strings = array(
     'Empresas' => 'Empresas',
     'Visitas' => 'Visitas',
     'Frecuencia' => 'Frecuencia',
+    'frecuencia' => 'frecuencia',
     'Usuarios' => 'Usuarios',
     'Menu' => 'Menú',
     'Nombre' => 'Nombre',
@@ -83,5 +84,8 @@ $strings = array(
     'Editar contrato' => 'Editar contrato',
     'Añadir empresa' => 'Añadir empresa',
     'No tienes permisos para acceder' => 'No tienes permisos para acceder',
+    'Fecha' => 'Fecha',
+    'Informe' => 'Informe',
+    'Visita Padre' => 'Visita Padre',
     'Campos obligatorios' => 'Campos obligatorios');
 ?>

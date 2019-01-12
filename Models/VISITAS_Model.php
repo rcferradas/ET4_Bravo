@@ -46,8 +46,26 @@ class VISITAS_Model {
         include_once '../Models/Access_DB.php';
         $this->mysqli = ConnectDB();
     }
-
-
+    
+    //Constructor de la clase para crear las visitas de tipo periódico.
+    //Recibe el tipo de la visita, y el código del contrato que se ha creado.
+    function __construct1($codContrato) {
+        $this->codContrato = $codContrato;
+        
+        include_once '../Models/Access_DB.php';
+        $this->mysqli = ConnectDB();
+    }    
+    
+     //Constructor de la clase para crear las visitas de tipo periódico.
+    //Recibe el tipo de la visita, y el código del contrato que se ha creado.
+    function __construct3($codVisita,$codContrato,$fecha) {
+     
+        $this->codVisita= $codVisita;
+        $this->codContrato = $codContrato;
+        $this->fecha= $fecha;
+        include_once '../Models/Access_DB.php';
+        $this->mysqli = ConnectDB();
+    }                       
 
 //Metodo ADD
 //Inserta en la tabla  de la bd  las visitas periódicas con los atributos:
@@ -83,6 +101,23 @@ class VISITAS_Model {
         }
     }
     
+    //funcion que coge todos los registro de visitas relacionados con un contrato
+    
+    function showVisitas($codigoCon,$frec){
+        $interval= VISITAS_Model::cadenaIntervalo($frec);
+        $sql = "SELECT * FROM VISITAS WHERE (`codContrato` = '$codigoCon'
+                 AND `fecha` >= DATE_SUB(NOW(), $interval) AND `fecha`<=
+                DATE_ADD(NOW(),$interval))ORDER BY `fecha` LIMIT 20";
+        $resultado = $this->mysqli->query($sql);
+        
+        
+        if (!($resultado)) { //si no hay tuplas, el resultado de la consulta será falso
+            return 'Tabla vacia';
+        } else {
+            
+            return $resultado; //devolvemos el array asociativo
+        }
+    }
     
     
     //funcion DELETE : comprueba que la tupla a borrar existe y una vez 
@@ -237,6 +272,45 @@ function datosContrato(){
           return  $frec;   
                 
         }
+        
+        
+        
+            static function cadenaIntervalo($frec){
+              $interval='';
+                
+              switch ($frec){ //comprueba que caso se cumple, y devuelve una variable con una cadena
+                  
+                 case 'diaria':
+                     $interval='INTERVAL 10 DAY';
+                     break;
+      
+                 case 'semanal':
+                    $interval='INTERVAL 10 WEEK';
+                    break;
+            
+                 case 'mensual':
+                    $interval='INTERVAL 10 MONTH';
+                    break;
+        
+                 case 'trimestral':
+                    $interval='INTERVAL 30 MONTH';
+                     break;
+        
+                case 'anual':
+                    $interval='INTERVAL 10 YEAR';
+                    break;
+        
+                case 'quinquenal':
+                    $interval='INTERVAL 50 YEAR';
+                    break;
+            
+        
+              }
+            
+          return  $interval;   
+                
+        }
+
 
     //Funcion que guarda el informe de una visita en un nuevo(o no) directorio.
     //Devuelve la ruta del informe
