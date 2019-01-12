@@ -29,7 +29,6 @@ class Empresas_ADD_View {
                 <div class="form-empresas">
                     <label><span>*</span><?php echo $strings['Tipo']; ?>:</label>
                     <select id="tipoempresa" name="tipo" >
-                        <option value=''></option>
                         <option value="certificador"><?= $strings['Certificadora'] ?></option>
                         <option value="mantenimiento"><?= $strings['Mantenimiento'] ?></option>
                         <option value="reparacion"><?= $strings['Reparadora'] ?></option>
