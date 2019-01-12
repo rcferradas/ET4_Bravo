@@ -28,7 +28,7 @@ class Empresas_DELETE_View {
 
             <tbody>
                 <tr>
-                    <td><?php echo $tupla['cif']; ?></td>
+                    <td><?php echo $tupla['CIF']; ?></td>
                     <td><?php echo $tupla['nombre']; ?></td>
                     <td><?php echo $tupla['tipo']; ?></td>
                     <td><?php echo $tupla['telefono']; ?></td>
@@ -36,7 +36,7 @@ class Empresas_DELETE_View {
                     <td>
                         <!--Botones para realizar acciones en cada tupla-->
                         <form class="form-inline my-2 my-lg-0" name='formulario' action="../Controllers/Empresas_Controller.php" method="post">
-                            <input type="hidden" name=cif value=<?php echo $tupla['cif'] ?>>
+                            <input type="hidden" name=cif value=<?php echo $tupla['CIF'] ?>>
                             <button name="action" value="DELETE" type="submit" class="btn btn-outline-primary">
                                 <i class="fas fa-trash-alt"></i></button>
                         </form>
