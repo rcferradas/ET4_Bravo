@@ -339,15 +339,7 @@ function validarSearchUsuarios(Formu){
 	return true;
 }
 //A ESTO NI CASO
-
-
-
-
-
-
-/*Comprueba si el CIF enviado está bien escrito*/
-/*CIF-Comprueba que la expresión regular del CIF esté bien hecha*/
-/*    function comprobarCIF( campo ) {
+    function comprobarCIFv2( campo ) {
 	var CIF = /^([ABCDEFGHJKLMNPQRSUVW])(\d{7})([0-9A-J])$/;
         var control=3;//lo utilizaremos para ver si es necesario una letra y/o numero
 	if(!comprobarExpresionRegular(campo,CIF,9)){//comprueba que la expresión enviada en CIF sea cumplida por el campo enviado si no lo hace devuelve false
@@ -364,113 +356,39 @@ function validarSearchUsuarios(Formu){
         //return false;
         }// pasado lo anterior se sabrá que está bien escrito y se debe comprobar el codigo de control
 	//Quitamos el primer caracter y el ultimo digito
-        
-	var valueCif=campo.substr(1,campo.length-2);
- 
-	var suma=0;
- 
-	//Sumamos las cifras pares de la cadena
-	for(var i=1;i<valueCif.length;i=i+2)
-	{
-		suma=suma+parseInt(valueCif.substr(i,1));
-	}
- 
-	var suma2=0;
+
+        var sumaPar=parseInt(campo.value.substr(2,1))+parseInt(campo.value.substr(4,1))+parseInt(campo.value.substr(6,1));  
+        var result=0;//para el for
+        var i=0;//ya que empezaremos a coger a partir del primer numero impar        
+        var sumaImpar=0;
+        var sumatotal=0;
+        var unidad=0;
+        var codigo=0;
  
 	//Sumamos las cifras impares de la cadena
-	for(i=0;i<valueCif.length;i=i+2)
-	{
-		var result=parseInt(valueCif.substr(i,1))*2;
-		if(String(result).length==1)
-		{
-			// Un solo caracter
-			suma2=suma2+parseInt(result);
-		}else{
-			// Dos caracteres. Los sumamos...
-			suma2=suma2+parseInt(String(result).substr(0,1))+parseInt(String(result).substr(1,1));
-		}
-	}
- 
+        
+	  for(i=1;i<8;i=i+2){
+          result=parseInt(campo.value.substr(i,1))*2;
+          if(String(result).length==1){
+            // Un solo caracter
+            sumaImpar+=parseInt(result);
+          }
+          else{
+          sumaImpar += parseInt(String(result).substr(0,1))+parseInt(String(result).substr(1,1));
+          }
+          }
 	// Sumamos las dos sumas que hemos realizado
-	suma=suma+suma2;
- 
-	var unidad=String(suma).substr(1,1)
-	unidad=10-parseInt(unidad);
-        if(unidad==1){
+	sumatotal=sumaPar+sumaImpar;
+        unidad=sumatotal%10;//nos intersa el segundo digito o en el caso de que haya sólo uno pues ese
+        
+        codigo =10-unidad;//conocemos el valor del codigo de control
+         
+        if(codigo==1){
                     campo.style.border = "2px solid purple";		
                     return true;            
         }
         else{
                     campo.style.border = "2px solid yellow";		
-                    return false;            
-        }
-}*/
-//            var sumaPar=campo.value.charAt(2)+campo.value.charAt(4)+campo.value.charAt(6);
-
-/*
-function comprobarCIF(cif) {
-    var CIF_REGEX = /^([ABCDEFGHJKLMNPQRSUVW])(\d{7})([0-9A-J])$/;
-    var match = cif.match( CIF_REGEX );
-    var letter  = match[1],
-        number  = match[2],
-        control = match[3];
-
-    var even_sum = 0;
-    var odd_sum = 0;
-    var n;
-
-    for ( var i = 0; i < number.length; i++) {
-      n = parseInt( number[i], 10 );
-
-      // Odd positions (Even index equals to odd position. i=0 equals first position)
-      if ( i % 2 === 0 ) {
-        // Odd positions are multiplied first.
-        n *= 2;
-
-        // If the multiplication is bigger than 10 we need to adjust
-        odd_sum += n < 10 ? n : n - 9;
-
-      // Even positions
-      // Just sum them
-      } else {
-        even_sum += n;
-      }
-
-    }
-
-    var control_digit = (10 - (even_sum + odd_sum).toString().substr(-1) );
-    var control_letter = 'JABCDEFGHI'.substr( control_digit, 1 );
-
-    // Control must be a digit
-    if ( letter.match( /[ABEH]/ ) ) {
-      if(control == control_digit){
-      campo.style.border = "2px solid green";
-      return true;
-      }
-      else{
-      campo.style.border = "2px solid red";
-      return false;          
-      }
-    // Control must be a letter
-    } else if ( letter.match( /[KPQS]/ ) ) {
-      if(control == control_letter){
-      campo.style.border = "2px solid green";
-      return true;
-      }
-      else{
-      campo.style.border = "2px solid red";
-      return false;          
-      }
-    // Can be either
-    } else {
-      if(control == control_digit || control == control_letter){
-      campo.style.border = "2px solid green";
-      return true;
-      }
-      else{
-      campo.style.border = "2px solid red";
-      return false;          
-      }
-    }
-
-  }*/
+                    return true;             
+        }     
+}
