@@ -31,12 +31,20 @@ class Visitas_SHOWCURRENT_View {
                     <td><?php echo $tupla['tipo']; ?></td>
                     <td width="25%"><IMG src="<?php echo $tupla['informe']; ?>" height="10%" width="70%" alt="No se ha encontrado el resguardo"/></td>
                     <td><?php echo $tupla['fecha']; ?></td>
-                     <td><?php echo $tupla['frutoVisitaProg']; ?></td>
+                     <td>
+                      <?php if(isset($tupla['frutoVisitaProg'])){ $padre=$tupla['frutoVisitaProg'];$cont= $tupla['codContrato'];echo '<form class="form-inline my-2 my-lg-0" name="formulario12" action="../Controllers/Visitas_Controller.php" method="">
+                        <input type="hidden" name="codvisita" value= '.$padre.' >
+                        <input type="hidden" name="codcontrato" value=<?php echo $tupla['.$cont.']>
+                        <button name="action" value="SHOWCURRENT" type="submit" class="btn btn-outline-primary">
+                       <i class="fa fa-arrow-up"></i></button></td>
+                          </form>';
+                         echo $tupla['frutoVisitaProg'];
+                           } ?>
                     <td>
                         <!--Botones para realizar acciones en la tupla-->
                         <form class="form-inline my-2 my-lg-0" name='formulario' action="../Controllers/Visitas_Controller.php" method="">
-                            <input type="hidden" name=codvisita value=<?php echo $tupla['codVisita'] ?>>
-                            <input type="hidden" name=codcontrato value=<?php echo $tupla['codContrato'] ?>>
+                            <input type="hidden" name='codvisita' value=<?php echo $tupla['codVisita'] ?>>
+                            <input type="hidden" name='codcontrato' value=<?php echo $tupla['codContrato'] ?>>
                             <button name="action" value="EDIT" type="submit" class="btn btn-outline-primary">
                                 <i class="fas fa-edit"></i></button>&nbsp
                             <button name="action" value="DELETE" type="submit" class="btn btn-outline-primary">

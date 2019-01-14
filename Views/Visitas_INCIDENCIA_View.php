@@ -14,7 +14,7 @@ class Visitas_INCIDENCIA_View {
 
         include '../Views/Header.php';
         ?>
-        <h2><?php echo $strings['Añadir Visita']; ?></h2>        
+        <h2><?php echo $strings['Añadir Visita por Incidencia']; ?></h2>        
         <section>
             <form class="form_add" method="post" action="../Controllers/Visitas_Controller.php" enctype="multipart/form-data" onsubmit="return validacionSubmitEdit();">
                 <fieldset id="fieldset_add">

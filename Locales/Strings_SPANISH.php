@@ -92,5 +92,13 @@ $strings = array(
     'Realizada' => 'Realizada',
     'Pendiente' => 'Pendiente',
     'Incidencia' => 'Incidencia',
-    'Visita añadida con éxito' => 'Visita añadida con éxito');
+    'Visita añadida con éxito' => 'Visita añadida con éxito',
+        'Editar visita' => 'Editar visita',
+    'Añadir Visita por Incidencia' => 'Añadir Visita por Incidencia',
+    'Diaria' => 'Diaria',
+    'Semanal' => 'Semanal',
+    'Mensual' => 'Mensual',
+    'Trimestral' => 'Trimestral',
+    'Anual' => 'Anual',
+    'Quinquenal' => 'Quinquenal');
 ?>

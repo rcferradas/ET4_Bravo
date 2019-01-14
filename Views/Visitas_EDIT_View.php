@@ -16,7 +16,7 @@ class Visitas_EDIT_View {
 
             <section>
                 <form class="form_edit" method="post" action="../Controllers/Visitas_Controller.php" enctype="multipart/form-data" onsubmit="return validacionSubmitEdit();">
-                    <h2><?php echo $datos['codVisita'] ?><?php echo $strings['Editar contrato']; ?></h2>
+                    <h2><?php echo $strings['Editar visita']; ?></h2>
 
                     <fieldset id="fieldset_edit">
                     <input hidden name="codcontrato" type="text" size="25" id="codcontratoEd" value="<?php echo $datos['codContrato'] ?>"> 

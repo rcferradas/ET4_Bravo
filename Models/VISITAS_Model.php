@@ -222,7 +222,7 @@ class VISITAS_Model {
         if (!$this->mysqli->query($sql)) {
             return 'Error en la eliminación';
         } else { 
-            if(!empty($this->informe)){
+            if(!empty($this->informe) && file_exists('../Files/'.$this->codVisita . '/Inf/'.$this->informe)){
            $this->borrarDirectorio($dirDocumento);
             }
            return 'Eliminación realizada con éxito';
@@ -237,7 +237,7 @@ class VISITAS_Model {
     function SHOWCURRENT() {
         $sql="SELECT * FROM VISITAS WHERE(`codVisita` = '".$this->codVisita."')";
         $resultado = $this->mysqli->query($sql);
-        
+        var_dump($sql);
         if($resultado->num_rows == 1){ //Si el resultado de la consulta es una tupla, devuelve dicha tupla como un array asociativo
             $tupla = $resultado->fetch_array();
             return $tupla;
@@ -254,31 +254,28 @@ class VISITAS_Model {
 // funcion Edit: realizar el update de una tupla despues de comprobar que existe
     function EDIT() {
         $sql = "SELECT `informe` FROM VISITAS WHERE (`codVisita`= '".$this->codVisita."')";
-        var_dump($sql);
         $resultado = $this->mysqli->query($sql);
         $viejoinforme=$resultado->fetch_assoc();
         $rutaviejostr=(string) $viejoinforme['informe'];
-        var_dump($this->informe);
         if($resultado->num_rows == 1){ //Si se encuentra la tupla buscada en la consulta, se procede con el update
              
            if($_FILES['informe']['size'] != 0){ //Comprueba si el campo informe del formulario ha sido rellenado
                  if(!empty($viejoinforme['informe'] && file_exists($rutaviejostr) )){
-                     echo $viejoinforme['informe'];
-                $this->borrarDirectorio('../Files/'. $this->codVisita.'/Inf/'); //Elimina el informe previamente asociado
-                 }
+                     
+                    $this->borrarDirectorio('../Files/'. $this->codVisita.'/Inf/'); //Elimina el informe previamente asociado
+                     }
                 $informe = $this->rutaInforme(); //Añade el informe en el directorio destino, y guarda la ruta en una nueva variable
-                 $informestr= "'$informe'";
+                $informestr= "'$informe'";
             }else{
                  
                 $informe = $viejoinforme['informe'];//La variable que actualiza el atributo informe conserva su antiguo valor, en caso contrario
                 $informestr=  "'$informe'";
               }
-            $sql = "UPDATE VISITAS
+                    $sql = "UPDATE VISITAS
                     SET `estado` = '$this->estado', `tipo`= '$this->tipo',`informe` = $informestr,
                      `fecha` = '$this->fecha'
                     WHERE ( `codVisita` = '$this->codVisita' )
                  ";
-            var_dump($sql);
             if (!$this->mysqli->query($sql)) { //si se da un problema en la consulta de actualización se notifica el error
                 return 'Error en la actualización';
             } else {

@@ -66,8 +66,14 @@ class Contratos_EDIT_View {
                         <input type="number" name="importe" id="importe" value="<?php echo $datos['importe']; ?>"  onblur="comprobarEntero(this, 1, 999);"> 
                         
                         <label for="frecuencia"><?php echo $strings['Frecuencia']; ?>  *</label> 
-                        <input name="frecuencia" type="text" id="frecuencia" value="<?php echo $datos['frecuenciaVisitas']; ?>"/>
-                        
+                        <select  name="frecuencia" id="frecuencia"> 
+                            <option  value="diaria"<?php if ($datos['frecuenciaVisitas'] == 'diaria') {echo 'selected';}?>><?php echo $strings['Diaria'] ?></option>
+                            <option value="semanal"<?php if ($datos['frecuenciaVisitas'] == 'semanal') {echo 'selected';}?>><?php echo $strings['Semanal'] ?></option>
+                            <option  value="mensual"<?php if ($datos['frecuenciaVisitas'] == 'mensual') {echo 'selected';}?>><?php echo $strings['Mensual'] ?></option>
+                            <option  value="trimestral"<?php if ($datos['frecuenciaVisitas'] == 'trimestral') {echo 'selected';}?>><?php echo $strings['Trimestral'] ?></option>
+                            <option  value="anual" <?php if ($datos['frecuenciaVisitas'] == 'anual') {echo 'selected';}?>><?php echo $strings['Anual'] ?></option>
+                            <option  value="quinquenal"<?php if ($datos['frecuenciaVisitas'] == 'quinquenal') {echo 'selected';}?>><?php echo $strings['Quinquenal'] ?></option>
+                        </select>
                         <label for="estado"><?php echo $strings['Estado'] ?>  *</label>  
                         <select id="estado" name="estado">
                             <?php if ($datos['estado'] == 'realizado') {

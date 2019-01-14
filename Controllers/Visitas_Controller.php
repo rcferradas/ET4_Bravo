@@ -101,7 +101,6 @@ else {
                 new MESSAGEV('No existe la visita', '../Controllers/Visitas_Controller.php',$_REQUEST['codcontrato']);
             } else {
                 $visitas = new VISITAS_Model($_REQUEST['codvisita'],'','');    //creamos un objeto del modelo con el email
-                echo $_REQUEST['codvisita'];
                 $valores = $visitas->SHOWCURRENT();                                       //y se trae de la BD (a traves del modelo) la tupla asociada a ese email
                 if ($valores == 'No existe dicha tupla') {  //Si no se encuentra la tupla
                     new MESSAGEV($valores, '../Controllers/Visitas_Controller.php',$_REQUEST['codcontrato']);    //vuelve al al index.php
