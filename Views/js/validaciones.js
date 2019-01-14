@@ -124,7 +124,7 @@ function comprobarDni(campo) {
 }
 /*Comprueba si el CIF enviado está bien escrito*/
 /*CIF-Comprueba que la expresión regular del CIF esté bien hecha*/
-    function comprobarCIF( campo ) {
+/*    function comprobarCIFv2( campo ) {
 	var CIF = /^([ABCDEFGHJKLMNPQRSUVW])(\d{7})([0-9A-J])$/;
 	if(!comprobarExpresionRegular(campo,CIF,9)){//comprueba que la expresión enviada en CIF sea cumplida por el campo enviado si no lo hace devuelve false
 	return false;
@@ -141,7 +141,7 @@ function comprobarDni(campo) {
             campo.style.border = "2px solid green";
             return true;
 	}
-}
+}*/
 /*Comprueba que todos los campos obligatorios estén escritos y que todos los campos escritos estén cubiertos correctamente,se envía en Empresas_ADD_view */
 /*En el momento que correcto sea 1 significará que algún campo no es correcto*/
 function validarEmpresasADD(Formu){
@@ -338,8 +338,8 @@ function validarSearchUsuarios(Formu){
 	}
 	return true;
 }
-//A ESTO NI CASO
-    function comprobarCIFv2( campo ) {
+
+    function comprobarCIF( campo ) {
 	var CIF = /^([ABCDEFGHJKLMNPQRSUVW])(\d{7})([0-9A-J])$/;
         var control=3;//lo utilizaremos para ver si es necesario una letra y/o numero
 	if(!comprobarExpresionRegular(campo,CIF,9)){//comprueba que la expresión enviada en CIF sea cumplida por el campo enviado si no lo hace devuelve false
@@ -364,6 +364,7 @@ function validarSearchUsuarios(Formu){
         var sumatotal=0;
         var unidad=0;
         var codigo=0;
+        var comprobar=0;//utilizaremos esto para comprobar con el dígito de control, ya que si es una letra tendremos que pasarlo a un número
  
 	//Sumamos las cifras impares de la cadena
         
@@ -373,7 +374,7 @@ function validarSearchUsuarios(Formu){
             // Un solo caracter
             sumaImpar+=parseInt(result);
           }
-          else{
+          else{//Dos caracteres
           sumaImpar += parseInt(String(result).substr(0,1))+parseInt(String(result).substr(1,1));
           }
           }
@@ -381,14 +382,57 @@ function validarSearchUsuarios(Formu){
 	sumatotal=sumaPar+sumaImpar;
         unidad=sumatotal%10;//nos intersa el segundo digito o en el caso de que haya sólo uno pues ese
         
-        codigo =10-unidad;//conocemos el valor del codigo de control
-         
-        if(codigo==1){
+        codigo =10-unidad;//conocemos el valor del codigo de controlJ = 0, A = 1, B = 2, C= 3, D = 4, E = 5, F = 6, G = 7, H = 8, I = 9
+        
+        if(control==2){
+            comprobar=campo.value.charAt(8);
+        }
+        if(control==1){//si el control es 1 significa que el codigo de control debe ser una letra entre A-J, en el caso de que no sea así devuelve falso
+            if(campo.value.charAt(8)=="J") comprobar=0;
+            else if(campo.value.charAt(8)=="A") comprobar=1;
+            else if(campo.value.charAt(8)=="B") comprobar=2;
+            else if(campo.value.charAt(8)=="C") comprobar=3;
+            else if(campo.value.charAt(8)=="D") comprobar=4;
+            else if(campo.value.charAt(8)=="E") comprobar=5;
+            else if(campo.value.charAt(8)=="F") comprobar=6;
+            else if(campo.value.charAt(8)=="G") comprobar=7;
+            else if(campo.value.charAt(8)=="H") comprobar=8;
+            else if(campo.value.charAt(8)=="I") comprobar=9;
+            else{
+                campo.style.border = "2px solid red";
+                return false;
+            }
+        }
+        if(control==3){//si el control es 3 significa que el codigo de control puede ser una letra entre A-J o un numero
+            if(campo.value.charAt(8)=="J") comprobar=0;
+            else if(campo.value.charAt(8)=="A") comprobar=1;
+            else if(campo.value.charAt(8)=="B") comprobar=2;
+            else if(campo.value.charAt(8)=="C") comprobar=3;
+            else if(campo.value.charAt(8)=="D") comprobar=4;
+            else if(campo.value.charAt(8)=="E") comprobar=5;
+            else if(campo.value.charAt(8)=="F") comprobar=6;
+            else if(campo.value.charAt(8)=="G") comprobar=7;
+            else if(campo.value.charAt(8)=="H") comprobar=8;
+            else if(campo.value.charAt(8)=="I") comprobar=9;
+            else{
+                comprobar=campo.value.charAt(8);
+            }
+        }        
+        if(codigo==comprobar){
+            campo.style.border = "2px solid green";
+            return true;    
+        }
+        if(codigo!=comprobar){
+            campo.style.border = "2px solid red";
+            return false;    
+        }
+}
+        /*if(codigo==1){
                     campo.style.border = "2px solid purple";		
                     return true;            
         }
         else{
                     campo.style.border = "2px solid yellow";		
                     return true;             
-        }     
-}
+        }  */   
+//}
