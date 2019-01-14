@@ -18,8 +18,7 @@ class Contratos_SEARCH_View {
         <section>
             <form class="form_search" method="post" action="../Controllers/Contratos_Controller.php">
                 <fieldset id="fieldset_search">
-                    <input hidden name="cod" type="text" size="25" id="cod" value=""> 
-
+                   
                     <label for="centro"><?php echo $strings['Centro'] ?>  *</label> 
                     <input name="centro" type="text" size="25" id="centro" onblur="comprobarTexto(this, 30);"/> 
 
@@ -39,6 +38,10 @@ class Contratos_SEARCH_View {
 
                     <label for="periodofin"><?php echo $strings['Periodo fin']; ?>  *</label> 
                     <input type="date" name="periodofin" id="periodofin"> 
+                    
+                    
+                    <label for="frecuencia"><?php echo $strings['Frecuencia'] ?>  *</label> 
+                    <input name="frecuencia" type="text" id="frecuenciaSC" /> 
 
                     <label for="importe"><?php echo $strings['Importe']; ?>  *</label> 
                     <input type="number" name="importe" id="importe" onblur="comprobarEntero(this, 1, 999);"> 

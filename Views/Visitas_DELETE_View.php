@@ -1,7 +1,7 @@
 <?php
 include_once '../Functions/Authentication.php';
 
-class Visitas_SHOWCURRENT_View {
+class Visitas_DELETE_View {
 
     function __construct($tupla) {    //Constructor de la clase
         $this->render($tupla);
@@ -34,22 +34,12 @@ class Visitas_SHOWCURRENT_View {
                      <td><?php echo $tupla['frutoVisitaProg']; ?></td>
                     <td>
                         <!--Botones para realizar acciones en la tupla-->
-                        <form class="form-inline my-2 my-lg-0" name='formulario' action="../Controllers/Visitas_Controller.php" method="">
+                        <form class="form-inline my-2 my-lg-0" name='formulario' action="../Controllers/Visitas_Controller.php" method="post">
                             <input type="hidden" name=codvisita value=<?php echo $tupla['codVisita'] ?>>
                             <input type="hidden" name=codcontrato value=<?php echo $tupla['codContrato'] ?>>
-                            <button name="action" value="EDIT" type="submit" class="btn btn-outline-primary">
-                                <i class="fas fa-edit"></i></button>&nbsp
-                            <button name="action" value="DELETE" type="submit" class="btn btn-outline-primary">
-                                <i class="fas fa-trash-alt"></i></button>&nbsp
-                           <?php 
-                                     if($tupla['estado']== 'incidencia'){
-                                     echo '<button name="action" value="INCIDENCIA" type="submit" class="btn btn-outline-primary">';
-                                     echo '<i class="fas fa-plus"></i></button>&nbsp';
-                                     }
-                                             ?>
-                                <button name="action" value="SHOWALL" type="submit" class="btn btn-outline-primary">
-                                <i class="fa fa-arrow-left"></i></button>&nbsp
-                                
+                             <input type="hidden" name=informe value=<?php echo $tupla['informe'] ?>>
+                           <button name="action" value="DELETE" type="submit" class="btn btn-outline-primary">
+                                <i class="fas fa-trash-alt"></i></button>
                         </form>
                     </td>
                 </tr>
@@ -57,6 +47,4 @@ class Visitas_SHOWCURRENT_View {
         </table>
         <?php
     }
-
 }
-?>

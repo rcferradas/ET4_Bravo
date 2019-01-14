@@ -43,7 +43,7 @@ class Contratos_SHOWALL_View {
                         <td>
                             <!--Botones para realizar acciones en cada tupla-->
                             <form class="form-inline my-2 my-lg-0" name='formulario' action="../Controllers/Contratos_Controller.php" method="">
-                                <input type="hidden" name=cod value=<?php echo $tupla['cod'] ?>>
+                                <input type="hidden" name=codcontrato value=<?php echo $tupla['cod'] ?>>
                                 <button name="action" value="SHOWCURRENT" type="submit" class="btn btn-outline-primary">
                                     <i class="far fa-eye"></i></button>&nbsp
                                 <button name="action" value="EDIT" type="submit" class="btn btn-outline-primary">
@@ -51,7 +51,7 @@ class Contratos_SHOWALL_View {
                                 <button name="action" value="DELETE" type="submit" class="btn btn-outline-primary">
                                     <i class="fas fa-trash-alt"></i></button>&nbsp
                                     <button name="action" value="VISITAS" type="submit" class="btn btn-outline-primary">
-                                    <i class="far fa-eye"></i></button>
+                                    <i class="fa fa-list"></i></button>
                             </form>
                         </td>
                     </tr>

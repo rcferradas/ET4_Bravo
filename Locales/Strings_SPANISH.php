@@ -87,5 +87,10 @@ $strings = array(
     'Fecha' => 'Fecha',
     'Informe' => 'Informe',
     'Visita Padre' => 'Visita Padre',
-    'Campos obligatorios' => 'Campos obligatorios');
+    'Campos obligatorios' => 'Campos obligatorios',
+     'Añadir Visita' => 'Añadir Visita',
+    'Realizada' => 'Realizada',
+    'Pendiente' => 'Pendiente',
+    'Incidencia' => 'Incidencia',
+    'Visita añadida con éxito' => 'Visita añadida con éxito');
 ?>

@@ -65,8 +65,57 @@ class VISITAS_Model {
         $this->fecha= $fecha;
         include_once '../Models/Access_DB.php';
         $this->mysqli = ConnectDB();
-    }                       
-
+    }     
+    
+   //Constructor de la clase para crear las visitas de tipo periódico.
+    //Recibe el tipo de la visita, y el código del contrato que se ha creado.
+    function __construct4($codVisita,$codContrato,$fecha,$informe) {
+     
+        $this->codVisita= $codVisita;
+        $this->codContrato = $codContrato;
+        $this->fecha= $fecha;
+        $this->informe=$informe;
+        include_once '../Models/Access_DB.php';
+        $this->mysqli = ConnectDB();
+    }     
+    
+      //Constructor de la clase para crear las visitas de tipo periódico.
+    //Recibe el tipo de la visita, y el código del contrato que se ha creado.
+    function __construct5($estado,$tipo,$codContrato,$informe,$fecha) {
+     
+        $this->estado= $estado;
+        $this->tipo = $tipo;
+        $this->codContrato= $codContrato;
+        $this->informe= $informe;
+        $this->fecha= $fecha;
+        include_once '../Models/Access_DB.php';
+        $this->mysqli = ConnectDB();
+    }         
+    
+    function __construct6($estado,$tipo,$codContrato,$informe,$fecha,$visitaPadre) {
+     
+        $this->estado= $estado;
+        $this->tipo = $tipo;
+        $this->codContrato= $codContrato;
+        $this->informe= $informe;
+        $this->fecha= $fecha;
+        $this->visitaPadre=$visitaPadre;
+        include_once '../Models/Access_DB.php';
+        $this->mysqli = ConnectDB();
+    }         
+    
+    function __construct7($codVisita,$estado,$tipo,$codContrato,$informe,$fecha,$visitaPadre) {
+        $this->codVisita=$codVisita;
+        $this->estado= $estado;
+        $this->tipo = $tipo;
+        $this->codContrato= $codContrato;
+        $this->informe= $informe;
+        $this->fecha= $fecha;
+        $this->visitaPadre=$visitaPadre;
+        include_once '../Models/Access_DB.php';
+        $this->mysqli = ConnectDB();
+    }    
+    
 //Metodo ADD
 //Inserta en la tabla  de la bd  las visitas periódicas con los atributos:
 // PK de la visita, tipo, codigo del contrato al que pertenecen y la fecha en la
@@ -84,6 +133,43 @@ class VISITAS_Model {
                 '$this->fecha'
                  )";
           $resultado=$this->mysqli->query($sql);
+    }
+    
+    
+    
+    
+     
+    function ADDNoProgramadas() {     
+        $max="SELECT MAX(`codVisita`)as codigo FROM visitas WHERE(`codContrato` = $this->codContrato)";
+        $res= $this->mysqli->query($max);
+        $tupla = $res->fetch_assoc();
+        $codigovis= $tupla['codigo'];
+        $indice= strlen($this->codContrato);
+        $numeroVisita= substr($codigovis, $indice)+1;
+        $this->codVisita= $this->codContrato.$numeroVisita;
+        if($_FILES['informe']['size'] != 0){
+            $rutainf= $this->rutaInforme();
+        }
+        $rutainforme= $_FILES['informe']['size'] != 0? "'$rutainf'":'NULL';
+        $this->visitaPadre=  !empty($this->visitaPadre)? "'$this->visitaPadre'": "NULL";
+        $sql ="INSERT INTO visitas (
+             `codVisita`,
+             `estado`,
+             `tipo`, 
+             `codContrato`, 
+             `informe`,
+             `fecha`,
+             `frutoVisitaProg`
+              ) 
+        VALUES ('$this->codVisita','$this->estado', '$this->tipo', '$this->codContrato', 
+                $rutainforme,'$this->fecha',$this->visitaPadre
+                 )";
+          $resultado=$this->mysqli->query($sql);
+          
+           if (!$resultado) {
+            return 'Error en la inserción';
+        }
+        return 'Visita añadida con éxito'; //operacion de insertado correcta
     }
 
 
@@ -110,10 +196,18 @@ class VISITAS_Model {
                 DATE_ADD(NOW(),$interval))ORDER BY `fecha` LIMIT 20";
         $resultado = $this->mysqli->query($sql);
         
-        
-        if (!($resultado)) { //si no hay tuplas, el resultado de la consulta será falso
-            return 'Tabla vacia';
-        } else {
+        if (!($resultado)) { //si se produce un error en la consulta
+            return 'Trror en la consulta';
+        }
+        else if($resultado->num_rows ==0){
+            $sql = "SELECT * FROM VISITAS WHERE (`codContrato` = '$codigoCon')
+                ORDER BY `fecha` LIMIT 20";
+               $resultado = $this->mysqli->query($sql);
+            
+            return $resultado;
+            
+        }
+        else {
             
             return $resultado; //devolvemos el array asociativo
         }
@@ -123,16 +217,15 @@ class VISITAS_Model {
     //funcion DELETE : comprueba que la tupla a borrar existe y una vez 
    // verificado la borra.
     function DELETE() {
-        $sql = "SELECT * FROM VISITAS WHERE (`codVisita` = '" . $this->codVisita . "')";
-        $resultado = $this->mysqli->query($sql);
-        
-        if($resultado->num_rows == 1){ //si se ha encontrado la tupla
-            $sql="DELETE FROM VISITAS WHERE ( `codVisita` = '".$this->codVisita."')";
-            if (!($resultado)) { //si el resultado de la consulta es falso, no se realiza el borrado y se devuele el mensaje de error
-                return 'Error, no se ha podido borrar la tupla';
+        $sql = "DELETE FROM VISITAS WHERE (`codVisita` = '" . $this->codVisita . "')";
+        $dirDocumento = '../Files/' . $this->codVisita;
+        if (!$this->mysqli->query($sql)) {
+            return 'Error en la eliminación';
+        } else { 
+            if(!empty($this->informe)){
+           $this->borrarDirectorio($dirDocumento);
             }
-        }else{
-            return 'No existe dicha tupla';
+           return 'Eliminación realizada con éxito';
         }
     }
 
@@ -160,25 +253,32 @@ class VISITAS_Model {
 
 // funcion Edit: realizar el update de una tupla despues de comprobar que existe
     function EDIT() {
-        $sql = "SELECT * FROM VISITAS WHERE (`codVisita`= '".$this->codVisita."')";
+        $sql = "SELECT `informe` FROM VISITAS WHERE (`codVisita`= '".$this->codVisita."')";
+        var_dump($sql);
         $resultado = $this->mysqli->query($sql);
-        
+        $viejoinforme=$resultado->fetch_assoc();
+        $rutaviejostr=(string) $viejoinforme['informe'];
+        var_dump($this->informe);
         if($resultado->num_rows == 1){ //Si se encuentra la tupla buscada en la consulta, se procede con el update
              
-            if(isset($this->informe['name'])){ //Comprueba si el campo informe del formulario ha sido rellenado
-          
-                $this->eliminarInforme('../Files/'. $this->codVisita .'/Inf/'); //Elimina el informe previamente asociado
+           if($_FILES['informe']['size'] != 0){ //Comprueba si el campo informe del formulario ha sido rellenado
+                 if(!empty($viejoinforme['informe'] && file_exists($rutaviejostr) )){
+                     echo $viejoinforme['informe'];
+                $this->borrarDirectorio('../Files/'. $this->codVisita.'/Inf/'); //Elimina el informe previamente asociado
+                 }
                 $informe = $this->rutaInforme(); //Añade el informe en el directorio destino, y guarda la ruta en una nueva variable
-            
+                 $informestr= "'$informe'";
             }else{
-                $informe = $this->informe; //La variable que actualiza el atributo informe conserva su antiguo valor, en caso contrario
-            }
+                 
+                $informe = $viejoinforme['informe'];//La variable que actualiza el atributo informe conserva su antiguo valor, en caso contrario
+                $informestr=  "'$informe'";
+              }
             $sql = "UPDATE VISITAS
-                    SET `estado` = '$this->estado', `tipo`= '$this->tipo', `codContrato`= '$this->codContrato', `informe` = $informe,
-                     `fecha` = '$this->fecha', `frutoVisitaProg`= '$this->visitaPadre'
+                    SET `estado` = '$this->estado', `tipo`= '$this->tipo',`informe` = $informestr,
+                     `fecha` = '$this->fecha'
                     WHERE ( `codVisita` = '$this->codVisita' )
                  ";
-            
+            var_dump($sql);
             if (!$this->mysqli->query($sql)) { //si se da un problema en la consulta de actualización se notifica el error
                 return 'Error en la actualización';
             } else {
@@ -327,20 +427,19 @@ function datosContrato(){
             move_uploaded_file($this->informe['tmp_name'], $ruta); // Se sube el informe al nuevo directorio
            
             return $ruta;
-            
+     
         }
         
     //Funcion que elimina el informe dada na ruta como parametro
         
-        function eliminarInforme($path) {
-            $files = glob($path . '/*');
-            foreach ($files as $file) { //Recorre recursivamente hasta que encuentra el informe, y lo borra
-               is_dir($file) ? eliminarInforme($file) : unlink($file);
-             }
-             
-            rmdir($path); //Borra el directorio del informe
-            return;
-       }
+           function borrarDirectorio($path) {
+        $files = glob($path . '/*');
+        foreach ($files as $archivo) {
+            is_dir($archivo) ? $this->borrarDirectorio($archivo) : unlink($archivo);
+        }
+        rmdir($path);
+        return;
+    }
 }
 
 

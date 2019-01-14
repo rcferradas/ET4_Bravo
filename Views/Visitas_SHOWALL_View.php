@@ -21,6 +21,7 @@ class Visitas_SHOWALL_View {
                     <th scope="col"><?php echo $strings['Tipo']; ?></th>
                     <th scope="col"><?php echo $strings['Estado']; ?></th>
                     <th scope="col"><form class="form-inline my-2 my-lg-0" name='formulario' action="../Controllers/Visitas_Controller.php" method="">
+                             <input type="hidden" name=codcontrato value=<?php echo $_REQUEST['codcontrato']?>>
                             <button name="action" value="ADD" type="submit" class="btn btn-outline-primary">
                                 <i class="fas fa-plus"></i></button>&nbsp
                             <button name="action" value="SEARCH" type="submit" class="btn btn-outline-primary">
@@ -49,6 +50,13 @@ class Visitas_SHOWALL_View {
                                     <i class="far fa-eye"></i></button>&nbsp
                                 <button name="action" value="EDIT" type="submit" class="btn btn-outline-primary">
                                     <i class="fas fa-edit"></i></button>&nbsp
+                                     <?php 
+                                     if($tupla['estado']== 'incidencia'){
+                                     echo '<button name="action" value="INCIDENCIA" type="submit" class="btn btn-outline-primary">';
+                                     echo '<i class="fas fa-plus"></i></button>&nbsp';
+                                     }
+                                             ?>
+                                
                                 <button name="action" value="DELETE" type="submit" class="btn btn-outline-primary">
                                     <i class="fas fa-trash-alt"></i></button>
                             </form>

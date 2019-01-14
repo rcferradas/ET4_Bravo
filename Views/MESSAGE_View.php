@@ -29,7 +29,7 @@ class MESSAGE {
         <br>
         <br>
         <br>
-
+                 
         <?php
         echo '<a href=\'' . $this->volver . "'>" . $strings['Volver'] . " </a>";
         include '../Views/Footer.php';

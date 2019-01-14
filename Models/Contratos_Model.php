@@ -1,5 +1,5 @@
 <?php
-$codigoDelContrato;
+$codigoDelContrato; //Variable global para recuperar el codigo del ultimo contrato creado
 
 class Contratos_Model {
 
@@ -89,7 +89,7 @@ class Contratos_Model {
     function SEARCH() {
         $search = "SELECT * FROM contratos WHERE `cod` LIKE '%" . $this->cod . "%' AND `centro` LIKE '%" . $this->centro . "%' AND `tipo` LIKE '%" . $this->tipo . "%' AND `estado` LIKE '%" . $this->estado . "%' 
             AND `cifEmpresa` LIKE '%" . $this->cifEmpresa . "%' AND `documento` LIKE '%" . $this->documento . "%' AND `periodoInicio` LIKE '%" . $this->periodoInicio . "%' AND
-                  `periodoFin` LIKE '%" . $this->periodoFin . "%' AND `importe` LIKE '%" . $this->importe . "%'";
+                  `periodoFin` LIKE '%" . $this->periodoFin . "%' AND `frecuenciaVisitas` LIKE '%".$this->frecuencia."%'  AND `importe` LIKE '%" . $this->importe . "%'";
         if (!($resultado = $this->mysqli->query($search))) {
             return 'Error en la consulta';
         } else if ($resultado->numrows = 0) {
@@ -122,8 +122,9 @@ class Contratos_Model {
             $this->borrarDirectorio('../Files/' . $this->cod);
             $rutaDocumento = $this->funcionRutaDocumento();
         }
+        var_dump($this->frecuencia);
         $edit = "UPDATE `contratos` SET `centro`='$this->centro',`tipo`='$this->tipo',`estado`='$this->estado',`cifEmpresa`='$this->cifEmpresa',`documento`='$rutaDocumento',"
-                . "`periodoinicio`='$this->periodoInicio',`periodofin`='$this->periodoFin',`importe`='$this->importe' WHERE `cod`='$this->cod'";
+                . "`periodoinicio`='$this->periodoInicio',`periodofin`='$this->periodoFin',`frecuenciaVisitas`='$this->frecuencia',`importe`='$this->importe' WHERE `cod`='$this->cod'";
         if (!$this->mysqli->query($edit)) { //si se da un problema en la consulta de actualización se notifica el error
             return 'Error en la actualización';
         } else {

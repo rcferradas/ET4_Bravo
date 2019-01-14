@@ -19,7 +19,7 @@ class Contratos_EDIT_View {
                     <h2><?php echo $strings['Editar contrato']; ?></h2>
 
                     <fieldset id="fieldset_edit">
-                    <input hidden name="cod" type="text" size="25" id="cod" value="<?php echo $datos['cod'] ?>"> 
+                    <input hidden name="codcontrato" type="text" size="25" id="codcontratoEd" value="<?php echo $datos['cod'] ?>"> 
 
                         <label for="centro"><?php echo $strings['Centro'] ?>  *</label> 
                         <input name="centro" type="text" size="25" id="centro" value="<?php echo $datos['centro'] ?>"  onblur="comprobarTexto(this, 30);"/> 
@@ -64,7 +64,10 @@ class Contratos_EDIT_View {
 
                         <label for="importe"><?php echo $strings['Importe']; ?>  *</label> 
                         <input type="number" name="importe" id="importe" value="<?php echo $datos['importe']; ?>"  onblur="comprobarEntero(this, 1, 999);"> 
-
+                        
+                        <label for="frecuencia"><?php echo $strings['Frecuencia']; ?>  *</label> 
+                        <input name="frecuencia" type="text" id="frecuencia" value="<?php echo $datos['frecuenciaVisitas']; ?>"/>
+                        
                         <label for="estado"><?php echo $strings['Estado'] ?>  *</label>  
                         <select id="estado" name="estado">
                             <?php if ($datos['estado'] == 'realizado') {

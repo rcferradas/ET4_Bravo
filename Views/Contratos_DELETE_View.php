@@ -23,6 +23,7 @@ class Contratos_DELETE_View {
                     <th scope="col"><?php echo $strings['Documento']; ?></th>
                     <th scope="col"><?php echo $strings['Periodo inicio']; ?></th>
                     <th scope="col"><?php echo $strings['Periodo fin']; ?></th>
+                    <th scope="col"><?php echo $strings['Frecuencia']; ?></th>
                     <th scope="col"><?php echo $strings['Importe']; ?></th>
                     <th scope="col"><?php echo $strings['Estado']; ?></th>
                     <th scope="col"><?php echo $strings['Confirmar borrado']; ?></th>
@@ -37,12 +38,13 @@ class Contratos_DELETE_View {
                     <td width="25%"><IMG src="<?php echo $tupla['documento']; ?>" height="10%" width="70%" alt="No se ha encontrado el resguardo"/></td>
                     <td><?php echo $tupla['periodoinicio']; ?></td>
                     <td><?php echo $tupla['periodofin']; ?></td>
+                    <td><?php echo $tupla['frecuenciaVisitas']; ?></td>
                     <td><?php echo $tupla['importe']; ?></td>
                     <td><?php echo $tupla['estado']; ?></td>
                     <td>
                         <!--Botones para realizar acciones en cada tupla-->
                         <form class="form-inline my-2 my-lg-0" name='formulario' action="../Controllers/Contratos_Controller.php" method="post">
-                            <input type="hidden" name=cod value=<?php echo $tupla['cod'] ?>>
+                            <input type="hidden" name=codcontrato value=<?php echo $tupla['cod'] ?>>
                             <button name="action" value="DELETE" type="submit" class="btn btn-outline-primary">
                                 <i class="fas fa-trash-alt"></i></button>
                         </form>
