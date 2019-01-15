@@ -22,10 +22,10 @@ class Centros_EDIT_View {
                         <div class="form-group">
                             <label for="nombre"><?php echo $strings['Nombre'] ?>  *</label> 
                             <input class="form-control" name="nombre" readonly type="text" size="25" readonly id="nombre" class="pk" value="<?php echo $datos['nombre'] ?>"  onblur="comprobarTexto(this, 10);"/> 
-                        </div><div class="form-group">
+                        </div>&nbsp;&nbsp;<div class="form-group">
                             <label for="lugar"><?php echo $strings['Lugar'] ?>  *</label> 
                             <input class="form-control" name="lugar" type="text" size="25" id="lugar" value="<?php echo $datos['lugar'] ?>"  onblur="comprobarTexto(this, 30);"/> 
-                        </div><div class="form-group"><label for="usuarioAsignado"><?php echo $strings['Usuario asignado'] ?>  *</label> 
+                        </div>&nbsp;&nbsp;<div class="form-group"><label for="usuarioAsignado"><?php echo $strings['Usuario asignado'] ?>  *</label> 
                             <input class="form-control" name="usuarioAsignado" type="text" size="25" id="usuarioAsignado" value="<?php echo $datos['usuarioAsignado'] ?>"  onblur="comprobarTexto(this, 9);"/> 
                         </div>
                     </fieldset>

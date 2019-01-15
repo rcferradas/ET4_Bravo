@@ -46,7 +46,7 @@ class Visitas_EDIT_View {
                                 }
                                 ?>></option>
                             </select>
-                        </div><div class="form-group"><label for="tipo"><?php echo $strings['Tipo'] ?>  *</label>  
+                        </div>&nbsp;&nbsp;<div class="form-group"><label for="tipo"><?php echo $strings['Tipo'] ?>  *</label>  
                             <select class="form-control" id="tipo" name="tipo">
                                 <option value="certificador"  <?php
                                 if ($datos['tipo'] == 'certificador') {
@@ -69,10 +69,10 @@ class Visitas_EDIT_View {
                                 }
                                 ?>></option>
                             </select>
-                        </div><div class="form-group">
+                        </div>&nbsp;&nbsp;<div class="form-group">
                             <label for="informe"><?php echo $strings['Informe']; ?>  *</label> <br>
                             <input type="file" name="informe" id="informe"> 
-                        </div><div class="form-group">
+                        </div>&nbsp;&nbsp;<div class="form-group">
                             <label for="fecha"><?php echo $strings['Fecha']; ?>  *</label> 
                             <input class="form-control" type="date" name="fecha" id="fecha" value="<?php echo $datos['fecha']; ?>"  onblur="comprobarEntero(this, 1, 999);"> 
                         </div>

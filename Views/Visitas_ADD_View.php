@@ -26,16 +26,16 @@ class Visitas_ADD_View {
                             <option value="incidencia"><?php echo $strings['Incidencia'] ?></option>
                             <option value=""></option>
                         </select>
-                    </div><div class="form-group"><label for="tipo"><?php echo $strings['Tipo'] ?>  *</label>  
+                    </div>&nbsp;&nbsp;<div class="form-group"><label for="tipo"><?php echo $strings['Tipo'] ?>  *</label>  
                         <select class="form-control" id="tipo" name="tipo">
                             <option value="certificador"><?php echo $strings['Certificador'] ?></option>
                             <option value="mantenimiento"><?php echo $strings['Mantenimiento'] ?></option>
                             <option value="reparacion"><?php echo $strings['Reparacion'] ?></option>
                         </select>
-                    </div><div class="form-group">
+                    </div>&nbsp;&nbsp;<div class="form-group">
                         <label for="informe"><?php echo $strings['Informe']; ?>  *</label> <br>
                         <input name="informe" type="file" id="informeAdd1" />
-                    </div><div class="form-group">
+                    </div>&nbsp;&nbsp;<div class="form-group">
                         <label for="fecha"><?php echo $strings['Fecha']; ?>  *</label> 
                         <input class="form-control" type="date" name="fecha" id="fechaAdd1"> 
                     </div>

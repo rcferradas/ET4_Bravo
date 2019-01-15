@@ -23,7 +23,7 @@ class Contratos_EDIT_View {
                         <div class="form-group">
                             <label for="centro"><?php echo $strings['Centro'] ?>  *</label> 
                             <input class="form-control" name="centro" type="text" size="25" id="centro" value="<?php echo $datos['centro'] ?>"  onblur="comprobarTexto(this, 30);"/> 
-                        </div><div class="form-group">
+                        </div>&nbsp;&nbsp;<div class="form-group">
                             <label for="tipo"><?php echo $strings['Tipo'] ?>  *</label>  
                             <select class="form-control" id="tipo" name="tipo">
                                 <?php if ($datos['tipo'] == 'certificador') {
@@ -49,23 +49,23 @@ class Contratos_EDIT_View {
                                     <option value="reparacion"><?php echo $strings['Reparacion'] ?></option>
                                 <?php } ?>
                             </select>
-                        </div><div class="form-group">
+                        </div>&nbsp;&nbsp;<div class="form-group">
                             <label for="cifEmpresa"><?php echo $strings['cifEmpresa']; ?>  *</label> 
                             <input class="form-control" name="cifEmpresa" type="text" id="cifEmpresa" value="<?php echo $datos['cifEmpresa']; ?>"/>
-                        </div><div class="form-group">
+                        </div>&nbsp;&nbsp;<div class="form-group">
                             <label for="documento"><?php echo $strings['Documento']; ?>  *</label> <br>
                             <input type="file" name="documento" id="documento" onblur="comprobarVacio(this);"> 
-                        </div><div class="form-group">
+                        </div>&nbsp;&nbsp;<div class="form-group">
                             <label for="periodoinicio"><?php echo $strings['Periodo inicio']; ?>  *</label> 
                             <input class="form-control" type="date" name="periodoinicio" id="periodoinicio" value="<?php echo $datos['periodoinicio']; ?>"  onblur="comprobarVacio(this);"> 
-                        </div><div class="form-group">
+                        </div>&nbsp;&nbsp;<div class="form-group">
                             <label for="periodofin"><?php echo $strings['Periodo fin']; ?>  *</label> 
                             <input class="form-control" type="date" name="periodofin" id="periodofin" value="<?php echo $datos['periodofin']; ?>"  onblur="comprobarVacio(this);"> 
-                        </div><div class="form-group">
+                        </div>&nbsp;&nbsp;<div class="form-group">
                             <label for="importe"><?php echo $strings['Importe']; ?>  *</label> 
                             <input class="form-control" type="number" name="importe" id="importe" value="<?php echo $datos['importe']; ?>"  onblur="comprobarReal(this, 2, 0, 999999999)"> 
-                        </div><div class="form-group">
-                        </div><div class="form-group">
+                        </div>&nbsp;&nbsp;<div class="form-group">
+                        </div>&nbsp;&nbsp;<div class="form-group">
                             <label for="frecuencia"><?php echo $strings['Frecuencia']; ?>  *</label> 
                             <select  class="form-control" name="frecuencia" id="frecuencia"> 
                                 <option  value="diaria"<?php
@@ -99,7 +99,7 @@ class Contratos_EDIT_View {
                                 }
                                 ?>><?php echo $strings['Quinquenal'] ?></option>
                             </select>
-                        </div><div class="form-group"><label for="estado"><?php echo $strings['Estado'] ?>  *</label>  
+                        </div>&nbsp;&nbsp;<div class="form-group"><label for="estado"><?php echo $strings['Estado'] ?>  *</label>  
                             <select class="form-control" id="estado" name="estado">
                                 <?php if ($datos['estado'] == 'realizado') {
                                     ?>

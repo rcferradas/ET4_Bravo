@@ -21,9 +21,9 @@ class Empresas_SEARCH_View {
                     <div class="form-group">
                         <label for="cif"><?php echo $strings['CIF'] ?>  *</label> 
                         <input class="form-control" name="cif" type="text" size="25" id="cif"/> 
-                    </div><div class="form-group"> <label for="nombre"><?php echo $strings['Nombre'] ?>  *</label> 
+                    </div>&nbsp;&nbsp;<div class="form-group"> <label for="nombre"><?php echo $strings['Nombre'] ?>  *</label> 
                         <input class="form-control" name="nombre" type="text" size="25" id="nombre"/> 
-                    </div><div class="form-group">
+                    </div>&nbsp;&nbsp;<div class="form-group">
                         <label for="tipo"><?php echo $strings['Tipo'] ?>  *</label>  
                         <select class="form-control" name="tipo" id="tipo">
                             <option value=""></option>
@@ -31,9 +31,9 @@ class Empresas_SEARCH_View {
                             <option value="mantenimiento"><?php echo $strings['Mantenimiento'] ?></option>
                             <option value="reparacion"><?php echo $strings['Reparadora'] ?></option>
                         </select>
-                    </div><div class="form-group"><label for="telefono"><?php echo $strings['Telefono'] ?>  *</label> 
+                    </div>&nbsp;&nbsp;<div class="form-group"><label for="telefono"><?php echo $strings['Telefono'] ?>  *</label> 
                         <input class="form-control" name="telefono" type="text" size="25" id="telefono"/> 
-                    </div><div class="form-group">
+                    </div>&nbsp;&nbsp;<div class="form-group">
                         <label for="localizacion"><?php echo $strings['Localizacion'] ?>  *</label> 
                         <input class="form-control" name="localizacion" type="text" size="25" id="localizacion"/> 
                     </div>

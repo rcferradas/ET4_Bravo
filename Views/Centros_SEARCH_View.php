@@ -21,10 +21,10 @@ class Centros_SEARCH_View {
                     <div class="form-group">
                         <label for="nombre"><?php echo $strings['Nombre'] ?>  *</label> 
                         <input class="form-control" name="nombre" type="text" size="25" id="nombre" onblur="comprobarTexto(this, 30);"/> 
-                    </div><div class="form-group">
+                    </div>&nbsp;&nbsp;<div class="form-group">
                         <label for="lugar"><?php echo $strings['Lugar'] ?>  *</label> 
                         <input class="form-control" name="lugar" type="text" size="25" id="lugar" onblur="comprobarTexto(this, 30);"/> 
-                    </div><div class="form-group">
+                    </div>&nbsp;&nbsp;<div class="form-group">
                         <label for="usuarioAsignado"><?php echo $strings['Usuario asignado'] ?>  *</label> 
                         <input class="form-control" name="usuarioAsignado" type="text" size="25" id="usuarioAsignado" onblur="comprobarTexto(this, 30);"/> 
                     </div>

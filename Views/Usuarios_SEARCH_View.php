@@ -21,22 +21,22 @@ class Usuarios_SEARCH_View {
                     <div class="form-group">
                         <label for="login"><?php echo $strings['Login'] ?>  *</label> 
                         <input class="form-control" name="login" type="text" size="25" id="login"/> 
-                    </div><div class="form-group">
+                    </div>&nbsp;&nbsp;<div class="form-group">
                         <label for="DNI"><?php echo $strings['DNI'] ?>  *</label> 
                         <input class="form-control" name="DNI" type="text" size="25" id="DNI"/> 
-                    </div><div class="form-group">
+                    </div>&nbsp;&nbsp;<div class="form-group">
                         <label for="nombre"><?php echo $strings['Nombre'] ?>  *</label> 
                         <input class="form-control" name="nombre" type="text" size="25" id="nombre"/> 
-                    </div><div class="form-group"> 
+                    </div>&nbsp;&nbsp;<div class="form-group"> 
                         <label for="apellidos"><?php echo $strings['Apellidos'] ?>  *</label> 
                         <input class="form-control" name="apellidos" type="text" size="25" id="apellidos"/> 
-                    </div><div class="form-group">
+                    </div>&nbsp;&nbsp;<div class="form-group">
                         <label for="telefono"><?php echo $strings['Telefono'] ?>  *</label> 
                         <input class="form-control" name="telefono" type="text" size="25" id="telefono"/> 
-                    </div><div class="form-group">
+                    </div>&nbsp;&nbsp;<div class="form-group">
                         <label for="email"><?php echo $strings['Email'] ?>  *</label> 
                         <input class="form-control" name="email" type="text" size="25" id="email"/> 
-                    </div><div class="form-group"> 
+                    </div>&nbsp;&nbsp;<div class="form-group"> 
                         <label for="rol"><?php echo $strings['Rol'] ?>  *</label>  
                         <select class="form-control" name="rol" id="rol">
                             <option value=""></option>
