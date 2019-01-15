@@ -10,17 +10,19 @@ class Login {
 
         include '../Views/Header.php';
         ?>
-        <h1><?php echo $strings['Login']; ?></h1>	 
+        <h1><?php echo $strings['Login']; ?></h1>
+
         <form name = 'Form' action='../Controllers/Login_Controller.php' method='post' onsubmit="return comprobar_login();">
-
-            <?php echo $strings['Login']?> : <input type = 'text' name = 'login' placeholder = 'Utiliza tu Dni' size = '9' value = '' onblur="comprobarAlfabetico(this, 15)"  ><br>
-
-            <?php echo $strings['Contraseña']?> : <input type = 'password' name = 'password' placeholder = 'Letras y numeros' size = '15' value = '' onblur="comprobarAlfabetico(this, 25)"  ><br>
-
-            <input type='submit' name='action' value='Login'>
-
+            <div class="form-group">
+                <label for="email"><?php echo $strings['Login'] ?></label> 
+                <input id="email" class="form-control" type = 'text' name = 'login' placeholder = 'Utiliza tu Dni' size = '9' value = '' onblur="comprobarAlfabetico(this, 15)"  >
+            </div>
+            <div class="form-group">
+                <label id="password"><?php echo $strings['Contraseña'] ?></label>
+                <input id="password" class="form-control" type = 'password' name = 'password' placeholder = 'Letras y numeros' size = '15' value = '' onblur="comprobarAlfabetico(this, 25)"  >
+            </div>
+            <input class="btn btn-primary" type='submit' name='action' value='Login'>
         </form>
-
         <?php
         include '../Views/Footer.php';
     }
