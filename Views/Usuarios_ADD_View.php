@@ -19,36 +19,36 @@ class Usuarios_ADD_View {
         <section>
             <form class="form_add" method="post" action="../Controllers/Usuarios_Controller.php" onsubmit="return validarUsuariosADD(this);">
                 <fieldset id="fieldset_add">
-
-                    <label for="login"><?php echo $strings['Login'] ?>  *</label> 
-                    <input name="login" type="text" size="25" id="login" onblur="comprobarAlfabetico(this, 15);"/> 
-
-                    <label for="password"><?php echo $strings['Password'] ?>  *</label> 
-                    <input name="password" type="text" size="25" id="password" onblur="comprobarAlfabetico(this, 25);"/> 
-
-                    <label for="DNI"><?php echo $strings['DNI']; ?>  *</label> 
-                    <input type="text" name="DNI" id="DNI" onblur="comprobarDni(this)" > 
-
-                    <label for="nombre"><?php echo $strings['Nombre']; ?>  *</label> 
-                    <input type="text" name="nombre" id="nombre" onblur="comprobarTexto(this, 30);"> 
-
-                    <label for="apellidos"><?php echo $strings['Apellidos']; ?>  *</label> 
-                    <input type="text" name="apellidos" id="apellidos" onblur="comprobarTexto(this, 50);"> 
-
-                    <label for="telefono"><?php echo $strings['Telefono']; ?>  *</label> 
-                    <input type="text" name="telefono" id="telefono" onblur="comprobarTelf(this);"> 
-
-                    <label for="email"><?php echo $strings['Email']; ?>  *</label> 
-                    <input type="text" name="email" id="email" onblur="comprobarExpresionRegular(this,/^\w+([\.-]?\w+)@\w+([\.-]?\w+)(\.\w{2,4})+$/,60);"> 
-
-                    <label for="rol"><?php echo $strings['Rol'] ?>  *</label>  
-                    <select id="rol" name="rol">
-                        <option value="admin"><?php echo $strings['Admin'] ?></option>
-                        <option value="centro"><?php echo $strings['Centro'] ?></option>
-                    </select>
+                    <div class="form-group">
+                        <label for="login"><?php echo $strings['Login'] ?>  *</label> 
+                        <input class="form-control" name="login" type="text" size="25" id="login" onblur="comprobarAlfabetico(this, 15);"/> 
+                    </div><div class="form-group">
+                        <label for="password"><?php echo $strings['Password'] ?>  *</label> 
+                        <input class="form-control" name="password" type="text" size="25" id="password" onblur="comprobarAlfabetico(this, 25);"/> 
+                    </div><div class="form-group">
+                        <label for="DNI"><?php echo $strings['DNI']; ?>  *</label> 
+                        <input class="form-control" type="text" name="DNI" id="DNI" onblur="comprobarDni(this)" > 
+                    </div><div class="form-group">
+                        <label for="nombre"><?php echo $strings['Nombre']; ?>  *</label> 
+                        <input class="form-control" type="text" name="nombre" id="nombre" onblur="comprobarTexto(this, 30);"> 
+                    </div><div class="form-group">
+                        <label for="apellidos"><?php echo $strings['Apellidos']; ?>  *</label> 
+                        <input class="form-control" type="text" name="apellidos" id="apellidos" onblur="comprobarTexto(this, 50);"> 
+                    </div><div class="form-group">
+                        <label for="telefono"><?php echo $strings['Telefono']; ?>  *</label> 
+                        <input class="form-control" type="text" name="telefono" id="telefono" onblur="comprobarTelf(this);"> 
+                    </div><div class="form-group">
+                        <label for="email"><?php echo $strings['Email']; ?>  *</label> 
+                        <input class="form-control" type="text" name="email" id="email" onblur="comprobarExpresionRegular(this, /^\w+([\.-]?\w+)@\w+([\.-]?\w+)(\.\w{2,4})+$/, 60);"> 
+                    </div><div class="form-group">
+                        <label for="rol"><?php echo $strings['Rol'] ?>  *</label>  
+                        <select class="form-control" id="rol" name="rol">
+                            <option value="admin"><?php echo $strings['Admin'] ?></option>
+                            <option value="centro"><?php echo $strings['Centro'] ?></option>
+                        </select></div>
 
                 </fieldset>
-                <span>* <?php echo $strings['Campos obligatorios']; ?> </span>
+                <span>* <?php echo $strings['Campos obligatorios']; ?> </span><br>
                 <!-- Boton submit -->
                 <button name="action" type="submit" value="ADD"><i class="fas fa-check"></i></button>
 

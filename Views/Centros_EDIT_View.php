@@ -31,7 +31,7 @@ class Centros_EDIT_View {
                     </fieldset>
                     <span>* <?php echo $strings['Campos obligatorios']; ?> </span><br>
                     <!-- Boton submit -->
-                    <button name="action" type="submit" value="EDIT"><i class="fas fa-check"></i></button>
+                    <button class="btn btn-outline-primary" name="action" type="submit" value="EDIT"><i class="fas fa-check"></i></button>
 
                 </form>
             </section>

@@ -34,8 +34,8 @@ class Contratos_ADD_View {
                         <label for="cifEmpresa"><?php echo $strings['cifEmpresa']; ?>  *</label> 
                         <input class="form-control" type="text" name="cifEmpresa" id="cifEmpresa" onblur= "comprobarCIF(this);" > 
                     </div><div class="form-group">
-                        <label for="documento"><?php echo $strings['Documento']; ?>  *</label> 
-                        <input class="form-control" name="documento" type="file" id="documento" onblur="comprobarVacio(this);"/>
+                        <label for="documento"><?php echo $strings['Documento']; ?>  *</label> <br>
+                        <input name="documento" type="file" id="documento" onblur="comprobarVacio(this);"/>
                     </div><div class="form-group">
                         <label for="periodoinicio"><?php echo $strings['Periodo inicio']; ?>  *</label> 
                         <input class="form-control" type="date" name="periodoinicio" id="periodoinicio" onblur="comprobarVacio(this);"> 
@@ -62,9 +62,9 @@ class Contratos_ADD_View {
                         </select>
                     </div>
                 </fieldset>
-                <span>* <?php echo $strings['Campos obligatorios']; ?> </span>
+                <span>* <?php echo $strings['Campos obligatorios']; ?> </span><br>
                 <!-- Boton submit -->
-                <button name="action" type="submit" value="ADD"><i class="fas fa-check"></i></button>
+                <button class="btn btn-outline-primary" name="action" type="submit" value="ADD"><i class="fas fa-check"></i></button>
 
             </form>
         </section>

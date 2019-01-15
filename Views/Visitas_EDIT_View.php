@@ -19,35 +19,65 @@ class Visitas_EDIT_View {
                     <h2><?php echo $strings['Editar visita']; ?></h2>
 
                     <fieldset id="fieldset_edit">
-                    <input hidden name="codcontrato" type="text" size="25" id="codcontratoEd" value="<?php echo $datos['codContrato'] ?>"> 
-                    <input hidden name="codvisita" type="text" size="25" id="codvisitaEd" value="<?php echo $datos['codVisita'] ?>"> 
-                    
-                        <label for="estado"><?php echo $strings['Estado'] ?>  *</label> 
-                        <select id="estado" name="estado">
-   
-                              <option value="realizada"  <?php if ($datos['estado'] == 'realizada') {echo 'selected';}?>><?php echo $strings['Realizada'] ?></option>
-                              <option value="pendiente"<?php if ($datos['estado'] == 'pendiente') {echo 'selected';}?> ><?php echo $strings['Pendiente'] ?></option>
-                              <option value="incidencia" <?php if ($datos['estado'] == 'incidencia') {echo 'selected';}?>><?php echo $strings['Incidencia'] ?></option>
-                              <option value="" <?php if ($datos['estado'] == '') {echo 'selected';}?>></option>
-                        </select>
-                        <label for="tipo"><?php echo $strings['Tipo'] ?>  *</label>  
-                        <select id="tipo" name="tipo">
-   
-                              <option value="certificador"  <?php if ($datos['tipo'] == 'certificador') {echo 'selected';}?>><?php echo $strings['Certificador'] ?></option>
-                              <option value="mantenimiento"<?php if ($datos['tipo'] == 'mantenimiento') {echo 'selected';}?> ><?php echo $strings['Mantenimiento'] ?></option>
-                              <option value="reparacion" <?php if ($datos['tipo'] == 'reparacion') {echo 'selected';}?>><?php echo $strings['Reparacion'] ?></option>
-                              <option value="" <?php if ($datos['tipo'] == '') {echo 'selected';}?>></option>
-                        </select>
+                        <input hidden name="codcontrato" type="text" size="25" id="codcontratoEd" value="<?php echo $datos['codContrato'] ?>"> 
+                        <input hidden name="codvisita" type="text" size="25" id="codvisitaEd" value="<?php echo $datos['codVisita'] ?>"> 
+                        <div class="form-group">
+                            <label for="estado"><?php echo $strings['Estado'] ?>  *</label> 
+                            <select class="form-control" id="estado" name="estado">
 
-                        <label for="informe"><?php echo $strings['Informe']; ?>  *</label> 
-                        <input type="file" name="informe" id="informe"> 
-
-                        <label for="fecha"><?php echo $strings['Fecha']; ?>  *</label> 
-                        <input type="date" name="fecha" id="fecha" value="<?php echo $datos['fecha']; ?>"  onblur="comprobarEntero(this, 1, 999);"> 
-
-                     
+                                <option value="realizada"  <?php
+                                if ($datos['estado'] == 'realizada') {
+                                    echo 'selected';
+                                }
+                                ?>><?php echo $strings['Realizada'] ?></option>
+                                <option value="pendiente"<?php
+                                if ($datos['estado'] == 'pendiente') {
+                                    echo 'selected';
+                                }
+                                ?> ><?php echo $strings['Pendiente'] ?></option>
+                                <option value="incidencia" <?php
+                                if ($datos['estado'] == 'incidencia') {
+                                    echo 'selected';
+                                }
+                                ?>><?php echo $strings['Incidencia'] ?></option>
+                                <option value="" <?php
+                                if ($datos['estado'] == '') {
+                                    echo 'selected';
+                                }
+                                ?>></option>
+                            </select>
+                        </div><div class="form-group"><label for="tipo"><?php echo $strings['Tipo'] ?>  *</label>  
+                            <select class="form-control" id="tipo" name="tipo">
+                                <option value="certificador"  <?php
+                                if ($datos['tipo'] == 'certificador') {
+                                    echo 'selected';
+                                }
+                                ?>><?php echo $strings['Certificador'] ?></option>
+                                <option value="mantenimiento"<?php
+                                if ($datos['tipo'] == 'mantenimiento') {
+                                    echo 'selected';
+                                }
+                                ?> ><?php echo $strings['Mantenimiento'] ?></option>
+                                <option value="reparacion" <?php
+                                if ($datos['tipo'] == 'reparacion') {
+                                    echo 'selected';
+                                }
+                                ?>><?php echo $strings['Reparacion'] ?></option>
+                                <option value="" <?php
+                                if ($datos['tipo'] == '') {
+                                    echo 'selected';
+                                }
+                                ?>></option>
+                            </select>
+                        </div><div class="form-group">
+                            <label for="informe"><?php echo $strings['Informe']; ?>  *</label> <br>
+                            <input type="file" name="informe" id="informe"> 
+                        </div><div class="form-group">
+                            <label for="fecha"><?php echo $strings['Fecha']; ?>  *</label> 
+                            <input class="form-control" type="date" name="fecha" id="fecha" value="<?php echo $datos['fecha']; ?>"  onblur="comprobarEntero(this, 1, 999);"> 
+                        </div>
                     </fieldset>
-                    <span>* <?php echo $strings['Campos obligatorios']; ?> </span>
+                    <span>* <?php echo $strings['Campos obligatorios']; ?> </span><br>
                     <!-- Boton submit -->
                     <button name="action" type="submit" value="EDIT"><i class="fas fa-check"></i></button>
                 </form>
