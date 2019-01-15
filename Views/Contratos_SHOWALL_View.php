@@ -13,9 +13,9 @@ class Contratos_SHOWALL_View {
         include '../Views/Header.php';
         //Mostrar tabla SHOWALL de Contratos
         ?>
-        <table class="table">
+        <table class="table table-striped table-dark table-">
             <!--Comienzo encabezado tabla SHOWALL-->
-            <thead>
+            <thead class="thead-dark">
                 <tr>
                     <th scope="col"><?php echo $strings['Centro']; ?></th>
                     <th scope="col"><?php echo $strings['Tipo']; ?></th>

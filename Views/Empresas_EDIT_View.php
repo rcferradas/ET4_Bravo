@@ -20,17 +20,17 @@ class Empresas_EDIT_View {
             <?php ?>
 
             <form id="edit" enctype="multipart/form-data" method="post" action="../Controllers/Empresas_Controller.php" onsubmit="return validarEmpresasEDIT(this);">
-                <div class="form-empresas">
+                <div class="form-group">
                     <label><span>*</span><?php echo $strings['CIF']; ?>:</label>
-                    <input readonly type="text" value="<?php echo $empresas['CIF']; ?>" class="pk" size="40" id="CIFempresa" name="cif" >                 
+                    <input class="form-control" readonly type="text" value="<?php echo $empresas['CIF']; ?>" class="pk" size="40" id="CIFempresa" name="cif" >                 
                 </div>
-                <div class="form-empresas">
+                <div class="form-group">
                     <label><span>*</span><?php echo $strings['Nombre']; ?>:</label>
-                    <input type="text" size="40" value="<?php echo $empresas['nombre']; ?>" onblur="comprobarTexto(this, 30);" id="nombreempresa" name="nombre">
+                    <input class="form-control" type="text" size="40" value="<?php echo $empresas['nombre']; ?>" onblur="comprobarTexto(this, 30);" id="nombreempresa" name="nombre">
                 </div> 
-                <div class="form-empresas">
+                <div class="form-group">
                     <label><span>*</span><?php echo $strings['Tipo']; ?>:</label>
-                    <select id="tipoempresas" name="tipo" required >
+                    <select class="form-control" id="tipoempresas" name="tipo" required >
                         <?php if ($empresas['tipo'] == $strings['certificador']) {
                             ?>
                             <option value="certificador" selected><?= $strings['Certificadora'] ?></option>
@@ -55,17 +55,17 @@ class Empresas_EDIT_View {
                     }
                     ?>
                 </div>                    
-                <div class="form-empresas">
+                <div class="form-group">
                     <label><span>*</span><?php echo $strings['Telefono']; ?>:</label>
-                    <input type="text" value="<?php echo $empresas['telefono']; ?>" size="11" onblur="comprobarTelf(this);" id="telefonoempresa" name="telefono"  >
+                    <input class="form-control" type="text" value="<?php echo $empresas['telefono']; ?>" size="11" onblur="comprobarTelf(this);" id="telefonoempresa" name="telefono"  >
                 </div>
-                <div class="form-empresas">
+                <div class="form-group">
                     <label><span>*</span><?php echo $strings['Localizacion']; ?>:</label>
-                    <input type="text" value="<?php echo $empresas['localizacion']; ?>" size="40" onblur="comprobarTexto(this, 50);" id="localizacionempresa" name="localizacion">
+                    <input class="form-control" type="text" value="<?php echo $empresas['localizacion']; ?>" size="40" onblur="comprobarTexto(this, 50);" id="localizacionempresa" name="localizacion">
                 </div>
-                <button class="btn" name="action" value="EDIT" type="submit" class="boton-env">
-                    <i class="fas fa-edit"></i>
-                </button>
+                <span>* <?php echo $strings['Campos obligatorios']; ?> </span><br>
+                <button class="btn btn-outline-primary" name="action" type="submit" value="EDIT"><i class="fas fa-check"></i></button>
+
             </form>
 
         </section>
