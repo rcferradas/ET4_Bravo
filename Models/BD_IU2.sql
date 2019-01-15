@@ -20,25 +20,25 @@ GRANT USAGE ON * . * TO `iu2018`@`localhost`;
 --
 CREATE USER IF NOT EXISTS `iu2018`@`localhost` IDENTIFIED BY 'pass2018';
 GRANT USAGE ON *.* TO `iu2018`@`localhost` REQUIRE NONE WITH MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0;
-GRANT ALL PRIVILEGES ON `IU2018`.* TO `iu2018`@`localhost` WITH GRANT OPTION;
+GRANT ALL PRIVILEGES ON `IU2018`.* TO `root`@`localhost` WITH GRANT OPTION;
 --
 -- Estructura de tabla para la tabla `datos`
 --
 CREATE TABLE IF NOT EXISTS `USUARIOS` (
 
-`login` varchar(15) NOT NULL,
+`login` varchar(15),
 `password` varchar(128) NOT NULL,
-`DNI` varchar(9) NOT NULL,
+`DNI` varchar(9),
 `nombre` varchar(30) NOT NULL,
 `apellidos` varchar(50) NOT NULL,
 `telefono` varchar(11) NOT NULL,
-`email` varchar(60) NOT NULL,
+`email` varchar(60),
 `rol` enum('admin', 'centro') NOT NULL,
 
 PRIMARY KEY (`login`),
 UNIQUE KEY `DNI` (`DNI`),
 UNIQUE KEY `email` (`email`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Base de datos: `iu2018`
@@ -46,50 +46,52 @@ UNIQUE KEY `email` (`email`)
 
 -- Estructura de tabla para la tabla `empresas`
 CREATE TABLE IF NOT EXISTS `empresas` (
-  `CIF` varchar(10) NOT NULL,
+  `CIF` varchar(10),
   `nombre` varchar(30) NOT NULL,
   `tipo` enum('certificador','mantenimiento','reparacion','') NOT NULL DEFAULT '',
   `telefono` varchar(30) NOT NULL,
   `localizacion` varchar(50) NOT NULL,
 PRIMARY KEY (`CIF`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Estructura de tabla para la tabla `centro`
 CREATE TABLE IF NOT EXISTS `centros` (
-  `nombre` varchar(10) NOT NULL,
+  `nombre` varchar(30),
   `lugar` varchar(30) NOT NULL,
-  `usuarioAsignado` varchar(9) NOT NULL,
+  `usuarioAsignado` varchar(15),
 PRIMARY KEY (`nombre`),
-FOREIGN KEY (`usuarioAsignado`) REFERENCES USUARIOS(`login`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+FOREIGN KEY (`usuarioAsignado`) REFERENCES `USUARIOS`(`login`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Estructura de tabla para la tabla `contratos`
 CREATE TABLE IF NOT EXISTS `contratos` (
   `cod` INT(10) NOT NULL AUTO_INCREMENT,
-  `centro` varchar(30) NOT NULL,
+  `centro` varchar(30),
   `tipo` enum('certificador','mantenimiento','reparacion','') NOT NULL DEFAULT '',
   `estado` enum('realizado','norealizado','pagado','') NOT NULL DEFAULT '',
-  `cifEmpresa` varchar(30) NOT NULL,
+  `cifEmpresa` varchar(10),
   `documento` varchar(50) NOT NULL,
   `periodoinicio` date NOT NULL,
   `periodofin` date NOT NULL,
   `frecuenciaVisitas` enum('diaria','semanal','mensual','trimestral','anual','quinquenal') NOT NULL DEFAULT 'anual',
   `importe` DEC(10,2) NOT NULL,
 PRIMARY KEY (`cod`),
-FOREIGN KEY fk_empresa(`cifEmpresa`) REFERENCES empresas(`cif`),
-FOREIGN KEY fk_centro(`centro`) REFERENCES centros(`nombre`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+FOREIGN KEY (`cifEmpresa`) REFERENCES `empresas`(`CIF`),
+FOREIGN KEY (`centro`) REFERENCES `centros`(`nombre`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
 
 -- Tabla visitas
 CREATE TABLE IF NOT EXISTS `visitas` (
   `codVisita` INT(10) NOT NULL,
   `estado` enum('realizada','pendiente','incidencia', '') NOT NULL DEFAULT '',
   `tipo` enum('certificador','mantenimiento','reparacion','') NOT NULL DEFAULT '',
-  `codContrato` varchar(30) NOT NULL,
+  `codContrato` INT (10),
   `informe` varchar(120),
   `fecha` date NOT NULL,
-  `frutoVisitaProg` varchar(10),
+  `frutoVisitaProg` INT(10),
 PRIMARY KEY (`codVisita`),
-FOREIGN KEY (`frutoVisitaProg`) REFERENCES visitas(codVisita),
-FOREIGN KEY (`codContrato`) REFERENCES contratos(cod)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+FOREIGN KEY (`frutoVisitaProg`) REFERENCES `visitas`(`codVisita`),
+FOREIGN KEY (`codContrato`) REFERENCES `contratos`(`cod`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
