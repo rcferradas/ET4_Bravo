@@ -74,7 +74,7 @@ CREATE TABLE IF NOT EXISTS `contratos` (
   `periodoinicio` date NOT NULL,
   `periodofin` date NOT NULL,
   `frecuenciaVisitas` enum('diaria','semanal','mensual','trimestral','anual','quinquenal') NOT NULL DEFAULT 'anual',
-  `importe` decimal(10,2) NOT NULL,
+  `importe` DEC(10,2) NOT NULL,
 PRIMARY KEY (`cod`),
 FOREIGN KEY fk_empresa(`cifEmpresa`) REFERENCES empresas(`cif`),
 FOREIGN KEY fk_centro(`centro`) REFERENCES centros(`nombre`)
