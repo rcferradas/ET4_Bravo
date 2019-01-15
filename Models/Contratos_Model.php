@@ -1,4 +1,5 @@
 <?php
+$codigoDelContrato; //Variable global para recuperar el codigo del ultimo contrato creado
 
 class Contratos_Model {
 
@@ -10,11 +11,12 @@ class Contratos_Model {
     var $documento;
     var $periodoInicio;
     var $periodoFin;
+    var $frecuencia;
     var $importe;
     var $mysqli;
 
 //Constructor de la clase
-    function __construct($cod, $centro, $tipo, $estado, $cifEmpresa, $documento, $periodoInicio, $periodoFin, $importe) {
+    function __construct($cod, $centro, $tipo, $estado, $cifEmpresa, $documento, $periodoInicio, $periodoFin,$frecuencia, $importe) {
         $this->cod = $cod;
         $this->centro = $centro;
         $this->tipo = $tipo;
@@ -23,6 +25,7 @@ class Contratos_Model {
         $this->documento = $documento;
         $this->periodoInicio = $periodoInicio;
         $this->periodoFin = $periodoFin;
+        $this->frecuencia = $frecuencia;
         $this->importe = $importe;
 
         include_once '../Models/Access_DB.php';
@@ -52,6 +55,7 @@ class Contratos_Model {
             $this->cifEmpresa = $tupla['cifEmpresa'];
             $this->periodoInicio = $tupla['periodoinicio'];
             $this->periodoFin = $tupla['periodofin'];
+            $this->frecuencia= $tupla['frecuenciaVisitas'];
             $this->importe = $tupla['importe'];
             return $tupla; //devolvemos el array asociativo
         } else {
@@ -64,14 +68,16 @@ class Contratos_Model {
 // de los atributos del objeto. Comprueba si la clave/s esta vacia y si 
 //existe ya en la tabla
     function ADD() {
+        global $codigoDelContrato;
         $codigo = "SELECT MAX(`cod`) as codigo FROM contratos";
         $modeloCodigo = $this->mysqli->query($codigo);
         $tupla = $modeloCodigo->fetch_assoc();
         $numero = $tupla['codigo'];
-        $this->cod = intval($numero) + 1;
+        $codigoDelContrato = intval($numero) + 1;
+        $this->cod = $codigoDelContrato;
         $rutaDocumento = $this->funcionRutaDocumento();
-        $add = "INSERT INTO contratos (`cod`, `centro`, `tipo`, `estado`, `cifEmpresa`, `documento`, `periodoinicio`, `periodofin`, `importe`) 
-        VALUES ($this->cod, '$this->centro', '$this->tipo', '$this->estado', '$this->cifEmpresa', '$rutaDocumento', '$this->periodoInicio', '$this->periodoFin', '$this->importe')";
+        $add = "INSERT INTO contratos (`cod`, `centro`, `tipo`, `estado`, `cifEmpresa`, `documento`, `periodoinicio`, `periodofin`,`frecuenciaVisitas`, `importe`) 
+        VALUES ($this->cod, '$this->centro', '$this->tipo', '$this->estado', '$this->cifEmpresa', '$rutaDocumento', '$this->periodoInicio', '$this->periodoFin','$this->frecuencia', '$this->importe')";
         if (!($resultado = $this->mysqli->query($add))) {
             return 'Error en la inserción';
         }
@@ -83,7 +89,7 @@ class Contratos_Model {
     function SEARCH() {
         $search = "SELECT * FROM contratos WHERE `cod` LIKE '%" . $this->cod . "%' AND `centro` LIKE '%" . $this->centro . "%' AND `tipo` LIKE '%" . $this->tipo . "%' AND `estado` LIKE '%" . $this->estado . "%' 
             AND `cifEmpresa` LIKE '%" . $this->cifEmpresa . "%' AND `documento` LIKE '%" . $this->documento . "%' AND `periodoInicio` LIKE '%" . $this->periodoInicio . "%' AND
-                  `periodoFin` LIKE '%" . $this->periodoFin . "%' AND `importe` LIKE '%" . $this->importe . "%'";
+                  `periodoFin` LIKE '%" . $this->periodoFin . "%' AND `frecuenciaVisitas` LIKE '%".$this->frecuencia."%'  AND `importe` LIKE '%" . $this->importe . "%'";
         if (!($resultado = $this->mysqli->query($search))) {
             return 'Error en la consulta';
         } else if ($resultado->numrows = 0) {
@@ -116,8 +122,9 @@ class Contratos_Model {
             $this->borrarDirectorio('../Files/' . $this->cod);
             $rutaDocumento = $this->funcionRutaDocumento();
         }
+        var_dump($this->frecuencia);
         $edit = "UPDATE `contratos` SET `centro`='$this->centro',`tipo`='$this->tipo',`estado`='$this->estado',`cifEmpresa`='$this->cifEmpresa',`documento`='$rutaDocumento',"
-                . "`periodoinicio`='$this->periodoInicio',`periodofin`='$this->periodoFin',`importe`='$this->importe' WHERE `cod`='$this->cod'";
+                . "`periodoinicio`='$this->periodoInicio',`periodofin`='$this->periodoFin',`frecuenciaVisitas`='$this->frecuencia',`importe`='$this->importe' WHERE `cod`='$this->cod'";
         if (!$this->mysqli->query($edit)) { //si se da un problema en la consulta de actualización se notifica el error
             return 'Error en la actualización';
         } else {
@@ -144,7 +151,15 @@ class Contratos_Model {
         rmdir($path);
         return;
     }
+    
 
+        
+    
+  function getCodigo(){
+      global $codigoDelContrato;
+      return $codigoDelContrato;
+      
+  }
 }
 
 //fin de clase

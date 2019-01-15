@@ -1,6 +1,6 @@
 <?php
 
-class Contratos_SHOWALL_View {
+class Visitas_SHOWALL_View {
 
     function __construct($recordSet) {    //Constructor de la clase, pasamos un objeto tipo loteriaiu como parametro
         $this->render($recordSet);                  //------------------------REVISAR $recordSet----------------------------------------------------------
@@ -17,10 +17,11 @@ class Contratos_SHOWALL_View {
             <!--Comienzo encabezado tabla SHOWALL-->
             <thead>
                 <tr>
-                    <th scope="col"><?php echo $strings['Centro']; ?></th>
+                    <th scope="col"><?php echo $strings['Fecha']; ?></th>
                     <th scope="col"><?php echo $strings['Tipo']; ?></th>
-                    <th scope="col"><?php echo $strings['Empresa encargada']; ?></th>
-                    <th scope="col"><form class="form-inline my-2 my-lg-0" name='formulario' action="../Controllers/Contratos_Controller.php" method="">
+                    <th scope="col"><?php echo $strings['Estado']; ?></th>
+                    <th scope="col"><form class="form-inline my-2 my-lg-0" name='formulario' action="../Controllers/Visitas_Controller.php" method="">
+                             <input type="hidden" name=codcontrato value=<?php echo $_REQUEST['codcontrato']?>>
                             <button name="action" value="ADD" type="submit" class="btn btn-outline-primary">
                                 <i class="fas fa-plus"></i></button>&nbsp
                             <button name="action" value="SEARCH" type="submit" class="btn btn-outline-primary">
@@ -37,21 +38,27 @@ class Contratos_SHOWALL_View {
                 while ($tupla = $recordSet->fetch_assoc()) {
                     ?>
                     <tr>
-                        <td><?php echo $tupla['centro']; ?></td>
+                        <td><?php echo $tupla['fecha']; ?></td>
                         <td><?php echo $tupla['tipo']; ?></td>
-                        <td><?php echo $tupla['cifEmpresa']; ?></td>
+                        <td><?php echo $tupla['estado']; ?></td>
                         <td>
                             <!--Botones para realizar acciones en cada tupla-->
-                            <form class="form-inline my-2 my-lg-0" name='formulario' action="../Controllers/Contratos_Controller.php" method="">
-                                <input type="hidden" name=codcontrato value=<?php echo $tupla['cod'] ?>>
+                            <form class="form-inline my-2 my-lg-0" name='formulario' action="../Controllers/Visitas_Controller.php" method="">
+                                <input type="hidden" name=codvisita value=<?php echo $tupla['codVisita'] ?>>
+                                <input type="hidden" name=codcontrato value=<?php echo $tupla['codContrato'] ?>>
                                 <button name="action" value="SHOWCURRENT" type="submit" class="btn btn-outline-primary">
                                     <i class="far fa-eye"></i></button>&nbsp
                                 <button name="action" value="EDIT" type="submit" class="btn btn-outline-primary">
                                     <i class="fas fa-edit"></i></button>&nbsp
+                                     <?php 
+                                     if($tupla['estado']== 'incidencia'){
+                                     echo '<button name="action" value="INCIDENCIA" type="submit" class="btn btn-outline-primary">';
+                                     echo '<i class="fas fa-plus"></i></button>&nbsp';
+                                     }
+                                             ?>
+                                
                                 <button name="action" value="DELETE" type="submit" class="btn btn-outline-primary">
-                                    <i class="fas fa-trash-alt"></i></button>&nbsp
-                                    <button name="action" value="VISITAS" type="submit" class="btn btn-outline-primary">
-                                    <i class="fa fa-list"></i></button>
+                                    <i class="fas fa-trash-alt"></i></button>
                             </form>
                         </td>
                     </tr>
