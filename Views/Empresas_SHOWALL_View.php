@@ -13,7 +13,7 @@ class Empresas_SHOWALL_View {
         include '../Views/Header.php';
         //Mostrar tabla SHOWALL de Empresas
         ?>
-        <table class="table table-dark">
+        <table class="table table-dark table-striped">
             <!--Comienzo encabezado tabla SHOWALL-->
             <thead>
                 <tr>

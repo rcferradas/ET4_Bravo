@@ -32,7 +32,7 @@ include_once '../Locales/Strings_' . $_SESSION['idioma'] . '.php';
         <link rel="stylesheet" type="text/css" href="../Views/css/tcal.css" media="screen" />
         <link rel="stylesheet" type="text/css" href="../Views/css/modal.css" />
     </head>
-    <body style="background-color: gray">
+    <body style="background-color: lightgray">
         <div id="modal" style="display:none">
             <div id="contenido-interno">
                 <div id="aviso"><img src="../Views/Icons/sign-error.png" name="aviso"/></div>
@@ -53,13 +53,15 @@ include_once '../Locales/Strings_' . $_SESSION['idioma'] . '.php';
 
         <div width: 50%; align="left">
              <form  name='idiomaform' action="../Functions/CambioIdioma.php" method="post">
-                     <?php echo $strings['idioma']; ?>
-                <select name="idioma" onChange='this.form.submit()'>
+                 <div class="form-group">
+                 <label for="idioma"><?php echo $strings['idioma']; ?></label>
+                 <select id="idioma" class="form-control" name="idioma" onChange='this.form.submit()'>
                     <option></option>
                     <option value="SPANISH"><?php echo $strings['ESPAÑOL']; ?></option>
                     <option value="GALLAECIAN"><?php echo $strings['GALLEGO']; ?></option>
                     <option value="ENGLISH"><?php echo $strings['INGLES']; ?></option>
                 </select>
+                 </div>
             </form>
         </div>
         <?php
@@ -82,7 +84,6 @@ include_once '../Locales/Strings_' . $_SESSION['idioma'] . '.php';
               <input type=\'submit\' name=\'action\' value=\'REGISTER\'>
               </form>'; */
             ?>
-            <a href='../Controllers/Register_Controller.php'>Registrar</a>
             <?php
         }
         ?>

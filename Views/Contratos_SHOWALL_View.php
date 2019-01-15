@@ -13,7 +13,7 @@ class Contratos_SHOWALL_View {
         include '../Views/Header.php';
         //Mostrar tabla SHOWALL de Contratos
         ?>
-        <table class="table table-dark">
+        <table class="table">
             <!--Comienzo encabezado tabla SHOWALL-->
             <thead>
                 <tr>
