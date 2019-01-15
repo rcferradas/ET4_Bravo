@@ -314,15 +314,15 @@ function datosContrato(){
         $endf= DateTime::createFromFormat('Y-m-d',$datosContrato[1]); //Variable con la fecha donde concluye el contrato
         $stringFrec= VISITAS_Model::cadenaFrecuencia($datosContrato[2]);   //String con la frecuencia a la que actualizaremos la fecha de cada visita
      
-         do{
+         while($fechaVis < $endf){ //Mientras la fecha actualizada para las nuevas visitas no supere la fecha de fin del contrato, se añadiran mas visitas
          
              $contador++;
-             date_add($fechaVis, date_interval_create_from_date_string($stringFrec)); //Actualizamos la fecha con la frecuencia dada
              $this->fecha=$fechaVis; //Actualizamos la fecha del objeto de la clase
              $this->codVisita= substr($this->codContrato,0,4).$contador; //Creamos el codigo de la visita a partir de el del contrato y la variable incremental
-             $resultado=$this->ADDPeriodicas(); //Añadimos la visita a la base de datos
-         
-         }while($fechaVis < $endf); //Mientras la fecha actualizada para las nuevas visitas no supere la fecha de fin del contrato, se añadiran mas visitas
+             $resultado=$this->ADDPeriodicas();//Añadimos las visita con el ADD correspondiente
+             date_add($fechaVis, date_interval_create_from_date_string($stringFrec)); //Actualizamos la fecha con la frecuencia dada//Añadimos la visita a la base de datos
+         }
+     
            
         
 } 
