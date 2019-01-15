@@ -237,7 +237,6 @@ class VISITAS_Model {
     function SHOWCURRENT() {
         $sql="SELECT * FROM VISITAS WHERE(`codVisita` = '".$this->codVisita."')";
         $resultado = $this->mysqli->query($sql);
-        var_dump($sql);
         if($resultado->num_rows == 1){ //Si el resultado de la consulta es una tupla, devuelve dicha tupla como un array asociativo
             $tupla = $resultado->fetch_array();
             return $tupla;
