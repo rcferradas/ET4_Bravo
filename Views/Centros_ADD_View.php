@@ -19,20 +19,20 @@ class Centros_ADD_View {
         <section>
             <form class="form_add" method="post" action="../Controllers/Centros_Controller.php" onsubmit="return validacionSubmitEdit();">
                 <fieldset id="fieldset_add">
-
-                    <label for="nombre"><?php echo $strings['Nombre'] ?>  *</label> 
-                    <input name="nombre" type="text" size="25" id="nombre" onblur="comprobarTexto(this, 10);"/> 
-
-                    <label for="lugar"><?php echo $strings['Lugar'] ?>  *</label> 
-                    <input name="lugar" type="text" size="25" id="lugar" onblur="comprobarTexto(this, 30);"/> 
-
-                    <label for="usuarioAsignado"><?php echo $strings['Usuario asignado'] ?>  *</label> 
-                    <input name="usuarioAsignado" type="text" size="25" id="usuarioAsignado" onblur="comprobarTexto(this, 9);"/> 
-
+                    <div class="form-group">
+                        <label for="nombre"><?php echo $strings['Nombre'] ?>  *</label> 
+                        <input class="form-control" name="nombre" type="text" size="25" id="nombre" onblur="comprobarTexto(this, 10);"/> 
+                    </div><div class="form-group">
+                        <label for="lugar"><?php echo $strings['Lugar'] ?>  *</label> 
+                        <input class="form-control" name="lugar" type="text" size="25" id="lugar" onblur="comprobarTexto(this, 30);"/> 
+                    </div><div class="form-group">
+                        <label for="usuarioAsignado"><?php echo $strings['Usuario asignado'] ?>  *</label> 
+                        <input class="form-control" name="usuarioAsignado" type="text" size="25" id="usuarioAsignado" onblur="comprobarTexto(this, 9);"/> 
+                    </div>
                 </fieldset>
-                <span>* <?php echo $strings['Campos obligatorios']; ?> </span>
+                <span>* <?php echo $strings['Campos obligatorios']; ?> </span><br>
                 <!-- Boton submit -->
-                <button name="action" type="submit" value="ADD"><i class="fas fa-check"></i></button>
+                <button class="btn btn-outline-primary" name="action" type="submit" value="ADD"><i class="fas fa-check"></i></button>
 
             </form>
         </section>

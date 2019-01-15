@@ -291,7 +291,6 @@ class VISITAS_Model {
 function datosContrato(){
     $sql = "SELECT DATE_FORMAT(`periodoinicio`, '%Y-%m-%d'),DATE_FORMAT(`periodofin`, '%Y-%m-%d'),`frecuenciaVisitas` FROM CONTRATOS WHERE (`cod`= '$this->codContrato')";
     $resultado = $this->mysqli->query($sql);
-    
       if($resultado->num_rows == 1){ //Si el resultado es una tupla, crea una array con los datos y los devuelve
           $tupla = $resultado->fetch_array();
           return $tupla;
