@@ -19,7 +19,7 @@ class Contratos_EDIT_View {
                     <h2><?php echo $strings['Editar contrato']; ?></h2>
 
                     <fieldset id="fieldset_edit">
-                    <input hidden name="cod" type="text" size="25" id="cod" value="<?php echo $datos['cod'] ?>"> 
+                    <input hidden name="codcontrato" type="text" size="25" id="codcontratoEd" value="<?php echo $datos['cod'] ?>"> 
 
                         <label for="centro"><?php echo $strings['Centro'] ?>  *</label> 
                         <input name="centro" type="text" size="25" id="centro" value="<?php echo $datos['centro'] ?>"  onblur="comprobarTexto(this, 30);"/> 
@@ -63,8 +63,22 @@ class Contratos_EDIT_View {
                         <input type="date" name="periodofin" id="periodofin" value="<?php echo $datos['periodofin']; ?>"  onblur="comprobarVacio(this);"> 
 
                         <label for="importe"><?php echo $strings['Importe']; ?>  *</label> 
+<<<<<<< HEAD
                         <input type="number" name="importe" id="importe" value="<?php echo $datos['importe']; ?>"  onblur="comprobarReal(this, 2, 0, 999999999)"> 
 
+=======
+                        <input type="number" name="importe" id="importe" value="<?php echo $datos['importe']; ?>"  onblur="comprobarEntero(this, 1, 999);"> 
+                        
+                        <label for="frecuencia"><?php echo $strings['Frecuencia']; ?>  *</label> 
+                        <select  name="frecuencia" id="frecuencia"> 
+                            <option  value="diaria"<?php if ($datos['frecuenciaVisitas'] == 'diaria') {echo 'selected';}?>><?php echo $strings['Diaria'] ?></option>
+                            <option value="semanal"<?php if ($datos['frecuenciaVisitas'] == 'semanal') {echo 'selected';}?>><?php echo $strings['Semanal'] ?></option>
+                            <option  value="mensual"<?php if ($datos['frecuenciaVisitas'] == 'mensual') {echo 'selected';}?>><?php echo $strings['Mensual'] ?></option>
+                            <option  value="trimestral"<?php if ($datos['frecuenciaVisitas'] == 'trimestral') {echo 'selected';}?>><?php echo $strings['Trimestral'] ?></option>
+                            <option  value="anual" <?php if ($datos['frecuenciaVisitas'] == 'anual') {echo 'selected';}?>><?php echo $strings['Anual'] ?></option>
+                            <option  value="quinquenal"<?php if ($datos['frecuenciaVisitas'] == 'quinquenal') {echo 'selected';}?>><?php echo $strings['Quinquenal'] ?></option>
+                        </select>
+>>>>>>> VisitasPeriodicasWorking
                         <label for="estado"><?php echo $strings['Estado'] ?>  *</label>  
                         <select id="estado" name="estado">
                             <?php if ($datos['estado'] == 'realizado') {
