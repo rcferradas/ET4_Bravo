@@ -76,12 +76,12 @@ function comprobarReal(campo, numerodecimales, valormenor, valormayor) {
 	if (!comprobarVacio(campo)){//comprueba si está vacío
 		return false;
 	}
-	else if (campo.value < valormenor || campo.value > valormayor){//comprueba que le dígito enviado se haya entre sus valores menor y mayor
-            campo.style.border = "2px solid red";
+	else if ( decimal.length > numerodecimales && decimal!=campo.value){//si el numero de decimales que tiene el dígito es mayor que el numero de decimales indicado produce un error//en el caso de que el numero que mandamos no haya decimales se cogerá el numero entero en decimal por eso debemos evitar esto
+            campo.style.border = "2px solid red";		
             return false;
 	}
-	else if ( decimal.length > numerodecimales){//si el numero de decimales que tiene el dígito es mayor que el numero de decimales indicado produce un error
-            campo.style.border = "2px solid red";		
+        else if (campo.value < valormenor || campo.value > valormayor){//comprueba que le dígito enviado se haya entre sus valores menor y mayor
+            campo.style.border = "2px solid red";
             return false;
 	}
         else {
