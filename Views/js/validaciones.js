@@ -346,17 +346,12 @@ function validarSearchUsuarios(Formu){
 	return false;
 	}
         else if ( (/[PQRSW]/.test(campo.value.charAt(0))) || ((/0/.test(campo.value.charAt(1))) && (/0/.test(campo.value.charAt(2))) ) ) {//en el caso de que empiece por PQRSW o sus dos primeros valores sean 00 comprobará si el codigo de control es una letra en caso erroneo devuelve false
-        //campo.style.border = "2px solid purple";
-        control=1;//debe ser letra
-        //return false;
+        control=1;
         }
         else if ( (/[ABEH]/.test(campo.value.charAt(0))) ) {//en el caso de que empiece por ABEH comprobará si el codigo de control es una digito en caso erroneo devuelve false
-        //campo.style.border = "2px solid yellow";
-        control=2;//debe ser digito
-        //return false;
+        control=2;
         }// pasado lo anterior se sabrá que está bien escrito y se debe comprobar el codigo de control
 	//Quitamos el primer caracter y el ultimo digito
-
         var sumaPar=parseInt(campo.value.substr(2,1))+parseInt(campo.value.substr(4,1))+parseInt(campo.value.substr(6,1));  
         var result=0;//para el for
         var i=0;//ya que empezaremos a coger a partir del primer numero impar        
@@ -427,12 +422,3 @@ function validarSearchUsuarios(Formu){
             return false;    
         }
 }
-        /*if(codigo==1){
-                    campo.style.border = "2px solid purple";		
-                    return true;            
-        }
-        else{
-                    campo.style.border = "2px solid yellow";		
-                    return true;             
-        }  */   
-//}
