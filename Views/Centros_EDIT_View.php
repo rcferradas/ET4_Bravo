@@ -30,7 +30,7 @@ class Centros_EDIT_View {
                                         <?php
                                         foreach ($data as $usuario) {
                                             if($usuario['login']==$datos['usuarioAsignado']) echo '<option value="' . $usuario['login'] . '" selected>'.$usuario['login'].'</option>';
-                                            echo '<option value="' . $usuario['login'] . '">'.$usuario['login'].'</option>';
+                                            else echo '<option value="' . $usuario['login'] . '">'.$usuario['login'].'</option>';
                                         }
                                         ?>
                             </select>                              
