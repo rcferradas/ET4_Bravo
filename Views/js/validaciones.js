@@ -338,9 +338,29 @@ function validarSearchUsuarios(Formu){
 	}
 	return true;
 }
+/*Comprueba que todos los campos obligatorios estén escritos y que todos los campos escritos estén cubiertos correctamente,se envía en Usuarios_ADD_view */
+/*En el momento que correcto sea 1 significará que algún campo no es correcto*/
+function validarContratosADD(Formu){
+    var correcto=0;
+	if(!comprobarFecha(Formu.periodoinicio,Formu.periodofin,Formu.frecuencia)){//comprueba que el login esté correctamente escrito
+		alert("Fecha final mal introducida");
+		avisado = true;
+		setTimeout( 'avisado=false', 50 );
+		return false;
+	}
+	if(correcto==0){	
+            return true;
+        }		
+	else{
+            return false;
+        }	
+	
 
+	return true;
+}
+/*Comprueba que el CIF esté bien escrita*/
     function comprobarCIF( campo ) {
-	var CIF = /^([ABCDEFGHJKLMNPQRSUVW])(\d{7})([0-9A-J])$/;
+	var CIF = /^([ABCDEFGHJKLMNPQRSUVW])(\d{7})([0-9A-J])$/;//expresión que nos permite comprobar si el CIF está bien escrito
         var control=3;//lo utilizaremos para ver si es necesario una letra y/o numero
 	if(!comprobarExpresionRegular(campo,CIF,9)){//comprueba que la expresión enviada en CIF sea cumplida por el campo enviado si no lo hace devuelve false
 	return false;
@@ -422,6 +442,8 @@ function validarSearchUsuarios(Formu){
             return false;    
         }
 }
+/*Función que comprueba que la fecha fianl es mayor que la inicial y que la frecuencia es coherente entre estas*/
+/*DateDiff nos permitirá hacer el calculo de días entre una fecha y la otra*/
     function comprobarFecha(fi,ff,frecuencia){
     var DateDiff = {
         inDays: function (d1, d2) {
@@ -430,9 +452,9 @@ function validarSearchUsuarios(Formu){
 
             return parseInt((t2 - t1) / (24 * 3600 * 1000));
         }
-    }
+    };
     var frecuency;//muestra los días que corresponden a la frecuencia
-    switch (frecuencia.value) {
+    switch (frecuencia.value) {//pasamos la frecuencia a un numero
         case "diaria":
             frecuency = 1;
             break;
@@ -452,9 +474,9 @@ function validarSearchUsuarios(Formu){
             frecuency = 5475;
             break;
     }
-    var d1 = new Date(fi.value);
-    var d2 = new Date(ff.value);
-    var res=DateDiff.inDays(d1, d2);
-    if(res>frecuency)return true;
-    else return false;
+    var d1 = new Date(fi.value);//cogemos la primera fecha
+    var d2 = new Date(ff.value);//cogemos la segunda fecha
+    var res=DateDiff.inDays(d1, d2);//calcula la diferencia entre las dos
+    if(res>frecuency)return true;//si es mayor que la frecuencia devuelve true
+    else return false;//en caso contrario false
     }

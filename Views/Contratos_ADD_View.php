@@ -17,7 +17,7 @@ class Contratos_ADD_View {
         <h2><?php echo $strings['Añadir contrato']; ?></h2>        
 
         <section>
-            <form class="form_add" method="post" action="../Controllers/Contratos_Controller.php" enctype="multipart/form-data" onsubmit="return validacionSubmitEdit();">
+            <form class="form_add" method="post" action="../Controllers/Contratos_Controller.php" enctype="multipart/form-data" onsubmit="return validarContratosADD(this);">
                 <fieldset id="fieldset_add">
                     <input hidden name="cod" type="text" size="25" id="cod" value="NULL"> 
                     <div class="form-group">
