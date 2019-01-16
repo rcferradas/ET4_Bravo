@@ -22,7 +22,7 @@ class Contratos_EDIT_View {
                         <input hidden name="codcontrato" type="text" size="25" id="codcontratoEd" value="<?php echo $datos['cod'] ?>"> 
                         <div class="form-group">
                             <label for="centro"><?php echo $strings['Centro'] ?>  *</label> 
-                            <input class="form-control" name="centro" type="text" size="25" id="centro" value="<?php echo $datos['centro'] ?>"  onblur="comprobarTexto(this, 30);"/> 
+                            <input readonly class="form-control" name="centro" type="text" size="25" id="centro" value="<?php echo $datos['centro'] ?>" /> 
                         </div>&nbsp;&nbsp;<div class="form-group">
                             <label for="tipo"><?php echo $strings['Tipo'] ?>  *</label>  
                             <select class="form-control" id="tipo" name="tipo">
@@ -51,7 +51,7 @@ class Contratos_EDIT_View {
                             </select>
                         </div>&nbsp;&nbsp;<div class="form-group">
                             <label for="cifEmpresa"><?php echo $strings['cifEmpresa']; ?>  *</label> 
-                            <input class="form-control" name="cifEmpresa" type="text" id="cifEmpresa" value="<?php echo $datos['cifEmpresa']; ?>"/>
+                            <input readonly class="form-control" name="cifEmpresa" type="text" id="cifEmpresa" value="<?php echo $datos['cifEmpresa']; ?>"/>
                         </div>&nbsp;&nbsp;<div class="form-group">
                             <label for="documento"><?php echo $strings['Documento']; ?>  *</label> <br>
                             <input type="file" name="documento" id="documento" onblur="comprobarVacio(this);"> 

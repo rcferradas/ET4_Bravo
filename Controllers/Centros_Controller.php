@@ -78,7 +78,9 @@ elseif ($_SESSION['rol'] == 'admin') {
                     if (!$_POST) { //Si se envia por GET se llama a la vista ADD para que se envie por POST
                         $centros = new Centros_Model($_REQUEST['nombre'], '', ''); //creamos un objeto del modelo con el nombreigo de contrato
                         $valores = $centros->showCurrent();                                       //y se trae de la BD (a traves del modelo) la tupla asociada a ese email
-                        new Centros_EDIT_View($valores);
+                        $usuarios = new Centros_Model('', '', '');
+                        $data = $usuarios->getUsuarios();                         
+                        new Centros_EDIT_View($valores,$data);
                     } else {
                         $centros = recuperarDataForm();  //que utilizara el resguardo que introduzcamos en el formulario edit
                         $respuesta = $centros->EDIT();
