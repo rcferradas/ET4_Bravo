@@ -103,6 +103,7 @@ class Contratos_Model {
 // verificado la borra
     function DELETE() {
         $delete = "DELETE FROM `contratos` WHERE `cod`='$this->cod'";
+        var_dump($delete);
         $dirDocumento = '../Files/' . $this->cod;
         if (!$this->mysqli->query($delete)) {
             return 'Error en la eliminación';
@@ -116,13 +117,14 @@ class Contratos_Model {
     function EDIT() {
         $documento = "SELECT `documento` FROM contratos WHERE `cod`='$this->cod'";
         $modeloDocumento = $this->mysqli->query($documento);
+        var_dump($modeloDocumento);
         $tupla = $modeloDocumento->fetch_assoc();
         $rutaDocumento = $tupla['documento'];
+        var_dump($rutaDocumento);
         if ($tupla['documento'] != $this->documento) {
             $this->borrarDirectorio('../Files/' . $this->cod);
             $rutaDocumento = $this->funcionRutaDocumento();
         }
-        var_dump($this->frecuencia);
         $edit = "UPDATE `contratos` SET `centro`='$this->centro',`tipo`='$this->tipo',`estado`='$this->estado',`cifEmpresa`='$this->cifEmpresa',`documento`='$rutaDocumento',"
                 . "`periodoinicio`='$this->periodoInicio',`periodofin`='$this->periodoFin',`frecuenciaVisitas`='$this->frecuencia',`importe`='$this->importe' WHERE `cod`='$this->cod'";
         if (!$this->mysqli->query($edit)) { //si se da un problema en la consulta de actualización se notifica el error
@@ -146,7 +148,7 @@ class Contratos_Model {
     function borrarDirectorio($path) {
         $files = glob($path . '/*');
         foreach ($files as $archivo) {
-            is_dir($archivo) ? borrarDirectorio($archivo) : unlink($archivo);
+            is_dir($archivo) ? $this->borrarDirectorio($archivo) : unlink($archivo);
         }
         rmdir($path);
         return;

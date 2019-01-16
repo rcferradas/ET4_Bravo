@@ -76,8 +76,10 @@ CREATE TABLE IF NOT EXISTS `contratos` (
   `frecuenciaVisitas` enum('diaria','semanal','mensual','trimestral','anual','quinquenal') NOT NULL DEFAULT 'anual',
   `importe` DEC(10,2) NOT NULL,
 PRIMARY KEY (`cod`),
-FOREIGN KEY (`cifEmpresa`) REFERENCES `empresas`(`CIF`),
+FOREIGN KEY (`cifEmpresa`) REFERENCES `empresas`(`CIF`)
+              ON DELETE CASCADE,
 FOREIGN KEY (`centro`) REFERENCES `centros`(`nombre`)
+              ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
@@ -92,6 +94,8 @@ CREATE TABLE IF NOT EXISTS `visitas` (
   `fecha` date NOT NULL,
   `frutoVisitaProg` INT(10),
 PRIMARY KEY (`codVisita`),
-FOREIGN KEY (`frutoVisitaProg`) REFERENCES `visitas`(`codVisita`),
+FOREIGN KEY (`frutoVisitaProg`) REFERENCES `visitas`(`codVisita`)
+                  ON DELETE CASCADE,
 FOREIGN KEY (`codContrato`) REFERENCES `contratos`(`cod`)
+                  ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
