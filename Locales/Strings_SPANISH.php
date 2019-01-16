@@ -98,6 +98,7 @@ $strings = array(
     'Visita añadida con éxito' => 'Visita añadida con éxito',
         'Editar visita' => 'Editar visita',
     'Añadir Visita por Incidencia' => 'Añadir Visita por Incidencia',
+    'Fecha'=> 'Fecha',
     'Diaria' => 'Diaria',
     'Semanal' => 'Semanal',
     'Mensual' => 'Mensual',
