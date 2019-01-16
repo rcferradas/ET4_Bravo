@@ -2,12 +2,12 @@
 
 class Contratos_ADD_View {
 
-    function __construct() {
+    function __construct($data,$dato) {
 
-        $this->render();
+        $this->render($data,$dato);
     }
 
-    function render() {
+    function render($data,$dato) {
         if (!isset($_SESSION['idioma'])) {
             $_SESSION['idioma'] = 'SPANISH';
         }
@@ -22,7 +22,14 @@ class Contratos_ADD_View {
                     <input hidden name="cod" type="text" size="25" id="cod" value="NULL"> 
                     <div class="form-group">
                         <label for="centro"><?php echo $strings['Centro'] ?>  *</label> 
-                        <input class="form-control" name="centro" type="text" size="25" id="centro" onblur="comprobarTexto(this, 30);"/> 
+                        <select name="centro" id="centro">
+                                    <?php
+                                    foreach ($data as $centro) {
+                                        echo '<option value="' . $centro['nombre'] . '">'.$centro['nombre'].'</option>';
+                                    }
+                                    ?>
+                        </select>
+                        <!--<input class="form-control" name="centro" type="text" size="25" id="centro" onblur="comprobarTexto(this, 30);"/> -->
                     </div>&nbsp;&nbsp;<div class="form-group">
                         <label for="tipo"><?php echo $strings['Tipo'] ?>  *</label>  
                         <select class="form-control" id="tipo" name="tipo">
@@ -32,7 +39,14 @@ class Contratos_ADD_View {
                         </select>
                     </div>&nbsp;&nbsp;<div class="form-group">
                         <label for="cifEmpresa"><?php echo $strings['cifEmpresa']; ?>  *</label> 
-                        <input class="form-control" type="text" name="cifEmpresa" id="cifEmpresa" onblur= "comprobarCIF(this);" > 
+                        <select name="cifEmpresa" id="cifEmpresa">
+                                    <?php
+                                    foreach ($dato as $empresa) {
+                                        echo '<option value="' . $empresa['CIF'] . '">'.$empresa['CIF'].'</option>';
+                                    }
+                                    ?>
+                        </select>                        
+<!--<input class="form-control" type="text" name="cifEmpresa" id="cifEmpresa" onblur= "comprobarCIF(this);" >--> 
                     </div>&nbsp;&nbsp;<div class="form-group">
                         <label for="documento"><?php echo $strings['Documento']; ?>  *</label> <br>
                         <input name="documento" type="file" id="documento" onblur="comprobarVacio(this);"/>

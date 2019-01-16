@@ -93,7 +93,12 @@ class Centros_Model {
         } else
             return 'No existe la tupla';
     }
-
+    
+    function getUsuarios(){
+        $sql = "SELECT `login` FROM USUARIOS";
+        $resultado = $this->mysqli->query($sql);
+        return $resultado;
+    } 
 }
 
 //fin de clase

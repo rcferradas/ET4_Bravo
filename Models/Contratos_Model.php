@@ -162,6 +162,19 @@ class Contratos_Model {
       return $codigoDelContrato;
       
   }
+
+    function getCentros(){
+        $sql = "SELECT `nombre` FROM centros";
+        $resultado = $this->mysqli->query($sql);
+        return $resultado;
+    }
+    
+    function getEmpresas(){
+        $sql = "SELECT `CIF` FROM empresas";
+        $resultado = $this->mysqli->query($sql);
+        return $resultado;
+    }    
+        
 }
 
 //fin de clase

@@ -40,7 +40,9 @@ elseif ($_SESSION['rol'] == 'admin') {
             $datos; //Almacena los datos del formulario
             $respuesta; //Almacena la respuesta que se mostrará via MESSAGE
             if (!$_POST) {    //Si se envia por GET se llama a la vista ADD para que se envie por POST, cuestiones de privacidad
-                new Centros_ADD_View();
+                $usuarios = new Centros_Model('', '', '');
+                $data = $usuarios->getUsuarios();                
+                new Centros_ADD_View($data);
             } else {
                 $datos = recuperarDataForm();
                 $respuesta = $datos->ADD();
