@@ -1,79 +1,74 @@
 <?php
 
-class visitas_SEARCH_View {
+class Visitas_SEARCH_View {
 
-    function __construct() {
-        $this->render();
+   function __construct($datos,$codcon) {    //Constructor de la clase, pasamos un objeto tipo loteriaiu como parametro
+        $this->render($datos,$codcon);
     }
 
-    function render() {
-        if (!isset($_SESSION['idioma'])) {
-            $_SESSION['idioma'] = 'SPANISH';
+    function render($datos,$codcon) {
+        if (!isset($_SESSION['idioma'])) {   //Si no hay idioma seleccionado
+            $_SESSION['idioma'] = 'ESPAÑOL'; //por defecto ponemos español
         }
-
         include '../Views/Header.php';
         ?>
-        <h2><?php echo $strings['Buscar visitas']; ?></h2>        
+        <html>
 
-             <table class="table table-dark table-striped">
-            <!--Comienzo encabezado tabla SEARCH-->
-            <thead>
-                <tr>
-                    <th scope="col"><?php echo $strings['Fecha']; ?></th>
-                    <th scope="col"><?php echo $strings['Tipo']; ?></th>
-                    <th scope="col"><?php echo $strings['Estado']; ?></th>
-                    <th scope="col"><form class="form-inline my-2 my-lg-0" name='formulario' action="../Controllers/Visitas_Controller.php" method="">
-                             <input type="hidden" name=codcontrato value=<?php echo $_REQUEST['codcontrato']?>>
-                            <button name="action" value="ADD" type="submit" class="btn btn-outline-primary">
-                                <i class="fas fa-plus"></i></button>&nbsp
-                            <button name="action" value="SEARCH" type="submit" class="btn btn-outline-primary">
-                                <i class="fas fa-search"></i></button>&nbsp
-                        </form>
-                    </th>
-                </tr>
-            </thead>
-            <!--Fin encabezado tabla SHOWALL-->
+            <section>
+                <form class="form_edit" method="post" action="../Controllers/Visitas_Controller.php" enctype="multipart/form-data" onsubmit="return validacionSubmitEdit();">
+                    <h2><?php echo $strings['Buscar visitas']; ?></h2>
 
-            <tbody>
-                <?php
-                //Bucle que recorre todas las tuplas y va mostrando sus atributos
-                while ($tupla = $recordSet->fetch_assoc()) {
-                    ?>
-                    <tr>
-                        <td><?php echo $tupla['fecha']; ?></td>
-                        <td><?php echo $tupla['tipo']; ?></td>
-                        <td><?php echo $tupla['estado']; ?></td>
-                        <td>
-                            <!--Botones para realizar acciones en cada tupla-->
-                            <form class="form-inline my-2 my-lg-0" name='formulario' action="../Controllers/Visitas_Controller.php" method="">
-                                <input type="hidden" name=codvisita value=<?php echo $tupla['codVisita'] ?>>
-                                <input type="hidden" name=codcontrato value=<?php echo $tupla['codContrato'] ?>>
-                                <button name="action" value="SHOWCURRENT" type="submit" class="btn btn-outline-primary">
-                                    <i class="far fa-eye"></i></button>&nbsp
-                                <button name="action" value="EDIT" type="submit" class="btn btn-outline-primary">
-                                    <i class="fas fa-edit"></i></button>&nbsp
-                                     <?php 
-                                     if($tupla['estado']== 'incidencia'){
-                                     echo '<button name="action" value="INCIDENCIA" type="submit" class="btn btn-outline-primary">';
-                                     echo '<i class="fas fa-plus"></i></button>&nbsp';
-                                     }
-                                             ?>
-                                
-                                <button name="action" value="DELETE" type="submit" class="btn btn-outline-primary">
-                                    <i class="fas fa-trash-alt"></i></button>
-                            </form>
-                        </td>
-                    </tr>
-                    <?php
-                }
-                ?>
-            </tbody>
-        </table>
+                    <fieldset id="fieldset_edit">
+                        <input hidden name="codcontrato" type="text" size="25" id="codcontratoEd" value="<?php echo $codcon?>">
+                        <input hidden name="fechaicontrato" type="text" size="25" id="codcontratoEd" value="<?php echo $datos[0]?>"> 
+                        <input hidden name="fechafcontrato" type="text" size="25" id="codcontratoEd" value="<?php echo $datos[1]?>"> 
+                        <div class="form-group">
+                            <label for="estado"><?php echo $strings['Estado'] ?>  </label> 
+                            <select class="form-control" id="estado" name="estado">
 
-        <?php
-        include '../Views/Footer.php';
+                                <option value="realizada"><?php echo $strings['Realizada'] ?></option>
+                                <option value="pendiente"><?php echo $strings['Pendiente'] ?></option>
+                                <option value="incidencia"><?php echo $strings['Incidencia'] ?></option>
+                                <option value="" selected></option>  
+                            </select>
+                        </div>&nbsp;&nbsp;
+                        <div class="form-group">
+                            <label for="tipo"><?php echo $strings['Tipo'] ?>  </label>  
+                       
+                            <select class="form-control" id="tipo" name="tipo">
+                                <option value="certificador" ><?php echo $strings['Certificador'] ?></option>
+                                <option value="mantenimiento"><?php echo $strings['Mantenimiento'] ?></option>
+                                <option value="reparacion"><?php echo $strings['Reparacion'] ?></option>
+                                <option value="" selected ></option>
+                            </select>
+                        </div>&nbsp;&nbsp;
+                        <div class="form-group">
+                            <label for="fecha"><?php echo $strings['Fecha de comienzo']; ?>  </label> 
+                            <input class="form-control" type="date" name="fechainicio" id="fecha"   onblur="comprobarEntero(this, 1, 999);"> 
+                        </div>
+                        <div class="form-group">
+                            <label for="fecha"><?php echo $strings['Fecha de fin']; ?>  </label> 
+                            <input class="form-control" type="date" name="fechafin" id="fecha"  >
+                        </div>
+                         <div class="form-group">
+                            <label for="padre"><?php echo $strings['Reparadoras de incidencias']; ?>  </label> 
+                            <select class="form-control" id="padre" name="padre"> 
+                                <option value="buscar" ><?php echo $strings['Buscar'] ?></option>
+                                <option value="" selected></option>
+                            </select>
+                         </div>
+                    </fieldset>
+                    <span>* <?php echo $strings['Seleccionar al menos un campo']; ?> </span><br>
+                    <!-- Boton submit -->
+                    <button name="action" type="submit" value="SEARCH"><i class="fas fa-check"></i></button>
+                </form>
+            </section>
+
+            <?php include '../Views/Footer.php'; ?>
+
+            <?php
+        }
+
     }
-
-}
-?>
+    ?>
 

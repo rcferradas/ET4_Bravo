@@ -104,5 +104,11 @@ $strings = array(
     'Mensual' => 'Mensual',
     'Trimestral' => 'Trimestral',
     'Anual' => 'Anual',
-    'Quinquenal' => 'Quinquenal');
+    'Quinquenal' => 'Quinquenal',
+    'Fecha de comienzo' => 'Fecha de comienzo',
+    'Fecha de fin'=> 'Fecha de fin',
+    'Reparadoras de incidencias' => 'Reparadoras de incidencias',
+    'Buscar' => 'Buscar',
+    'Buscar visitas' => 'Buscar visitas',
+    'Seleccionar al menos un campo' => 'Seleccionar al menos un campo');
 ?>

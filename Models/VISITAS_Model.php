@@ -290,15 +290,31 @@ class VISITAS_Model {
     
     
     
-  function SEARCH(){
-          $fechainicio;
-          $fechafin;
-          $padre= isset($this->visitaPadre)? 'NOT NULL':'NULL';
+  function SEARCH($fecha1,$fecha2){
+             
+            $fechas = "SELECT `periodoinicio`,`periodofin` FROM contratos WHERE `cod`=$this->codContrato";
+            $resultado= $this->mysqli->query($fechas);
+            if(!$fechas){
+                return 'Error en la consulta';
+            }else{
+                $rango=$resultado->fetch_assoc();
+            }
+            if($fecha1==''){
+                $fechainicio=$rango['periodoinicio'];
+            }else{
+                 $fechainicio=$fecha1;
+            }
+              if($fecha2==''){
+                $fechafin=$rango['periodofin'];
+            }else{
+                 $fechafin=$fecha2;
+            }
+          $padre= $this->visitaPadre!='' ? ' AND `frutoVisitaProg` IS NOT NULL':'';
       
       
          $search = "SELECT * FROM visitas WHERE `estado` LIKE '%" . $this->estado . "%' AND `tipo` LIKE '%" . $this->tipo . "%'  
             AND `codContrato` LIKE '%" . $this->codContrato . "%' AND `fecha` >= '$fechainicio' AND `fecha` <= '$fechafin'
-                   AND `frutoVisitaProg` IS  $padre";
+                     $padre";
         if (!($resultado = $this->mysqli->query($search))) {
             return 'Error en la consulta';
         } else if ($resultado->numrows = 0) {
@@ -325,7 +341,6 @@ class VISITAS_Model {
     
 function datosContrato(){
     $sql = "SELECT DATE_FORMAT(`periodoinicio`, '%Y-%m-%d'),DATE_FORMAT(`periodofin`, '%Y-%m-%d'),`frecuenciaVisitas` FROM contratos WHERE (`cod`= '$this->codContrato')";
-    var_dump($sql);
     $resultado = $this->mysqli->query($sql);
     
     if (!$resultado) { //Si la consulta falla devuelve un mensaje de error

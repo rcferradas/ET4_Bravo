@@ -40,11 +40,6 @@ class Visitas_EDIT_View {
                                     echo 'selected';
                                 }
                                 ?>><?php echo $strings['Incidencia'] ?></option>
-                                <option value="" <?php
-                                if ($datos['estado'] == '') {
-                                    echo 'selected';
-                                }
-                                ?>></option>
                             </select>
                         </div>&nbsp;&nbsp;<div class="form-group"><label for="tipo"><?php echo $strings['Tipo'] ?>  *</label>  
                             <select class="form-control" id="tipo" name="tipo">
@@ -63,11 +58,7 @@ class Visitas_EDIT_View {
                                     echo 'selected';
                                 }
                                 ?>><?php echo $strings['Reparacion'] ?></option>
-                                <option value="" <?php
-                                if ($datos['tipo'] == '') {
-                                    echo 'selected';
-                                }
-                                ?>></option>
+                          
                             </select>
                         </div>&nbsp;&nbsp;<div class="form-group">
                             <label for="informe"><?php echo $strings['Informe']; ?>  *</label> <br>

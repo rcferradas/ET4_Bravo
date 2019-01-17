@@ -21,7 +21,7 @@ else {
     include '../Views/Visitas_DELETE_View.php';
     include '../Views/Visitas_ADD_View.php';
     include '../Views/Visitas_INCIDENCIA_View.php';
-    //include '../Views/Visitas_SEARCH_View.php';
+    include '../Views/Visitas_SEARCH_View.php';
 
     function recuperarDataForm() {
         $estado = $_REQUEST['estado'];
@@ -85,14 +85,14 @@ else {
             $datosContrato; //datos a mostrar extraidos del modelo
 
             if (!$_POST) {    //Si se envia por GET se llama a la vista EDIT para que se envie por POST
-                new Contratos_SEARCH_View();
+                $vis=new VISITAS_Model($_REQUEST['codcontrato']);
+                $datos=$vis->datosContrato();
+                new Visitas_SEARCH_View($datos,$_REQUEST['codcontrato']);
             } else {
-                $visitas = new Visitas_Model($_REQUEST['codcontrato']);  //Objeto del modelo
-                $datosContrato=$visitas->datosContrato();
-                $recordSet = $visitas->search($datosContrato);   //es un array asociativo con los datos, se obtienen los datos de la tabla a traves del modelo (metodo SHOWALL() )
-            new Visitas_SHOWALL_View($recordSet);  //se invoca la vista SHOWALL con los datos a mostrar
-            break;
-                new Contratos_SHOWALL_View($datos);
+                $visitas = new Visitas_Model('',$_REQUEST['estado'],$_REQUEST['tipo'],$_REQUEST['codcontrato'],'','',$_REQUEST['padre']);  //Objeto del modelo
+                $recordSet = $visitas->SEARCH($_REQUEST['fechainicio'],$_REQUEST['fechafin']);   //es un array asociativo con los datos, se obtienen los datos de la tabla a traves del modelo (metodo SHOWALL() )
+                new Visitas_SHOWALL_View($recordSet);  //se invoca la vista SHOWALL con los datos a mostrar
+          
             }
             break;
 
