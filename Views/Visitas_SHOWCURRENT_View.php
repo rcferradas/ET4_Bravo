@@ -38,7 +38,7 @@ class Visitas_SHOWCURRENT_View {
                         <button name="action" value="SHOWCURRENT" type="submit" class="btn btn-outline-primary">
                        <i class="fa fa-arrow-up"></i></button></td>
                           </form>';
-                         echo $tupla['frutoVisitaProg'];
+                    
                            } ?>
                     <td>
                         <!--Botones para realizar acciones en la tupla-->

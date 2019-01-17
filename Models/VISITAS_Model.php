@@ -313,8 +313,8 @@ class VISITAS_Model {
       
       
          $search = "SELECT * FROM visitas WHERE `estado` LIKE '%" . $this->estado . "%' AND `tipo` LIKE '%" . $this->tipo . "%'  
-            AND `codContrato` LIKE '%" . $this->codContrato . "%' AND `fecha` >= '$fechainicio' AND `fecha` <= '$fechafin'
-                     $padre";
+            AND `codContrato` LIKE '%" . $this->codContrato . "%' AND `fecha` >= '$fechainicio' AND `fecha` <= '$fechafin' 
+                     $padre ORDER BY `fecha` LIMIT 20";
         if (!($resultado = $this->mysqli->query($search))) {
             return 'Error en la consulta';
         } else if ($resultado->numrows = 0) {
@@ -363,11 +363,8 @@ function datosContrato(){
     function crearVisitasPeriodicas($datosContrato){
         $contador=0; //Variable que nos ayuda a crear un codigo de visita
         $fechaVis = DateTime::createFromFormat('Y-m-d', $datosContrato[0]); //Fecha donde comienza el contrato
-        var_dump($fechaVis);
         $endf= DateTime::createFromFormat('Y-m-d',$datosContrato[1]); //Variable con la fecha donde concluye el contrato
-        var_dump($endf);
         $stringFrec= VISITAS_Model::cadenaFrecuencia($datosContrato[2]);   //String con la frecuencia a la que actualizaremos la fecha de cada visita
-        var_dump($stringFrec);
          while($fechaVis < $endf){ //Mientras la fecha actualizada para las nuevas visitas no supere la fecha de fin del contrato, se añadiran mas visitas
          
              $contador++;
