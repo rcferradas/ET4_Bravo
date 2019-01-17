@@ -12,7 +12,7 @@ if (!IsAuthenticated()) {
 //esta autenticado
 elseif ($_SESSION['rol'] == 'admin') {
 
-    require_once '../Models/Usuarios_Model.php';
+    require_once '../Models/USUARIOS_Model.php';
     include '../Views/Usuarios_SHOWALL_View.php';
     include '../Views/Usuarios_ADD_View.php';
     include '../Views/Usuarios_SHOWCURRENT_View.php';

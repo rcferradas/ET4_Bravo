@@ -124,12 +124,13 @@ class VISITAS_Model {
     function ADDPeriodicas() {     
         $this->fecha=$this->fecha->format('Y-m-d'); //Convierte el objeto DateTime en un string con el formato señalado
          $sql ="INSERT INTO visitas (
-             `codVisita`, 
+             `codVisita`,
+             `estado`,
              `tipo`, 
              `codContrato`, 
              `fecha`
               ) 
-        VALUES ('$this->codVisita', '$this->tipo', '$this->codContrato', 
+        VALUES ('$this->codVisita', 'pendiente','$this->tipo', '$this->codContrato', 
                 '$this->fecha'
                  )";
           $resultado=$this->mysqli->query($sql);
@@ -140,9 +141,9 @@ class VISITAS_Model {
     
      
     function ADDNoProgramadas() {     
-        $max="SELECT MAX(`codVisita`)as codigo FROM visitas WHERE(`codContrato` = $this->codContrato)";
-        $res= $this->mysqli->query($max);
-        $tupla = $res->fetch_assoc();
+        $max="SELECT MAX(`codVisita`)as codigo FROM `visitas` WHERE(`codContrato` = $this->codContrato)";
+        $res=$this->mysqli->query($max);
+        $tupla=$res->fetch_assoc();
         $codigovis= $tupla['codigo'];
         $indice= strlen($this->codContrato);
         $numeroVisita= substr($codigovis, $indice)+1;
@@ -175,7 +176,7 @@ class VISITAS_Model {
 
  //funcion SHOWALL: recupera todos los registros de la tabla VISITAS 
     function SHOWALL() {
-        $sql = "SELECT * FROM VISITAS";
+        $sql = "SELECT * FROM visitas";
         $resultado=$this->mysqli->query($sql);
         
 
@@ -191,13 +192,13 @@ class VISITAS_Model {
     
     function showVisitas($codigoCon,$frec){
         $interval= VISITAS_Model::cadenaIntervalo($frec);
-        $sql = "SELECT * FROM VISITAS WHERE (`codContrato` = '$codigoCon'
+        $sql = "SELECT * FROM visitas WHERE (`codContrato` = '$codigoCon'
                  AND `fecha` >= DATE_SUB(NOW(), $interval) AND `fecha`<=
                 DATE_ADD(NOW(),$interval))ORDER BY `fecha` LIMIT 20";
         $resultado = $this->mysqli->query($sql);
         
         if (!($resultado)) { //si se produce un error en la consulta
-            return 'Trror en la consulta';
+            return 'Error en la consulta';
         }
         else if($resultado->num_rows ==0){
             $sql = "SELECT * FROM VISITAS WHERE (`codContrato` = '$codigoCon')
@@ -217,7 +218,7 @@ class VISITAS_Model {
     //funcion DELETE : comprueba que la tupla a borrar existe y una vez 
    // verificado la borra.
     function DELETE() {
-        $sql = "DELETE FROM VISITAS WHERE (`codVisita` = '" . $this->codVisita . "')";
+        $sql = "DELETE FROM visitas WHERE (`codVisita` = '" . $this->codVisita . "')";
         $dirDocumento = '../Files/' . $this->codVisita;
         if (!$this->mysqli->query($sql)) {
             return 'Error en la eliminación';
@@ -235,7 +236,7 @@ class VISITAS_Model {
     // de la consulta
     
     function SHOWCURRENT() {
-        $sql="SELECT * FROM VISITAS WHERE(`codVisita` = '".$this->codVisita."')";
+        $sql="SELECT * FROM visitas WHERE(`codVisita` = '".$this->codVisita."')";
         $resultado = $this->mysqli->query($sql);
         if($resultado->num_rows == 1){ //Si el resultado de la consulta es una tupla, devuelve dicha tupla como un array asociativo
             $tupla = $resultado->fetch_array();
@@ -252,7 +253,7 @@ class VISITAS_Model {
 
 // funcion Edit: realizar el update de una tupla despues de comprobar que existe
     function EDIT() {
-        $sql = "SELECT `informe` FROM VISITAS WHERE (`codVisita`= '".$this->codVisita."')";
+        $sql = "SELECT `informe` FROM visitas WHERE (`codVisita`= '".$this->codVisita."')";
         $resultado = $this->mysqli->query($sql);
         $viejoinforme=$resultado->fetch_assoc();
         $rutaviejostr=(string) $viejoinforme['informe'];
@@ -270,11 +271,12 @@ class VISITAS_Model {
                 $informe = $viejoinforme['informe'];//La variable que actualiza el atributo informe conserva su antiguo valor, en caso contrario
                 $informestr=  "'$informe'";
               }
-                    $sql = "UPDATE VISITAS
+                    $sql = "UPDATE visitas
                     SET `estado` = '$this->estado', `tipo`= '$this->tipo',`informe` = $informestr,
                      `fecha` = '$this->fecha'
                     WHERE ( `codVisita` = '$this->codVisita' )
                  ";
+          
             if (!$this->mysqli->query($sql)) { //si se da un problema en la consulta de actualización se notifica el error
                 return 'Error en la actualización';
             } else {
@@ -289,7 +291,8 @@ class VISITAS_Model {
 //del contrato con el que se relacionan las visitas periódicas.
     
 function datosContrato(){
-    $sql = "SELECT DATE_FORMAT(`periodoinicio`, '%Y-%m-%d'),DATE_FORMAT(`periodofin`, '%Y-%m-%d'),`frecuenciaVisitas` FROM CONTRATOS WHERE (`cod`= '$this->codContrato')";
+    $sql = "SELECT DATE_FORMAT(`periodoinicio`, '%Y-%m-%d'),DATE_FORMAT(`periodofin`, '%Y-%m-%d'),`frecuenciaVisitas` FROM contratos WHERE (`cod`= '$this->codContrato')";
+    var_dump($sql);
     $resultado = $this->mysqli->query($sql);
     
     if (!$resultado) { //Si la consulta falla devuelve un mensaje de error
@@ -312,9 +315,11 @@ function datosContrato(){
     function crearVisitasPeriodicas($datosContrato){
         $contador=0; //Variable que nos ayuda a crear un codigo de visita
         $fechaVis = DateTime::createFromFormat('Y-m-d', $datosContrato[0]); //Fecha donde comienza el contrato
+        var_dump($fechaVis);
         $endf= DateTime::createFromFormat('Y-m-d',$datosContrato[1]); //Variable con la fecha donde concluye el contrato
+        var_dump($endf);
         $stringFrec= VISITAS_Model::cadenaFrecuencia($datosContrato[2]);   //String con la frecuencia a la que actualizaremos la fecha de cada visita
-     
+        var_dump($stringFrec);
          while($fechaVis < $endf){ //Mientras la fecha actualizada para las nuevas visitas no supere la fecha de fin del contrato, se añadiran mas visitas
          
              $contador++;
