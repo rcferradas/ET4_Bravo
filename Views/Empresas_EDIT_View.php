@@ -31,30 +31,25 @@ class Empresas_EDIT_View {
                     </div> 
                     <div class="form-group">
                         <label><span>*</span><?php echo $strings['Tipo']; ?>:</label>
-                        <select class="form-control" id="tipoempresas" name="tipo" required >
-                            <?php if ($empresas['tipo'] == $strings['certificador']) {
-                                ?>
-                                <option value="certificador" selected><?= $strings['Certificadora'] ?></option>
-                                <option value="mantenimiento"><?= $strings['Mantenimiento'] ?></option>
-                                <option value="reparacion"><?= $strings['Reparadora'] ?></option>                        
-                            </select>
-                            <?php
-                        }if ($empresas['tipo'] == $strings['mantenimiento']) {
-                            ?>
-                            <option value="certificador"><?= $strings['Certificadora'] ?></option>
-                            <option value="mantenimiento" selected><?= $strings['Mantenimiento'] ?></option>
-                            <option value="reparacion"><?= $strings['Reparadora'] ?></option>    
-                            </select>
-                            <?php
-                        } else {
-                            ?>
-                            <option value="certificador"><?= $strings['Certificadora'] ?></option>
-                            <option value="mantenimiento"><?= $strings['Mantenimiento'] ?></option>
-                            <option value="reparacion" selected><?= $strings['Reparadora'] ?></option> 
-                            </select>
-                            <?php
-                        }
-                        ?>
+                            <select class="form-control" id="tipoempresas" name="tipo" required>
+
+                                <option value="certificador"  <?php
+                                if ($empresas['tipo'] == $strings['certificador']) {
+                                    echo 'selected';
+                                }
+                                ?>><?php echo $strings['Certificadora'] ?></option>
+                                <option value="mantenimiento"<?php
+                                if ($empresas['tipo'] == $strings['mantenimiento']) {
+                                    echo 'selected';
+                                }
+                                ?> ><?php echo $strings['Mantenimiento'] ?></option>
+                                <option value="reparacion" <?php
+                                if ($empresas['tipo'] == $strings['reparacion']) {
+                                    echo 'selected';
+                                }
+                                ?>><?php echo $strings['Reparadora'] ?></option>
+                            </select>                        
+
                     </div>                    
                     <div class="form-group">
                         <label><span>*</span><?php echo $strings['Telefono']; ?>:</label>

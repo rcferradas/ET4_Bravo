@@ -1,6 +1,9 @@
 <?php
 
 $strings = array(
+    'certificador'=>'certificador',
+    'mantenimiento'=>'mantenimiento',
+    'reparacion'=>'reparacion',
     'Portal de mantenimiento' => 'Management website',
     'Equipo Bravo' => 'Bravo Team',
     'Usuario no autenticado' => 'User not logged',

@@ -1,6 +1,9 @@
 <?php
 
 $strings = array(
+    'certificador'=>'certificador',
+    'mantenimiento'=>'mantenimiento',
+    'reparacion'=>'reparacion',
     'Portal de mantenimiento' => 'Portal de mantemento',
     'Equipo Bravo' => 'Equipo Bravo',
     'Usuario no autenticado' => 'Usuario non autenticado',
