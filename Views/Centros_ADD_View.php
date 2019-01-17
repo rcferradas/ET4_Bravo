@@ -17,11 +17,11 @@ class Centros_ADD_View {
         <h2><?php echo $strings['Añadir centro']; ?></h2>        
 
         <section>
-            <form class="form_add" method="post" action="../Controllers/Centros_Controller.php" onsubmit="return validacionSubmitEdit();">
+            <form class="form_add" method="post" action="../Controllers/Centros_Controller.php" onsubmit="return validarCentrosADD(this);">
                 <fieldset id="fieldset_add">
                     <div class="form-group">
                         <label for="nombre"><?php echo $strings['Nombre'] ?>  *</label> 
-                        <input class="form-control" name="nombre" type="text" size="25" id="nombre" onblur="comprobarTexto(this, 10);"/> 
+                        <input class="form-control" name="nombre" type="text" size="25" id="nombre" onblur="comprobarTexto(this, 30);"/> 
                     </div>&nbsp;&nbsp;<div class="form-group">
                         <label for="lugar"><?php echo $strings['Lugar'] ?>  *</label> 
                         <input class="form-control" name="lugar" type="text" size="25" id="lugar" onblur="comprobarTexto(this, 30);"/> 

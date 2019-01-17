@@ -264,7 +264,64 @@ function comprobarDni(campo) {
     if(res>frecuency)return true;//si es mayor que la frecuencia devuelve true
     else return false;//en caso contrario false
 }
+/*Comprueba que todos los campos obligatorios estén escritos y que todos los campos escritos estén cubiertos correctamente,se envía en Centros_ADD_view */
+/*En el momento que correcto sea 1 significará que algún campo no es correcto*/
+function validarCentrosADD(Formu){
+    var correcto=0;
+        if(!comprobarTexto(Formu.nombre, 30)){
+            correcto = 1;
+        }
+        if(!comprobarTexto(Formu.lugar, 30)){
+            correcto = 1;
+        }
+        if(!comprobarVacio(Formu.usuarioAsignado)){
+            correcto = 1;
+        }
+	if(correcto==0){	
+            return true;
+        }		
+	else{
+            return false;
+        }
+	return true;
+}
 
+/*Comprueba que todos los campos obligatorios estén escritos y que todos los campos escritos estén cubiertos correctamente,se envía en Centros_EDIT_view */
+/*En el momento que correcto sea 1 significará que algún campo no es correcto*/
+function validarCentrosEDIT(Formu){
+    var correcto=0;
+        if(!comprobarTexto(Formu.lugar, 30)){
+            correcto = 1;
+        }
+	if(correcto==0){	
+            return true;
+        }		
+	else{
+            return false;
+        }	
+	return true;
+}
+/*Comprueba que al menos un campo esté escrito, se envía en Centros_SEARCH_View*/
+/*Campo-En el caso de que no haya ningún campo escrito se muestra un alert*/
+function validarSearchCentros(Formu){
+	var campo = false;
+	if ( !( Formu.nombre.value == null ) && ( Formu.nombre.value.length != 0 ) ) {//comprueba si el campo está vacío o no
+		campo=true;
+	}
+	if( !(Formu.lugar.value == null) && (Formu.lugar.value != 0 )) {//comprueba si el campo está vacío o no
+		campo=true;
+	}
+	if ( !( Formu.usuarioAsignado.value == null ) && ( Formu.usuarioAsignado.value.length != 0 ) ) {//comprueba si el campo está vacío o no
+		campo=true;
+	}
+	if(campo==false){//en el caso de que estén todos los campos vacíos se muestra que hay que cubrir al menos uno
+		alert("Cubra al menos un campo");
+		avisado = true;
+		setTimeout( 'avisado=false', 50 );
+		return false;
+	}
+	return true;
+}
 /*Comprueba que todos los campos obligatorios estén escritos y que todos los campos escritos estén cubiertos correctamente,se envía en Contratos_ADD_view */
 /*En el momento que correcto sea 1 significará que algún campo no es correcto*/
 function validarContratosADD(Formu){
@@ -299,9 +356,7 @@ function validarContratosADD(Formu){
         }		
 	else{
             return false;
-        }	
-	
-
+        }
 	return true;
 }
 
@@ -331,6 +386,43 @@ function validarContratosEDIT(Formu){
 	else{
             return false;
         }	
+	return true;
+}
+
+/*Comprueba que al menos un campo esté escrito, se envía en Contratos_SEARCH_View*/
+/*Campo-En el caso de que no haya ningún campo escrito se muestra un alert*/
+function validarSearchContratos(Formu){
+	var campo = false;
+	if ( !( Formu.centro.value == null ) && ( Formu.centro.value.length != 0 ) ) {//comprueba si el campo está vacío o no
+		campo=true;
+	}
+	if( !(Formu.tipo.value == null) && (Formu.tipo.value != 0 )) {//comprueba si el campo está vacío o no
+		campo=true;
+	}
+	if ( !( Formu.cifEmpresa.value == null ) && ( Formu.cifEmpresa.value.length != 0 ) ) {//comprueba si el campo está vacío o no
+		campo=true;
+	}        
+	if ( !( Formu.periodoinicio.value == null ) && ( Formu.periodoinicio.value.length != 0 ) ) {//comprueba si el campo está vacío o no
+		campo=true;
+	}
+	if ( !( Formu.periodofin.value == null ) && ( Formu.periodofin.value.length != 0 ) ) {//comprueba si el campo está vacío o no
+		campo=true;
+	} 
+	if ( !( Formu.frecuencia.value == null ) && ( Formu.frecuencia.value.length != 0 ) ) {//comprueba si el campo está vacío o no
+		campo=true;
+	}         
+	if ( !( Formu.importe.value == null ) && ( Formu.importe.value.length != 0 ) ) {//comprueba si el campo está vacío o no
+		campo=true;
+	} 
+	if ( !( Formu.estado.value == null ) && ( Formu.estado.value.length != 0 ) ) {//comprueba si el campo está vacío o no
+		campo=true;
+	}         
+	if(campo==false){//en el caso de que estén todos los campos vacíos se muestra que hay que cubrir al menos uno
+		alert("Cubra al menos un campo");
+		avisado = true;
+		setTimeout( 'avisado=false', 50 );
+		return false;
+	}
 	return true;
 }
 /*Comprueba que todos los campos obligatorios estén escritos y que todos los campos escritos estén cubiertos correctamente,se envía en Empresas_ADD_view */
