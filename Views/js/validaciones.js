@@ -139,13 +139,13 @@ function comprobarDni(campo) {
         control=2;
         }// pasado lo anterior se sabrá que está bien escrito y se debe comprobar el codigo de control
 	//Quitamos el primer caracter y el ultimo digito
-        var sumaPar=parseInt(campo.value.substr(2,1))+parseInt(campo.value.substr(4,1))+parseInt(campo.value.substr(6,1));  
-        var result=0;//para el for
+        var sumaPar=parseInt(campo.value.substr(2,1))+parseInt(campo.value.substr(4,1))+parseInt(campo.value.substr(6,1));//suma total con los numeros pares  
+        var result=0;//se emplea para coger los numeros impares
         var i=0;//ya que empezaremos a coger a partir del primer numero impar        
-        var sumaImpar=0;
-        var sumatotal=0;
-        var unidad=0;
-        var codigo=0;
+        var sumaImpar=0;//guardamos la suma total que nos dan los impares
+        var sumatotal=0;//suma total de los impares y pares
+        var unidad=0;//lo utilizaremos para coger un dítio en concreto de la suma
+        var codigo=0;//lo utilizaremos para comprobar que el codigo de control sea el correcto comprobando con la variable comprobar
         var comprobar=0;//utilizaremos esto para comprobar con el dígito de control, ya que si es una letra tendremos que pasarlo a un número
  
 	//Sumamos las cifras impares de la cadena
@@ -164,7 +164,7 @@ function comprobarDni(campo) {
 	sumatotal=sumaPar+sumaImpar;
         unidad=sumatotal%10;//nos intersa el segundo digito o en el caso de que haya sólo uno pues ese
         
-        codigo =10-unidad;//conocemos el valor del codigo de controlJ = 0, A = 1, B = 2, C= 3, D = 4, E = 5, F = 6, G = 7, H = 8, I = 9
+        codigo =10-unidad;//conocemos el valor del codigo de control
         
         if(control==2){
             comprobar=campo.value.charAt(8);
@@ -271,13 +271,13 @@ function comprobarDni(campo) {
 /*En el momento que correcto sea 1 significará que algún campo no es correcto*/
 function validarCentrosADD(Formu){
     var correcto=0;
-        if(!comprobarTexto(Formu.nombre, 30)){
+        if(!comprobarTexto(Formu.nombre, 30)){//comprobamos que el nombre esté bien escrito
             correcto = 1;
         }
-        if(!comprobarTexto(Formu.lugar, 30)){
+        if(!comprobarTexto(Formu.lugar, 30)){//comprobamos que el lugar esté bien escrito
             correcto = 1;
         }
-        if(!comprobarVacio(Formu.usuarioAsignado)){
+        if(!comprobarVacio(Formu.usuarioAsignado)){//comprobamos que el usuarioAsignado no esté vacío
             correcto = 1;
         }
 	if(correcto==0){	
@@ -293,7 +293,7 @@ function validarCentrosADD(Formu){
 /*En el momento que correcto sea 1 significará que algún campo no es correcto*/
 function validarCentrosEDIT(Formu){
     var correcto=0;
-        if(!comprobarTexto(Formu.lugar, 30)){
+        if(!comprobarTexto(Formu.lugar, 30)){//comprobamos que el lugar esté bien escrito
             correcto = 1;
         }
 	if(correcto==0){	
@@ -329,16 +329,16 @@ function validarSearchCentros(Formu){
 /*En el momento que correcto sea 1 significará que algún campo no es correcto*/
 function validarContratosADD(Formu){
     var correcto=0;
-        if(!comprobarVacio(Formu.centro)){
+        if(!comprobarVacio(Formu.centro)){//comprobamos que el centro no esté vacío
             correcto = 1;
         }
-        if(!comprobarVacio(Formu.cifEmpresa)){
+        if(!comprobarVacio(Formu.cifEmpresa)){//comprobamos que el CIF no esté vacío
             correcto = 1;
         }
-        if(!comprobarVacio(Formu.documento)){
+        if(!comprobarVacio(Formu.documento)){//comprobamos que el documento no esté vacío
             correcto = 1;
         } 
-        if(!comprobarReal(Formu.importe,2,0,999999999)){
+        if(!comprobarReal(Formu.importe,2,0,999999999)){//comprobamos que el importe esté bien escrito
             correcto = 1;
         }        
 	if(!comprobarFecha(Formu.periodoinicio,Formu.periodofin,Formu.frecuencia)){//comprueba que la fecha final esté correctamente escrito respeto a la inicial y a la frecuencia				
@@ -360,7 +360,7 @@ function validarContratosADD(Formu){
 /*En el momento que correcto sea 1 significará que algún campo no es correcto*/
 function validarContratosEDIT(Formu){
     var correcto=0;
-        if(!comprobarReal(Formu.importe,2,0,999999999)){
+        if(!comprobarReal(Formu.importe,2,0,999999999)){//comprobamos que el importe esté bien escrito
             correcto = 1;
         }        
 	if(!comprobarFecha(Formu.periodoinicio,Formu.periodofin,Formu.frecuencia)){//comprueba que la fecha final esté correctamente escrito respeto a la inicial y a la frecuencia		
