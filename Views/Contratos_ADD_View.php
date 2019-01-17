@@ -22,7 +22,7 @@ class Contratos_ADD_View {
                     <input hidden name="cod" type="text" size="25" id="cod" value="NULL"> 
                     <div class="form-group">
                         <label for="centro"><?php echo $strings['Centro'] ?>  *</label> 
-                        <select name="centro" id="centro">
+                        <select class="form-control" name="centro" id="centro">
                                     <?php
                                     foreach ($data as $centro) {
                                         echo '<option value="' . $centro['nombre'] . '">'.$centro['nombre'].'</option>';
@@ -39,7 +39,7 @@ class Contratos_ADD_View {
                         </select>
                     </div>&nbsp;&nbsp;<div class="form-group">
                         <label for="cifEmpresa"><?php echo $strings['cifEmpresa']; ?>  *</label> 
-                        <select name="cifEmpresa" id="cifEmpresa">
+                        <select class="form-control" name="cifEmpresa" id="cifEmpresa">
                                     <?php
                                     foreach ($dato as $empresa) {
                                         echo '<option value="' . $empresa['CIF'] . '">'.$empresa['CIF'].'</option>';
@@ -52,10 +52,10 @@ class Contratos_ADD_View {
                         <input name="documento" type="file" id="documento" onblur="comprobarVacio(this);"/>
                     </div>&nbsp;&nbsp;<div class="form-group">
                         <label for="periodoinicio"><?php echo $strings['Periodo inicio']; ?>  *</label> 
-                        <input class="form-control" type="date" name="periodoinicio" id="periodoinicio" onblur="comprobarVacio(this);"> 
+                        <input readonly type="text" class="tcal" name="periodoinicio" id="periodoinicio" > 
                     </div>&nbsp;&nbsp;<div class="form-group">
                         <label for="periodofin"><?php echo $strings['Periodo fin']; ?>  *</label> 
-                        <input class="form-control" type="date" name="periodofin" id="periodofin" onblur="comprobarVacio(this);"> 
+                        <input readonly type="text" class="tcal" name="periodofin" id="periodofin" > 
                     </div>&nbsp;&nbsp;<div class="form-group">    
                         <label for="frecuencia"><?php echo $strings['Frecuencia']; ?>  *</label> 
                         <select  class="form-control" name="frecuencia" id="frecuencia"> 
@@ -68,7 +68,7 @@ class Contratos_ADD_View {
                         </select>
                     </div>&nbsp;&nbsp;<div class="form-group"> 
                         <label for="importe"><?php echo $strings['Importe']; ?>  *</label> 
-                        <input class="form-control" type="number" name="importe" id="importe" onblur="comprobarReal(this, 2, 0, 999999999)"> 
+                        <input class="form-control" type="text" name="importe" id="importe" onblur="comprobarReal(this, 2, 0, 999999999)"> 
                     </div>&nbsp;&nbsp;<div class="form-group">
                         <label for="estado"><?php echo $strings['Estado']; ?>  *</label> 
                         <select class="form-control" id="estado" name="estado">

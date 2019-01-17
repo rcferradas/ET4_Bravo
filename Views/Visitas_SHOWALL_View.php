@@ -68,6 +68,7 @@ class Visitas_SHOWALL_View {
             </tbody>
         </table>
         <?php
+        include '../Views/Footer.php';
     }
 
 }

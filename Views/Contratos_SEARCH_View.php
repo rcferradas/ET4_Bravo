@@ -34,10 +34,10 @@ class Contratos_SEARCH_View {
                         <input class="form-control" name="cifEmpresa" type="text" id="cifEmpresa" /> <!--No se valida el resguardo en edit porque si no se introduce un fichero nuevo nos quedamos con el que ya esta almacenado-->
                     </div>&nbsp;&nbsp;<div class="form-group">
                         <label for="periodoinicio"><?php echo $strings['Periodo inicio']; ?>  *</label> 
-                        <input class="form-control" type="date" name="periodoinicio" id="periodoinicio"> 
+                        <input readonly type="text" class="tcal" name="periodoinicio" id="periodoinicio"> 
                     </div>&nbsp;&nbsp;<div class="form-group">
                         <label for="periodofin"><?php echo $strings['Periodo fin']; ?>  *</label> 
-                        <input class="form-control" type="date" name="periodofin" id="periodofin"> 
+                        <input readonly type="text" class="tcal" name="periodofin" id="periodofin"> 
                     </div>&nbsp;&nbsp;<div class="form-group">
                         <label for="frecuencia"><?php echo $strings['Frecuencia'] ?>  *</label> 
                         <select  class="form-control" name="frecuencia" id="frecuencia"> 
@@ -50,7 +50,7 @@ class Contratos_SEARCH_View {
                         </select>
                     </div>&nbsp;&nbsp;<div class="form-group">
                         <label for="importe"><?php echo $strings['Importe']; ?>  *</label> 
-                        <input class="form-control" type="number" name="importe" id="importe" > 
+                        <input class="form-control" type="text" name="importe" id="importe" > 
                     </div>&nbsp;&nbsp;<div class="form-group">
                         <label for="estado"><?php echo $strings['Estado']; ?>  *</label> 
                         <select class="form-control" id="estado" name="estado">

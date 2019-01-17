@@ -34,7 +34,7 @@ include_once '../Locales/Strings_' . $_SESSION['idioma'] . '.php';
         <link rel="stylesheet" type="text/css" href="../Views/css/tcal.css" media="screen" />
         <link rel="stylesheet" type="text/css" href="../Views/css/modal.css" />
     </head>
-    <body style="background-color: darkorange">
+    <body style="background-color: darkgray">
         <div id="modal" style="display:none">
             <div id="contenido-interno">
                 <div id="aviso"><img src="../Views/Icons/sign-error.png" name="aviso"/></div>
@@ -69,10 +69,11 @@ include_once '../Locales/Strings_' . $_SESSION['idioma'] . '.php';
         <?php
         if (IsAuthenticated()) {
             ?>
-
+        <span>
             <?php
             echo $strings['Usuario'] . ' : ' . $_SESSION['login'] . '<br>';
-            ?>			
+            ?>
+        </span>
             <div width: 50%; align="right">
                  <a href='../Functions/Desconectar.php'>
                     <i class="fas fa-sign-out-alt"></i>

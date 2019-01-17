@@ -50,6 +50,7 @@ class Usuarios_SHOWCURRENT_View {
             </tbody>
         </table>
         <?php
+        include '../Views/Footer.php';
     }
 
 }
