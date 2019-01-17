@@ -334,19 +334,12 @@ function validarContratosADD(Formu){
         }
         if(!comprobarVacio(Formu.documento)){
             correcto = 1;
-        }
-        if(!comprobarVacio(Formu.periodoinicio)){
-            correcto = 1;
-        }
-        if(!comprobarVacio(Formu.periodofin)){
-            correcto = 1;
-        }  
+        } 
         if(!comprobarReal(Formu.importe,2,0,999999999)){
             correcto = 1;
         }        
-	if(!comprobarFecha(Formu.periodoinicio,Formu.periodofin,Formu.frecuencia)){//comprueba que la fecha final esté correctamente escrito respeto a la inicial y a la frecuencia
-		Formu.periodofin.style.border = "2px solid red";				
-                alert("Fecha final mal introducida");
+	if(!comprobarFecha(Formu.periodoinicio,Formu.periodofin,Formu.frecuencia)){//comprueba que la fecha final esté correctamente escrito respeto a la inicial y a la frecuencia				
+                alert("Fecha periodo mal introducida");
 		avisado = true;
 		setTimeout( 'avisado=false', 50 );
 		return false;
@@ -364,18 +357,11 @@ function validarContratosADD(Formu){
 /*En el momento que correcto sea 1 significará que algún campo no es correcto*/
 function validarContratosEDIT(Formu){
     var correcto=0;
-        if(!comprobarVacio(Formu.periodoinicio)){
-            correcto = 1;
-        }
-        if(!comprobarVacio(Formu.periodofin)){
-            correcto = 1;
-        }  
         if(!comprobarReal(Formu.importe,2,0,999999999)){
             correcto = 1;
         }        
-	if(!comprobarFecha(Formu.periodoinicio,Formu.periodofin,Formu.frecuencia)){//comprueba que la fecha final esté correctamente escrito respeto a la inicial y a la frecuencia
-		Formu.periodofin.style.border = "2px solid red";		
-                alert("Fecha final mal introducida");
+	if(!comprobarFecha(Formu.periodoinicio,Formu.periodofin,Formu.frecuencia)){//comprueba que la fecha final esté correctamente escrito respeto a la inicial y a la frecuencia		
+                alert("Fecha periodo mal introducida");
 		avisado = true;
 		setTimeout( 'avisado=false', 50 );
 		return false;
