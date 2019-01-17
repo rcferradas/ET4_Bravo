@@ -1,3 +1,5 @@
+<!--17-01-2019/Bravo/Vista que nos permite añadir un centro -->
+
 <?php
 
 class Centros_ADD_View {

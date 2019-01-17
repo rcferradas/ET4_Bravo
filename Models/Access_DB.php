@@ -1,3 +1,5 @@
+<!--17-01-2019/Bravo/Función que nos permite conectarnos y utilizar la base de datos o nos muestra si hay un fallo al conectarse -->
+
 <?php
 
 //----------------------------------------------------

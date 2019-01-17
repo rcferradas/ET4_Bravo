@@ -1,3 +1,5 @@
+<!--17-01-2019/Bravo/Vista que nos muestra todas las visitas que tiene un contrato -->
+
 <?php
 
 class Visitas_SHOWALL_View {

@@ -1,3 +1,5 @@
+<!--17-01-2019/Bravo/Vista que nos permite añadir una empresa -->
+
 <?php
 
 class Empresas_ADD_View {

@@ -1,3 +1,5 @@
+<!--17-01-2019/Bravo/Vista que nos permite buscar uno o más contratos -->
+
 <?php
 
 class Contratos_SEARCH_View {

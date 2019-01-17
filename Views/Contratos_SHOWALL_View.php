@@ -1,3 +1,5 @@
+<!--17-01-2019/Bravo/Vista que nos muestra todos los contratos -->
+
 <?php
 
 class Contratos_SHOWALL_View {

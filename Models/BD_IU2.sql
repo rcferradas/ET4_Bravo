@@ -1,5 +1,5 @@
--- jrodeiro - 7/10/2017
--- script de creación de la bd, usuario, asignación de privilegios a ese usuario sobre la bd
+-- Bravo - 17/01/2019
+-- script de creación de la bd
 -- creación de tabla e insert sobre la misma.
 --
 -- CREAR LA BD BORRANDOLA SI YA EXISTIESE

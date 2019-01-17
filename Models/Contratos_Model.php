@@ -1,3 +1,5 @@
+<!--17-01-2019/Bravo/Modelo de contratos que empleamos para acceder a la base de datos y coger los datos que nos interesan-->
+
 <?php
 $codigoDelContrato; //Variable global para recuperar el codigo del ultimo contrato creado
 

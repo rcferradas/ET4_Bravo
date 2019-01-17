@@ -1,3 +1,5 @@
+<!--17-01-2019/Bravo/Vista que nos permite editar un centro -->
+
 <?php
 
 class Centros_EDIT_View {

@@ -1,3 +1,5 @@
+<!--17-01-2019/Bravo/Vista que nos permite eliminar un centro -->
+
 <?php
 include_once '../Functions/Authentication.php';
 

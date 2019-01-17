@@ -1,3 +1,6 @@
+/*17-01-2019/Bravo/JavaScript que validará los datos enviados en los formularios*/
+
+
 /*La función setTimeout controla que la ventana de alerta no se quede en bucle infinito*/
 /*Variable empleada para controlar el alert*/
 var avisado = false;

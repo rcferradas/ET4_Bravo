@@ -1,3 +1,5 @@
+<!--17-01-2019/Bravo/Modelo de centros que empleamos para acceder a la base de datos y coger los datos que nos interesan-->
+
 <?php
 
 class Centros_Model {

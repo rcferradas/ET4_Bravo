@@ -1,3 +1,5 @@
+<!--17-01-2019/Bravo/Comprueba si el usuario está autentificado o no -->
+
 <?php
 
 /*

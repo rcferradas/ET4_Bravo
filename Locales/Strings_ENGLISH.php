@@ -1,6 +1,9 @@
+<!--17-01-2019/Bravo/Archivo que nos permite mostrar un texto en inglés -->
+
 <?php
 
 $strings = array(
+    'Error, no se ha podido borrar la tupla'=>'Error, couldnt remove the tuple',
     'certificador'=>'certificador',
     'mantenimiento'=>'mantenimiento',
     'reparacion'=>'reparacion',

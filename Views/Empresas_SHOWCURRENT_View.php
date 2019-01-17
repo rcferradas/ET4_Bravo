@@ -1,3 +1,5 @@
+<!--17-01-2019/Bravo/Vista que nos muestra en detalle una empresa -->
+
 <?php
 include_once '../Functions/Authentication.php';
 

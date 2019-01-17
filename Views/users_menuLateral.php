@@ -1,3 +1,4 @@
+<!--17-01-2019/Bravo/Menú que nos redirige al controlador que deseamos -->
 
 <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
     <a class="navbar-brand"><?php echo $strings['Menu'] ?></a>

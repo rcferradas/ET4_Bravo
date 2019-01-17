@@ -1,3 +1,5 @@
+<!--17-01-2019/Bravo/Vista que nos permite añadir un contrato -->
+
 <?php
 
 class Contratos_ADD_View {

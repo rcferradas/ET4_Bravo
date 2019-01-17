@@ -1,3 +1,5 @@
+<!--17-01-2019/Bravo/Cabecera que se nos muestra en las vistas y que nos permite cambiar de idioma -->
+
 <?php
 include_once '../Functions/Authentication.php';
 if (!isset($_SESSION['idioma'])) {

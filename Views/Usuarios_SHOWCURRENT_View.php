@@ -1,3 +1,5 @@
+<!--17-01-2019/Bravo/Vista que nos muestra en detalle un usuario -->
+
 <?php
 include_once '../Functions/Authentication.php';
 

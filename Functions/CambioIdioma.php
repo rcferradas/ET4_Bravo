@@ -1,3 +1,5 @@
+<!--17-01-2019/Bravo/Función de cambio de idioma -->
+
 <?php
 
 session_start();

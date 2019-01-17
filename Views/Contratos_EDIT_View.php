@@ -1,3 +1,5 @@
+<!--17-01-2019/Bravo/Vista que nos permite editar un contrato -->
+
 <?php
 
 class Contratos_EDIT_View {

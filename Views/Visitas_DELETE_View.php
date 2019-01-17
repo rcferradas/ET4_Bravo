@@ -1,3 +1,5 @@
+<!--17-01-2019/Bravo/Vista que nos permite eliminar una visita -->
+
 <?php
 include_once '../Functions/Authentication.php';
 

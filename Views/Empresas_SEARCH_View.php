@@ -1,3 +1,5 @@
+<!--17-01-2019/Bravo/Vista que nos permite buscar una o más empresas -->
+
 <?php
 
 class Empresas_SEARCH_View {

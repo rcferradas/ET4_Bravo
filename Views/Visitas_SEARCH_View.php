@@ -1,3 +1,5 @@
+<!--17-01-2019/Bravo/Vista que nos permite buscar una o más visitas relacionadas a un contrato -->
+
 <?php
 
 class Visitas_SEARCH_View {

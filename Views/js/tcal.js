@@ -1,4 +1,4 @@
-//Js para que funcione el calendario tcal.amp5t3.30/11/2018
+//17-01-2019/Bravo/Js para que funcione el calendario tcal -->
 
 // // Tigra Calendar v5.2 (11/20/2011)
 // http://www.softcomplex.com/products/tigra_calendar/

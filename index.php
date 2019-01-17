@@ -1,3 +1,4 @@
+<!--17-01-2019/Bravo/Inicia la sesión y envía al usuario a un controlador o a otro dependiendo de si está identificado -->
 <?php
 
 //entrada a la aplicacion

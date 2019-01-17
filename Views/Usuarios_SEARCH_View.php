@@ -1,3 +1,5 @@
+<!--17-01-2019/Bravo/Vista que nos permite buscar uno o más usuarios -->
+
 <?php
 
 class Usuarios_SEARCH_View {

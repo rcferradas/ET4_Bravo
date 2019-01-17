@@ -1,3 +1,5 @@
+<!--17-01-2019/Bravo/Controlador donde se gestiona el incio de sesión de un usuario -->
+
 <?php
 
 session_start();

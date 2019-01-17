@@ -1,6 +1,10 @@
+<!--17-01-2019/Bravo/Archivo que nos permite mostrar un texto en español -->
+
+
 <?php
 
 $strings = array(
+    'Error, no se ha podido borrar la tupla'=>'Error, no se ha podido borrar la tupla',
     'certificador'=>'certificador',
     'mantenimiento'=>'mantenimiento',
     'reparacion'=>'reparacion',
