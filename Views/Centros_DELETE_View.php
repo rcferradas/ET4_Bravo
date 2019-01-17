@@ -41,6 +41,7 @@ class Centros_DELETE_View {
             </tbody>
         </table>
         <?php
+        include '../Views/Footer.php';
     }
 
 }

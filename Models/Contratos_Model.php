@@ -103,7 +103,7 @@ class Contratos_Model {
 // verificado la borra
     function DELETE() {
         $delete = "DELETE FROM `contratos` WHERE `cod`='$this->cod'";
-        var_dump($delete);
+        
         $dirDocumento = '../Files/' . $this->cod;
         if (!$this->mysqli->query($delete)) {
             return 'Error en la eliminación';
@@ -117,10 +117,10 @@ class Contratos_Model {
     function EDIT() {
         $documento = "SELECT `documento` FROM contratos WHERE `cod`='$this->cod'";
         $modeloDocumento = $this->mysqli->query($documento);
-        var_dump($modeloDocumento);
+        
         $tupla = $modeloDocumento->fetch_assoc();
         $rutaDocumento = $tupla['documento'];
-        var_dump($rutaDocumento);
+        
         if ($tupla['documento'] != $this->documento) {
             $this->borrarDirectorio('../Files/' . $this->cod);
             $rutaDocumento = $this->funcionRutaDocumento();

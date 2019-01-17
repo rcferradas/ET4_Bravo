@@ -69,10 +69,11 @@ include_once '../Locales/Strings_' . $_SESSION['idioma'] . '.php';
         <?php
         if (IsAuthenticated()) {
             ?>
-
+        <span>
             <?php
             echo $strings['Usuario'] . ' : ' . $_SESSION['login'] . '<br>';
-            ?>			
+            ?>
+        </span>
             <div width: 50%; align="right">
                  <a href='../Functions/Desconectar.php'>
                     <i class="fas fa-sign-out-alt"></i>

@@ -1,7 +1,7 @@
 </article>
 </div>
 <footer>
-    Hoy es <?php echo date("d-M-Y", mktime()); ?>
+    <a href='../Views/equipoBravo.php'>Equipo Bravo</a>
 </footer>
 </body>
 </html>

@@ -47,7 +47,7 @@ class Centros_ADD_View {
         <?php
         include '../Views/Footer.php';
     }
-
+    
 }
-?>
+?>  
 

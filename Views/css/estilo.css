@@ -5,3 +5,25 @@
 form{
     padding-left: 10px;
 }
+
+header{
+    padding-left:10px;
+}
+header span{
+    align: right;
+}
+header i{
+    font-size: 200%;
+    margin-top: -30px;
+}
+footer{
+    border-top: black 1px solid;
+    padding-left:10px;
+    
+    
+}
+
+nav{
+    margin-bottom: 10px;
+    
+}

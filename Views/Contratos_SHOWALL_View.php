@@ -61,6 +61,7 @@ class Contratos_SHOWALL_View {
             </tbody>
         </table>
         <?php
+        include '../Views/Footer.php';
     }
 
 }
