@@ -68,7 +68,7 @@ class Contratos_ADD_View {
                         </select>
                     </div>&nbsp;&nbsp;<div class="form-group"> 
                         <label for="importe"><?php echo $strings['Importe']; ?>  *</label> 
-                        <input class="form-control" type="number" name="importe" id="importe" onblur="comprobarReal(this, 2, 0, 999999999)"> 
+                        <input class="form-control" type="text" name="importe" id="importe" onblur="comprobarReal(this, 2, 0, 999999999)"> 
                     </div>&nbsp;&nbsp;<div class="form-group">
                         <label for="estado"><?php echo $strings['Estado']; ?>  *</label> 
                         <select class="form-control" id="estado" name="estado">

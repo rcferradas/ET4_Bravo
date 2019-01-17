@@ -50,7 +50,7 @@ class Contratos_SEARCH_View {
                         </select>
                     </div>&nbsp;&nbsp;<div class="form-group">
                         <label for="importe"><?php echo $strings['Importe']; ?>  *</label> 
-                        <input class="form-control" type="number" name="importe" id="importe" > 
+                        <input class="form-control" type="text" name="importe" id="importe" > 
                     </div>&nbsp;&nbsp;<div class="form-group">
                         <label for="estado"><?php echo $strings['Estado']; ?>  *</label> 
                         <select class="form-control" id="estado" name="estado">

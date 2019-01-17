@@ -34,7 +34,7 @@ include_once '../Locales/Strings_' . $_SESSION['idioma'] . '.php';
         <link rel="stylesheet" type="text/css" href="../Views/css/tcal.css" media="screen" />
         <link rel="stylesheet" type="text/css" href="../Views/css/modal.css" />
     </head>
-    <body style="background-color: darkorange">
+    <body style="background-color: darkgray">
         <div id="modal" style="display:none">
             <div id="contenido-interno">
                 <div id="aviso"><img src="../Views/Icons/sign-error.png" name="aviso"/></div>

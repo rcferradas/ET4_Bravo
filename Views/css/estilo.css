@@ -2,3 +2,6 @@
     display: inline-block;
 	min-width: 10px;
 }
+form{
+    padding-left: 10px;
+}

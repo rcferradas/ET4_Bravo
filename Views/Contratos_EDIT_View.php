@@ -63,7 +63,7 @@ class Contratos_EDIT_View {
                             <input class="form-control" type="date" name="periodofin" id="periodofin" value="<?php echo $datos['periodofin']; ?>"  onblur="comprobarVacio(this);"> 
                         </div>&nbsp;&nbsp;<div class="form-group">
                             <label for="importe"><?php echo $strings['Importe']; ?>  *</label> 
-                            <input class="form-control" type="number" name="importe" id="importe" value="<?php echo $datos['importe']; ?>"  onblur="comprobarReal(this, 2, 0, 999999999)"> 
+                            <input class="form-control" type="text" name="importe" id="importe" value="<?php echo $datos['importe']; ?>"  onblur="comprobarReal(this, 2, 0, 999999999)"> 
                         </div>&nbsp;&nbsp;<div class="form-group">
                         </div>&nbsp;&nbsp;<div class="form-group">
                             <label for="frecuencia"><?php echo $strings['Frecuencia']; ?>  *</label> 
