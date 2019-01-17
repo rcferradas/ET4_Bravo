@@ -37,7 +37,7 @@ class Visitas_INCIDENCIA_View {
                     <input name="informe" type="file" id="informeAdd1" />
 
                     <label for="fecha"><?php echo $strings['Fecha']; ?>  *</label> 
-                    <input type="date" name="fecha" id="fechaAdd1"> 
+                    <input readonly type="text" class="tcal" name="fecha" id="fechaAdd1"> 
                     
 
                 </fieldset>

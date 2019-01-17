@@ -65,7 +65,7 @@ class Visitas_EDIT_View {
                             <input type="file" name="informe" id="informe"> 
                         </div>&nbsp;&nbsp;<div class="form-group">
                             <label for="fecha"><?php echo $strings['Fecha']; ?>  *</label> 
-                            <input class="form-control" type="date" name="fecha" id="fecha" value="<?php echo $datos['fecha']; ?>"  onblur="comprobarEntero(this, 1, 999);"> 
+                            <input readonly type="text" class="tcal" name="fecha" id="fecha" value="<?php echo $datos['fecha']; ?>"  onblur="comprobarEntero(this, 1, 999);"> 
                         </div>
                     </fieldset>
                     <span>* <?php echo $strings['Campos obligatorios']; ?> </span><br>

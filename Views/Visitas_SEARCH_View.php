@@ -44,11 +44,11 @@ class Visitas_SEARCH_View {
                         </div>&nbsp;&nbsp;
                         <div class="form-group">
                             <label for="fecha"><?php echo $strings['Fecha de comienzo']; ?>  </label> 
-                            <input class="form-control" type="date" name="fechainicio" id="fecha"   onblur="comprobarEntero(this, 1, 999);"> 
+                            <input readonly type="text" class="tcal" name="fechainicio" id="fecha"   onblur="comprobarEntero(this, 1, 999);"> 
                         </div>
                         <div class="form-group">
                             <label for="fecha"><?php echo $strings['Fecha de fin']; ?>  </label> 
-                            <input class="form-control" type="date" name="fechafin" id="fecha"  >
+                            <input readonly type="text" class="tcal" name="fechafin" id="fecha"  >
                         </div>
                          <div class="form-group">
                             <label for="padre"><?php echo $strings['Reparadoras de incidencias']; ?>  </label> 
