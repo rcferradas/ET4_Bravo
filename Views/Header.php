@@ -19,11 +19,11 @@ include_once '../Locales/Strings_' . $_SESSION['idioma'] . '.php';
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta charset="UTF-8">
         <title>
-            Portal de mantenimiento
+            Equipo Bravo
         </title>
         <meta charset="UTF-8">
         <title>
-            <?php echo $strings['Portal de mantenimiento']; ?>
+            <?php echo $strings['Equipo Bravo']; ?>
         </title>
         <script type="text/javascript" src="../Views/js/tcal.js"></script> 
         <script type="text/javascript" src="../Views/js/md5.js"></script>
@@ -48,7 +48,7 @@ include_once '../Locales/Strings_' . $_SESSION['idioma'] . '.php';
             <p style="text-align:center">
             <h1>
                 <?php
-                echo $strings['Portal de mantenimiento'];
+                echo $strings['Equipo Bravo'];
                 ?>
             </h1>
         </p>

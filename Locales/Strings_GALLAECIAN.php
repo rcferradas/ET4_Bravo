@@ -2,6 +2,7 @@
 
 $strings = array(
     'Portal de mantenimiento' => 'Portal de mantemento',
+    'Equipo Bravo' => 'Equipo Bravo',
     'Usuario no autenticado' => 'Usuario non autenticado',
     'Login' => 'Login',
     'idioma' => 'Idioma',

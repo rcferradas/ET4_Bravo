@@ -2,6 +2,7 @@
 
 $strings = array(
     'Portal de mantenimiento' => 'Management website',
+    'Equipo Bravo' => 'Bravo Team',
     'Usuario no autenticado' => 'User not logged',
     'Login' => 'Login',
     'idioma' => 'Language',
