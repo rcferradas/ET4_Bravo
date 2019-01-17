@@ -16,11 +16,11 @@ class Contratos_SEARCH_View {
         <h2><?php echo $strings['Buscar contratos']; ?></h2>        
 
         <section>
-            <form class="form_search" method="post" action="../Controllers/Contratos_Controller.php">
+            <form class="form_search" method="post" action="../Controllers/Contratos_Controller.php" onsubmit="return validarSearchContratos(this);">
                 <fieldset id="fieldset_search">
                     <div class="form-group">
                         <label for="centro"><?php echo $strings['Centro'] ?>  *</label> 
-                        <input class="form-control" name="centro" type="text" size="25" id="centro" onblur="comprobarTexto(this, 30);"/> 
+                        <input class="form-control" name="centro" type="text" size="25" id="centro"/> 
                     </div>&nbsp;&nbsp;<div class="form-group">
                         <label for="tipo"><?php echo $strings['Tipo'] ?>  *</label>  
                         <select class="form-control" name="tipo" id="tipo">
@@ -40,10 +40,17 @@ class Contratos_SEARCH_View {
                         <input class="form-control" type="date" name="periodofin" id="periodofin"> 
                     </div>&nbsp;&nbsp;<div class="form-group">
                         <label for="frecuencia"><?php echo $strings['Frecuencia'] ?>  *</label> 
-                        <input class="form-control" name="frecuencia" type="text" id="frecuenciaSC" /> 
+                        <select  class="form-control" name="frecuencia" id="frecuencia"> 
+                            <option  value="diaria"><?php echo $strings['Diaria'] ?></option>
+                            <option value="semanal"><?php echo $strings['Semanal'] ?></option>
+                            <option  value="mensual"><?php echo $strings['Mensual'] ?></option>
+                            <option  value="trimestral"><?php echo $strings['Trimestral'] ?></option>
+                            <option  value="anual" selected><?php echo $strings['Anual'] ?></option>
+                            <option  value="quinquenal"><?php echo $strings['Quinquenal'] ?></option>
+                        </select>
                     </div>&nbsp;&nbsp;<div class="form-group">
                         <label for="importe"><?php echo $strings['Importe']; ?>  *</label> 
-                        <input class="form-control" type="number" name="importe" id="importe" onblur="comprobarEntero(this, 1, 999);"> 
+                        <input class="form-control" type="number" name="importe" id="importe" > 
                     </div>&nbsp;&nbsp;<div class="form-group">
                         <label for="estado"><?php echo $strings['Estado']; ?>  *</label> 
                         <select class="form-control" id="estado" name="estado">

@@ -122,242 +122,6 @@ function comprobarDni(campo) {
         campo.style.border = "2px solid green";
 	return true;
 }
-/*Comprueba si el CIF enviado está bien escrito*/
-/*CIF-Comprueba que la expresión regular del CIF esté bien hecha*/
-/*    function comprobarCIFv2( campo ) {
-	var CIF = /^([ABCDEFGHJKLMNPQRSUVW])(\d{7})([0-9A-J])$/;
-	if(!comprobarExpresionRegular(campo,CIF,9)){//comprueba que la expresión enviada en CIF sea cumplida por el campo enviado si no lo hace devuelve false
-	return false;
-	}
-        else if ( (/[PQRSW]/.test(campo.value.charAt(0))) || ((/0/.test(campo.value.charAt(1))) && (/0/.test(campo.value.charAt(2))) ) ) {//en el caso de que empiece por PQRSW o sus dos primeros valores sean 00 comprobará si el codigo de control es una letra en caso erroneo devuelve false
-        campo.style.border = "2px solid green";
-        return true;//da siempre true hasta nuevo aviso
-        }
-        else if ( (/[ABEH]/.test(campo.value.charAt(0))) ) {//en el caso de que empiece por ABEH comprobará si el codigo de control es una digito en caso erroneo devuelve false
-        campo.style.border = "2px solid green";
-        return true;//da siempre true hasta nuevo aviso
-        }
-        else {// en el caso de que todo esté correctamente comprobará si el codigo de control es el correcto
-            campo.style.border = "2px solid green";
-            return true;
-	}
-}*/
-/*Comprueba que todos los campos obligatorios estén escritos y que todos los campos escritos estén cubiertos correctamente,se envía en Empresas_ADD_view */
-/*En el momento que correcto sea 1 significará que algún campo no es correcto*/
-function validarEmpresasADD(Formu){
-    var correcto=0;
-	if(!comprobarCIF(Formu.CIFempresa)){//comprueba que el CIF esté correctamente escrito
-            Formu.CIFempresa.style.border = "2px solid red";		
-            correcto=1;
-	}
-	if(!comprobarTexto(Formu.nombreempresa,30)){//comprueba que el nombre esté correctamente escrito
-            Formu.nombreempresa.style.border = "2px solid red";		
-            correcto=1;
-	}
-	if(!comprobarTelf(Formu.telefonoempresa)){//comprueba que el telefono esté correctamente escrito
-            Formu.nombreempresa.style.border = "2px solid red";		
-            correcto=1;
-	}
-	if(!comprobarTexto(Formu.localizacionempresa,50)){//comprueba que la localizacion esté correctamente escrito
-            Formu.localizacionempresa.style.border = "2px solid red";		
-            correcto=1;
-	}                                                       	
-	if(correcto==0){	
-            return true;
-        }		
-	else{
-            return false;
-        }	
-	
-
-	return true;
-}
-/*Comprueba que todos los campos obligatorios estén escritos y que todos los campos escritos estén cubiertos correctamente,se envía en Usuarios_ADD_view */
-/*En el momento que correcto sea 1 significará que algún campo no es correcto*/
-function validarUsuariosADD(Formu){
-    var correcto=0;
-	if(!comprobarAlfabetico(Formu.login,15)){//comprueba que el login esté correctamente escrito
-            Formu.login.style.border = "2px solid red";		
-            correcto=1;
-	}
-	if(!comprobarAlfabetico(Formu.password,25)){//comprueba que el contraseña esté correctamente escrito
-            Formu.password.style.border = "2px solid red";		
-            correcto=1;
-	}
-	if(!comprobarDni(Formu.DNI)){//comprueba que el DNI esté correctamente escrito
-            Formu.DNI.style.border = "2px solid red";		
-            correcto=1;
-	}
-	if(!comprobarTexto(Formu.nombre,30)){//comprueba que la nombre esté correctamente escrito
-            Formu.nombre.style.border = "2px solid red";		
-            correcto=1;
-	}  
-	if(!comprobarTexto(Formu.apellidos,50)){//comprueba que la apellidos esté correctamente escrito
-            Formu.apellidos.style.border = "2px solid red";		
-            correcto=1;
-	}
-	if(!comprobarTelf(Formu.telefono)){//comprueba que el telefono esté correctamente escrito
-            Formu.telefono.style.border = "2px solid red";		
-            correcto=1;
-	}
-	if(!comprobarExpresionRegular(Formu.email,/^\w+([\.-]?\w+)@\w+([\.-]?\w+)(\.\w{2,4})+$/,60)){//comprueba que el email esté correctamente escrito
-            Formu.email.style.border = "2px solid red";		
-            correcto=1;
-	}
-	if(correcto==0){	
-            return true;
-        }		
-	else{
-            return false;
-        }	
-	
-
-	return true;
-}
-/*Comprueba que todos los campos obligatorios estén escritos y que todos los campos escritos estén cubiertos correctamente,se envía en Empresas_EDIT_view */
-/*En el momento que correcto sea 1 significará que algún campo no es correcto*/
-function validarEmpresasEDIT(Formu){
-    var correcto=0;
-	if(!comprobarTexto(Formu.nombreempresa,30)){//comprueba que el nombre esté correctamente escrito
-            Formu.nombreempresa.style.border = "2px solid red";		
-            correcto=1;
-	}
-	if(!comprobarTelf(Formu.telefonoempresa)){//comprueba que el telefono esté correctamente escrito
-            Formu.nombreempresa.style.border = "2px solid red";		
-            correcto=1;
-	}
-	if(!comprobarTexto(Formu.localizacionempresa,50)){//comprueba que la localizacion esté correctamente escrito
-            Formu.localizacionempresa.style.border = "2px solid red";		
-            correcto=1;
-	}                                                       	
-	if(correcto==0){	
-            return true;
-        }		
-	else{
-            return false;
-        }	
-	
-
-	return true;
-}
-/*Comprueba que todos los campos obligatorios estén escritos y que todos los campos escritos estén cubiertos correctamente,se envía en Usuarios_EDIT_view */
-/*En el momento que correcto sea 1 significará que algún campo no es correcto*/
-function validarUsuariosEDIT(Formu){
-    var correcto=0;
-	if(!comprobarAlfabetico(Formu.password,25)){//comprueba que el contraseña esté correctamente escrito
-            Formu.password.style.border = "2px solid red";		
-            correcto=1;
-	}
-	if(!comprobarDni(Formu.DNI)){//comprueba que el DNI esté correctamente escrito
-            Formu.DNI.style.border = "2px solid red";		
-            correcto=1;
-	}
-	if(!comprobarTexto(Formu.nombre,30)){//comprueba que la nombre esté correctamente escrito
-            Formu.nombre.style.border = "2px solid red";		
-            correcto=1;
-	}  
-	if(!comprobarTexto(Formu.apellidos,50)){//comprueba que la apellidos esté correctamente escrito
-            Formu.apellidos.style.border = "2px solid red";		
-            correcto=1;
-	}
-	if(!comprobarTelf(Formu.telefono)){//comprueba que el telefono esté correctamente escrito
-            Formu.telefono.style.border = "2px solid red";		
-            correcto=1;
-	}
-	if(!comprobarExpresionRegular(Formu.email,/^\w+([\.-]?\w+)@\w+([\.-]?\w+)(\.\w{2,4})+$/,60)){//comprueba que el email esté correctamente escrito
-            Formu.email.style.border = "2px solid red";		
-            correcto=1;
-	}
-	if(correcto==0){	
-            return true;
-        }		
-	else{
-            return false;
-        }	
-	
-
-	return true;
-}
-/*Comprueba que al menos un campo esté escrito, se envía en Empresas_SEARCH_View*/
-/*Campo-En el caso de que no haya ningún campo escrito se muestra un alert*/
-function validarSearchEmpresas(Formu){
-	var campo = false;
-	if ( !( Formu.cif.value == null ) && ( Formu.cif.value.length != 0 ) ) {//comprueba si el campo está vacío o no
-		campo=true;
-	}
-	if( !(Formu.nombre.value == null) && (Formu.nombre.value != 0 )) {//comprueba si el campo está vacío o no
-		campo=true;
-	}
-	if ( !( Formu.tipo.value == null ) && ( Formu.tipo.value.length != 0 ) ) {//comprueba si el campo está vacío o no
-		campo=true;
-	}        
-	if ( !( Formu.telefono.value == null ) && ( Formu.telefono.value.length != 0 ) ) {//comprueba si el campo está vacío o no
-		campo=true;
-	}
-	if ( !( Formu.localizacion.value == null ) && ( Formu.localizacion.value.length != 0 ) ) {//comprueba si el campo está vacío o no
-		campo=true;
-	}        
-	if(campo==false){//en el caso de que estén todos los campos vacíos se muestra que hay que cubrir al menos uno
-		alert("Cubra al menos un campo");
-		avisado = true;
-		setTimeout( 'avisado=false', 50 );
-		return false;
-	}
-	return true;
-}
-/*Comprueba que al menos un campo esté escrito, se envía en Usuario_SEARCH_View*/
-/*Campo-En el caso de que no haya ningún campo escrito se muestra un alert*/
-function validarSearchUsuarios(Formu){
-	var campo = false;
-	if ( !( Formu.login.value == null ) && ( Formu.login.value.length != 0 ) ) {//comprueba si el campo está vacío o no
-		campo=true;
-	}
-	if( !(Formu.DNI.value == null) && (Formu.DNI.value != 0 )) {//comprueba si el campo está vacío o no
-		campo=true;
-	}
-	if ( !( Formu.nombre.value == null ) && ( Formu.nombre.value.length != 0 ) ) {//comprueba si el campo está vacío o no
-		campo=true;
-	}        
-	if ( !( Formu.apellidos.value == null ) && ( Formu.apellidos.value.length != 0 ) ) {//comprueba si el campo está vacío o no
-		campo=true;
-	}
-	if ( !( Formu.telefono.value == null ) && ( Formu.telefono.value.length != 0 ) ) {//comprueba si el campo está vacío o no
-		campo=true;
-	}
-	if ( !( Formu.email.value == null ) && ( Formu.email.value.length != 0 ) ) {//comprueba si el campo está vacío o no
-		campo=true;
-	} 
-	if ( !( Formu.rol.value == null ) && ( Formu.rol.value.length != 0 ) ) {//comprueba si el campo está vacío o no
-		campo=true;
-	}         
-	if(campo==false){//en el caso de que estén todos los campos vacíos se muestra que hay que cubrir al menos uno
-		alert("Cubra al menos un campo");
-		avisado = true;
-		setTimeout( 'avisado=false', 50 );
-		return false;
-	}
-	return true;
-}
-/*Comprueba que todos los campos obligatorios estén escritos y que todos los campos escritos estén cubiertos correctamente,se envía en Usuarios_ADD_view */
-/*En el momento que correcto sea 1 significará que algún campo no es correcto*/
-function validarContratosADD(Formu){
-    var correcto=0;
-	if(!comprobarFecha(Formu.periodoinicio,Formu.periodofin,Formu.frecuencia)){//comprueba que el login esté correctamente escrito
-		alert("Fecha final mal introducida");
-		avisado = true;
-		setTimeout( 'avisado=false', 50 );
-		return false;
-	}
-	if(correcto==0){	
-            return true;
-        }		
-	else{
-            return false;
-        }	
-	
-
-	return true;
-}
 /*Comprueba que el CIF esté bien escrita*/
     function comprobarCIF( campo ) {
 	var CIF = /^([ABCDEFGHJKLMNPQRSUVW])(\d{7})([0-9A-J])$/;//expresión que nos permite comprobar si el CIF está bien escrito
@@ -403,34 +167,54 @@ function validarContratosADD(Formu){
             comprobar=campo.value.charAt(8);
         }
         if(control==1){//si el control es 1 significa que el codigo de control debe ser una letra entre A-J, en el caso de que no sea así devuelve falso
-            if(campo.value.charAt(8)=="J") comprobar=0;
-            else if(campo.value.charAt(8)=="A") comprobar=1;
-            else if(campo.value.charAt(8)=="B") comprobar=2;
-            else if(campo.value.charAt(8)=="C") comprobar=3;
-            else if(campo.value.charAt(8)=="D") comprobar=4;
-            else if(campo.value.charAt(8)=="E") comprobar=5;
-            else if(campo.value.charAt(8)=="F") comprobar=6;
-            else if(campo.value.charAt(8)=="G") comprobar=7;
-            else if(campo.value.charAt(8)=="H") comprobar=8;
-            else if(campo.value.charAt(8)=="I") comprobar=9;
-            else{
-                campo.style.border = "2px solid red";
+            switch(campo.value.charAt(8)){
+                case "J": comprobar = 0;
+                          break;
+                case "A": comprobar = 1;
+                          break;
+                case "B": comprobar = 2;
+                          break;
+                case "C": comprobar = 3;
+                          break;
+                case "D": comprobar = 4;
+                          break;
+                case "E": comprobar = 5;
+                          break;
+                case "F": comprobar = 6;
+                          break;    
+                case "G": comprobar = 7;
+                          break;
+                case "H": comprobar = 8;
+                          break;
+                case "I": comprobar = 9;
+                          break;
+                default: campo.style.border = "2px solid red";
                 return false;
             }
         }
         if(control==3){//si el control es 3 significa que el codigo de control puede ser una letra entre A-J o un numero
-            if(campo.value.charAt(8)=="J") comprobar=0;
-            else if(campo.value.charAt(8)=="A") comprobar=1;
-            else if(campo.value.charAt(8)=="B") comprobar=2;
-            else if(campo.value.charAt(8)=="C") comprobar=3;
-            else if(campo.value.charAt(8)=="D") comprobar=4;
-            else if(campo.value.charAt(8)=="E") comprobar=5;
-            else if(campo.value.charAt(8)=="F") comprobar=6;
-            else if(campo.value.charAt(8)=="G") comprobar=7;
-            else if(campo.value.charAt(8)=="H") comprobar=8;
-            else if(campo.value.charAt(8)=="I") comprobar=9;
-            else{
-                comprobar=campo.value.charAt(8);
+            switch(campo.value.charAt(8)){
+                case "J": comprobar = 0;
+                          break;
+                case "A": comprobar = 1;
+                          break;
+                case "B": comprobar = 2;
+                          break;
+                case "C": comprobar = 3;
+                          break;
+                case "D": comprobar = 4;
+                          break;
+                case "E": comprobar = 5;
+                          break;
+                case "F": comprobar = 6;
+                          break;    
+                case "G": comprobar = 7;
+                          break;
+                case "H": comprobar = 8;
+                          break;
+                case "I": comprobar = 9;
+                          break;
+                default:comprobar=campo.value.charAt(8);
             }
         }        
         if(codigo==comprobar){
@@ -479,4 +263,363 @@ function validarContratosADD(Formu){
     var res=DateDiff.inDays(d1, d2);//calcula la diferencia entre las dos
     if(res>frecuency)return true;//si es mayor que la frecuencia devuelve true
     else return false;//en caso contrario false
-    }
+}
+/*Comprueba que todos los campos obligatorios estén escritos y que todos los campos escritos estén cubiertos correctamente,se envía en Centros_ADD_view */
+/*En el momento que correcto sea 1 significará que algún campo no es correcto*/
+function validarCentrosADD(Formu){
+    var correcto=0;
+        if(!comprobarTexto(Formu.nombre, 30)){
+            correcto = 1;
+        }
+        if(!comprobarTexto(Formu.lugar, 30)){
+            correcto = 1;
+        }
+        if(!comprobarVacio(Formu.usuarioAsignado)){
+            correcto = 1;
+        }
+	if(correcto==0){	
+            return true;
+        }		
+	else{
+            return false;
+        }
+	return true;
+}
+
+/*Comprueba que todos los campos obligatorios estén escritos y que todos los campos escritos estén cubiertos correctamente,se envía en Centros_EDIT_view */
+/*En el momento que correcto sea 1 significará que algún campo no es correcto*/
+function validarCentrosEDIT(Formu){
+    var correcto=0;
+        if(!comprobarTexto(Formu.lugar, 30)){
+            correcto = 1;
+        }
+	if(correcto==0){	
+            return true;
+        }		
+	else{
+            return false;
+        }	
+	return true;
+}
+/*Comprueba que al menos un campo esté escrito, se envía en Centros_SEARCH_View*/
+/*Campo-En el caso de que no haya ningún campo escrito se muestra un alert*/
+function validarSearchCentros(Formu){
+	var campo = false;
+	if ( !( Formu.nombre.value == null ) && ( Formu.nombre.value.length != 0 ) ) {//comprueba si el campo está vacío o no
+		campo=true;
+	}
+	if( !(Formu.lugar.value == null) && (Formu.lugar.value != 0 )) {//comprueba si el campo está vacío o no
+		campo=true;
+	}
+	if ( !( Formu.usuarioAsignado.value == null ) && ( Formu.usuarioAsignado.value.length != 0 ) ) {//comprueba si el campo está vacío o no
+		campo=true;
+	}
+	if(campo==false){//en el caso de que estén todos los campos vacíos se muestra que hay que cubrir al menos uno
+		alert("Cubra al menos un campo");
+		avisado = true;
+		setTimeout( 'avisado=false', 50 );
+		return false;
+	}
+	return true;
+}
+/*Comprueba que todos los campos obligatorios estén escritos y que todos los campos escritos estén cubiertos correctamente,se envía en Contratos_ADD_view */
+/*En el momento que correcto sea 1 significará que algún campo no es correcto*/
+function validarContratosADD(Formu){
+    var correcto=0;
+        if(!comprobarVacio(Formu.centro)){
+            correcto = 1;
+        }
+        if(!comprobarVacio(Formu.cifEmpresa)){
+            correcto = 1;
+        }
+        if(!comprobarVacio(Formu.documento)){
+            correcto = 1;
+        }
+        if(!comprobarVacio(Formu.periodoinicio)){
+            correcto = 1;
+        }
+        if(!comprobarVacio(Formu.periodofin)){
+            correcto = 1;
+        }  
+        if(!comprobarReal(Formu.importe,2,0,999999999)){
+            correcto = 1;
+        }        
+	if(!comprobarFecha(Formu.periodoinicio,Formu.periodofin,Formu.frecuencia)){//comprueba que la fecha final esté correctamente escrito respeto a la inicial y a la frecuencia
+		Formu.periodofin.style.border = "2px solid red";				
+                alert("Fecha final mal introducida");
+		avisado = true;
+		setTimeout( 'avisado=false', 50 );
+		return false;
+	}
+	if(correcto==0){	
+            return true;
+        }		
+	else{
+            return false;
+        }
+	return true;
+}
+
+/*Comprueba que todos los campos obligatorios estén escritos y que todos los campos escritos estén cubiertos correctamente,se envía en Contratos_EDIT_view */
+/*En el momento que correcto sea 1 significará que algún campo no es correcto*/
+function validarContratosEDIT(Formu){
+    var correcto=0;
+        if(!comprobarVacio(Formu.periodoinicio)){
+            correcto = 1;
+        }
+        if(!comprobarVacio(Formu.periodofin)){
+            correcto = 1;
+        }  
+        if(!comprobarReal(Formu.importe,2,0,999999999)){
+            correcto = 1;
+        }        
+	if(!comprobarFecha(Formu.periodoinicio,Formu.periodofin,Formu.frecuencia)){//comprueba que la fecha final esté correctamente escrito respeto a la inicial y a la frecuencia
+		Formu.periodofin.style.border = "2px solid red";		
+                alert("Fecha final mal introducida");
+		avisado = true;
+		setTimeout( 'avisado=false', 50 );
+		return false;
+	}
+	if(correcto==0){	
+            return true;
+        }		
+	else{
+            return false;
+        }	
+	return true;
+}
+
+/*Comprueba que al menos un campo esté escrito, se envía en Contratos_SEARCH_View*/
+/*Campo-En el caso de que no haya ningún campo escrito se muestra un alert*/
+function validarSearchContratos(Formu){
+	var campo = false;
+	if ( !( Formu.centro.value == null ) && ( Formu.centro.value.length != 0 ) ) {//comprueba si el campo está vacío o no
+		campo=true;
+	}
+	if( !(Formu.tipo.value == null) && (Formu.tipo.value != 0 )) {//comprueba si el campo está vacío o no
+		campo=true;
+	}
+	if ( !( Formu.cifEmpresa.value == null ) && ( Formu.cifEmpresa.value.length != 0 ) ) {//comprueba si el campo está vacío o no
+		campo=true;
+	}        
+	if ( !( Formu.periodoinicio.value == null ) && ( Formu.periodoinicio.value.length != 0 ) ) {//comprueba si el campo está vacío o no
+		campo=true;
+	}
+	if ( !( Formu.periodofin.value == null ) && ( Formu.periodofin.value.length != 0 ) ) {//comprueba si el campo está vacío o no
+		campo=true;
+	} 
+	if ( !( Formu.frecuencia.value == null ) && ( Formu.frecuencia.value.length != 0 ) ) {//comprueba si el campo está vacío o no
+		campo=true;
+	}         
+	if ( !( Formu.importe.value == null ) && ( Formu.importe.value.length != 0 ) ) {//comprueba si el campo está vacío o no
+		campo=true;
+	} 
+	if ( !( Formu.estado.value == null ) && ( Formu.estado.value.length != 0 ) ) {//comprueba si el campo está vacío o no
+		campo=true;
+	}         
+	if(campo==false){//en el caso de que estén todos los campos vacíos se muestra que hay que cubrir al menos uno
+		alert("Cubra al menos un campo");
+		avisado = true;
+		setTimeout( 'avisado=false', 50 );
+		return false;
+	}
+	return true;
+}
+/*Comprueba que todos los campos obligatorios estén escritos y que todos los campos escritos estén cubiertos correctamente,se envía en Empresas_ADD_view */
+/*En el momento que correcto sea 1 significará que algún campo no es correcto*/
+function validarEmpresasADD(Formu){
+    var correcto=0;
+	if(!comprobarCIF(Formu.CIFempresa)){//comprueba que el CIF esté correctamente escrito
+            Formu.CIFempresa.style.border = "2px solid red";		
+            correcto=1;
+	}
+	if(!comprobarTexto(Formu.nombreempresa,30)){//comprueba que el nombre esté correctamente escrito
+            Formu.nombreempresa.style.border = "2px solid red";		
+            correcto=1;
+	}
+	if(!comprobarTelf(Formu.telefonoempresa)){//comprueba que el telefono esté correctamente escrito
+            Formu.nombreempresa.style.border = "2px solid red";		
+            correcto=1;
+	}
+	if(!comprobarTexto(Formu.localizacionempresa,50)){//comprueba que la localizacion esté correctamente escrito
+            Formu.localizacionempresa.style.border = "2px solid red";		
+            correcto=1;
+	}                                                       	
+	if(correcto==0){	
+            return true;
+        }		
+	else{
+            return false;
+        }	
+	
+
+	return true;
+}
+/*Comprueba que todos los campos obligatorios estén escritos y que todos los campos escritos estén cubiertos correctamente,se envía en Empresas_EDIT_view */
+/*En el momento que correcto sea 1 significará que algún campo no es correcto*/
+function validarEmpresasEDIT(Formu){
+    var correcto=0;
+	if(!comprobarTexto(Formu.nombreempresa,30)){//comprueba que el nombre esté correctamente escrito
+            Formu.nombreempresa.style.border = "2px solid red";		
+            correcto=1;
+	}
+	if(!comprobarTelf(Formu.telefonoempresa)){//comprueba que el telefono esté correctamente escrito
+            Formu.nombreempresa.style.border = "2px solid red";		
+            correcto=1;
+	}
+	if(!comprobarTexto(Formu.localizacionempresa,50)){//comprueba que la localizacion esté correctamente escrito
+            Formu.localizacionempresa.style.border = "2px solid red";		
+            correcto=1;
+	}                                                       	
+	if(correcto==0){	
+            return true;
+        }		
+	else{
+            return false;
+        }	
+	
+
+	return true;
+}
+
+/*Comprueba que al menos un campo esté escrito, se envía en Empresas_SEARCH_View*/
+/*Campo-En el caso de que no haya ningún campo escrito se muestra un alert*/
+function validarSearchEmpresas(Formu){
+	var campo = false;
+	if ( !( Formu.cif.value == null ) && ( Formu.cif.value.length != 0 ) ) {//comprueba si el campo está vacío o no
+		campo=true;
+	}
+	if( !(Formu.nombre.value == null) && (Formu.nombre.value != 0 )) {//comprueba si el campo está vacío o no
+		campo=true;
+	}
+	if ( !( Formu.tipo.value == null ) && ( Formu.tipo.value.length != 0 ) ) {//comprueba si el campo está vacío o no
+		campo=true;
+	}        
+	if ( !( Formu.telefono.value == null ) && ( Formu.telefono.value.length != 0 ) ) {//comprueba si el campo está vacío o no
+		campo=true;
+	}
+	if ( !( Formu.localizacion.value == null ) && ( Formu.localizacion.value.length != 0 ) ) {//comprueba si el campo está vacío o no
+		campo=true;
+	}        
+	if(campo==false){//en el caso de que estén todos los campos vacíos se muestra que hay que cubrir al menos uno
+		alert("Cubra al menos un campo");
+		avisado = true;
+		setTimeout( 'avisado=false', 50 );
+		return false;
+	}
+	return true;
+}
+
+/*Comprueba que todos los campos obligatorios estén escritos y que todos los campos escritos estén cubiertos correctamente,se envía en Usuarios_ADD_view */
+/*En el momento que correcto sea 1 significará que algún campo no es correcto*/
+function validarUsuariosADD(Formu){
+    var correcto=0;
+	if(!comprobarAlfabetico(Formu.login,15)){//comprueba que el login esté correctamente escrito
+            Formu.login.style.border = "2px solid red";		
+            correcto=1;
+	}
+	if(!comprobarAlfabetico(Formu.password,25)){//comprueba que el contraseña esté correctamente escrito
+            Formu.password.style.border = "2px solid red";		
+            correcto=1;
+	}
+	if(!comprobarDni(Formu.DNI)){//comprueba que el DNI esté correctamente escrito
+            Formu.DNI.style.border = "2px solid red";		
+            correcto=1;
+	}
+	if(!comprobarTexto(Formu.nombre,30)){//comprueba que la nombre esté correctamente escrito
+            Formu.nombre.style.border = "2px solid red";		
+            correcto=1;
+	}  
+	if(!comprobarTexto(Formu.apellidos,50)){//comprueba que la apellidos esté correctamente escrito
+            Formu.apellidos.style.border = "2px solid red";		
+            correcto=1;
+	}
+	if(!comprobarTelf(Formu.telefono)){//comprueba que el telefono esté correctamente escrito
+            Formu.telefono.style.border = "2px solid red";		
+            correcto=1;
+	}
+	if(!comprobarExpresionRegular(Formu.email,/^\w+([\.-]?\w+)@\w+([\.-]?\w+)(\.\w{2,4})+$/,60)){//comprueba que el email esté correctamente escrito
+            Formu.email.style.border = "2px solid red";		
+            correcto=1;
+	}
+	if(correcto==0){	
+            return true;
+        }		
+	else{
+            return false;
+        }	
+	
+
+	return true;
+}
+/*Comprueba que todos los campos obligatorios estén escritos y que todos los campos escritos estén cubiertos correctamente,se envía en Usuarios_EDIT_view */
+/*En el momento que correcto sea 1 significará que algún campo no es correcto*/
+function validarUsuariosEDIT(Formu){
+    var correcto=0;
+	if(!comprobarAlfabetico(Formu.password,25)){//comprueba que el contraseña esté correctamente escrito
+            Formu.password.style.border = "2px solid red";		
+            correcto=1;
+	}
+	if(!comprobarDni(Formu.DNI)){//comprueba que el DNI esté correctamente escrito
+            Formu.DNI.style.border = "2px solid red";		
+            correcto=1;
+	}
+	if(!comprobarTexto(Formu.nombre,30)){//comprueba que la nombre esté correctamente escrito
+            Formu.nombre.style.border = "2px solid red";		
+            correcto=1;
+	}  
+	if(!comprobarTexto(Formu.apellidos,50)){//comprueba que la apellidos esté correctamente escrito
+            Formu.apellidos.style.border = "2px solid red";		
+            correcto=1;
+	}
+	if(!comprobarTelf(Formu.telefono)){//comprueba que el telefono esté correctamente escrito
+            Formu.telefono.style.border = "2px solid red";		
+            correcto=1;
+	}
+	if(!comprobarExpresionRegular(Formu.email,/^\w+([\.-]?\w+)@\w+([\.-]?\w+)(\.\w{2,4})+$/,60)){//comprueba que el email esté correctamente escrito
+            Formu.email.style.border = "2px solid red";		
+            correcto=1;
+	}
+	if(correcto==0){	
+            return true;
+        }		
+	else{
+            return false;
+        }	
+	
+
+	return true;
+}
+/*Comprueba que al menos un campo esté escrito, se envía en Usuario_SEARCH_View*/
+/*Campo-En el caso de que no haya ningún campo escrito se muestra un alert*/
+function validarSearchUsuarios(Formu){
+	var campo = false;
+	if ( !( Formu.login.value == null ) && ( Formu.login.value.length != 0 ) ) {//comprueba si el campo está vacío o no
+		campo=true;
+	}
+	if( !(Formu.DNI.value == null) && (Formu.DNI.value != 0 )) {//comprueba si el campo está vacío o no
+		campo=true;
+	}
+	if ( !( Formu.nombre.value == null ) && ( Formu.nombre.value.length != 0 ) ) {//comprueba si el campo está vacío o no
+		campo=true;
+	}        
+	if ( !( Formu.apellidos.value == null ) && ( Formu.apellidos.value.length != 0 ) ) {//comprueba si el campo está vacío o no
+		campo=true;
+	}
+	if ( !( Formu.telefono.value == null ) && ( Formu.telefono.value.length != 0 ) ) {//comprueba si el campo está vacío o no
+		campo=true;
+	}
+	if ( !( Formu.email.value == null ) && ( Formu.email.value.length != 0 ) ) {//comprueba si el campo está vacío o no
+		campo=true;
+	} 
+	if ( !( Formu.rol.value == null ) && ( Formu.rol.value.length != 0 ) ) {//comprueba si el campo está vacío o no
+		campo=true;
+	}         
+	if(campo==false){//en el caso de que estén todos los campos vacíos se muestra que hay que cubrir al menos uno
+		alert("Cubra al menos un campo");
+		avisado = true;
+		setTimeout( 'avisado=false', 50 );
+		return false;
+	}
+	return true;
+}

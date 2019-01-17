@@ -15,7 +15,7 @@ class Contratos_EDIT_View {
         <html>
 
             <section>
-                <form class="form_edit" method="post" action="../Controllers/Contratos_Controller.php" enctype="multipart/form-data" onsubmit="return validacionSubmitEdit();">
+                <form class="form_edit" method="post" action="../Controllers/Contratos_Controller.php" enctype="multipart/form-data" onsubmit="return validarContratosEDIT(this);">
                     <h2><?php echo $strings['Editar contrato']; ?></h2>
 
                     <fieldset id="fieldset_edit">
@@ -54,7 +54,7 @@ class Contratos_EDIT_View {
                             <input readonly class="form-control" name="cifEmpresa" type="text" id="cifEmpresa" value="<?php echo $datos['cifEmpresa']; ?>"/>
                         </div>&nbsp;&nbsp;<div class="form-group">
                             <label for="documento"><?php echo $strings['Documento']; ?>  *</label> <br>
-                            <input type="file" name="documento" id="documento" onblur="comprobarVacio(this);"> 
+                            <input type="file" name="documento" id="documento" > 
                         </div>&nbsp;&nbsp;<div class="form-group">
                             <label for="periodoinicio"><?php echo $strings['Periodo inicio']; ?>  *</label> 
                             <input class="form-control" type="date" name="periodoinicio" id="periodoinicio" value="<?php echo $datos['periodoinicio']; ?>"  onblur="comprobarVacio(this);"> 
