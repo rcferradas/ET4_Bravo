@@ -81,14 +81,17 @@ else {
             break;
 
         case 'SEARCH':
-            $contratos; //Objeto del modelo
-            $datos; //datos a mostrar extraidos del modelo
+            $visitas; //Objeto del modelo
+            $datosContrato; //datos a mostrar extraidos del modelo
 
             if (!$_POST) {    //Si se envia por GET se llama a la vista EDIT para que se envie por POST
                 new Contratos_SEARCH_View();
             } else {
-                $contratos = new Contratos_Model($_REQUEST['cod'], $_REQUEST['centro'], $_REQUEST['tipo'], $_REQUEST['estado'], $_REQUEST['cifEmpresa'],'', $_REQUEST['periodoinicio'], $_REQUEST['periodofin'], $_REQUEST['importe']);
-                $datos = $contratos->SEARCH();
+                $visitas = new Visitas_Model($_REQUEST['codcontrato']);  //Objeto del modelo
+                $datosContrato=$visitas->datosContrato();
+                $recordSet = $visitas->search($datosContrato);   //es un array asociativo con los datos, se obtienen los datos de la tabla a traves del modelo (metodo SHOWALL() )
+            new Visitas_SHOWALL_View($recordSet);  //se invoca la vista SHOWALL con los datos a mostrar
+            break;
                 new Contratos_SHOWALL_View($datos);
             }
             break;

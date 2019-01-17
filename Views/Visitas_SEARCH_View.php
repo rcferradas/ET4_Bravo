@@ -1,6 +1,6 @@
 <?php
 
-class Contratos_SEARCH_View {
+class visitas_SEARCH_View {
 
     function __construct() {
         $this->render();
@@ -13,53 +13,63 @@ class Contratos_SEARCH_View {
 
         include '../Views/Header.php';
         ?>
-        <h2><?php echo $strings['Buscar contratos']; ?></h2>        
+        <h2><?php echo $strings['Buscar visitas']; ?></h2>        
 
-        <section>
-            <form class="form_search" method="post" action="../Controllers/Contratos_Controller.php">
-                <fieldset id="fieldset_search">
-                    <div class="form-group">
-                        <label for="centro"><?php echo $strings['Centro'] ?>  *</label> 
-                        <input class="form-control" name="centro" type="text" size="25" id="centro" onblur="comprobarTexto(this, 30);"/> 
-                    </div>&nbsp;&nbsp;<div class="form-group">
-                        <label for="tipo"><?php echo $strings['Tipo'] ?>  *</label>  
-                        <select class="form-control" name="tipo" id="tipo">
-                            <option value=""></option>
-                            <option value="certificador"><?php echo $strings['Certificador'] ?></option>
-                            <option value="mantenimiento"><?php echo $strings['Mantenimiento'] ?></option>
-                            <option value="reparacion"><?php echo $strings['Reparacion'] ?></option>
-                        </select>
-                    </div>&nbsp;&nbsp;<div class="form-group">
-                        <label for="cifEmpresa"><?php echo $strings['Empresa encargada'] ?>  *</label> 
-                        <input class="form-control" name="cifEmpresa" type="text" id="cifEmpresa" /> <!--No se valida el resguardo en edit porque si no se introduce un fichero nuevo nos quedamos con el que ya esta almacenado-->
-                    </div>&nbsp;&nbsp;<div class="form-group">
-                        <label for="periodoinicio"><?php echo $strings['Periodo inicio']; ?>  *</label> 
-                        <input class="form-control" type="date" name="periodoinicio" id="periodoinicio"> 
-                    </div>&nbsp;&nbsp;<div class="form-group">
-                        <label for="periodofin"><?php echo $strings['Periodo fin']; ?>  *</label> 
-                        <input class="form-control" type="date" name="periodofin" id="periodofin"> 
-                    </div>&nbsp;&nbsp;<div class="form-group">
-                        <label for="frecuencia"><?php echo $strings['Frecuencia'] ?>  *</label> 
-                        <input class="form-control" name="frecuencia" type="text" id="frecuenciaSC" /> 
-                    </div>&nbsp;&nbsp;<div class="form-group">
-                        <label for="importe"><?php echo $strings['Importe']; ?>  *</label> 
-                        <input class="form-control" type="number" name="importe" id="importe" onblur="comprobarEntero(this, 1, 999);"> 
-                    </div>&nbsp;&nbsp;<div class="form-group">
-                        <label for="estado"><?php echo $strings['Estado']; ?>  *</label> 
-                        <select class="form-control" id="estado" name="estado">
-                            <option selected value=""></option>
-                            <option value="norealizado"><?php echo $strings['No realizado'] ?></option>
-                            <option value="realizado"><?php echo $strings['Realizado'] ?></option>
-                            <option value="pagado"><?php echo $strings['Pagado'] ?></option>
-                        </select>
-                    </div>
-                </fieldset>
-                <span>* <?php echo $strings['Campos obligatorios']; ?> </span><br>
-                <!-- Boton submit -->
-                <button class="btn btn-outline-primary" name="action" type="submit" value="SEARCH"><i class="fas fa-check"></i></button>
+             <table class="table table-dark table-striped">
+            <!--Comienzo encabezado tabla SEARCH-->
+            <thead>
+                <tr>
+                    <th scope="col"><?php echo $strings['Fecha']; ?></th>
+                    <th scope="col"><?php echo $strings['Tipo']; ?></th>
+                    <th scope="col"><?php echo $strings['Estado']; ?></th>
+                    <th scope="col"><form class="form-inline my-2 my-lg-0" name='formulario' action="../Controllers/Visitas_Controller.php" method="">
+                             <input type="hidden" name=codcontrato value=<?php echo $_REQUEST['codcontrato']?>>
+                            <button name="action" value="ADD" type="submit" class="btn btn-outline-primary">
+                                <i class="fas fa-plus"></i></button>&nbsp
+                            <button name="action" value="SEARCH" type="submit" class="btn btn-outline-primary">
+                                <i class="fas fa-search"></i></button>&nbsp
+                        </form>
+                    </th>
+                </tr>
+            </thead>
+            <!--Fin encabezado tabla SHOWALL-->
 
-            </form>
-        </section>
+            <tbody>
+                <?php
+                //Bucle que recorre todas las tuplas y va mostrando sus atributos
+                while ($tupla = $recordSet->fetch_assoc()) {
+                    ?>
+                    <tr>
+                        <td><?php echo $tupla['fecha']; ?></td>
+                        <td><?php echo $tupla['tipo']; ?></td>
+                        <td><?php echo $tupla['estado']; ?></td>
+                        <td>
+                            <!--Botones para realizar acciones en cada tupla-->
+                            <form class="form-inline my-2 my-lg-0" name='formulario' action="../Controllers/Visitas_Controller.php" method="">
+                                <input type="hidden" name=codvisita value=<?php echo $tupla['codVisita'] ?>>
+                                <input type="hidden" name=codcontrato value=<?php echo $tupla['codContrato'] ?>>
+                                <button name="action" value="SHOWCURRENT" type="submit" class="btn btn-outline-primary">
+                                    <i class="far fa-eye"></i></button>&nbsp
+                                <button name="action" value="EDIT" type="submit" class="btn btn-outline-primary">
+                                    <i class="fas fa-edit"></i></button>&nbsp
+                                     <?php 
+                                     if($tupla['estado']== 'incidencia'){
+                                     echo '<button name="action" value="INCIDENCIA" type="submit" class="btn btn-outline-primary">';
+                                     echo '<i class="fas fa-plus"></i></button>&nbsp';
+                                     }
+                                             ?>
+                                
+                                <button name="action" value="DELETE" type="submit" class="btn btn-outline-primary">
+                                    <i class="fas fa-trash-alt"></i></button>
+                            </form>
+                        </td>
+                    </tr>
+                    <?php
+                }
+                ?>
+            </tbody>
+        </table>
+
         <?php
         include '../Views/Footer.php';
     }

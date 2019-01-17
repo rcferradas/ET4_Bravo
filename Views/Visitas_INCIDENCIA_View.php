@@ -25,7 +25,6 @@ class Visitas_INCIDENCIA_View {
                         <option value="realizada"><?php echo $strings['Realizada'] ?></option>
                         <option value="pendiente"><?php echo $strings['Pendiente'] ?></option>
                         <option value="incidencia"><?php echo $strings['Incidencia'] ?></option>
-                        <option value=""></option>
                     </select>
                     <label for="tipo"><?php echo $strings['Tipo'] ?>  *</label>  
                     <select id="tipo" name="tipo">

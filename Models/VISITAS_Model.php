@@ -286,6 +286,39 @@ class VISITAS_Model {
             return 'No existe dicha tupla';
         }
     }
+    
+    
+    
+    
+  function SEARCH(){
+          $fechainicio;
+          $fechafin;
+          $padre= isset($this->visitaPadre)? 'NOT NULL':'NULL';
+      
+      
+         $search = "SELECT * FROM visitas WHERE `estado` LIKE '%" . $this->estado . "%' AND `tipo` LIKE '%" . $this->tipo . "%'  
+            AND `codContrato` LIKE '%" . $this->codContrato . "%' AND `fecha` >= '$fechainicio' AND `fecha` <= '$fechafin'
+                   AND `frutoVisitaProg` IS  $padre";
+        if (!($resultado = $this->mysqli->query($search))) {
+            return 'Error en la consulta';
+        } else if ($resultado->numrows = 0) {
+            return 'Sin resultados';
+        } else {
+            return $resultado;
+        }
+      
+      
+      
+      
+      
+      
+      
+  }  
+    
+    
+    
+    
+    
 
 //Funcion que devuelve una array con la fecha de inicio, fecha de fin, y la frecuencia
 //del contrato con el que se relacionan las visitas periódicas.
