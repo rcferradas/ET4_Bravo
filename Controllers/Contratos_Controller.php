@@ -50,7 +50,11 @@ else {
             $datos; //Almacena los datos del formulario
             $respuesta; //Almacena la respuesta que se mostrará via MESSAGE
             if (!$_POST) {    //Si se envia por GET se llama a la vista ADD para que se envie por POST, cuestiones de privacidad
-                new Contratos_ADD_View();
+                $centros = new Contratos_Model('', '', '', '', '', '', '', '', '', '');
+                $data = $centros->getCentros();
+                $empresas = new Contratos_Model('', '', '', '', '', '', '', '', '', '');
+                $dato = $empresas->getEmpresas();                
+                new Contratos_ADD_View($data,$dato);
             } else {
                 $datos = recuperarDataForm();
                 $respuesta = $datos->ADD();

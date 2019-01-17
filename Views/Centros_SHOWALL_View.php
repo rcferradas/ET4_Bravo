@@ -13,7 +13,7 @@ class Centros_SHOWALL_View {
         include '../Views/Header.php';
         //Mostrar tabla SHOWALL de Centros
         ?>
-        <table class="table table-dark">
+        <table class="table table-dark table-striped">
             <!--Comienzo encabezado tabla SHOWALL-->
             <thead>
                 <tr>

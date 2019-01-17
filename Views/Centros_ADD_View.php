@@ -2,12 +2,12 @@
 
 class Centros_ADD_View {
 
-    function __construct() {
+    function __construct($data) {
 
-        $this->render();
+        $this->render($data);
     }
 
-    function render() {
+    function render($data) {
         if (!isset($_SESSION['idioma'])) {
             $_SESSION['idioma'] = 'SPANISH';
         }
@@ -27,7 +27,14 @@ class Centros_ADD_View {
                         <input class="form-control" name="lugar" type="text" size="25" id="lugar" onblur="comprobarTexto(this, 30);"/> 
                     </div>&nbsp;&nbsp;<div class="form-group">
                         <label for="usuarioAsignado"><?php echo $strings['Usuario asignado'] ?>  *</label> 
-                        <input class="form-control" name="usuarioAsignado" type="text" size="25" id="usuarioAsignado" onblur="comprobarTexto(this, 9);"/> 
+                        <select name="usuarioAsignado" id="usuarioAsignado">
+                                    <?php
+                                    foreach ($data as $usuario) {
+                                        echo '<option value="' . $usuario['login'] . '">'.$usuario['login'].'</option>';
+                                    }
+                                    ?>
+                        </select>                        
+                        <!--<input class="form-control" name="usuarioAsignado" type="text" size="25" id="usuarioAsignado" onblur="comprobarTexto(this, 9);"/>--> 
                     </div>
                 </fieldset>
                 <span>* <?php echo $strings['Campos obligatorios']; ?> </span><br>

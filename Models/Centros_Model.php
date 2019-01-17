@@ -44,7 +44,6 @@ class Centros_Model {
 //existe ya en la tabla
     function ADD() {
         $sql = "INSERT INTO centros VALUES('$this->nombre','$this->lugar','$this->usuarioAsignado')";
-        var_dump($sql);
         if (!$this->mysqli->query($sql)) {
             return "Error en la inserción";
         } else {
@@ -93,7 +92,12 @@ class Centros_Model {
         } else
             return 'No existe la tupla';
     }
-
+    
+    function getUsuarios(){
+        $sql = "SELECT `login` FROM USUARIOS";
+        $resultado = $this->mysqli->query($sql);
+        return $resultado;
+    } 
 }
 
 //fin de clase

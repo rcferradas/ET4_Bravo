@@ -2,11 +2,11 @@
 
 class Centros_EDIT_View {
 
-    function __construct($datos) {    //Constructor de la clase, pasamos un objeto tipo loteriaiu como parametro
-        $this->render($datos);
+    function __construct($datos,$data) {    //Constructor de la clase, pasamos un objeto tipo loteriaiu como parametro
+        $this->render($datos,$data);
     }
 
-    function render($datos) {
+    function render($datos,$data) {
         if (!isset($_SESSION['idioma'])) {   //Si no hay idioma seleccionado
             $_SESSION['idioma'] = 'ESPAÑOL'; //por defecto ponemos español
         }
@@ -26,7 +26,15 @@ class Centros_EDIT_View {
                             <label for="lugar"><?php echo $strings['Lugar'] ?>  *</label> 
                             <input class="form-control" name="lugar" type="text" size="25" id="lugar" value="<?php echo $datos['lugar'] ?>"  onblur="comprobarTexto(this, 30);"/> 
                         </div>&nbsp;&nbsp;<div class="form-group"><label for="usuarioAsignado"><?php echo $strings['Usuario asignado'] ?>  *</label> 
-                            <input class="form-control" name="usuarioAsignado" type="text" size="25" id="usuarioAsignado" value="<?php echo $datos['usuarioAsignado'] ?>"  onblur="comprobarTexto(this, 9);"/> 
+                            <select name="usuarioAsignado" id="usuarioAsignado">
+                                        <?php
+                                        foreach ($data as $usuario) {
+                                            if($usuario['login']==$datos['usuarioAsignado']) echo '<option value="' . $usuario['login'] . '" selected>'.$usuario['login'].'</option>';
+                                            else echo '<option value="' . $usuario['login'] . '">'.$usuario['login'].'</option>';
+                                        }
+                                        ?>
+                            </select>                              
+<!--<input class="form-control" name="usuarioAsignado" type="text" size="25" id="usuarioAsignado" value="<?ph echo $datos['usuarioAsignado'] ?>"  onblur="comprobarTexto(this, 9);"/>--> 
                         </div>
                     </fieldset>
                     <span>* <?php echo $strings['Campos obligatorios']; ?> </span><br>
