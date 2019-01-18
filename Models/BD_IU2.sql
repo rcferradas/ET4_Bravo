@@ -101,5 +101,5 @@ FOREIGN KEY (`codContrato`) REFERENCES `contratos`(`cod`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
-INSERT INTO `usuarios`(`login`, `password`, `DNI`, `nombre`, `apellidos`, `telefono`, `email`, `rol`) VALUES ('admin','admin','11415569W','Senhor','Lobo','986251331','lobo@ricocafe.com','admin');
-INSERT INTO `usuarios`(`login`, `password`, `DNI`, `nombre`, `apellidos`, `telefono`, `email`, `rol`) VALUES ('test','this','53427985C','Senhora','Raposa','986251331','raposa@ricocafe.com','admin');
+INSERT INTO `USUARIOS`(`login`, `password`, `DNI`, `nombre`, `apellidos`, `telefono`, `email`, `rol`) VALUES ('admin','admin','11415569W','Senhor','Lobo','986251331','lobo@ricocafe.com','admin');
+INSERT INTO `USUARIOS`(`login`, `password`, `DNI`, `nombre`, `apellidos`, `telefono`, `email`, `rol`) VALUES ('test','this','53427985C','Senhora','Raposa','986251331','raposa@ricocafe.com','admin');

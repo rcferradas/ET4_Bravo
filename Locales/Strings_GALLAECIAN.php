@@ -108,5 +108,13 @@ $strings = array(
     'Mensual' => 'Mensual',
     'Trimestral' => 'Trimestral',
     'Anual' => 'Anual',
-    'Quinquenal' => 'Quinquenal');
+    'Quinquenal' => 'Quinquenal',
+    'Fecha de comienzo' => 'Data de comenzo',
+    'Fecha de fin'=> 'Data de fin',
+    'Reparadoras de incidencias' => 'Reparadoras de incidencias',
+    'Buscar' => 'Buscar',
+    'Buscar visitas' => 'Buscar visitas',
+    'Seleccionar al menos un campo' => 'Seleccionar o menos un campo',
+    'Deben realizarse estas visitas antes del pago' => 'Deben realizarse estas visitas antes do pago',
+    'Contrato pagado con exito' => 'Contrato pagado con exito');
 ?>
