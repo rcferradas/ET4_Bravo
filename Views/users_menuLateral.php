@@ -8,9 +8,11 @@
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
             <a class="nav-item nav-link active" href="../Controllers/Contratos_Controller.php"><?php echo $strings['Contratos'] ?><span class="sr-only">(current)</span></a>
-            <a class="nav-item nav-link" href="../Controllers/Empresas_Controller.php"><?php echo $strings['Empresas'] ?></a>
-            <a class="nav-item nav-link" href="../Controllers/Centros_Controller.php"><?php echo $strings['Centros'] ?></a>
-            <a class="nav-item nav-link disabled" href="../Controllers/Usuarios_Controller.php"><?php echo $strings['Usuarios'] ?></a>
+            <?php if ($_SESSION['rol'] == 'admin') { ?>
+                <a class="nav-item nav-link active" href="../Controllers/Empresas_Controller.php"><?php echo $strings['Empresas'] ?></a>
+                <a class="nav-item nav-link active" href="../Controllers/Centros_Controller.php"><?php echo $strings['Centros'] ?></a>
+                <a class="nav-item nav-link active" href="../Controllers/Usuarios_Controller.php"><?php echo $strings['Usuarios'] ?></a>
+            <?php } ?>
         </div>
     </div>
 </nav>

@@ -16,7 +16,6 @@ elseif ($_SESSION['rol'] == 'admin') {
     require_once '../Models/Centros_Model.php';
     include '../Views/Centros_SHOWALL_View.php';
     include '../Views/Centros_ADD_View.php';
-//    include '../Views/Centro_SHOWCURRENT_View.php';
     include '../Views/Centros_EDIT_View.php';
     include '../Views/Centros_DELETE_View.php';
     include '../Views/Centros_SEARCH_View.php';

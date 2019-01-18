@@ -3,7 +3,8 @@
 </article>
 </div>
 <footer>
-    <a href='../Views/equipoBravo.php'>Equipo Bravo</a>
+    <br>
+    <p class="text-center" ><a href='../Views/equipoBravo.php'>Equipo Bravo</a></p>
 </footer>
 </body>
 </html>
