@@ -24,10 +24,12 @@ class Contratos_SHOWALL_View {
                     <th scope="col"><?php echo $strings['Empresa encargada']; ?></th>
                     <th scope="col"><?php echo $strings['Estado']; ?></th>
                     <th scope="col"><form class="form-inline my-2 my-lg-0" name='formulario' action="../Controllers/Contratos_Controller.php" method="">
+                            <?php if ($_SESSION['rol'] == 'admin') { ?>
                             <button name="action" value="ADD" type="submit" class="btn btn-outline-primary">
                                 <i class="fas fa-plus"></i></button>&nbsp
                             <button name="action" value="SEARCH" type="submit" class="btn btn-outline-primary">
                                 <i class="fas fa-search"></i></button>&nbsp
+                            <?php } ?>
                         </form>
                     </th>
                 </tr>
@@ -50,16 +52,22 @@ class Contratos_SHOWALL_View {
                                 <input type="hidden" name=codcontrato value=<?php echo $tupla['cod'] ?>>
                                 <button name="action" value="SHOWCURRENT" type="submit" class="btn btn-outline-primary">
                                     <i class="far fa-eye"></i></button>&nbsp
+                                    <?php if ($_SESSION['rol'] == 'admin') { ?>
                                 <button name="action" value="EDIT" type="submit" class="btn btn-outline-primary">
                                     <i class="fas fa-edit"></i></button>&nbsp
+                                    
                                 <button name="action" value="DELETE" type="submit" class="btn btn-outline-primary">
                                     <i class="fas fa-trash-alt"></i></button>&nbsp
+                                    <?php } ?>
+                                    
                                 <button name="action" value="VISITAS" type="submit" class="btn btn-outline-primary">
                                     <i class="fa fa-list"></i></button>
+                                    <?php if ($_SESSION['rol'] == 'admin') { ?>
                                     <?php if ($tupla['estado'] != 'pagado') {
                                         echo '<button name="action" value="PAGAR" type="submit" class="btn btn-outline-primary">
                                    <i class="fa fa-university"></i></button>';
                                     } ?>
+                                    <?php } ?>
                             </form>
                         </td>
                     </tr>
