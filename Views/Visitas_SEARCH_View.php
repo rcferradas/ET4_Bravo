@@ -18,7 +18,7 @@ class Visitas_SEARCH_View {
         <html>
 
             <section>
-                <form class="form_edit" method="post" action="../Controllers/Visitas_Controller.php" enctype="multipart/form-data" onsubmit="return validacionSubmitEdit();">
+                <form class="form_edit" method="post" action="../Controllers/Visitas_Controller.php" enctype="multipart/form-data" onsubmit="return validarSearchVisitas(this);">
                     <h2><?php echo $strings['Buscar visitas']; ?></h2>
 
                     <fieldset id="fieldset_edit">
@@ -47,11 +47,11 @@ class Visitas_SEARCH_View {
                         </div>&nbsp;&nbsp;
                         <div class="form-group">
                             <label for="fecha"><?php echo $strings['Fecha de comienzo']; ?>  </label> 
-                            <input readonly type="text" class="tcal" name="fechainicio" id="fecha"   onblur="comprobarEntero(this, 1, 999);"> 
+                            <input readonly type="text" class="tcal" name="fechainicio" id="fechainicio"   onblur="comprobarEntero(this, 1, 999);"> 
                         </div>
                         <div class="form-group">
                             <label for="fecha"><?php echo $strings['Fecha de fin']; ?>  </label> 
-                            <input readonly type="text" class="tcal" name="fechafin" id="fecha"  >
+                            <input readonly type="text" class="tcal" name="fechafin" id="fechafin"  >
                         </div>
                          <div class="form-group">
                             <label for="padre"><?php echo $strings['Reparadoras de incidencias']; ?>  </label> 
