@@ -25,7 +25,7 @@ include_once '../Locales/Strings_' . $_SESSION['idioma'] . '.php';
         </title>
         <meta charset="UTF-8">
         <title>
-            <?php echo $strings['Equipo Bravo']; ?>
+            <?php echo $strings['VisitGest']; ?>
         </title>
         <script type="text/javascript" src="../Views/js/tcal.js"></script> 
         <script type="text/javascript" src="../Views/js/md5.js"></script>
@@ -50,7 +50,7 @@ include_once '../Locales/Strings_' . $_SESSION['idioma'] . '.php';
             <p style="text-align:center">
             <h1>
                 <?php
-                echo $strings['Equipo Bravo'];
+                echo $strings['VisitGest'];
                 ?>
             </h1>
         </p>
@@ -85,9 +85,6 @@ include_once '../Locales/Strings_' . $_SESSION['idioma'] . '.php';
             <?php
         } else {
             echo $strings['Usuario no autenticado'];
-            /* echo 	'<form name=\'registerForm\' action=\'../Controller/Register_Controller.php\' method=\'post\'>
-              <input type=\'submit\' name=\'action\' value=\'REGISTER\'>
-              </form>'; */
             ?>
             <?php
         }

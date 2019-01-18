@@ -17,11 +17,11 @@ class Login {
         <form name = 'Form' action='../Controllers/Login_Controller.php' method='post' onsubmit="return comprobar_login();">
             <div class="form-group">
                 <label for="email"><?php echo $strings['Login'] ?></label> 
-                <input id="email" class="form-control" type = 'text' name = 'login' placeholder = 'Utiliza tu Dni' size = '9' value = '' onblur="comprobarAlfabetico(this, 15)"  >
+                <input id="email" class="form-control" type = 'text' name = 'login' size = '9' value = '' onblur="comprobarAlfabetico(this, 15)"  >
             </div>
             <div class="form-group">
                 <label id="password"><?php echo $strings['Contraseña'] ?></label>
-                <input id="password" class="form-control" type = 'password' name = 'password' placeholder = 'Letras y numeros' size = '15' value = '' onblur="comprobarAlfabetico(this, 25)"  >
+                <input id="password" class="form-control" type = 'password' name = 'password' size = '15' value = '' onblur="comprobarAlfabetico(this, 25)"  >
             </div>
             <input class="btn btn-primary" type='submit' name='action' value='Login'>
         </form>

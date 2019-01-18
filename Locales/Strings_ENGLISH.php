@@ -8,6 +8,7 @@ $strings = array(
     'mantenimiento'=>'mantenimiento',
     'reparacion'=>'reparacion',
     'Portal de mantenimiento' => 'Management website',
+    'VisitGest'=> 'VisitGest',
     'Equipo Bravo' => 'Bravo Team',
     'Usuario no autenticado' => 'User not logged',
     'Login' => 'Login',

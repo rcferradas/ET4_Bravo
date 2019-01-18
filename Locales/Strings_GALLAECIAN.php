@@ -9,6 +9,7 @@ $strings = array(
     'mantenimiento'=>'mantenimiento',
     'reparacion'=>'reparacion',
     'Portal de mantenimiento' => 'Portal de mantemento',
+    'VisitGest'=> 'VisitGest',
     'Equipo Bravo' => 'Equipo Bravo',
     'Usuario no autenticado' => 'Usuario non autenticado',
     'Login' => 'Login',
