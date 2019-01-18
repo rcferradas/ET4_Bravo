@@ -6,10 +6,10 @@
 ?>
 <div>
     Equipo Bravo: <br>
-    Miguel Arias Perez <br>
-    Alexandre Curras Rodriguez <br>
-    Rodrigo Curras Ferradas <br>
-    Victor Otero Cabaleiro <br>
+    39463487H <br>
+    45158726C <br>
+    53860787P <br>
+    53194233V <br>
 </div>
 
 <?php
