@@ -29,7 +29,7 @@ class Usuarios_ADD_View {
                         <input class="form-control" name="password" type="text" size="25" id="password" onblur="comprobarAlfabetico(this, 25);"/> 
                     </div>&nbsp;&nbsp;<div class="form-group">
                         <label for="DNI"><?php echo $strings['DNI']; ?>  *</label> 
-                        <input class="form-control" type="text" name="DNI" id="DNI" onblur="comprobarDni(this)" > 
+                        <input class="form-control" type="text" name="DNI" id="DNI" onblur="comprobarDni(this);" > 
                     </div>&nbsp;&nbsp;<div class="form-group">
                         <label for="nombre"><?php echo $strings['Nombre']; ?>  *</label> 
                         <input class="form-control" type="text" name="nombre" id="nombre" onblur="comprobarTexto(this, 30);"> 

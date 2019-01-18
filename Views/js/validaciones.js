@@ -267,6 +267,25 @@ function comprobarDni(campo) {
     if(res>=frecuency)return true;//si es mayor o igual que la frecuencia devuelve true
     else return false;//en caso contrario false
 }
+/*Función que comprueba que la fecha fianl es mayor que la inicial y que la frecuencia es coherente entre estas*/
+/*DateDiff nos permitirá hacer el calculo de días entre una fecha y la otra*/
+/*    function comprobarFechaVisitas(fcontrato,finicial,ffinal){
+    var DateDiff = {
+        inDays: function (d1, d2) {
+            var t2 = d2.getTime();
+            var t1 = d1.getTime();
+
+            return parseInt((t2 - t1) / (24 * 3600 * 1000));
+        }
+    };
+    var d1 = new Date(fcontrato.value);//cogemos la fecha de la visita
+    var d2 = new Date(finicial.value);//cogemos la fecha incial del contrato
+    var d3 = new Date(ffinal.value);//cogemos la fecha final del contrato
+    var resinicial=DateDiff.inDays(d1, d2);//calcula la diferencia entre la fecha inicial y contrato 
+    var resfinal=DateDiff.inDays(d3, d1);//calcula la diferencia entre la fecha final y contrato
+    if(resinicial>=0 && resfinal>=0) return true;//comprueba que que la fecha del contrato esté entre el inicial y la final
+    else return false;//en caso contrario false
+}*/
 /*Comprueba que todos los campos obligatorios estén escritos y que todos los campos escritos estén cubiertos correctamente,se envía en Centros_ADD_view */
 /*En el momento que correcto sea 1 significará que algún campo no es correcto*/
 function validarCentrosADD(Formu){

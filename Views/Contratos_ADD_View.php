@@ -54,10 +54,10 @@ class Contratos_ADD_View {
                         <input name="documento" type="file" id="documento" onblur="comprobarVacio(this);"/>
                     </div>&nbsp;&nbsp;<div class="form-group">
                         <label for="periodoinicio"><?php echo $strings['Periodo inicio']; ?>  *</label> 
-                        <input readonly type="text" class="tcal" name="periodoinicio" id="periodoinicio" > 
+                        <input readonly type="text" class="tcal form-control" name="periodoinicio" id="periodoinicio" > 
                     </div>&nbsp;&nbsp;<div class="form-group">
                         <label for="periodofin"><?php echo $strings['Periodo fin']; ?>  *</label> 
-                        <input readonly type="text" class="tcal" name="periodofin" id="periodofin" > 
+                        <input readonly type="text" class="tcal form-control" name="periodofin" id="periodofin" > 
                     </div>&nbsp;&nbsp;<div class="form-group">    
                         <label for="frecuencia"><?php echo $strings['Frecuencia']; ?>  *</label> 
                         <select  class="form-control" name="frecuencia" id="frecuencia"> 
