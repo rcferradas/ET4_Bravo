@@ -26,6 +26,7 @@ class Usuarios_SHOWCURRENT_View {
                     <th scope="col"><?php echo $strings['Telefono']; ?></th>
                     <th scope="col"><?php echo $strings['Email']; ?></th>
                     <th scope="col"><?php echo $strings['Rol']; ?></th>
+                    <th scope="col"></th>
                 </tr>
             </thead>
 

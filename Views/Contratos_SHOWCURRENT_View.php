@@ -28,6 +28,7 @@ class Contratos_SHOWCURRENT_View {
                     <th scope="col"><?php echo $strings['Frecuencia']; ?></th>
                     <th scope="col"><?php echo $strings['Importe']; ?></th>
                     <th scope="col"><?php echo $strings['Estado']; ?></th>
+                    <th scope="col"></th>
                 </tr>
             </thead>
 

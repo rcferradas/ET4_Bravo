@@ -28,7 +28,7 @@ class Centros_EDIT_View {
                             <label for="lugar"><?php echo $strings['Lugar'] ?>  *</label> 
                             <input class="form-control" name="lugar" type="text" size="25" id="lugar" value="<?php echo $datos['lugar'] ?>"  onblur="comprobarTexto(this, 30);"/> 
                         </div>&nbsp;&nbsp;<div class="form-group"><label for="usuarioAsignado"><?php echo $strings['Usuario asignado'] ?>  *</label> 
-                            <select name="usuarioAsignado" id="usuarioAsignado">
+                            <select class="form-control" name="usuarioAsignado" id="usuarioAsignado">
                                         <?php
                                         foreach ($data as $usuario) {
                                             if($usuario['login']==$datos['usuarioAsignado']) echo '<option value="' . $usuario['login'] . '" selected>'.$usuario['login'].'</option>';

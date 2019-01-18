@@ -24,6 +24,7 @@ class Empresas_SHOWCURRENT_View {
                     <th scope="col"><?php echo $strings['Tipo']; ?></th>
                     <th scope="col"><?php echo $strings['Telefono']; ?></th>
                     <th scope="col"><?php echo $strings['Localizacion']; ?></th>
+                    <th scope="col"></th>
                 </tr>
             </thead>
 
