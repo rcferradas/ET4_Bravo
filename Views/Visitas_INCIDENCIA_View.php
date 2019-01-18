@@ -36,7 +36,7 @@ class Visitas_INCIDENCIA_View {
                     </select>
 
                     <label for="informe"><?php echo $strings['Informe']; ?>  *</label> 
-                    <input name="informe" type="file" id="informeAdd1" />
+                    <input name="informe" type="file" id="informeAdd1" onblur="comprobarVacio(this);"/>
 
                     <label for="fecha"><?php echo $strings['Fecha']; ?>  *</label> 
                     <input readonly type="text" class="tcal" name="fecha" id="fechaAdd1"> 
