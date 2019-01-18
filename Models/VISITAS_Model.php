@@ -228,6 +228,12 @@ class VISITAS_Model {
             if(!empty($this->informe) && file_exists('../Files/'.$this->codVisita . '/Inf/'.$this->informe)){
            $this->borrarDirectorio($dirDocumento);
             }
+             $aRealizar=$this->noRealizadas();
+                if($aRealizar->num_rows==0){
+                      $sql="UPDATE contratos SET `estado`='realizado' WHERE `codContrato`=$this->codContrato";
+                     $holder=$this->mysqli->query($sql);
+                    
+                }
            return 'Eliminación realizada con éxito';
         }
     }
