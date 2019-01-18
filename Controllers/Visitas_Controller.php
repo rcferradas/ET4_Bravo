@@ -63,7 +63,7 @@ else {
             if (!$_POST) {    //Si se envia por GET se llama a la vista ADD para que se envie por POST, cuestiones de privacidad
                 /*$visitas = new VISITAS_Model('', '', '',$_REQUEST['codcontrato'], '', '', '');
                 $data = $visitas->datosContrato();*/
-                new Visitas_ADD_View($_REQUEST['codcontrato']/*,$data*/);
+                new Visitas_ADD_View($_REQUEST['codcontrato']);
             } else {
                 $datos = recuperarDataForm();
                 $respuesta = $datos->ADDNoProgramadas();

@@ -4,12 +4,12 @@
 
 class Visitas_ADD_View {
 
-    function __construct($codigoContrato,$data) {
+    function __construct($codigoContrato) {
 
-        $this->render($codigoContrato,$data);
+        $this->render($codigoContrato);
     }
 
-    function render($codigoContrato,$data) {
+    function render($codigoContrato) {
         if (!isset($_SESSION['idioma'])) {
             $_SESSION['idioma'] = 'SPANISH';
         }
@@ -43,7 +43,7 @@ class Visitas_ADD_View {
 
                 </fieldset>
                 <span>* <?php echo $strings['Campos obligatorios']; ?> </span><br>
-                <button name="action" type="submit" value="ADD"><i class="fas fa-check"></i></button>
+                <button class="btn btn-outline-primary" name="action" type="submit" value="ADD"><i class="fas fa-check"></i></button>
 
             </form>
         </section>

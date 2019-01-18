@@ -63,7 +63,7 @@ class Visitas_SEARCH_View {
                     </fieldset>
                     <span>* <?php echo $strings['Seleccionar al menos un campo']; ?> </span><br>
                     <!-- Boton submit -->
-                    <button name="action" type="submit" value="SEARCH"><i class="fas fa-check"></i></button>
+                    <button class="btn btn-outline-primary" name="action" type="submit" value="SEARCH"><i class="fas fa-check"></i></button>
                 </form>
             </section>
 
