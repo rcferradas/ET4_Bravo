@@ -2,7 +2,7 @@
 
 .form-group{
     display: inline-block;
-	min-width: 10px;
+    min-width: 10px;
 }
 form{
     padding-left: 10px;
@@ -21,11 +21,10 @@ header i{
 footer{
     border-top: black 1px solid;
     padding-left:10px;
-    
-    
-}
 
+
+}
 nav{
     margin-bottom: 10px;
-    
+
 }

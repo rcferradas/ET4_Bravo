@@ -24,6 +24,7 @@ class Visitas_SHOWCURRENT_View {
                     <th scope="col"><?php echo $strings['Informe']; ?></th>
                     <th scope="col"><?php echo $strings['Fecha']; ?></th>
                     <th scope="col"><?php echo $strings['Visita Padre']; ?></th>
+                    <th scope="col"></th>
                 </tr>
             </thead>
 
