@@ -22,6 +22,7 @@ class Contratos_SHOWALL_View {
                     <th scope="col"><?php echo $strings['Centro']; ?></th>
                     <th scope="col"><?php echo $strings['Tipo']; ?></th>
                     <th scope="col"><?php echo $strings['Empresa encargada']; ?></th>
+                    <th scope="col"><?php echo $strings['Estado']; ?></th>
                     <th scope="col"><form class="form-inline my-2 my-lg-0" name='formulario' action="../Controllers/Contratos_Controller.php" method="">
                             <button name="action" value="ADD" type="submit" class="btn btn-outline-primary">
                                 <i class="fas fa-plus"></i></button>&nbsp
@@ -42,6 +43,7 @@ class Contratos_SHOWALL_View {
                         <td><?php echo $tupla['centro']; ?></td>
                         <td><?php echo $tupla['tipo']; ?></td>
                         <td><?php echo $tupla['cifEmpresa']; ?></td>
+                        <td><?php echo $tupla['estado']; ?></td>
                         <td>
                             <!--Botones para realizar acciones en cada tupla-->
                             <form class="form-inline my-2 my-lg-0" name='formulario' action="../Controllers/Contratos_Controller.php" method="">
