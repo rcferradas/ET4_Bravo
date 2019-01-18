@@ -264,7 +264,7 @@ function comprobarDni(campo) {
     var d1 = new Date(fi.value);//cogemos la primera fecha
     var d2 = new Date(ff.value);//cogemos la segunda fecha
     var res=DateDiff.inDays(d1, d2);//calcula la diferencia entre las dos
-    if(res>frecuency)return true;//si es mayor que la frecuencia devuelve true
+    if(res>=frecuency)return true;//si es mayor o igual que la frecuencia devuelve true
     else return false;//en caso contrario false
 }
 /*Comprueba que todos los campos obligatorios estén escritos y que todos los campos escritos estén cubiertos correctamente,se envía en Centros_ADD_view */
