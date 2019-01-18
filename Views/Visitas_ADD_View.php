@@ -18,7 +18,7 @@ class Visitas_ADD_View {
         ?>
         <h2><?php echo $strings['Añadir Visita']; ?></h2>        
         <section>
-            <form class="form_add" method="post" action="../Controllers/Visitas_Controller.php" enctype="multipart/form-data" onsubmit="return validacionSubmitEdit();">
+            <form class="form_add" method="post" action="../Controllers/Visitas_Controller.php" enctype="multipart/form-data" onsubmit="return validarVisitasADD(this);">
                 <fieldset id="fieldset_add">
                     <input type="hidden" name=codcontrato value=<?php echo $codigoContrato; ?>>
                     <div class="form-group"><label for="estado"><?php echo $strings['Estado'] ?>  *</label>  
@@ -35,7 +35,7 @@ class Visitas_ADD_View {
                         </select>
                     </div>&nbsp;&nbsp;<div class="form-group">
                         <label for="informe"><?php echo $strings['Informe']; ?>  *</label> <br>
-                        <input name="informe" type="file" id="informeAdd1" />
+                        <input name="informe" type="file" id="informeAdd1" onblur="comprobarVacio(this);"/>
                     </div>&nbsp;&nbsp;<div class="form-group">
                         <label for="fecha"><?php echo $strings['Fecha']; ?>  *</label> 
                         <input readonly type="text" class="tcal" name="fecha" id="fechaAdd1" onblur="comprobarFechaVisitas(this,$data[0],$data[1]);"> 

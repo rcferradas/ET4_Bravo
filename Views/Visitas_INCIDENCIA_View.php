@@ -18,7 +18,7 @@ class Visitas_INCIDENCIA_View {
         ?>
         <h2><?php echo $strings['Añadir Visita por Incidencia']; ?></h2>        
         <section>
-            <form class="form_add" method="post" action="../Controllers/Visitas_Controller.php" enctype="multipart/form-data" onsubmit="return validacionSubmitEdit();">
+            <form class="form_add" method="post" action="../Controllers/Visitas_Controller.php" enctype="multipart/form-data" onsubmit="return validarVisitasIncidencia(this);">
                 <fieldset id="fieldset_add">
                     <input type="hidden" name=codcontrato value=<?php echo $codigoContrato; ?>>
                     <input type="hidden" name=codvisitapadre value=<?php echo $codigoVisita; ?>>

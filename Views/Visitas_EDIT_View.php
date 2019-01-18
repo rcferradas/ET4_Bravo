@@ -17,7 +17,7 @@ class Visitas_EDIT_View {
         <html>
 
             <section>
-                <form class="form_edit" method="post" action="../Controllers/Visitas_Controller.php" enctype="multipart/form-data" onsubmit="return validacionSubmitEdit();">
+                <form class="form_edit" method="post" action="../Controllers/Visitas_Controller.php" enctype="multipart/form-data" >
                     <h2><?php echo $strings['Editar visita']; ?></h2>
 
                     <fieldset id="fieldset_edit">
