@@ -46,11 +46,13 @@ class Contratos_SHOWCURRENT_View {
                     <td>
                         <!--Botones para realizar acciones en la tupla-->
                         <form class="form-inline my-2 my-lg-0" name='formulario' action="../Controllers/Contratos_Controller.php" method="">
+                            <?php if ($_SESSION['rol'] == 'admin') { ?>
                             <input type="hidden" name=codcontrato value=<?php echo $tupla['cod'] ?>>
                             <button name="action" value="EDIT" type="submit" class="btn btn-outline-primary">
                                 <i class="fas fa-edit"></i></button>&nbsp
                             <button name="action" value="DELETE" type="submit" class="btn btn-outline-primary">
                                 <i class="fas fa-trash-alt"></i></button>
+                            <?php } ?>
                         </form>
                     </td>
                 </tr>
