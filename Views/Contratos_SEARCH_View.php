@@ -43,11 +43,12 @@ class Contratos_SEARCH_View {
                     </div>&nbsp;&nbsp;<div class="form-group">
                         <label for="frecuencia"><?php echo $strings['Frecuencia'] ?>  *</label> 
                         <select  class="form-control" name="frecuencia" id="frecuencia"> 
+                            <option value="" selected></option>
                             <option  value="diaria"><?php echo $strings['Diaria'] ?></option>
                             <option value="semanal"><?php echo $strings['Semanal'] ?></option>
                             <option  value="mensual"><?php echo $strings['Mensual'] ?></option>
                             <option  value="trimestral"><?php echo $strings['Trimestral'] ?></option>
-                            <option  value="anual" selected><?php echo $strings['Anual'] ?></option>
+                            <option  value="anual"><?php echo $strings['Anual'] ?></option>
                             <option  value="quinquenal"><?php echo $strings['Quinquenal'] ?></option>
                         </select>
                     </div>&nbsp;&nbsp;<div class="form-group">

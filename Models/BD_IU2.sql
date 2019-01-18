@@ -99,3 +99,7 @@ FOREIGN KEY (`frutoVisitaProg`) REFERENCES `visitas`(`codVisita`)
 FOREIGN KEY (`codContrato`) REFERENCES `contratos`(`cod`)
                   ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+INSERT INTO `usuarios`(`login`, `password`, `DNI`, `nombre`, `apellidos`, `telefono`, `email`, `rol`) VALUES ('admin','admin','11415569W','Senhor','Lobo','986251331','lobo@ricocafe.com','admin');
+INSERT INTO `usuarios`(`login`, `password`, `DNI`, `nombre`, `apellidos`, `telefono`, `email`, `rol`) VALUES ('test','this','53427985C','Senhora','Raposa','986251331','raposa@ricocafe.com','admin');
