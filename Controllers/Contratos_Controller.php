@@ -23,6 +23,7 @@ else {
     include '../Views/Contratos_DELETE_View.php';
     include '../Views/Contratos_ADD_View.php';
     include '../Views/Contratos_SEARCH_View.php';
+    include '../Views/Pagar_Contrato_View.php';
 
     function recuperarDataForm() {
         $centro = $_REQUEST['centro'];
@@ -141,6 +142,23 @@ else {
             new Visitas_SHOWALL_View($recordSet);  //se invoca la vista SHOWALL con los datos a mostrar
             break;
             
+        
+        case 'PAGAR':
+            
+            
+            
+            $visitas = new Visitas_Model('pendiente','',$_REQUEST['codcontrato'],'','');
+            $recordSet = $visitas->noRealizadas();
+            $contrato= new Contratos_Model($_REQUEST['codcontrato'],'','','','','','','','','');
+            $contratoRecheo=$contrato->showCurrent();
+            if($recordSet->num_rows==0){
+               $pagar= $contrato->pagar();
+               new MESSAGE($pagar, '../Controllers/Contratos_Controller.php');
+            }
+                
+             new Pagar_Contrato_View($recordSet);
+            
+            break;
             
         default:
             $contratos = new Contratos_Model('', '', '', '', '', '', '', '', '','');  //Objeto del modelo

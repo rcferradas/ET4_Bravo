@@ -282,6 +282,15 @@ class VISITAS_Model {
             if (!$this->mysqli->query($sql)) { //si se da un problema en la consulta de actualización se notifica el error
                 return 'Error en la actualización';
             } else {
+                
+                $aRealizar=$this->noRealizadas();
+                if($aRealizar->num_rows==0){
+                      $sql="UPDATE contratos SET `estado`='realizado' WHERE `codContrato`=$this->codContrato";
+                     $holder=$this->mysqli->query($sql);
+                    
+                }
+                
+                
                 return 'Actualización realizada con éxito';
             }
         }else{
@@ -334,6 +343,23 @@ class VISITAS_Model {
   }  
     
     
+  //Funcion para obtener las visitas aun no realizadas o con incidencias para el 
+  // pago del contrato
+  
+function noRealizadas(){
+    $sql="SELECT * FROM visitas  WHERE  `codContrato`=$this->codContrato AND `estado` NOT LIKE 'realizada' ORDER BY `fecha` LIMIT 20 ";
+    $resultado = $this->mysqli->query($sql);
+    
+    if(!$resultado){
+        
+        return 'Error en la consulta';
+    }
+    
+   return $resultado;   
+      
+      
+      
+}
     
     
     

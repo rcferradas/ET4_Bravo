@@ -118,5 +118,7 @@ $strings = array(
     'Reparadoras de incidencias' => 'Reparadoras de incidencias',
     'Buscar' => 'Buscar',
     'Buscar visitas' => 'Buscar visitas',
-    'Seleccionar al menos un campo' => 'Seleccionar al menos un campo');
+    'Seleccionar al menos un campo' => 'Seleccionar al menos un campo',
+    'Deben realizarse estas visitas antes del pago' => 'Deben realizarse estas visitas antes del pago',
+    'Contrato pagado con exito' => 'Contrato pagado con exito');
 ?>

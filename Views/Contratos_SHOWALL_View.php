@@ -54,6 +54,8 @@ class Contratos_SHOWALL_View {
                                     <i class="fas fa-trash-alt"></i></button>&nbsp
                                     <button name="action" value="VISITAS" type="submit" class="btn btn-outline-primary">
                                     <i class="fa fa-list"></i></button>
+                                   <?php if($tupla['estado']!='pagado'){ echo '<button name="action" value="PAGAR" type="submit" class="btn btn-outline-primary">
+                                   <i class="fa fa-university"></i></button>';}?>
                             </form>
                         </td>
                     </tr>

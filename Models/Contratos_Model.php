@@ -157,7 +157,22 @@ class Contratos_Model {
     }
     
 
-        
+    
+    
+    //Metodo para pagar un contrato
+   function pagar(){
+         $sql="UPDATE contratos SET `estado`='pagado' WHERE `cod`=$this->cod";
+         var_dump($sql);
+          $resultado=$this->mysqli->query($sql);
+          if(!$resultado){
+              return 'Error en la actualizacion';  
+          }
+          else{
+              
+              return 'Contrato pagado con exito';
+          }
+       
+   }     
     
   function getCodigo(){
       global $codigoDelContrato;
