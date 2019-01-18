@@ -48,7 +48,7 @@ class Usuarios_SEARCH_View {
 
                 </fieldset>
                 <span>* <?php echo $strings['Campos obligatorios']; ?> </span><br>
-                <button name="action" type="submit" value="SEARCH"><i class="fas fa-check"></i></button>
+                <button class="btn btn-outline-primary" name="action" type="submit" value="SEARCH"><i class="fas fa-check"></i></button>
 
             </form>
         </section>

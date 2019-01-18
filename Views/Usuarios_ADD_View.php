@@ -52,7 +52,7 @@ class Usuarios_ADD_View {
                 </fieldset>
                 <span>* <?php echo $strings['Campos obligatorios']; ?> </span><br>
                 <!-- Boton submit -->
-                <button name="action" type="submit" value="ADD"><i class="fas fa-check"></i></button>
+                <button class="btn btn-outline-primary" name="action" type="submit" value="ADD"><i class="fas fa-check"></i></button>
 
             </form>
         </section>
