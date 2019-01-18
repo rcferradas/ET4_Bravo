@@ -4,12 +4,12 @@
 
 class Visitas_ADD_View {
 
-    function __construct($codigoContrato) {
+    function __construct($codigoContrato,$data) {
 
-        $this->render($codigoContrato);
+        $this->render($codigoContrato,$data);
     }
 
-    function render($codigoContrato) {
+    function render($codigoContrato,$data) {
         if (!isset($_SESSION['idioma'])) {
             $_SESSION['idioma'] = 'SPANISH';
         }
@@ -38,7 +38,7 @@ class Visitas_ADD_View {
                         <input name="informe" type="file" id="informeAdd1" />
                     </div>&nbsp;&nbsp;<div class="form-group">
                         <label for="fecha"><?php echo $strings['Fecha']; ?>  *</label> 
-                        <input readonly type="text" class="tcal" name="fecha" id="fechaAdd1"> 
+                        <input readonly type="text" class="tcal" name="fecha" id="fechaAdd1" onblur="comprobarFechaVisitas(this,$data[0],$data[1]);"> 
                     </div>
 
                 </fieldset>
