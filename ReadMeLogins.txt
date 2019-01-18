@@ -4,4 +4,3 @@ El acceso a la aplicación se hará mediante los usuarios administradores aquí 
 
 login1: admin password1: admin
 login2: test  password2: this
-
