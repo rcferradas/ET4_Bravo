@@ -59,10 +59,10 @@ class Contratos_EDIT_View {
                             <input type="file" name="documento" id="documento" > 
                         </div>&nbsp;&nbsp;<div class="form-group">
                             <label for="periodoinicio"><?php echo $strings['Periodo inicio']; ?>  *</label> 
-                            <input readonly type="text" class="tcal" name="periodoinicio" id="periodoinicio" value="<?php echo $datos['periodoinicio']; ?>" > 
+                            <input readonly type="text" class="tcal form-control" name="periodoinicio" id="periodoinicio" value="<?php echo $datos['periodoinicio']; ?>" > 
                         </div>&nbsp;&nbsp;<div class="form-group">
                             <label for="periodofin"><?php echo $strings['Periodo fin']; ?>  *</label> 
-                            <input readonly type="text" class="tcal" name="periodofin" id="periodofin" value="<?php echo $datos['periodofin']; ?>"  > 
+                            <input readonly type="text" class="tcal form-control" name="periodofin" id="periodofin" value="<?php echo $datos['periodofin']; ?>"  > 
                         </div>&nbsp;&nbsp;<div class="form-group">
                             <label for="importe"><?php echo $strings['Importe']; ?>  *</label> 
                             <input class="form-control" type="text" name="importe" id="importe" value="<?php echo $datos['importe']; ?>"  onblur="comprobarReal(this, 2, 0, 999999999)"> 
