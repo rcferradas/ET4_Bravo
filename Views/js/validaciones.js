@@ -612,3 +612,30 @@ function validarSearchUsuarios(Formu){
 	}
 	return true;
 }
+/*Comprueba que al menos un campo esté escrito, se envía en Visitas_SEARCH_View*/
+/*Campo-En el caso de que no haya ningún campo escrito se muestra un alert*/
+function validarSearchVisitas(Formu){
+	var campo = false;
+	if ( !( Formu.estado.value == null ) && ( Formu.estado.value.length != 0 ) ) {//comprueba si el campo está vacío o no
+		campo=true;
+	}
+	if( !(Formu.tipo.value == null) && (Formu.tipo.value != 0 )) {//comprueba si el campo está vacío o no
+		campo=true;
+	}
+	if ( !( Formu.fechainicio.value == null ) && ( Formu.fechainicio.value.length != 0 ) ) {//comprueba si el campo está vacío o no
+		campo=true;
+	}        
+	if ( !( Formu.fechafin.value == null ) && ( Formu.fechafin.value.length != 0 ) ) {//comprueba si el campo está vacío o no
+		campo=true;
+	}
+	if ( !( Formu.padre.value == null ) && ( Formu.padre.value.length != 0 ) ) {//comprueba si el campo está vacío o no
+		campo=true;
+	}       
+	if(campo==false){//en el caso de que estén todos los campos vacíos se muestra que hay que cubrir al menos uno
+		alert("Cubra al menos un campo");
+		avisado = true;
+		setTimeout( 'avisado=false', 50 );
+		return false;
+	}
+	return true;
+}
